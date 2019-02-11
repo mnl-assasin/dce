@@ -1,0 +1,39 @@
+.MnemonicPhrase {
+  
+}
+
+.MnemonicPhrase .Content {
+    padding: 15px;
+}
+
+.MnemonicPhrase .Phrase--item {
+    color: blue;
+    font-weight: bolder;
+    font-size: 1.3em; 
+}
+
+.MnemonicPhrase .Phrase--item > span {
+    border-radius: 50%;
+    border: 2px solid blue;
+    display: inline !important;
+}
+
+.Phrase--index {
+    border: 1px solid blue;
+    border-radius: 50%;
+}
+
+.MnemonicPhrase .padding {
+    padding:20px;
+}
+
+.MnemonicPhrase .Button--container > .Button {
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.MneminicPhrase .Button--container {
+    flex-direction: column;
+    flex: 1;
+    display: flex;
+}

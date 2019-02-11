@@ -1,0 +1,10 @@
+.RestoreBackup {
+  
+}
+
+.RestoreBackup > .Content {
+  padding: 10px;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}

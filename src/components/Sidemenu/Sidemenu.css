@@ -1,0 +1,11 @@
+.Sidemenu {
+  /**/
+}
+
+.Sidemenu--list {
+  width: 250px
+}
+
+.Sidemenu--full-list {
+  width: 'auto',
+}

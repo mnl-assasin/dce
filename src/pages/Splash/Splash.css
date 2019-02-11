@@ -1,0 +1,10 @@
+.Splash {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.Splash > .Content {
+    text-align: center;
+}

@@ -1,0 +1,104 @@
+.Button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/* Remove excess padding and border in Firefox 4+ */
+.Button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.Button {
+  padding: 20px;
+  display: block;
+  margin-top: 10px;
+  border: 1px solid black;
+}
+
+/* button primary*/
+.Button.primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.Button.primary:active {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+
+/* button secondary*/
+.Button.secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.Button.secondary:active {
+  color: #fff;
+  background-color: #545b62;
+  border-color: #4e555b;
+}
+
+/*button danger*/
+.Button.danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.Button.danger:active {
+  background-color: #bd2130;
+  border-color: #b21f2d;
+}
+
+.Button.outline {
+  background: transparent;
+}
+
+.Button.outline.primary {
+  color: #007bff;
+}
+
+.Button.outline.primary:active {
+  color: #fff;
+  background: #007bff !important;
+}
+
+.Button.outline.secondary {
+  color: #6c757d;
+}
+
+.Button.outline.secondary:active {
+  color: #fff;
+  background: #545b62 !important;
+}
+
+.Button.outline.danger {
+  color: #bd2130;
+}
+.Button.outline.danger:active {
+  color: #fff;
+  background: #b21f2d !important;
+}

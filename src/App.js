@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Router from 'route-lite';
+import {IntlProvider} from 'react-intl';
+import { Sidemenu, FullScreenLoading, Notifier, AlertDialog } from './components'
+import Splash  from './pages/Splash/Splash'
 import './App.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      locale: 'en',
+    };
+  }
+  componentDidMount() {
+    // 
+  }
+
   render() {
+    const { locale } = this.state
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <IntlProvider locale={locale}>
+        <div className="App">
+          <Sidemenu/>
+          <Notifier/>
+          <FullScreenLoading/>
+          <AlertDialog/>
+
+          <Router>
+            <Splash/>
+          </Router>
+        </div>
+      </IntlProvider>
     );
   }
 }

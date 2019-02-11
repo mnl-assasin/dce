@@ -1,0 +1,16 @@
+.Navbar {
+  flex-grow: 1;
+}
+
+.Navbar--title {
+  flex-grow: 1;
+}
+
+.Navbar--button {
+  /**/
+}
+
+.Navbar--button-back {
+  margin-left: -10px !important;
+  margin-right: 0px !important;
+}
