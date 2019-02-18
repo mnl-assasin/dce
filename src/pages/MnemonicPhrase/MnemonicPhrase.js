@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { goTo, goBack } from 'route-lite';
+import { goTo, goBack } from '../../services/navigation';
 import { Page, Col, Row, Button } from '../../common'
 import { Navbar } from '../../components';
 import chunk from 'lodash/chunk'
@@ -58,7 +58,7 @@ class MnemonicPhrase extends Component {
   }
 
   onClickLater() {
-    goBack();
+    goTo('Dashboard');
   }
   
   render() {

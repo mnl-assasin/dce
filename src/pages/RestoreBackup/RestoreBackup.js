@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { goTo } from '../../services/navigation';
 import { Page, Row, Col, Input, Button } from '../../common'
 import { Navbar, alertDialog } from '../../components';
-import axios from '../../services/crypto-axios';
-import apiConfig from '../../configs/api';
+import { WalletRepository } from 'dapper-node';
 import './RestoreBackup.css';
 
 class RestoreBackup extends Component {
@@ -17,15 +16,13 @@ class RestoreBackup extends Component {
   }
 
   async onClickSubmit() {
-    try {
+    let result = WalletRepository.restore({
+      mnemonic: this.state.phrase
+    })
 
-      let result = await axios.post(`${apiConfig.API}/v2/wallet/restore`, {
-        mnemonic: this.state.phrase
-      })  
-
+    if (result) {
       goTo('NominatePassword', result)
-      
-    } catch(e) {
+    } else {
       alertDialog({
         title: 'Oopss',
         message: 'It seems like you have entered a wrong mnemonic phrase. please try again'

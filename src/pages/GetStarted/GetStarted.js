@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
 import { goTo } from '../../services/navigation';
 import { Page, Col, Button } from '../../common'
-import { Navbar, showLoading, hideLoading } from '../../components';
-import axios from '../../services/crypto-axios';
-import apiConfig from '../../configs/api';
+import { Navbar } from '../../components';
+import { WalletRepository } from 'dapper-node';
 import './GetStarted.css';
 
 class GetStarted extends Component {
 
   async onClickGetStarted() {
-    try {
 
-      showLoading();
+    let result = WalletRepository.create();
 
-      let result = await axios.get(`${apiConfig.API}/v2/wallet/create`)
-      
-      hideLoading();
-
-      goTo('MnemonicPhrase', result.data)
-
-    } catch(e) {
-      console.error(e)
-    }
+    goTo('MnemonicPhrase', result)
   }
 
   onClickRestoreBackup() {

@@ -1,5 +1,16 @@
 import axios from 'axios';
-import crypto from './crypto';
+// import crypto from './crypto';
+
+// temporary mock crypto
+let crypto = {
+  encrypt(key) {
+      return key;
+  },
+
+  decrypt(key) {
+      return key;
+  }
+}
 
 class CryptoAxios {
   constructor() {
