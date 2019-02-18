@@ -11,12 +11,14 @@ class Col extends Component {
     let _style = {
       'flex': props.flex || 1,
       'justifyContent': props.justifyContent || 'flex-start',
-      'alignItems': props.alignItems || 'stretch'
+      'alignItems': props.alignItems || 'stretch',
+      'textAlign': props.textAlign || 'left'
     }
 
     delete props.flex
     delete props.justifyContent
     delete props.alignItems
+    delete props.textAlign
     delete props.className
 
     return (

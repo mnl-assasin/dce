@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Page, Row, Col } from '../../common'
 import { Navbar } from '../../components';
+import { goTo } from '../../services/navigation';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { chunk } from 'underscore';
 import './Dashboard.scss';
 
 class Dashboard extends Component {
@@ -16,44 +16,54 @@ class Dashboard extends Component {
           model: {},
           label: '123',
           icon: 'card_travel',
-          onClick: () => {
-            console.log('onClick', this.model)
+          onClick: (model) => {
+            goTo('Wallet', model)
           }
         },
         {
           model: {},
           label: '123',
           icon: 'card_travel',
-          onClick: () => {
-            console.log('onClick', this.model)
+          onClick: (model) => {
+            goTo('Wallet', model)
           }
         },
         {
           model: {},
           label: '123',
           icon: 'card_travel',
-          onClick: () => {
-            console.log('onClick', this.model)
+          onClick: (model) => {
+            goTo('Wallet', model)
           }
         },
         {
           model: {},
           label: '123',
           icon: 'card_travel',
-          onClick: () => {
-            console.log('onClick', this.model)
+          onClick: (model) => {
+            goTo('Wallet', model)
           }
         }
       ]
-    }
+    };
+
+    this.onRenderWidget.bind(this);
+    // this.onClickItem.bind(this);
   }
 
-  onClickRestoreRecover() {
+  onClickRestoreRecover() {}
+  
+  onClickBackUpChain() {}
+
+  onClickItem(item) {
+    if (item.onClick) {
+      item.onClick(item.model);
+    }
   }
 
   onRenderWidget(item, i) {
     return (
-      <div className="Dashboard--widget" key={i} onClick={item.onClick}>
+      <div className="Dashboard--widget" key={i} onClick={this.onClickItem.bind(this, item)}>
         <div>
           <Icon>{item.icon}</Icon>
         </div>
@@ -67,7 +77,7 @@ class Dashboard extends Component {
   }
 
   onRenderAddWidget() {
-    let addItem = {
+    const addItem = {
       model: {},
       label: 'Add new wallet',
       icon: 'add_circle_outline',
@@ -79,8 +89,9 @@ class Dashboard extends Component {
               model: {},
               label: '123',
               icon: 'card_travel',
-              onClick: () => {
-                console.log('onClick', this.model)
+              onClick: (model) => {
+                goTo('Wallet', model)
+                // goTo('Wallet', model)
               }
             }
           ]
@@ -92,7 +103,7 @@ class Dashboard extends Component {
   }
 
   onRenderList() {
-    return this.state.items.map(this.onRenderWidget)
+    return this.state.items.map((item, i) => this.onRenderWidget(item, i))
   }
 
   render() {
@@ -115,6 +126,11 @@ class Dashboard extends Component {
                 {_renderedAddItem}
               </div>
             </Col>
+          </Row>
+          <Row flex="1" justifyContent="center">
+            <Button variant="outlined" color="primary" className="Button" size="large" onClick={this.onClickBackUpChain.bind(this)}>
+              Backup on chain
+            </Button>
           </Row>
         </div>
       </Page>

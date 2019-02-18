@@ -5,9 +5,9 @@ import './Splash.css';
 
 class Splash extends Component {
   componentDidMount() {
-    setTimeout( () => {
+    // setTimeout( () => {
       Navigation.init('GetStarted');
-    }, 2000)
+    // }, 2000)
   }
 
   render() {

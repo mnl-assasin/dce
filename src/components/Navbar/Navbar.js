@@ -46,6 +46,18 @@ class Navbar extends Component {
     )
   }
 
+  onRenderTitle() {
+    if (this.props.titleComponent) {
+      return this.props.titleComponent
+    }
+
+    return (
+      <Typography variant="h6" color="inherit" className="Navbar--title">
+        { (this.props.title || '') }
+      </Typography>
+    )
+  }
+
   render() {
     const backButton = this.props.backButton || false
     const hideBurger = this.props.hideBurger || false
@@ -60,11 +72,7 @@ class Navbar extends Component {
                 : null
             }
             
-            <Typography variant="h6" color="inherit" className="Navbar--title">
-              {
-                this.props.titleComponent || (this.props.title || 'Title')
-              }
-            </Typography>
+            { this.onRenderTitle() }
 
             {
               !hideBurger 

@@ -1,0 +1,30 @@
+.Wallet {
+  .Wallet--header {
+      display: flex;
+      align-items: center;
+
+      > div {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+      }
+  } 
+
+  .Wallet--header-title {
+      margin: 0px;
+      margin-top: 20px;
+  }
+  
+  .Wallet--content {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .Wallet--buttons {
+      .Button {
+          width: 100%;
+          margin-bottom: 10px;
+      }
+  }
+}
