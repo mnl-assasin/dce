@@ -3,6 +3,7 @@ import { goTo } from '../../services/navigation';
 import { Page, Col, Row, Button } from '../../common'
 import { Navbar } from '../../components';
 import chunk from 'lodash/chunk'
+import Storage from '../../services/storage/storage'
 
 import './MnemonicPhrase.scss';
 
@@ -14,7 +15,11 @@ class MnemonicPhrase extends Component {
       ...props
     }
 
-    console.log(props);
+
+    Storage.set('is_mnemonic_set', false)
+    Storage.set('is_password_set', false)
+    Storage.set('mnemonic', props.mnemonic)
+
   }
 
   _createRows(items) {
@@ -56,10 +61,6 @@ class MnemonicPhrase extends Component {
       ...this.state
     })
   }
-
-  onClickLater() {
-    goTo('Dashboard');
-  }
   
   render() {
 
@@ -81,10 +82,6 @@ class MnemonicPhrase extends Component {
               <div className="Button--container">
                 <Button color="primary" outline={true} onClick={this.onClickAgree.bind(this, arrWords)}>
                   Got it
-                </Button>
-                
-                <Button outline={true} color="danger" onClick={this.onClickLater.bind(this)}>
-                  Do it later
                 </Button>
               </div>
             </Col>

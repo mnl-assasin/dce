@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { goTo } from '../../services/navigation';
+import React, { Component } from 'react'
+import { goTo } from '../../services/navigation'
 import { Page, Row, Col, Input, Button } from '../../common'
-import { Navbar, alertDialog } from '../../components';
-import './NominatePassword.css';
+import { Navbar, alertDialog } from '../../components'
+import './NominatePassword.css'
+
+import Storage from '../../services/storage/storage'
 
 class NominatePassword extends Component {
 
@@ -28,6 +30,9 @@ class NominatePassword extends Component {
     
     // should save to storage
     // should go to dashboard
+    Storage.set('is_password_set', true)
+    Storage.set('password', password)
+
     goTo('Dashboard')
   }
 
@@ -60,8 +65,8 @@ class NominatePassword extends Component {
           </Col>
         </div>
       </Page>
-    );
+    )
   }
 }
 
-export default NominatePassword;
+export default NominatePassword

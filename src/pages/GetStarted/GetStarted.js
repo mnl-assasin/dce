@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import { goTo } from '../../services/navigation';
+import React, { Component } from 'react'
+import { goTo } from '../../services/navigation'
 import { Page, Col, Button } from '../../common'
-import { Navbar } from '../../components';
-import { WalletRepository } from 'dapper-node';
-import './GetStarted.css';
+import { Navbar } from '../../components'
+import { WalletRepository } from 'dapper-node'
+import './GetStarted.css'
 
 class GetStarted extends Component {
 
   async onClickGetStarted() {
-
-    let result = WalletRepository.create();
-
+    let result = WalletRepository.create()
+    
     goTo('MnemonicPhrase', result)
   }
 
@@ -39,8 +38,8 @@ class GetStarted extends Component {
 
         </div>
       </Page>
-    );
+    )
   }
 }
 
-export default GetStarted;
+export default GetStarted

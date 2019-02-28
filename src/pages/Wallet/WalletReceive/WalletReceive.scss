@@ -1,0 +1,23 @@
+.WalletReceive {
+    .Content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .WalletRecieve--title{
+        flex: 1;
+        text-align: center;
+    }
+
+    .WalletReceive--content {
+        flex: 7;
+    }
+
+    .WalletReceive--button {
+        flex: 4;
+
+        .Button {
+            width: 100%;
+        }
+    }
+}

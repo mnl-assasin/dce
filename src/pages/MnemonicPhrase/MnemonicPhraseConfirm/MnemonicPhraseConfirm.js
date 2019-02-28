@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { goTo } from '../../../services/navigation';
-import Button from '@material-ui/core/Button';
+import React, { Component } from 'react'
+import { goTo } from '../../../services/navigation'
+import Button from '@material-ui/core/Button'
 import shuffle from 'lodash/shuffle'
 import chunk from 'lodash/chunk'
+import Storage from '../../../services/storage/storage'
 
 import { Page, Col, Row } from '../../../common'
-import { Navbar, alertDialog } from '../../../components';
+import { Navbar, alertDialog } from '../../../components'
 
-import './MnemonicPhraseConfirm.css';
+import './MnemonicPhraseConfirm.css'
 
 class MnemonicPhraseConfirm extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class MnemonicPhraseConfirm extends Component {
 
   onClickSelectPhrase(word) {
     let lastSelectedPhrase = this.state.shuffledWords.reduce((prev, current) => (prev.order > current.order) ? prev : current)
-    let clonedShuffledWords = [...this.state.shuffledWords];
+    let clonedShuffledWords = [...this.state.shuffledWords]
 
     clonedShuffledWords = clonedShuffledWords.map( (shuffledWord) => {
       if(shuffledWord.index === word.index && shuffledWord.order === 0) {
@@ -51,6 +52,10 @@ class MnemonicPhraseConfirm extends Component {
     })
   }
 
+  onClickLater() {
+    goTo('NominatePassword')
+  }
+
   _createRows(row) {
     return row.map( (word, i) => {
       return (
@@ -60,9 +65,8 @@ class MnemonicPhraseConfirm extends Component {
             {word.order > 0 ? word.order : null}
           </Col>
           <Col onClick={this.onClickSelectPhrase.bind(this, word)} flex="3">
-            &nbsp;{word.word}
+            &nbsp{word.word}
           </Col>
-
         </Row>
       )
     })
@@ -78,11 +82,11 @@ class MnemonicPhraseConfirm extends Component {
           {this._createRows(row)}
         </Row>
       )
-    });
+    })
   }
 
   onClickClear() {
-    let clonedShuffledWords = [...this.state.shuffledWords];
+    let clonedShuffledWords = [...this.state.shuffledWords]
 
     clonedShuffledWords = clonedShuffledWords.map( (shuffledWord) => {
       return {
@@ -103,17 +107,17 @@ class MnemonicPhraseConfirm extends Component {
 
     let sorted = shuffledWords.sort( (a, b) => {
       if (a.order < b.order) {
-        return -1;
+        return -1
       }
       if (a.order > b.order) {
-        return 1;
+        return 1
       }
       // a must be equal to b
-      return 0;
+      return 0
     })
 
-    let mapped = sorted.map( (sort) => sort.word);
-    let selectedMnemonic = mapped.join(' ');
+    let mapped = sorted.map( (sort) => sort.word)
+    let selectedMnemonic = mapped.join(' ')
 
     if (selectedMnemonic !== mnemonic) {
       alertDialog({
@@ -127,6 +131,7 @@ class MnemonicPhraseConfirm extends Component {
         ]
       })
     } else {
+      Storage.set('is_mnemonic_set', true)
       goTo('NominatePassword')
     }
   }
@@ -158,13 +163,17 @@ class MnemonicPhraseConfirm extends Component {
                 <Button variant="outlined" color="primary" className="Button" size="large" disabled={_disableSubmit} onClick={this.onClickSubmit.bind(this)}>
                   Submit
                 </Button>
+
+                <Button outline={true} color='danger' onClick={this.onClickLater.bind(this)}>
+                  Do it later
+                </Button>
               </div>
             </Col>
           </Col>
         </div>
       </Page>
-    );
+    )
   }
 }
 
-export default MnemonicPhraseConfirm;
+export default MnemonicPhraseConfirm
