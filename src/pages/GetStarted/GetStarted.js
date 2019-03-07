@@ -9,7 +9,7 @@ class GetStarted extends Component {
 
   async onClickGetStarted() {
     let result = WalletRepository.create()
-    
+    console.log(result)
     goTo('MnemonicPhrase', result)
   }
 
@@ -26,11 +26,11 @@ class GetStarted extends Component {
 
           <Col flex="1">
             <div className="GetStarted--button-container">
-              <Button color="primary" outline={true} onClick={this.onClickGetStarted.bind(this)}>
+              <Button color="primary" outline="true" onClick={this.onClickGetStarted.bind(this)}>
                 Get Started
               </Button>
               
-              <Button outline={true} onClick={this.onClickRestoreBackup.bind(this)}>
+              <Button outline="true" onClick={this.onClickRestoreBackup.bind(this)}>
                 Restore Backup
               </Button>
             </div>
