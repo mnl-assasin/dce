@@ -1,42 +1,52 @@
-import React, { Component } from 'react';
-import { goTo } from '../../services/navigation';
-import { Page, Col, Row, Button } from '../../common'
-import { Navbar } from '../../components';
+import React, { Component } from 'react'
+
+import { withStyles } from '@material-ui/styles'
+import Badge from '@material-ui/core/Badge'
+import Typography from '@material-ui/core/Typography'
+
+import { goTo } from '../../services/navigation'
+import { Page, Col, Row } from '../../common'
+import Button from '@material-ui/core/Button'
+import { Navbar } from '../../components'
 import chunk from 'lodash/chunk'
 import Storage from '../../services/storage/storage'
 
-import './MnemonicPhrase.scss';
+import './MnemonicPhrase.scss'
+import styles from './styles'
 
 class MnemonicPhrase extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       ...props
     }
 
-
     Storage.set('is_mnemonic_set', false)
     Storage.set('is_password_set', false)
     Storage.set('mnemonic', props.mnemonic)
-
   }
 
   _createRows(items) {
-    return items.map( (item, key) => {
+    return items.map((item, key) => {
       return (
-        <Row flex="1" justifyContent="center" className="Phrase--item" key={key}>
+        <Row
+          flex="1"
+          justifyContent="center"
+          className="Phrase--item"
+          key={key}
+        >
           <Col flex="1 0px" alignItems="center" className="Phrase--index">
-            {item.index}
+            <Typography variant="title">{item.index}</Typography>
           </Col>
           <Col flex="3">
-            &nbsp;{item.item}
+            <Typography variant="title">&nbsp;{item.item}</Typography>
           </Col>
         </Row>
       )
     })
   }
-  
+
   _createColumns(arr) {
     let _arr = arr.map((item, index) => {
       return {
@@ -53,7 +63,7 @@ class MnemonicPhrase extends Component {
           {this._createRows(row)}
         </Row>
       )
-    });
+    })
   }
 
   onClickAgree(words) {
@@ -61,27 +71,36 @@ class MnemonicPhrase extends Component {
       ...this.state
     })
   }
-  
+
   render() {
     // this will take too much process every event
     // need to fix performance later
+    // better create icons for every numbers
+
+    const { classes } = this.props
     let words = this.state.mnemonic
     let arrWords = words.split(' ')
-    
+
     return (
       <Page className="MnemonicPhrase">
-        <Navbar backButton={true}/>
+        <Navbar backButton={true} />
         <div className="Content">
-          
           <Col>
             <Col flex="10" className="Padding--row">
-              This is your only way to backup. Write this down and store it somewhere safe.
+              <Typography variant="subtitle1" gutterBottom>
+                This is your only way to backup. Write this down and store it
+                somewhere safe.
+              </Typography>
               {this._createColumns(arrWords)}
             </Col>
             <Col flex="2" className="Padding--row">
-
-              <div className="Button--container">
-                <Button color="primary" outline={true} onClick={this.onClickAgree.bind(this, arrWords)}>
+              <div className={classes.button}>
+                <Button
+                  variant="outlined"
+                  size="medium"
+                  color="primary"
+                  onClick={this.onClickAgree.bind(this, arrWords)}
+                >
                   Got it
                 </Button>
               </div>
@@ -89,8 +108,8 @@ class MnemonicPhrase extends Component {
           </Col>
         </div>
       </Page>
-    );
+    )
   }
 }
 
-export default MnemonicPhrase;
+export default withStyles(styles)(MnemonicPhrase)
