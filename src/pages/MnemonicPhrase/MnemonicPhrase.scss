@@ -14,17 +14,17 @@
 
 .MnemonicPhrase .Phrase--item > span {
     border-radius: 50%;
-    border: 2px solid blue;
+    border: 2px solid black;
     display: inline !important;
 }
 
 .Phrase--index {
-    border: 1px solid blue;
-    border-radius: 50%;
+    border: 1px solid black;
+    border-radius: 99%;
 }
 
 .MnemonicPhrase .padding {
-    padding:20px;
+    padding: 1em;
 }
 
 .MnemonicPhrase .Button--container > .Button {
@@ -36,4 +36,9 @@
     flex-direction: column;
     flex: 1;
     display: flex;
+}
+
+.pointer {
+    cursor: pointer;
+    
 }

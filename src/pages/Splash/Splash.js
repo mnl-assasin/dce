@@ -9,6 +9,8 @@ class Splash extends Component {
     let isMnemonicSet = await Storage.get('is_mnemonic_set')
     let isPasswordSet = await Storage.get('is_password_set')
     let isConfirmedMnemonic = await Storage.get('is_mnemonic_confirmed')
+    
+    // there is something wrong in this logic
 
     if (isMnemonicSet) {
       if (isPasswordSet && isConfirmedMnemonic) {
