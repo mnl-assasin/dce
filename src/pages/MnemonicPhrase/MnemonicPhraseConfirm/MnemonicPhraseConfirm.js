@@ -166,7 +166,7 @@ class MnemonicPhraseConfirm extends Component {
         <div className="Content">
           <Col>
             <Col flex="10" className="Padding--row">
-              <Typography variant="subtitle1" gutterBottom>
+              <Typography variant="subtitle1" align="center" gutterBottom>
                 Tap on the words in the correct order
               </Typography>
 
