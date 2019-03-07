@@ -63,7 +63,8 @@ class MnemonicPhrase extends Component {
   }
   
   render() {
-
+    // this will take too much process every event
+    // need to fix performance later
     let words = this.state.mnemonic
     let arrWords = words.split(' ')
     

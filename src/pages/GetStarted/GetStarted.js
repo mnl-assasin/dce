@@ -9,7 +9,7 @@ class GetStarted extends Component {
 
   async onClickGetStarted() {
     let result = WalletRepository.create()
-    
+    console.log(result)
     goTo('MnemonicPhrase', result)
   }
 
