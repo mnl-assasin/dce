@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
+import { withAppContext, IS_LOOGED } from '../../services/Prividers/AppStateContext'
 import Navigation, { goTo } from '../../services/navigation';
 import Storage from '../../services/storage/storage'
 
@@ -10,17 +12,28 @@ class Splash extends Component {
     let isPasswordSet = await Storage.get('is_password_set')
     let isConfirmedMnemonic = await Storage.get('is_mnemonic_confirmed')
     
-    // there is something wrong in this logic
-
+console.log('setup',isMnemonicSet, isPasswordSet , isConfirmedMnemonic)
     if (isMnemonicSet) {
       if (isPasswordSet && isConfirmedMnemonic) {
-        return goTo('Login')
+        // user already logged
+        this.setContext(IS_LOOGED, true)
+        return goTo('Dashboard')
       }
 
-      return goTo('Dashboard')
+      // not logged
+      this.setContext(IS_LOOGED, false)
+      return goTo('Login')
+
     } else {
+      // not loggedin
+      // must set app state to not log for updated component child
+      this.setContext(IS_LOOGED, false)
       Navigation.init('GetStarted');
     }
+  }
+
+  setContext (name, value) {
+    this.props.AppContext.onAppContextChange({[name]: value})
   }
 
   render() {
@@ -34,4 +47,5 @@ class Splash extends Component {
   }
 }
 
-export default Splash;
+export default withAppContext(Splash);
+ 
