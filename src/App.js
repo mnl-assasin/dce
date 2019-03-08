@@ -11,7 +11,8 @@ import {
   Sidemenu,
   FullScreenLoading,
   Notifier,
-  AlertDialog
+  AlertDialog,
+  Snackbar
 } from './components'
 import './App.css'
 
@@ -41,6 +42,7 @@ class App extends Component {
               <Notifier />
               <FullScreenLoading />
               <AlertDialog />
+              <Snackbar />
 
               <Router>
                 <Splash />
