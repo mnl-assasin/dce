@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { ThemeProvider } from '@material-ui/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
+
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from 'route-lite'
 import { IntlProvider } from 'react-intl'
 import AppContext from './services/Prividers/AppStateContext' 
@@ -12,7 +15,7 @@ import {
 } from './components'
 import './App.css'
 
-const theme = {}
+const theme = createMuiTheme({})
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +48,7 @@ class App extends Component {
             </div>
           </AppContext>
         </IntlProvider>
+        <CssBaseline />
       </ThemeProvider>
     )
   }
