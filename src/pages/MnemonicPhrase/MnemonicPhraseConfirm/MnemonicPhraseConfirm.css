@@ -4,7 +4,11 @@
 
 .Button--container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     padding-top: 1em
 
+}
+
+.py-2{
+	margin: calc(8 * 2px);
 }
