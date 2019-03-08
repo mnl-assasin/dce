@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ThemeProvider } from '@material-ui/styles'
 import Router from 'route-lite'
 import { IntlProvider } from 'react-intl'
+import AppContext from './services/Prividers/AppStateContext' 
 import Splash from './pages/Splash/Splash'
 import {
   Sidemenu,
@@ -31,16 +32,18 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <IntlProvider locale={locale}>
-          <div className="App">
-            <Sidemenu />
-            <Notifier />
-            <FullScreenLoading />
-            <AlertDialog />
+          <AppContext>
+            <div className="App">
+              <Sidemenu />
+              <Notifier />
+              <FullScreenLoading />
+              <AlertDialog />
 
-            <Router>
-              <Splash />
-            </Router>
-          </div>
+              <Router>
+                <Splash />
+              </Router>
+            </div>
+          </AppContext>
         </IntlProvider>
       </ThemeProvider>
     )
