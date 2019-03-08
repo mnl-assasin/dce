@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 
 import { goTo } from '../../../services/navigation'
@@ -11,6 +12,7 @@ import Storage from '../../../services/storage/storage'
 import { Page, Col, Row } from '../../../common'
 import { Navbar, alertDialog } from '../../../components'
 
+import styles from './styles'
 import './MnemonicPhraseConfirm.css'
 
 class MnemonicPhraseConfirm extends Component {
@@ -156,6 +158,7 @@ class MnemonicPhraseConfirm extends Component {
   }
 
   render() {
+    const { classes } = this.props
     // need to fix those circles some time
 
     const _disableSubmit = this.isDisabledSubmit()
@@ -174,32 +177,38 @@ class MnemonicPhraseConfirm extends Component {
             </Col>
             <Col flex="2" className="Padding--row">
               <div className="Button--container">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  size="medium"
-                  onClick={this.onClickClear.bind(this)}
-                >
-                  Clear
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  size="medium"
-                  disabled={_disableSubmit}
-                  onClick={this.onClickSubmit.bind(this)}
-                >
-                  Submit
-                </Button>
+                <div className={classes.buttonHolder}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    size="medium"
+                    onClick={this.onClickClear.bind(this)}
+                  >
+                    Clear
+                  </Button>
+                </div>
+                <div className={classes.buttonHolder}>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    size="medium"
+                    disabled={_disableSubmit}
+                    onClick={this.onClickSubmit.bind(this)}
+                  >
+                    Submit
+                  </Button>
+                </div>
 
-                <Button
-                  variant="outlined"
-                  color="danger"
-                  size="medium"
-                  onClick={this.onClickLater.bind(this)}
-                >
-                  Do it later
-                </Button>
+                <div className={classes.buttonHolder}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    size="medium"
+                    onClick={this.onClickLater.bind(this)}
+                  >
+                    Do it later
+                  </Button>
+                </div>
               </div>
             </Col>
           </Col>
@@ -209,4 +218,4 @@ class MnemonicPhraseConfirm extends Component {
   }
 }
 
-export default MnemonicPhraseConfirm
+export default withStyles(styles)(MnemonicPhraseConfirm)
