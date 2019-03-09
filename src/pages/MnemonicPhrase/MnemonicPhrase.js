@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
+import chunk from 'lodash/chunk'
 
 import { withStyles } from '@material-ui/styles'
-import Badge from '@material-ui/core/Badge'
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-import { goTo } from '../../services/navigation'
-import { Page, Col, Row } from '../../common'
-import Button from '@material-ui/core/Button'
 import { Navbar } from '../../components'
-import chunk from 'lodash/chunk'
+import { Page, Col, Row } from '../../common'
+import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
 
 import './MnemonicPhrase.scss'
