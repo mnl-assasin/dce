@@ -22,24 +22,27 @@ import { getNetworkById } from '../../services/storage/collections/network'
 import styles from './styles';
 import './Settings.css';
 
+// this will ensure that the render will not make new init every render for child
+// this must be partenered will pureComponent
+const variables = {
+      sLoginSecurityV: 'password etc',
+}
+
 class Settings extends BasePage {
   title = "Settings"
   settingItems = [
     {
       title: 'Login and Security',
-      getValue: () => 'password etc',
+      getValue: () => variables.sLoginSecurityV,
       onClick: () => this.navigate(this.constants.route.SECURITY)
     },
     {
       title: 'Network',
-      value: 'test',
       getValue: () => this.props.AppContext[this.constants.storage.ACTIVE_PROVIDER_NAME],
       onClick: () => this.navigate(this.constants.route.NETWORK)
     }
   ]
-  componentDidMount() {
-   console.log('componentDidMount: Settings') 
-  }
+
   render () {
     const { classes } = this.props;
     return (
@@ -65,7 +68,8 @@ class Settings extends BasePage {
 }
 
 Settings.propTypes = {
-  // classes: PropTypes.object.isRequired,
+   AppContext: PropTypes.object.isRequired,
+   classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(withAppContext(Settings));
