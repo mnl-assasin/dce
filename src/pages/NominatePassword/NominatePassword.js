@@ -170,7 +170,6 @@ class NominatePassword extends Component {
                 variant="outlined"
                 color="primary"
                 size="large"
-                className={classes.button}
                 onClick={this.onClickSubmit}
               >
                 Submit
