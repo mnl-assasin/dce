@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import Snackbar from '@material-ui/core/Snackbar'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 
 import styles from './styles'
 
-let showSnackbarFn;
+let showSnackbarFn
 
 class Snackbars extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Snackbars extends React.Component {
   }
 
   componentDidMount() {
-    showSnackbarFn = this.onHandleOpen.bind(this);
+    showSnackbarFn = this.onHandleOpen.bind(this)
   }
 
   onHandleOpen(payload) {
@@ -33,54 +32,54 @@ class Snackbars extends React.Component {
   }
 
   handleClick = () => {
-    this.setState({ open: true });
-  };
+    this.setState({ open: true })
+  }
 
   handleClose = (event, reason) => {
     if (reason === 'clickaway') {
-      return;
+      return
     }
 
-    this.setState({ open: false });
-  };
+    this.setState({ open: false })
+  }
 
-render() {
-    const { classes } = this.props;
+  render() {
+    const { classes } = this.props
     return (
       <div>
         <Snackbar
-        open={this.state.open}
-
-      aria-describedby="client-snackbar"
+          open={this.state.open}
+          aria-describedby="client-snackbar"
           autoHideDuration={3000}
           onClose={this.handleClose}
-      message={
-        <span id="client-snackbar" className={classes.message}>
-          {this.state.message}
-        </span>
-      }
-      action={[
-        <IconButton
-          key="close"
-          aria-label="Close"
-          color="inherit"
-          className={classes.close}
-          onClick={this.handleClose}
-        >
-          <CloseIcon className={classes.icon} />
-        </IconButton>,
-      ]}
-
- 
+          message={
+            <span id="client-snackbar" className={classes.message}>
+              {this.state.message}
+            </span>
+          }
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleClose}
+            >
+              <CloseIcon className={classes.icon} />
+            </IconButton>
+          ]}
         />
       </div>
-    );
+    )
   }
 }
 
-
 export function showSnackbar(payload) {
-  showSnackbarFn(payload);
+  showSnackbarFn(payload)
 }
 
-export default withStyles(styles)(Snackbars);
+Snackbars.propTypes = {
+  classes: PropTypes.object.isRequired // withStyles
+}
+
+export default withStyles(styles)(Snackbars)
