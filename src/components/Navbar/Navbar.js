@@ -52,7 +52,7 @@ class Navbar extends Component {
     }
 
     return (
-      <Typography variant="h6" color="inherit" className="Navbar--title">
+      <Typography variant="subtitle1" color="inherit" className="Navbar--title">
         { (this.props.title || '') }
       </Typography>
     )

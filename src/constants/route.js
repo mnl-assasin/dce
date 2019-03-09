@@ -1,3 +1,6 @@
 export const DASHBOARD = 'Dashboard'
 export const GET_STARTED = 'GetStarted'
 export const NOMINATED_PASSWORD = 'NominatePassword'
+export const NETWORK = 'Network'
+export const SECURITY = 'Security'
+export const SETTING = 'Settings'

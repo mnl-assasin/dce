@@ -4,11 +4,11 @@ import { withStyles } from '@material-ui/styles'
 import Drawer from '@material-ui/core/Drawer'
 
 import {
-  withAppContext,
-  IS_LOOGED
-} from '../../services/Prividers/AppStateContext'
+  withAppContext
+} from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { GET_STARTED, DASHBOARD } from '../../constants/route'
+import { GET_STARTED, DASHBOARD, NOMINATED_PASSWORD } from '../../constants/route'
+import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
 import Title from './component/MenuHeaderTitle'
@@ -47,6 +47,12 @@ class Sidemenu extends PureComponent {
       onClick: () => this.onClickTestLogin()
     },
     {
+      title: 'got testRoute',
+      onClick: () => this.testRoute()
+    },
+    
+
+    {
       title: 'build dapps'
     },
     {
@@ -59,6 +65,10 @@ class Sidemenu extends PureComponent {
       title: 'website'
     }
   ]
+
+  testRoute = () => {
+    goTo(NOMINATED_PASSWORD)
+  }
 
   appInfo = {
     version: '2.2.2',
@@ -81,7 +91,7 @@ class Sidemenu extends PureComponent {
   onClickLogout = () => {
     this.onToggleMenu()
     Storage.clear()
-    this.props.AppContext.onAppContextChange({ [IS_LOOGED]: false })
+    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: false })
     goTo('GetStarted')
   }
 
@@ -90,7 +100,7 @@ class Sidemenu extends PureComponent {
     await Storage.set('is_mnemonic_set', true)
     await Storage.set('is_password_set', true)
     await Storage.set('is_mnemonic_confirmed', true)
-    this.props.AppContext.onAppContextChange({ [IS_LOOGED]: true })
+    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: true })
     goTo(DASHBOARD)
   }
 
