@@ -11,6 +11,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 import { withAppContext } from '../../services/Providers/AppStateContext'
 import { IS_LOGGED } from '../../constants/storage'
+import { inputTypes } from '../../constants/types'
 import { goTo } from '../../services/navigation'
 import { isPassword } from '../../helper/string'
 import { Page } from '../../common'
@@ -18,12 +19,6 @@ import { Navbar, showSnackbar } from '../../components'
 import Storage from '../../services/storage/storage'
 
 import styles from './styles'
-
-// use to not make new instance every render
-const inputTypes = {
-  text: 'text',
-  password: 'password'
-}
 
 class NominatePassword extends Component {
   state = {
