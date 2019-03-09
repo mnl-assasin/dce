@@ -9,7 +9,7 @@ const component = ({ code, title, version }) => (
   <List>
     <ListItem>
       <ListItemText>
-        <Typography variant="title">{title}</Typography>
+        <Typography variant="h6">{title}</Typography>
         <Typography>version {version}</Typography>
         <Typography>version code {code}</Typography>
       </ListItemText>
