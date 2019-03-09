@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
 import Storage from './../services/storage/storage'
 import { goTo } from './../services/navigation'
@@ -8,12 +7,8 @@ import * as route from './../constants/route'
 import * as storage from './../constants/storage'
 
 class BasePage extends React.Component {
-  title = "Network"
+  title = ''
 
-
-  constructor(props) {
-    super(props);
-  }
   constants = {
     route,
     storage
