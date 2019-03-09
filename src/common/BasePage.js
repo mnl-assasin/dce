@@ -2,7 +2,6 @@ import React from 'react'
 
 import Storage from './../services/storage/storage'
 import { goTo } from './../services/navigation'
-import { Page } from './../common'
 import * as route from './../constants/route'
 import * as storage from './../constants/storage'
 
