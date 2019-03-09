@@ -11,8 +11,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 import {
   withAppContext,
-  IS_LOOGED
-} from '../../services/Prividers/AppStateContext'
+} from '../../services/Providers/AppStateContext'
+import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import { isPassword } from '../../helper/string'
 import { Page, Row, Col, Input } from '../../common'
@@ -67,7 +67,7 @@ class NominatePassword extends Component {
     // should go to dashboard
     Storage.set('is_password_set', true)
     Storage.set('password', password)
-    this.props.AppContext.onAppContextChange({ [IS_LOOGED]: true })
+    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: true })
 
     goTo('Dashboard')
   }
@@ -170,7 +170,6 @@ class NominatePassword extends Component {
                 variant="outlined"
                 color="primary"
                 size="large"
-                className={classes.button}
                 onClick={this.onClickSubmit}
               >
                 Submit

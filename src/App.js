@@ -5,7 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from 'route-lite'
 import { IntlProvider } from 'react-intl'
-import AppContext from './services/Prividers/AppStateContext' 
+import AppContext from './services/Providers/AppStateContext' 
 import Splash from './pages/Splash/Splash'
 import {
   Sidemenu,

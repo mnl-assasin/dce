@@ -8,6 +8,7 @@ import NominatePassword from './pages/NominatePassword/NominatePassword'
 import RestoreBackup from './pages/RestoreBackup/RestoreBackup'
 import Settings from './pages/Settings/Settings'
 import Provider from './pages/Settings/Provider/Provider'
+import Network from './pages/Settings/Network/Network'
 import Security from './pages/Settings/Security/Security'
 import Splash from './pages/Splash/Splash'
 import Wallet from './pages/Wallet/Wallet'
@@ -23,6 +24,7 @@ export default {
   'MnemonicPhraseConfirm': MnemonicPhraseConfirm,
   'NominatePassword': NominatePassword,
   'Provider': Provider,
+  'Network': Network,
   'RestoreBackup': RestoreBackup,
   'Settings': Settings,
   'Security': Security,

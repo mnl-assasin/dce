@@ -37,10 +37,10 @@ class MnemonicPhrase extends Component {
           key={key}
         >
           <Col flex="1 0px" alignItems="center" className="Phrase--index">
-            <Typography variant="title">{item.index}</Typography>
+            <Typography variant="h6">{item.index}</Typography>
           </Col>
           <Col flex="3">
-            <Typography variant="title">&nbsp;{item.item}</Typography>
+            <Typography variant="h6">&nbsp;{item.item}</Typography>
           </Col>
         </Row>
       )

@@ -73,12 +73,12 @@ class MnemonicPhraseConfirm extends Component {
           onClick={this.onClickSelectPhrase.bind(this, word)}
         >
           <Col flex="1 0px" alignItems="center" className="Phrase--index">
-            <Typography variant="title">
+            <Typography variant="h6">
               {word.order > 0 ? word.order : null}
             </Typography>
           </Col>
           <Col flex="3">
-            <Typography variant="title">&nbsp;{word.word}</Typography>
+            <Typography variant="h6">&nbsp;{word.word}</Typography>
           </Col>
         </Row>
       )
