@@ -68,8 +68,8 @@ class Settings extends BasePage {
 }
 
 Settings.propTypes = {
-   AppContext: PropTypes.object.isRequired,
-   classes: PropTypes.object.isRequired,
+   AppContext: PropTypes.object.isRequired,  // withAppContext
+   classes: PropTypes.object.isRequired,     // withStyles
 };
 
 export default withStyles(styles)(withAppContext(Settings));

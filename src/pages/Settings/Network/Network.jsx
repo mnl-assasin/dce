@@ -28,20 +28,17 @@ class Network extends BasePage {
     {
       _id: '_server_Mainet', 
       title: 'Mainet',
-      info: 'chinese server',
-      isActive: false
+      info: 'chinese server'
     },
     {
       _id: '_server_Ropstain', 
       title: 'Ropstain testnet',
       info: 'di ko aalam',
-      isActive: true
     },
     {
       _id: '_server_Ropstain2', 
       title: 'Sabay testnet',
-      info: 'bi kuya',
-      isActive: true
+      info: 'bi kuya'
     }
   ]
 
@@ -50,6 +47,7 @@ class Network extends BasePage {
       return false
     return network._id === this.props.AppContext[this.constants.storage.ACTIVE_PROVIDER_ID]
   }
+
   _setIsActive = (network) => {
     if (!network._id) {
       console.log('invalid network id provided')
@@ -90,7 +88,9 @@ class Network extends BasePage {
 }
 
 Network.propTypes = {
-  // classes: PropTypes.object.isRequired,
+   AppContext: PropTypes.object.isRequired,  // withAppContext
+   classes: PropTypes.object.isRequired,     // withStyles
 };
+
 
 export default withStyles(styles)(withAppContext(Network));
