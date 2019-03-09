@@ -15,7 +15,6 @@ class Splash extends Component {
 
     await this._init()
 
-console.log('setup',isMnemonicSet, isPasswordSet , isConfirmedMnemonic)
     if (isMnemonicSet) {
       if (isPasswordSet && isConfirmedMnemonic) {
         // user already logged
@@ -47,7 +46,7 @@ console.log('setup',isMnemonicSet, isPasswordSet , isConfirmedMnemonic)
     })
   }
 
-  render() {console.log(this.props)
+  render() {
     return (
       <div className="Splash">
         <div className="Content">
