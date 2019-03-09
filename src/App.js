@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { ThemeProvider } from '@material-ui/styles'
-import { createMuiTheme } from '@material-ui/core/styles'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from 'route-lite'
@@ -14,9 +13,9 @@ import {
   AlertDialog,
   Snackbar
 } from './components'
-import './App.css'
 
-const theme = createMuiTheme({})
+import theme from './styles'
+import './App.css'
 
 class App extends Component {
   constructor(props) {
