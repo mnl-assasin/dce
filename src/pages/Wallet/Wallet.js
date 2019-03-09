@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 
 import { goTo } from '../../services/navigation'
-import { Page, Row, Col } from '../../common'
+import { Page } from '../../common'
 import { Navbar } from '../../components'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 import WalletButtons from './component/WalletButtons'

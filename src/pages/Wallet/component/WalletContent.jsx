@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Page, Row, Col } from '../../../common'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import { Row, Col } from '../../../common'
 import Typography from '@material-ui/core/Typography'
 
 const component = ({ classes, amount, value }) => (

@@ -7,7 +7,7 @@ import {
   withAppContext
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { DASHBOARD, NOMINATED_PASSWORD } from '../../constants/route'
+import { DASHBOARD, WALLET } from '../../constants/route'
 import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
@@ -65,7 +65,7 @@ class Sidemenu extends PureComponent {
   ]
 
   testRoute = () => {
-    goTo(NOMINATED_PASSWORD)
+    goTo(WALLET)
   }
 
   appInfo = {
