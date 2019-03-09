@@ -1,4 +1,4 @@
-import React, { PureComponent, useContext } from 'react'
+import React, { PureComponent } from 'react'
 
 import { withStyles } from '@material-ui/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -7,7 +7,7 @@ import {
   withAppContext
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { GET_STARTED, DASHBOARD, NOMINATED_PASSWORD } from '../../constants/route'
+import { DASHBOARD, NOMINATED_PASSWORD } from '../../constants/route'
 import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
@@ -47,11 +47,9 @@ class Sidemenu extends PureComponent {
       onClick: () => this.onClickTestLogin()
     },
     {
-      title: 'got testRoute',
+      title: 'got testRoute (test)',
       onClick: () => this.testRoute()
     },
-    
-
     {
       title: 'build dapps'
     },
