@@ -41,7 +41,7 @@ class Navigation {
     }
 
     goTo(component, options = {}) {
-        console.log(component);
+        // console.log(component);
         this.push(component, options);
     }
 
