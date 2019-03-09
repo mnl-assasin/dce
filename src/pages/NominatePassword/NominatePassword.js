@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/styles'
-import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -9,18 +9,15 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
-import {
-  withAppContext,
-} from '../../services/Providers/AppStateContext'
+import { withAppContext } from '../../services/Providers/AppStateContext'
 import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import { isPassword } from '../../helper/string'
-import { Page, Row, Col, Input } from '../../common'
-import { Navbar, alertDialog, showSnackbar } from '../../components'
+import { Page } from '../../common'
+import { Navbar, showSnackbar } from '../../components'
 import Storage from '../../services/storage/storage'
 
 import styles from './styles'
-import './NominatePassword.css'
 
 // use to not make new instance every render
 const inputTypes = {
@@ -29,17 +26,12 @@ const inputTypes = {
 }
 
 class NominatePassword extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      password: '',
-      passwordVisible: false,
-      confirmPassword: '',
-      confirmPasswordVisible: false
-    }
+  state = {
+    password: '',
+    passwordVisible: false,
+    confirmPassword: '',
+    confirmPasswordVisible: false
   }
-
   onClickSubmit = () => {
     const { password, confirmPassword } = this.state
     // validate passwords,
@@ -100,11 +92,8 @@ class NominatePassword extends Component {
     return (
       <Page className="NominatePassword">
         <Navbar backButton={true} />
-
-        <div className="Content">
-          <Row flex="2" alignItems="center" justifyContent="center">
-            Welcome back and logo
-          </Row>
+        <div className={classes.content}>
+          <div className={classes.logo}>Welcome back and logo</div>
 
           <form className={classes.container} noValidate autoComplete="off">
             <TextField
@@ -180,6 +169,11 @@ class NominatePassword extends Component {
       </Page>
     )
   }
+}
+
+NominatePassword.propTypes = {
+  AppContext: PropTypes.object.isRequired, // withAppContext
+  classes: PropTypes.object.isRequired // withStyles
 }
 
 export default withStyles(styles)(withAppContext(NominatePassword))
