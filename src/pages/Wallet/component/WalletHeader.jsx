@@ -1,6 +1,6 @@
-import React from 'react'
-import Proptypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
+import React from "react";
+import Proptypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
 const component = ({
   classes,
@@ -22,18 +22,18 @@ const component = ({
     </div>
 
     <div className={classes.headerUser}>
-      <Typography color={'error'}> {userName} </Typography>
+      <Typography color={"error"}> {userName} </Typography>
     </div>
   </div>
-)
+);
 
 component.defaultProps = {
-  userName: '',
-  coinName: '',
-  coinValue: '',
-  networkName: '',
-  networkNumber: ''
-}
+  userName: "",
+  coinName: "",
+  coinValue: "",
+  networkName: "",
+  networkNumber: ""
+};
 
 component.propTypes = {
   userName: Proptypes.string,
@@ -42,14 +42,14 @@ component.propTypes = {
   networkName: Proptypes.string,
   networkNumber: Proptypes.string,
   classes: Proptypes.object.isRequired
-}
+};
 
-export default component
+export default component;
 
 export const WalletHeaderTestValue = {
-  userName: '@jaylord',
-  coinName: 'ELA',
-  coinValue: '$100',
-  networkName: 'Bahay',
-  networkNumber: '543234'
-}
+  userName: "@dapperWallet",
+  coinName: "ETH",
+  coinValue: "$100",
+  networkName: "mainnet",
+  networkNumber: "7116124"
+};
