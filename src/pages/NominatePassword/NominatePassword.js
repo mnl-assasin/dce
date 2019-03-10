@@ -1,49 +1,49 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import { withStyles } from '@material-ui/styles'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import { withStyles } from "@material-ui/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { withAppContext } from '../../services/Providers/AppStateContext'
-import { IS_LOGGED } from '../../constants/storage'
-import { inputTypes } from '../../constants/types'
-import { goTo } from '../../services/navigation'
-import { isPassword } from '../../helper/string'
-import { Page } from '../../common'
-import { Navbar, showSnackbar } from '../../components'
-import Storage from '../../services/storage/storage'
+import { withAppContext } from "../../services/Providers/AppStateContext";
+import { IS_LOGGED } from "../../constants/storage";
+import { inputTypes } from "../../constants/types";
+import { goTo } from "../../services/navigation";
+import { isPassword } from "../../helper/string";
+import { Page } from "../../common";
+import { Navbar, showSnackbar } from "../../components";
+import Storage from "../../services/storage/storage";
 
-import styles from './styles'
+import styles from "./styles";
 
 class NominatePassword extends Component {
   state = {
-    password: '',
+    password: "",
     passwordVisible: false,
-    confirmPassword: '',
+    confirmPassword: "",
     confirmPasswordVisible: false
-  }
+  };
   onClickSubmit = () => {
-    const { password, confirmPassword } = this.state
+    const { password, confirmPassword } = this.state;
     // validate passwords,
 
     if (!isPassword(password)) {
       return showSnackbar({
         message:
-          'Password must be at least 8 characters  and contain 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.',
-        variant: 'warning'
-      })
+          "Password must be at least 8 characters  and contain 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.",
+        variant: "warning"
+      });
     }
 
     if (password !== confirmPassword) {
       return showSnackbar({
-        message: 'Password did not match',
-        variant: 'warning'
-      })
+        message: "Password did not match",
+        variant: "warning"
+      });
       // return alertDialog({
       //   title: "Alert",
       //   message: "Password did not match"
@@ -52,43 +52,51 @@ class NominatePassword extends Component {
 
     // should save to storage
     // should go to dashboard
-    Storage.set('is_password_set', true)
-    Storage.set('password', password)
-    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: true })
+    Storage.set("is_password_set", true);
+    Storage.set("password", password);
+    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: true });
 
-    goTo('Dashboard')
-  }
+    goTo("Dashboard");
+  };
 
   onHandlePassword = e => {
     this.setState({
       password: e.target.value
-    })
-  }
+    });
+  };
 
   onHandleConfirmPassword = e => {
     this.setState({
       confirmPassword: e.target.value
-    })
-  }
+    });
+  };
   onShowPasswordVisibility = () => {
     this.setState({
       passwordVisible: !this.state.passwordVisible
-    })
-  }
+    });
+  };
 
   onShowConfirmPasswordVisibility = () => {
     this.setState({
       confirmPasswordVisible: !this.state.confirmPasswordVisible
-    })
-  }
+    });
+  };
 
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <Page className="NominatePassword">
         <Navbar backButton={true} />
         <div className={classes.content}>
-          <div className={classes.logo}>Welcome back and logo</div>
+          <div className={classes.logo}>
+            <h2>Nominate Password</h2>
+          </div>
+
+          <div className={classes.description}>
+            Password must be at least 8 characters, At least 1 uppercase letter,
+            At least 1 lowecase letter, At least 1 number, At least 1 special
+            character,
+          </div>
 
           <form className={classes.container} noValidate autoComplete="off">
             <TextField
@@ -162,13 +170,13 @@ class NominatePassword extends Component {
           </form>
         </div>
       </Page>
-    )
+    );
   }
 }
 
 NominatePassword.propTypes = {
   AppContext: PropTypes.object.isRequired, // withAppContext
   classes: PropTypes.object.isRequired // withStyles
-}
+};
 
-export default withStyles(styles)(withAppContext(NominatePassword))
+export default withStyles(styles)(withAppContext(NominatePassword));
