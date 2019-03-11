@@ -1,12 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react'
+import PropTypes from "prop-types"
+
+import { withStyles } from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+
+import BasePage from "../../common/BasePage";
 import { Page, Row, Col } from '../../common'
 import { Navbar } from '../../components';
 import { goTo } from '../../services/navigation';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import { withAppContext } from "../../services/Providers/AppStateContext";
+
+import styles from './styles';
 import './Dashboard.scss';
 
-class Dashboard extends Component {
+class Dashboard extends BasePage {
+  title = 'Dashboard'
+  // store = BasePage.store
+  defaults = BasePage.constants.defaults
+  storage = BasePage.constants.storage
+
   constructor(props) {
     super(props)
 
@@ -107,6 +120,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { AppContext } = this.props
     let _renderedItems = this.onRenderList();
     let _renderedAddItem = this.onRenderAddWidget();
 
@@ -114,11 +128,14 @@ class Dashboard extends Component {
       <Page className="Dashboard">
         <Navbar/>
         <div className="Content">
-          <Row flex="1" justifyContent="center">
-            <Button variant="outlined" color="secondary" className="Button" size="large" onClick={this.onClickRestoreRecover.bind(this)}>
-              Restore recovery
-            </Button>
-          </Row>
+          {
+            AppContext[this.storage.IS_SET_MNEMONIC] ? null :
+           <Row flex="1" justifyContent="center">
+              <Button variant="outlined" color="secondary" className="Button" size="large" onClick={this.onClickRestoreRecover.bind(this)}>
+                Restore recovery
+              </Button>
+            </Row>
+          }
           <Row flex="11" justifyContent="center">
             <Col flex="1">
               <div className="Dashboard--widget-container">
@@ -138,4 +155,9 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+  AppContext: PropTypes.object.isRequired, // withAppContext
+  classes: PropTypes.object.isRequired // withStyles
+};
+
+export default withStyles(styles)(withAppContext(Dashboard));
