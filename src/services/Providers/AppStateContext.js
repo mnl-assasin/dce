@@ -62,7 +62,7 @@ class AppContextProvider extends Component {
 
   _saveToStorage = (key, value) => {
     if ( typeof value === 'object' && value !== null) {
-       return Storage.set(key, JSON.stringify(value))
+       return Storage.setObject(key, value)
     }
     return Storage.set(key, value)
   }

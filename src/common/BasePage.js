@@ -1,20 +1,27 @@
 import React from 'react'
 
 import Storage from './../services/storage/storage'
-import { goTo } from './../services/navigation'
+// this will cause circular import
+// cause navigation file imports components that use this file
+// import { goTo } from './../services/navigation'
+
 import * as route from './../constants/route'
 import * as storage from './../constants/storage'
+import * as defaults from './../constants/defaults'
 
 class BasePage extends React.Component {
   title = ''
 
-  constants = {
+  static constants = {
     route,
-    storage
+    storage,
+    defaults
   }
+
   // navigation implementation from services
-  navigate = goTo
-  store = Storage
+  // navigate = goTo
+  static store = Storage
+
   render () {
     return null
   }

@@ -12,6 +12,7 @@ import RadioButtonChecked from "@material-ui/icons/RadioButtonChecked";
 import BasePage from "../../../common/BasePage";
 import { Page } from "../../../common";
 import { Navbar } from "../../../components";
+import { goTo as navigate } from '../../../services/navigation'
 import { withAppContext } from "../../../services/Providers/AppStateContext";
 
 import styles from "./styles";
@@ -45,7 +46,7 @@ class Network extends BasePage {
     if (!network._id) return false;
     return (
       network._id ===
-      this.props.AppContext[this.constants.storage.ACTIVE_PROVIDER_ID]
+      this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_ID]
     );
   };
 
@@ -55,10 +56,10 @@ class Network extends BasePage {
       return false;
     }
     this.props.AppContext.persist({
-      [this.constants.storage.ACTIVE_PROVIDER_ID]: network._id,
-      [this.constants.storage.ACTIVE_PROVIDER_NAME]: network.title
+      [BasePage.constants.storage.ACTIVE_PROVIDER_ID]: network._id,
+      [BasePage.constants.storage.ACTIVE_PROVIDER_NAME]: network.title
     });
-    return this.navigate(this.constants.route.SETTING);
+    return navigate(BasePage.constants.route.SETTING);
   };
 
   render() {
