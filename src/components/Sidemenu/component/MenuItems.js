@@ -7,7 +7,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 const component = ({ items, isLogged }) => (
   <List>
     {items.map((item, index) => {
-      if (item.key === "logout" && !isLogged) {
+      // will be refactor when things got heavy
+      if ((item.key === "logout" || item.key === "settings" ) && !isLogged) {
         // this make logout button not included in the menu with highest performance than any other approach
         return null;
       }

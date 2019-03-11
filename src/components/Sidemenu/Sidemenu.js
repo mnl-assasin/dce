@@ -30,6 +30,7 @@ class Sidemenu extends PureComponent {
       onClick: () => this.goTo('Settings')
     },
     {
+      key: 'settings',
       title: 'settings',
       onClick: () => this.goTo('Settings')
     },
