@@ -8,7 +8,7 @@ import {
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
 import { DASHBOARD, WALLET, LOGIN } from '../../constants/route'
-import { IS_LOGGED } from '../../constants/storage'
+import { IS_LOGGED, IS_SET_MNEMONIC } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
 import Title from './component/MenuHeaderTitle'
@@ -57,6 +57,14 @@ class Sidemenu extends PureComponent {
       onClick: () => this.testRoute()
     },
     {
+      title: 'set mnemonic (test)',
+      onClick: () => this.onSetMnemonic()
+    },
+    {
+      title: 'force logout (test)',
+      onClick: () => this.onClickLogout()
+    },
+    {
       title: 'build dapps'
     },
     {
@@ -95,8 +103,13 @@ class Sidemenu extends PureComponent {
   onClickLogout = () => {
     this.onToggleMenu()
     Storage.clear()
-    this.props.AppContext.onAppContextChange({ [IS_LOGGED]: false })
+    this.props.AppContext.clear()
     goTo('GetStarted')
+  }
+
+  onSetMnemonic = () => {
+    this.onToggleMenu()
+    this.props.AppContext.persist({ [IS_SET_MNEMONIC]: true })
   }
 
   onLogin = () => {
@@ -108,9 +121,10 @@ class Sidemenu extends PureComponent {
 
   onClickTestLogin = async () => {
     this.onToggleMenu()
-    await Storage.set('is_mnemonic_set', true)
-    await Storage.set('is_password_set', true)
-    await Storage.set('is_mnemonic_confirmed', true)
+    // await Storage.set('is_mnemonic_set', true)
+    // await Storage.set('is_password_set', true)
+    await Storage.set([IS_LOGGED], true)
+    // await Storage.set('is_mnemonic_confirmed', true)
     this.props.AppContext.onAppContextChange({ [IS_LOGGED]: true })
     goTo(DASHBOARD)
   }
