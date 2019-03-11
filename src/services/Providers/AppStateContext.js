@@ -2,18 +2,22 @@ import React, { Component, useContext } from 'react'
 import Proptypes from 'prop-types'
 
 import Storage from '../../services/storage/storage'
-
+import { activeProvider, appDefault } from '../../constants/defaults'
 import {
   IS_LOGGED,
   ACTIVE_PROVIDER_ID,
-  ACTIVE_PROVIDER_NAME
+  ACTIVE_PROVIDER_NAME,
+  IS_SET_MNEMONIC
 } from '../../constants/storage'
+
+
 
 
 export const AppContextConstant = {
   IS_LOGGED,
   ACTIVE_PROVIDER_ID,
-  ACTIVE_PROVIDER_NAME
+  ACTIVE_PROVIDER_NAME,
+  IS_SET_MNEMONIC
 }
 
 export const defaultAppContext = {}
@@ -25,15 +29,17 @@ class AppContextProvider extends Component {
     super(props)
 
     this.state = {
-      [IS_LOGGED]: true,
+      [IS_LOGGED]: false,
       [ACTIVE_PROVIDER_ID]: '',
       [ACTIVE_PROVIDER_NAME]: '',
+      [IS_SET_MNEMONIC]: false,
       userToken: null,
       ...props.value,
 
       onAppContextChange: this.onAppContextChange,
       persist: this.persist,
       set: this.persist,
+      clear: this.clear,
     }
   }
 
@@ -50,6 +56,7 @@ class AppContextProvider extends Component {
       ...item
     })
   }
+
   persist = item => {
     // save to storage
     Object.keys(item).forEach((key) => {
@@ -65,6 +72,12 @@ class AppContextProvider extends Component {
        return Storage.setObject(key, value)
     }
     return Storage.set(key, value)
+  }
+
+  clear = () => {
+    // will decide if we clear storage here
+
+    this.setState({...activeProvider, ...appDefault})
   }
 
   render() {

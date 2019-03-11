@@ -13,11 +13,17 @@ class Splash extends BasePage {
   storage = BasePage.constants.storage
 
   async componentDidMount() {
+    // load session into react memory
+    await this._init()
+    
+    let isLogged = await this.store.get('isLogged')
     let isMnemonicSet = await this.store.get('is_mnemonic_set')
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
 
-    await this._init()
+    if (isLogged) {
+      return goTo('Dashboard')
+    }
 
     if (isMnemonicSet) {
       if (isPasswordSet && isConfirmedMnemonic) {
@@ -47,12 +53,20 @@ class Splash extends BasePage {
     const activeProviderId = await this.store.get(this.storage.ACTIVE_PROVIDER_ID)
     const activeProviderName = await this.store.get(this.storage.ACTIVE_PROVIDER_NAME)
 
+    // mnemonic
+    const isSetMnemonic = await this.store.get(this.storage.IS_SET_MNEMONIC)
+
+    // session
+    const isLogged = await this.store.get(this.storage.IS_LOGGED)
+
     // initiate all app setup on app global state;
     // this will ensure fastest rendering than loading storage in every check for values
     // like how cache works vs not using it
     this.props.AppContext.set({
       [this.storage.ACTIVE_PROVIDER_ID]: activeProviderId || this.defaults.activeProvider.ACTIVE_PROVIDER_ID,
-      [this.storage.ACTIVE_PROVIDER_NAME]: activeProviderName || this.defaults.activeProvider.ACTIVE_PROVIDER_NAME
+      [this.storage.ACTIVE_PROVIDER_NAME]: activeProviderName || this.defaults.activeProvider.ACTIVE_PROVIDER_NAME,
+      [this.storage.IS_SET_MNEMONIC]: isSetMnemonic || false,
+      [this.storage.IS_LOGGED]: isLogged || false,
     })
   }
 
