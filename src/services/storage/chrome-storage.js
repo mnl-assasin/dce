@@ -1,7 +1,7 @@
 class ChromeStorage {
   set(key, value) {
     return new Promise( (resolve) => {
-      window.chrome.storage.local.set({[key]: value }, function() {
+      window.chrome.storage.local.set({[key]: JSON.stringify(value) }, function() {
         resolve(true)
       })
     })
@@ -12,7 +12,7 @@ class ChromeStorage {
       console.log(key);
 
       window.chrome.storage.local.get([key], function(result) {
-        resolve(result[key]);
+        resolve(JSON.parse(result[key]));
       });
     })
   

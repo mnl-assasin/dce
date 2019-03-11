@@ -1,14 +1,14 @@
 class LocalStorage {
   set(key, value) {
     return new Promise( (resolve) => {
-      window.localStorage.setItem(key, value)
+      window.localStorage.setItem(key, JSON.stringify(value))
 
       resolve(true)
     })
   }
 
   get(key) {
-    return Promise.resolve(window.localStorage.getItem(key) || null);
+    return Promise.resolve(JSON.parse(window.localStorage.getItem(key)) || null);
   }
 
   setObject(key, value) {
