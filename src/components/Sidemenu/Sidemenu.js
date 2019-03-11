@@ -7,7 +7,7 @@ import {
   withAppContext
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { DASHBOARD, WALLET } from '../../constants/route'
+import { DASHBOARD, WALLET, LOGIN } from '../../constants/route'
 import { IS_LOGGED } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
@@ -38,7 +38,12 @@ class Sidemenu extends PureComponent {
       key: 'logout',
       title: 'logout',
       onClick: () => this.onClickLogout()
-    }
+    },
+    {
+      key: 'login',
+      title: 'Login',
+      onClick: () => this.onLogin()
+    },
   ]
 
   menuBottomOptions = [
@@ -92,6 +97,13 @@ class Sidemenu extends PureComponent {
     Storage.clear()
     this.props.AppContext.onAppContextChange({ [IS_LOGGED]: false })
     goTo('GetStarted')
+  }
+
+  onLogin = () => {
+    this.onToggleMenu()
+    // Storage.clear()
+    // this.props.AppContext.onAppContextChange({ [IS_LOGGED]: false })
+    goTo(LOGIN)
   }
 
   onClickTestLogin = async () => {
