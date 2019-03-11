@@ -11,13 +11,15 @@ import { DASHBOARD, WALLET, LOGIN } from '../../constants/route'
 import { IS_LOGGED, IS_SET_MNEMONIC } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
+import MenuDevtool from './component/MenuDevtool'
 import Title from './component/MenuHeaderTitle'
 import Items from './component/MenuItems'
 import styles from './styles'
 
 class Sidemenu extends PureComponent {
   state = {
-    shouldShowSideMenu: false
+    shouldShowSideMenu: false,
+    devMenuOpen: false
   }
 
   menuTopOptions = [
@@ -47,23 +49,23 @@ class Sidemenu extends PureComponent {
   ]
 
   menuBottomOptions = [
-    {
-      key: 'login',
-      title: 'Force SignIn (test)',
-      onClick: () => this.onClickTestLogin()
-    },
-    {
-      title: 'got testRoute (test)',
-      onClick: () => this.testRoute()
-    },
-    {
-      title: 'set mnemonic (test)',
-      onClick: () => this.onSetMnemonic()
-    },
-    {
-      title: 'force logout (test)',
-      onClick: () => this.onClickLogout()
-    },
+    // {
+    //   key: 'login',
+    //   title: 'Force SignIn (test)',
+    //   onClick: () => this.onClickTestLogin()
+    // },
+    // {
+    //   title: 'got testRoute (test)',
+    //   onClick: () => this.testRoute()
+    // },
+    // {
+    //   title: 'set mnemonic (test)',
+    //   onClick: () => this.onSetMnemonic()
+    // },
+    // {
+    //   title: 'force logout (test)',
+    //   onClick: () => this.onClickLogout()
+    // },
     {
       title: 'build dapps'
     },
@@ -75,6 +77,26 @@ class Sidemenu extends PureComponent {
     },
     {
       title: 'website'
+    }
+  ]
+
+  devMenus = [
+    {
+      key: 'login',
+      title: 'Force SignIn',
+      onClick: () => this.onClickTestLogin()
+    },
+    {
+      title: 'got testRoute',
+      onClick: () => this.testRoute()
+    },
+    {
+      title: 'set mnemonic',
+      onClick: () => this.onSetMnemonic()
+    },
+    {
+      title: 'force logout',
+      onClick: () => this.onClickLogout()
     }
   ]
 
@@ -99,6 +121,11 @@ class Sidemenu extends PureComponent {
   onToggleMenu = () => {
     SidemenuEvent.toggle()
   }
+
+  onToggleDevMenu = () => {
+    this.setState({devMenuOpen: !this.state.devMenuOpen})
+  }
+
 
   onClickLogout = () => {
     this.onToggleMenu()
@@ -152,6 +179,9 @@ class Sidemenu extends PureComponent {
             <Items items={this.menuTopOptions} isLogged={AppContext.isLogged} />
           </div>
           <div className={classes.devider} />
+          <div className={classes.devMenu}>
+            <MenuDevtool items={this.devMenus} isOpen={this.state.devMenuOpen} onOpen={this.onToggleDevMenu} classes={classes} />
+          </div>
           <div className={classes.bottomDevider}>
             <Items
               items={this.menuBottomOptions}

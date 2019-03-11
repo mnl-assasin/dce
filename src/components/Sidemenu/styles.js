@@ -21,6 +21,15 @@ export default {
     flexDirection: 'column'
 
 	},
+  devMenu: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: 40,
+    paddingBottom: 50
+  },
+  devMenuItems: {
+    paddingLeft: 20
+  },
 	SidemenuList: {
   	width: 250
 	}
