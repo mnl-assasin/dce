@@ -2,12 +2,10 @@ import React from 'react'
 import PropTypes from "prop-types"
 
 import { withStyles } from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-import BasePage from "../../common/BasePage";
-// import ThemeIcon from '../../common/Icon'
+import BasePage from "../../common/BasePage"
 import { Page, Row, Col, Icon as ThemeIcon } from '../../common'
 import { Navbar } from '../../components';
 import { goTo } from '../../services/navigation';
@@ -35,7 +33,7 @@ class Dashboard extends BasePage {
           isWallet: true,
           amount: '0.123432',
           value: '0.123432',
-          iconComponent: <ThemeIcon src={EtherImage} size="70" />,
+          iconComponent: <ThemeIcon src={EtherImage} size={70} />,
           onClick: (model) => {
             goTo('Wallet', model)
           }
@@ -45,7 +43,7 @@ class Dashboard extends BasePage {
           isWallet: true,
           amount: '0.123432',  
           value: '0.123432',
-          iconComponent: <ThemeIcon size="70" src={EtherImage} />,
+          iconComponent: <ThemeIcon size={70} src={EtherImage} />,
           onClick: (model) => {
             goTo('Wallet', model)
           }
@@ -55,7 +53,7 @@ class Dashboard extends BasePage {
           isWallet: true,
           amount: '2.123432',  
           value: '0.123432',
-          iconComponent: <ThemeIcon size="70" src={EtherImage} />,
+          iconComponent: <ThemeIcon size={70} src={EtherImage} />,
           onClick: (model) => {
             goTo('Wallet', model)
           }
@@ -65,7 +63,7 @@ class Dashboard extends BasePage {
           isWallet: true,
           amount: '4.123432',  
           value: '100.123432',
-          iconComponent: <ThemeIcon size="70" src={BitImage} />,
+          iconComponent: <ThemeIcon size={70} src={BitImage} />,
           onClick: (model) => {
             goTo('Wallet', model)
           }
@@ -144,7 +142,7 @@ class Dashboard extends BasePage {
       model: {},
       label: 'Add new wallet',
       icon: 'add_circle_outline',
-      iconComponent: <ThemeIcon size="70" iconName="add_circle_outline" />,
+      iconComponent: <ThemeIcon size={70} iconName="add_circle_outline" />,
       onClick: () => {
         this.setState({
           items: [
@@ -153,7 +151,7 @@ class Dashboard extends BasePage {
               model: {},
               label: '123',
               icon: 'card_travel',
-              iconComponent: <ThemeIcon size="70" src={EtherImage} />,
+              iconComponent: <ThemeIcon size={70} src={EtherImage} />,
               onClick: (model) => {
                 goTo('Wallet', model)
                 // goTo('Wallet', model)
