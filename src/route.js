@@ -14,6 +14,7 @@ import Splash from './pages/Splash/Splash'
 import Wallet from './pages/Wallet/Wallet'
 import WalletSend from './pages/Wallet/WalletSend/WalletSend'
 import WalletReceive from './pages/Wallet/WalletReceive/WalletReceive'
+import TestPage from './pages/TestPage/TestPage'
 
 export default {
   'CreateDashboard': CreateDashboard,
@@ -31,5 +32,7 @@ export default {
   'Splash': Splash,
   'Wallet': Wallet,
   'WalletSend': WalletSend,
-  'WalletReceive': WalletReceive
+  'WalletReceive': WalletReceive,
+
+  'TestPage': TestPage
 }

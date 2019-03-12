@@ -40,7 +40,13 @@ class Splash extends BasePage {
       // not loggedin
       // must set app state to not log for updated component child
       this.setContext(this.storage.IS_LOGGED, false)
-      Navigation.init('GetStarted');
+      console.log(this.defaults.defaultRouteName)
+
+      if (this.defaults.forceDefaultRouteName) {
+        return goTo(this.defaults.forceDefaultRouteName)
+      }
+
+      Navigation.init(this.defaults.defaultRouteName);
     }
   }
 
