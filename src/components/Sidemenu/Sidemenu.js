@@ -97,6 +97,14 @@ class Sidemenu extends PureComponent {
     {
       title: 'force logout',
       onClick: () => this.onClickLogout()
+    },
+    {
+      title: 'goto Wallet',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET) }
+    },
+    {
+      title: 'goto Dashboard',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(DASHBOARD) }
     }
   ]
 
