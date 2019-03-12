@@ -5,22 +5,22 @@ import { withStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
-import Fab from "@material-ui/core/Fab"
 import LocalGasStation from '@material-ui/icons/LocalGasStation'
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
-import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-
-import BasePage from "../../../common/BasePage";
+import FileCopy from '@material-ui/icons/FileCopy'
+import BasePage from "../../../common/BasePage"
 import { Page, Row } from '../../../common'
-import { Navbar } from '../../../components';
-import { inputTypes } from "../../../constants/types";
-import { withAppContext } from "../../../services/Providers/AppStateContext";
-import styles from "./styles";
-//   <ButtonIcon><AddCircleOutline button fontSize="inherit">local_gas_station</AddCircleOutline></ButtonIcon>
+import { Navbar } from '../../../components'
+import { inputTypes } from "../../../constants/types"
+import { withAppContext } from "../../../services/Providers/AppStateContext"
+import styles from "./styles"
+
 class WalletSend extends BasePage {
   title = '@blocksmith'
   subTitle = 'send'
+
+  defaults = BasePage.constants.defaults
+  storage = BasePage.constants.storage
 
   state = {
     sendTo: '',
@@ -28,6 +28,13 @@ class WalletSend extends BasePage {
     usd: '',
     gasLimit: '',
     transaction: '',
+    yourAddresss: 'sdfsdf'
+  }
+
+  componentDidMount () {
+    this.setState({
+       yourAddresss: this.props.AppContext[this.storage.WALLET_ADDRESS]
+    })
   }
 
   _setInpuState = (key, value) => {
@@ -49,6 +56,22 @@ class WalletSend extends BasePage {
           </div>
 
           <form className={classes.container} noValidate autoComplete="off">
+            <Row>
+              <div  className={classes.myWalletAddress}>
+                <TextField
+                  title={this.state.yourAddresss}
+                  label={"Your Address " + this.title}
+                  variant="outlined"
+                  className={classes.textField}
+                  value={this.state.yourAddresss}
+                  type={inputTypes.text}
+                />
+              </div>
+                <div className={classes.addIcon}>
+                  <FileCopy fontSize="inherit" />
+                
+                </div>
+            </Row>
             <Row>
               <div  className={classes.sendTo}>
                 <TextField
