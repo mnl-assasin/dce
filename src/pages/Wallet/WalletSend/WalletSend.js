@@ -28,7 +28,7 @@ class WalletSend extends BasePage {
     usd: '',
     gasLimit: '',
     transaction: '',
-    yourAddresss: 'sdfsdf'
+    yourAddresss: ' '
   }
 
   componentDidMount () {
