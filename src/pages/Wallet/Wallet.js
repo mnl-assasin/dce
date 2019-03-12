@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { Wallet as DappWallet } from 'dapper-js'
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
@@ -18,12 +19,27 @@ import "./Wallet.scss";
 import styles from "./styles";
 
 class Wallet extends React.Component {
-  constructor(props) {
-    super(props);
-    this.renderTitleComponent = this.renderTitleComponent.bind(this);
+  state = {
+    blockNumber: ''
   }
 
-  renderTitleComponent() {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount () {
+    const walletHelper = DappWallet.ethers.getHelper()
+
+    walletHelper.getBlockNumber()
+      .then((data) => {
+        this.setState({blockNumber: String(data.blockNumber)})
+      }).catch((data) => {
+        this.setState({blockNumber:''})
+        console.log('error in getting blockNumber: ', data)
+      })
+  }
+
+  renderTitleComponent = () => {
     return (
       <Typography variant="h6" color="inherit" className="Navbar--title">
         {"@dapperwallet"}
@@ -45,7 +61,7 @@ class Wallet extends React.Component {
         />
 
         <div className={classes.content}>
-          <WalletHeader classes={classes} {...WalletHeaderTestValue} />
+          <WalletHeader classes={classes} {...WalletHeaderTestValue} networkNumber={this.state.blockNumber} />
           <WalletContent classes={classes} {...WalletContentTestValue} />
           <WalletButtons
             classes={classes}
