@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 
 const component = ({ size = 70, src, iconName = '' }) => {
 	if (src) {
-	  return <span><img src={src} width={size} height={size} /></span>
+	  return <span><img src={src} width={size} height={size} alt="icon" /></span>
   }
 
   return <Icon  style={{fontSize: '' + size +'px'}} fontSize="inherit">{iconName}</Icon>
