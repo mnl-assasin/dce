@@ -34,7 +34,11 @@ class Settings extends BasePage {
     // },
     {
       title: "Network",
-      getValue: () => this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_NAME],
+      getValue: () =>
+        // this will get @example: homestead #blocknumber
+        this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_NAME] + (
+                this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER] ?
+                ' #' + this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER] : ''),
       onClick: () => navigate(BasePage.constants.route.NETWORK)
     }
   ]

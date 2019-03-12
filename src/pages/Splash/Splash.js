@@ -1,6 +1,7 @@
 import React from 'react'
 
 import BasePage from "../../common/BasePage"
+import setBlockNumber from "../../hof/setBlockNumber"
 import Navigation, { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 
@@ -11,6 +12,8 @@ class Splash extends BasePage {
   store = BasePage.store
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
+
+  setBlockNumber = setBlockNumber(this)
 
   async componentDidMount() {
     // load session into react memory
@@ -40,7 +43,6 @@ class Splash extends BasePage {
       // not loggedin
       // must set app state to not log for updated component child
       this.setContext(this.storage.IS_LOGGED, false)
-      console.log(this.defaults.defaultRouteName)
 
       if (this.defaults.forceDefaultRouteName) {
         return goTo(this.defaults.forceDefaultRouteName)
@@ -70,6 +72,7 @@ class Splash extends BasePage {
     // load selected network    
     this.storage.ACTIVE_PROVIDER_ID,
     this.storage.ACTIVE_PROVIDER_NAME,
+    this.storage.ACTIVE_PROVIDER_BlOCKNUMBER
   ]
 
   _init = async () => {
@@ -81,6 +84,16 @@ class Splash extends BasePage {
           })
     )  
     this.props.AppContext.set(willSaveInState)
+
+    // this will execute hof
+    // this will ensure block number will refresh every app start
+    await this.setBlockNumber(
+      willSaveInState[this.storage.ACTIVE_PROVIDER_ID],
+      (value) => this.props.AppContext.persist({
+          [BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value)
+        }),
+      (error) => this.setState({blockNumber: ''})
+    )
   }
 
   render() {

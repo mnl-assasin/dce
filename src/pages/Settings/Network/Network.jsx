@@ -10,6 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import RadioButtonChecked from "@material-ui/icons/RadioButtonChecked";
 
 import BasePage from "../../../common/BasePage";
+import setBlockNumber from "../../../hof/setBlockNumber";
 import { Page } from "../../../common";
 import { Navbar } from "../../../components";
 import { goTo as navigate } from '../../../services/navigation'
@@ -18,29 +19,35 @@ import { withAppContext } from "../../../services/Providers/AppStateContext";
 import styles from "./styles";
 
 class Network extends BasePage {
-  title = "Network";
+  title = "Network"
+  setBlockNumber = setBlockNumber(this)
+
   settingItems = [
     {
-      _id: "_server_mainnet",
-      title: "Mainnet",
-      info: ""
+      _id: "mainnet",
+      title: "mainnet",
     },
     {
-      _id: "_server_ropsten",
-      title: "Ropsten Testnet",
-      info: ""
+      _id: "homestead",
+      title: "homestead",
     },
     {
-      _id: "_server_rinkeby",
-      title: "Rinkeby Testnet",
-      info: ""
+      _id: "rinkeby",
+      title: "rinkeby",
     },
     {
-      _id: "_server_kovan",
-      title: "Kovan Testnet",
-      info: ""
+      _id: "ropsten",
+      title: "ropsten",
+    },
+    {
+      _id: "kovan",
+      title: "kovan",
+    },
+    {
+      _id: "goerli",
+      title: "goerli",
     }
-  ];
+  ]
 
   _getIsActive = network => {
     if (!network._id) return false;
@@ -55,10 +62,19 @@ class Network extends BasePage {
       console.log("invalid network id provided");
       return false;
     }
-    this.props.AppContext.persist({
-      [BasePage.constants.storage.ACTIVE_PROVIDER_ID]: network._id,
-      [BasePage.constants.storage.ACTIVE_PROVIDER_NAME]: network.title
-    });
+    
+    if (network._id === this.props.AppContext[BasePage.constants.storage.ACTIVE_PROVIDER_ID]) {
+      return ''
+    }
+    this.setBlockNumber(
+      network._id,
+      (value) => this.props.AppContext.persist({
+          [BasePage.constants.storage.ACTIVE_PROVIDER_ID]: network._id,
+          [BasePage.constants.storage.ACTIVE_PROVIDER_NAME]: network.title,
+          [BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value)
+        }),
+      (error) => this.setState({blockNumber: ''})
+    )
     return navigate(BasePage.constants.route.SETTING);
   };
 

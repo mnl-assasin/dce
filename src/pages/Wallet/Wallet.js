@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Wallet as DappWallet } from 'dapper-js'
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
 import BasePage from "../../common/BasePage";
+import setBlockNumber from "../../hof/setBlockNumber";
 import { goTo } from "../../services/navigation";
 import { Page } from "../../common";
 import { Navbar } from "../../components";
@@ -20,20 +20,30 @@ import "./Wallet.scss";
 import styles from "./styles";
 
 class Wallet extends BasePage {
+  title = 'Dashboard'
+
+  defaults = BasePage.constants.defaults
+  storage = BasePage.constants.storage
+
+  // hof bindings
+  setBlockNumber = setBlockNumber(this)
+
   state = {
-    blockNumber: ''
+    blockNumber: '',
+    networkName: ''
   }
 
   componentDidMount () {
-    const walletHelper = DappWallet.ethers.getHelper()
-
-    walletHelper.getBlockNumber()
-      .then((data) => {
-        this.setState({blockNumber: String(data.blockNumber)})
-      }).catch((data) => {
-        this.setState({blockNumber:''})
-        console.log('error in getting blockNumber: ', data)
-      })
+    this.setBlockNumber(
+      this.props.AppContext[this.storage.ACTIVE_PROVIDER_ID],
+      (value) => {
+        this.props.AppContext.persist({
+          [this.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value)
+        })
+        this.setState({blockNumber: String(value)})
+      },
+      (error) => this.setState({blockNumber: ''})
+      )
   }
 
   renderTitleComponent = () => {
@@ -62,7 +72,11 @@ class Wallet extends BasePage {
         />
 
         <div className={classes.content}>
-          <WalletHeader classes={classes} {...WalletHeaderTestValue} networkNumber={this.state.blockNumber} />
+          <WalletHeader
+          classes={classes} {...WalletHeaderTestValue}
+          networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
+          networkNumber={this.state.blockNumber}
+          />
           <WalletContent classes={classes} {...WalletContentTestValue} />
           <WalletButtons
             classes={classes}
