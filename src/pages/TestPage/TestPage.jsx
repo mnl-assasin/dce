@@ -32,9 +32,13 @@ class TestPage extends Component {
     const walletHelper = Wallet.ethers.getHelper()
     console.log(walletHelper)
     
-    const blockNumber = await walletHelper.getBlockNumber()
-console.log(blockNumber)
+    const getProvider = await walletHelper.getProvider()
+console.log(getProvider)
 
+  }
+
+  goto(str) {
+    goTo(str)
   }
 
   render() {
