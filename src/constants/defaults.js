@@ -21,5 +21,5 @@ export const appDefault = {
 export const defaultRouteName = Routes.GET_STARTED
 
 // will be use intead of default route
-// export const forceDefaultRouteName = false
-export const forceDefaultRouteName = Routes.TEST_PAGE
+export const forceDefaultRouteName = false
+// export const forceDefaultRouteName = Routes.DASHBOARD
