@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Typography from '@material-ui/core/Typography'
 
 import { withAppContext } from "../../services/Providers/AppStateContext";
 import { IS_LOGGED } from "../../constants/storage";
@@ -18,9 +19,12 @@ import { Page } from "../../common";
 import { Navbar, showSnackbar } from "../../components";
 import Storage from "../../services/storage/storage";
 
+
 import styles from "./styles";
 
 class NominatePassword extends Component {
+  title ='Nominate Password'
+
   state = {
     password: "",
     passwordVisible: false,
@@ -82,23 +86,25 @@ class NominatePassword extends Component {
     });
   };
 
-  render() {
-    const { classes } = this.props;
+    render() {
+      const { classes } = this.props;
     return (
       <Page className="NominatePassword">
         <Navbar backButton={true} />
         <div className={classes.content}>
           <div className={classes.logo}>
-            <h2>Nominate Password</h2>
+            <Typography variant="h5" align="center">{this.title}</Typography>
           </div>
-
-          <div className={classes.description}>
-            Password must be at least 8 characters, At least 1 uppercase letter,
-            At least 1 lowecase letter, At least 1 number, At least 1 special
-            character,
-          </div>
-
           <form className={classes.container} noValidate autoComplete="off">
+          <div className={classes.description}>
+          <Typography  variant="caption" gutterBottom>
+            Password must be at least 8 characters
+            At least 1 uppercase letter,
+            At least 1 lowecase letter,
+            At least 1 number,
+            At least 1 special character,
+            </Typography>
+          </div>
             <TextField
               label="Enter Password"
               variant="outlined"

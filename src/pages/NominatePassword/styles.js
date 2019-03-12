@@ -12,11 +12,11 @@ export default theme => ({
     display: 'flex'
   },
   logo: {
-  	display: 'flex',
-  	justifyContent: 'center',
-  	alignItems: 'center',
-  	flex: 2,
-  	height: 200
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2,
+    height: 200
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -26,5 +26,9 @@ export default theme => ({
     marginTop: theme.spacing.unit,
     display: 'flex',
     flexDirection: 'column'
+  },
+  description: {
+    paddingBottom: theme.spacing.unit,
+
   }
 })
