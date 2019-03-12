@@ -15,7 +15,7 @@ class Splash extends BasePage {
   async componentDidMount() {
     // load session into react memory
     await this._init()
-    
+
     let isLogged = await this.store.get('isLogged')
     let isMnemonicSet = await this.store.get('is_mnemonic_set')
     let isPasswordSet = await this.store.get('is_password_set')
@@ -54,26 +54,33 @@ class Splash extends BasePage {
     this.props.AppContext.onAppContextChange({[name]: value})
   }
 
-  async _init() {
+  //
+  // this list will be load from storage and cache in app global state
+  // for safety we will put it here 1 by 1
+  //
+  startLoadArray = [
+    // load session
+    this.storage.IS_LOGGED,
+    this.storage.IS_SET_MNEMONIC,
+    this.storage.WALLET_MNEMONIC,
+    this.storage.WALLET_ADDRESS,
+    this.storage.WALLET_PRIVATE_KEY,
+    this.storage.WALLET_PUBLIC_KEY,  
+
     // load selected network    
-    const activeProviderId = await this.store.get(this.storage.ACTIVE_PROVIDER_ID)
-    const activeProviderName = await this.store.get(this.storage.ACTIVE_PROVIDER_NAME)
+    this.storage.ACTIVE_PROVIDER_ID,
+    this.storage.ACTIVE_PROVIDER_NAME,
+  ]
 
-    // mnemonic
-    const isSetMnemonic = await this.store.get(this.storage.IS_SET_MNEMONIC)
+  _init = async () => {
+    let willSaveInState = {}
 
-    // session
-    const isLogged = await this.store.get(this.storage.IS_LOGGED)
-
-    // initiate all app setup on app global state;
-    // this will ensure fastest rendering than loading storage in every check for values
-    // like how cache works vs not using it
-    this.props.AppContext.set({
-      [this.storage.ACTIVE_PROVIDER_ID]: activeProviderId || this.defaults.activeProvider.ACTIVE_PROVIDER_ID,
-      [this.storage.ACTIVE_PROVIDER_NAME]: activeProviderName || this.defaults.activeProvider.ACTIVE_PROVIDER_NAME,
-      [this.storage.IS_SET_MNEMONIC]: isSetMnemonic || false,
-      [this.storage.IS_LOGGED]: isLogged || false,
-    })
+    await Promise.all(
+      this.startLoadArray.map(async (key) => {
+             willSaveInState[key] = await this.store.get(key) || this.defaults.getDefault(key)
+          })
+    )  
+    this.props.AppContext.set(willSaveInState)
   }
 
   render() {

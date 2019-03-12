@@ -52,7 +52,7 @@ class AppContextProvider extends Component {
 
   set = item => {
     this.setState({
-      ...this.state,
+      // ...this.state,
       ...item
     })
   }
@@ -68,9 +68,9 @@ class AppContextProvider extends Component {
   }
 
   _saveToStorage = (key, value) => {
-    if ( typeof value === 'object' && value !== null) {
-       return Storage.setObject(key, value)
-    }
+    // if ( typeof value === 'object' && value !== null) {
+    //    return Storage.setObject(key, value)
+    // }
     return Storage.set(key, value)
   }
 
