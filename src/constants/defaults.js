@@ -5,8 +5,8 @@ import * as Routes from './route'
 // bause default is a reserve word
 //
 export const activeProvider = {
-    'ACTIVE_PROVIDER_ID': '_server_mainnet',
-    'ACTIVE_PROVIDER_NAME': 'Mainnet'
+    'ACTIVE_PROVIDER_ID': '_server_ropsten',
+    'ACTIVE_PROVIDER_NAME': 'Ropsten Testnet'
 }
 
 // default when logout
@@ -21,5 +21,5 @@ export const appDefault = {
 export const defaultRouteName = Routes.GET_STARTED
 
 // will be use intead of default route
-export const forceDefaultRouteName = false
-// export const forceDefaultRouteName = Routes.TEST_PAGE
+// export const forceDefaultRouteName = false
+export const forceDefaultRouteName = Routes.TEST_PAGE
