@@ -5,8 +5,8 @@ import * as Routes from './route'
 // bause default is a reserve word
 //
 export const activeProvider = {
-    'ACTIVE_PROVIDER_ID': '_server_ropsten',
-    'ACTIVE_PROVIDER_NAME': 'Ropsten Testnet'
+    'ACTIVE_PROVIDER_ID': 'ropsten',
+    'ACTIVE_PROVIDER_NAME': 'ropsten'
 }
 
 // default when logout
@@ -19,7 +19,7 @@ export const appDefault = {
 
 export const getDefault = (key) => {
 	if (typeof appDefault[key] === 'undefined') {
-		return null
+		return ''
 	}
 
 	return appDefault[key]
