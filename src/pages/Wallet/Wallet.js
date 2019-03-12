@@ -23,10 +23,6 @@ class Wallet extends React.Component {
     blockNumber: ''
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount () {
     const walletHelper = DappWallet.ethers.getHelper()
 
