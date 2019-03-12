@@ -7,12 +7,12 @@ import './GetStarted.css'
 
 class GetStarted extends Component {
 
-  async onClickGetStarted() {
+  _onGetStarted = async () => {
     let result = WalletRepository.create()
     goTo('MnemonicPhrase', result)
   }
 
-  onClickRestoreBackup() {
+  _onRestoreBackup = () => {
     goTo('RestoreBackup')
   }
 
@@ -25,11 +25,11 @@ class GetStarted extends Component {
 
           <Col flex="1">
             <div className="GetStarted--button-container">
-              <Button color="primary" outline="true" onClick={this.onClickGetStarted.bind(this)}>
+              <Button color="primary" outline="true" onClick={this._onGetStarted}>
                 Get Started
               </Button>
               
-              <Button outline="true" onClick={this.onClickRestoreBackup.bind(this)}>
+              <Button outline="true" onClick={this._onRestoreBackup}>
                 Restore Backup
               </Button>
             </div>
