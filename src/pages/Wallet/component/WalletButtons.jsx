@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 
-const component = ({ classes, onWalletReceive }) => (
+const component = ({ classes, onSend, onWalletReceive }) => (
   <div className={classes.buttonContainer}>
     <div className={classes.buttonHolder}>
       <Button
@@ -10,6 +10,7 @@ const component = ({ classes, onWalletReceive }) => (
         color="primary"
         className="Button"
         size="large"
+        onClick={onSend}
       >
         Send
       </Button>
@@ -65,7 +66,8 @@ component.defaultProps = {}
 
 component.propTypes = {
   onWalletReceive: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onSend: PropTypes.func.isRequired,
 }
 
 export default component

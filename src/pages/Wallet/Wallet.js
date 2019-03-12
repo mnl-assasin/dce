@@ -5,6 +5,7 @@ import { Wallet as DappWallet } from 'dapper-js'
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
+import BasePage from "../../common/BasePage";
 import { goTo } from "../../services/navigation";
 import { Page } from "../../common";
 import { Navbar } from "../../components";
@@ -18,7 +19,7 @@ import WalletContent, {
 import "./Wallet.scss";
 import styles from "./styles";
 
-class Wallet extends React.Component {
+class Wallet extends BasePage {
   state = {
     blockNumber: ''
   }
@@ -45,7 +46,11 @@ class Wallet extends React.Component {
 
   onClickWalletReceice = () => {
     goTo("WalletReceive");
-  };
+  }
+
+  onSend = () => {
+    goTo("WalletSend");
+  }
 
   render() {
     const { classes } = this.props;
@@ -62,6 +67,7 @@ class Wallet extends React.Component {
           <WalletButtons
             classes={classes}
             onWalletReceive={this.onClickWalletReceice}
+            onSend={this.onSend}
           />
         </div>
       </Page>
