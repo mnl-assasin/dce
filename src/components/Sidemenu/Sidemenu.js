@@ -7,7 +7,7 @@ import {
   withAppContext
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { DASHBOARD, WALLET, LOGIN } from '../../constants/route'
+import { DASHBOARD, WALLET, WALLET_SEND, LOGIN, RESTORE_BACKUP, NOMINATED_PASSWORD,  } from '../../constants/route'
 import { IS_LOGGED, IS_SET_MNEMONIC } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
@@ -87,29 +87,41 @@ class Sidemenu extends PureComponent {
       onClick: () => this.onClickTestLogin()
     },
     {
-      title: 'got testRoute',
-      onClick: () => this.testRoute()
+      title: 'force logout',
+      onClick: () => this.onClickLogout()
     },
     {
       title: 'set mnemonic',
       onClick: () => this.onSetMnemonic()
     },
     {
-      title: 'force logout',
-      onClick: () => this.onClickLogout()
+      title: 'got testRoute',
+      onClick: () => this.testRoute()
     },
     {
-      title: 'goto Wallet',
+      title: 'Restore Backup',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(RESTORE_BACKUP) }
+    },  
+    {
+      title: 'Nominate Password',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(NOMINATED_PASSWORD) }
+    },
+    {
+      title: 'Wallet',
       onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET) }
     },
     {
-      title: 'goto Dashboard',
+      title: 'Dashboard',
       onClick: () =>{ SidemenuEvent.toggle(); goTo(DASHBOARD) }
-    }
+    },
+    {
+      title: 'Wallet -> Send ',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET_SEND) }
+    },
   ]
 
   testRoute = () => {
-    goTo(WALLET)
+    goTo(NOMINATED_PASSWORD)
   }
 
   appInfo = {
