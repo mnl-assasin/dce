@@ -1,38 +1,56 @@
 import React, { Component } from 'react'
+
+
 import { goTo } from '../../services/navigation'
-import { Page, Col, Button } from '../../common'
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
+import Page from '../../layout/Page'
 import { Navbar } from '../../components'
-import { WalletRepository } from 'dapper-js'
+import { Wallet } from 'dapper-js'
 
 class TestPage extends Component {
 
   _onGetStarted = async () => {
-    let result = WalletRepository.create()
-    goTo('MnemonicPhrase', result)
-  }
+    console.log(Wallet)
+    Wallet.ethers
+      .restore({
+        mnemonic:
+          "crunch soldier universe crunch flight clip urge chalk giant silver rug tank1"
+      })
+      .then(data => {
+        console.log(data);
+    console.log(Wallet)
+      })
+      .catch(error => {
+        console.log("Index catch: ");
+        console.log(error);
+      });
 
-  _onRestoreBackup = () => {
-    goTo('RestoreBackup')
+      }
+
+  _onRestoreBackup = async() => {
+    const walletHelper = Wallet.ethers.getHelper()
+    console.log(walletHelper)
+    
+    const blockNumber = await walletHelper.getBlockNumber()
+console.log(blockNumber)
+
   }
 
   render() {
     return (
-      <Page className="GetStarted">
+      <Page>
         <Navbar title="Test Page" />
         <div className="Content">
-          <Col flex="1"><h1> Test Page</h1></Col>
-
-          <Col flex="1">
-            <div className="GetStarted--button-container">
-              <Button color="primary" outline="true" onClick={this._onGetStarted}>
+        <Divider />
+              <Button variant="outlined" color="primary" outline="true" onClick={this._onGetStarted} fullWidth>
                 Get Started
               </Button>
               
-              <Button outline="true" onClick={this._onRestoreBackup}>
+        <Divider />
+              <Button variant="outlined" onClick={this._onRestoreBackup} fullWidth>
                 Restore Backup
               </Button>
-            </div>
-          </Col>
 
         </div>
       </Page>
