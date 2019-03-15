@@ -1,12 +1,6 @@
 export default theme => ({
   root: {
   },
-  container: {
-    padding: 10,
-    flex: 1,
-    flexDirection: 'column',
-    display: 'flex'
-  },
   logo: {
   	display: 'flex',
   	justifyContent: 'center',

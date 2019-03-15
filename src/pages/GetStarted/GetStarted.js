@@ -13,7 +13,7 @@ import styles from "./styles"
 
 class GetStarted extends BasePage {
   title = "Getting Started"
-  navigationProps = {title:this.title}
+  navigationProps = {title: this.title}
 
   _onGetStarted = () => goTo('MnemonicPhrase')
   _onRestoreBackup = () => goTo('RestoreBackup')
