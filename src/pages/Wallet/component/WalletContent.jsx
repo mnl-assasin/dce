@@ -7,7 +7,7 @@ const component = ({ classes, amount, value }) => (
   <div className={classes.contentHolder}>
     <Row className={classes.amountHolder}>
       <Col>
-        <Typography variant="h5">wallet content</Typography>
+        <Typography variant="h5">wallet amount</Typography>
       </Col>
       <Col>
         <Typography variant="h5" align="right">

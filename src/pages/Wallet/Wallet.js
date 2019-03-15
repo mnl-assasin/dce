@@ -1,89 +1,65 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles"
 
 import BasePage from "../../common/BasePage";
+import Page from '../../layout/Page'
 import setBlockNumber from "../../hof/setBlockNumber";
 import { goTo } from "../../services/navigation";
-import { Page } from "../../common";
-import { Navbar } from "../../components";
 import { withAppContext } from "../../services/Providers/AppStateContext";
 import WalletButtons from "./component/WalletButtons";
 import WalletHeader, { WalletHeaderTestValue } from "./component/WalletHeader";
-import WalletContent, {
-  WalletContentTestValue
-} from "./component/WalletContent";
+import WalletContent, { WalletContentTestValue } from "./component/WalletContent";
 
-import "./Wallet.scss";
-import styles from "./styles";
+import componentDidMount from "./method/_componentDidMount";
+import styles from "./styles"
 
 class Wallet extends BasePage {
-  title = 'Dashboard'
-
+  title = 'Wallet'
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
+  route = BasePage.constants.route
+
+  navigate = goTo
+
+  navigationProps = {
+    backButton: true,
+    title: ''
+  }
 
   // hof bindings
   setBlockNumber = setBlockNumber(this)
+  componentDidMount = componentDidMount(this)
 
   state = {
     blockNumber: '',
     networkName: ''
   }
 
-  componentDidMount () {
-    this.setBlockNumber(
-      this.props.AppContext[this.storage.ACTIVE_PROVIDER_ID],
-      (value) => {
-        this.props.AppContext.persist({
-          [this.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value)
-        })
-        this.setState({blockNumber: String(value)})
-      },
-      (error) => this.setState({blockNumber: ''})
-      )
-  }
+  onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
 
-  renderTitleComponent = () => {
+  onSend = () => this.navigate(this.route.WALLET_SEND)
+
+  render () {
+    const { classes } = this.props
+
     return (
-      <Typography variant="h6" color="inherit" className="Navbar--title">
-        {"@dapperwallet"}
-      </Typography>
-    );
-  }
-
-  onClickWalletReceice = () => {
-    goTo("WalletReceive");
-  }
-
-  onSend = () => {
-    goTo("WalletSend");
-  }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <Page className="Wallet">
-        <Navbar
-          backButton={true}
-          titleComponent={this.renderTitleComponent()}
-        />
-
-        <div className={classes.content}>
-          <WalletHeader
+      <Page navigationProps={this.navigationProps}>
+        <WalletHeader
           classes={classes} {...WalletHeaderTestValue}
           networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
           networkNumber={this.state.blockNumber}
-          />
-          <WalletContent classes={classes} {...WalletContentTestValue} />
-          <WalletButtons
-            classes={classes}
-            onWalletReceive={this.onClickWalletReceice}
-            onSend={this.onSend}
-          />
-        </div>
+        />
+        <WalletContent
+          classes={classes}
+          {...WalletContentTestValue}
+        />
+        <WalletButtons
+          classes={classes}
+          onWalletReceive={this.onClickWalletReceice}
+          onSend={this.onSend}
+        />
       </Page>
     );
   }

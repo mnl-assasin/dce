@@ -1,10 +1,5 @@
 export default theme => ({
   root: {},
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing.unit * 2
-  },
   header: {},
   headerHolder: {
     display: 'flex'
@@ -51,7 +46,7 @@ export default theme => ({
     flexDirection: 'column'
   },
   buttonHolder: {
-    margin: theme.spacing.unit,
+    marginTop: theme.spacing.unit ,
     display: 'flex',
     flexDirection: 'column'
   }

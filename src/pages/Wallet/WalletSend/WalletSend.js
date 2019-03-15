@@ -54,7 +54,6 @@ class WalletSend extends BasePage {
           <div className={classes.headerCoin}>
             <Typography variant="h4" gutterBottom>{this.subTitle}</Typography>
           </div>
-
           <form className={classes.container} noValidate autoComplete="off">
             <Row>
               <div  className={classes.myWalletAddress}>
@@ -69,7 +68,7 @@ class WalletSend extends BasePage {
               </div>
                 <div className={classes.addIcon}>
                   <FileCopy fontSize="inherit" />
-                
+
                 </div>
             </Row>
             <Row>
@@ -86,7 +85,7 @@ class WalletSend extends BasePage {
               </div>
                 <div className={classes.addIcon}>
                   <AddCircleOutline fontSize="inherit" />
-                
+
                 </div>
             </Row>
             <Row>
@@ -116,7 +115,7 @@ class WalletSend extends BasePage {
             <Row>
               <div  className={classes.gasLimit}>
                 <TextField
-                  name="gasLimit" 
+                  name="gasLimit"
                   label="Gas Limit (recomended)"
                   variant="outlined"
                   className={classes.textField}
