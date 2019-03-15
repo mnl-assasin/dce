@@ -7,16 +7,13 @@ import Button from "@material-ui/core/Button"
 import { goTo } from '../../services/navigation'
 import { Page } from '../../common'
 import { Navbar } from '../../components'
-import { WalletRepository } from 'dapper-node'
-// import './GetStarted.css'
 
 import styles from "./styles"
 
 class GetStarted extends React.Component {
 
   _onGetStarted = async () => {
-    let result = WalletRepository.create()
-    goTo('MnemonicPhrase', result)
+    goTo('MnemonicPhrase')
   }
 
   _onRestoreBackup = () => {
