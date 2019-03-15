@@ -6,7 +6,7 @@ const component = ({
   classes,
   userName,
   coinName,
-  coinValue,
+  coinPrice,
   networkName,
   networkNumber
 }) => (
@@ -18,7 +18,7 @@ const component = ({
 
     <div className={classes.headerCoin}>
       <Typography variant="h4">{coinName}</Typography>
-      <Typography>{coinValue}</Typography>
+      <Typography>${coinPrice}</Typography>
     </div>
 
     <div className={classes.headerUser}>
@@ -30,7 +30,7 @@ const component = ({
 component.defaultProps = {
   userName: "",
   coinName: "",
-  coinValue: "",
+  coinPrice: "",
   networkName: "",
   networkNumber: ""
 };
@@ -38,7 +38,7 @@ component.defaultProps = {
 component.propTypes = {
   userName: Proptypes.string,
   coinName: Proptypes.string,
-  coinValue: Proptypes.string,
+  coinPrice: Proptypes.string,
   networkName: Proptypes.string,
   networkNumber: Proptypes.string,
   classes: Proptypes.object.isRequired
@@ -49,7 +49,7 @@ export default component;
 export const WalletHeaderTestValue = {
   userName: "@dapperWallet",
   coinName: "ETH",
-  coinValue: "$100",
+  coinPrice: "$100",
   networkName: "mainnet",
   networkNumber: "7116124"
 };

@@ -21,7 +21,7 @@ const component = ({ classes, amount, value }) => (
       </Col>
       <Col>
         <Typography variant="h5" gutterBottom align="right">
-          {value}
+          ${value}
         </Typography>
       </Col>
     </Row>
