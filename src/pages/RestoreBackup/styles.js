@@ -1,16 +1,5 @@
 export default theme => ({
   root: {},
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing.unit * 3
-  },
-  content: {
-    padding: 10,
-    flex: 1,
-    flexDirection: 'column',
-    display: 'flex'
-  },
   logo: {
   	display: 'flex',
   	justifyContent: 'center',
