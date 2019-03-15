@@ -1,22 +1,34 @@
-import React, { Component } from 'react'
-
-import { withStyles } from '@material-ui/styles'
-import Typography from '@material-ui/core/Typography'
-
-import { goTo } from '../../../services/navigation'
-import Button from '@material-ui/core/Button'
+import React from 'react'
+import PropTypes from 'prop-types'
 import shuffle from 'lodash/shuffle'
 import chunk from 'lodash/chunk'
-import Storage from '../../../services/storage/storage'
 
-import { Page, Col, Row } from '../../../common'
-import { Navbar, alertDialog } from '../../../components'
+import { withStyles } from '@material-ui/styles'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+
+import BasePage from '../../../common/BasePage'
+import Page from '../../../layout/Page'
+import { goTo } from '../../../services/navigation'
+import { Col, Row } from '../../../common'
+import { alertDialog } from '../../../components'
+import { withAppContext } from '../../../services/Providers/AppStateContext'
 
 import styles from './styles'
 import './MnemonicPhraseConfirm.css'
 
-class MnemonicPhraseConfirm extends Component {
-  constructor(props) {
+class MnemonicPhraseConfirm extends BasePage {
+  title = "Confirm Mnemonic"
+  storage = BasePage.constants.storage
+  route = BasePage.constants.route
+
+  navigationProps = {
+    title: this.title,
+    backButton: true
+  }
+
+
+  constructor (props) {
     super(props)
 
     let shuffledWords = shuffle(props.mnemonic.split(' '))
@@ -35,7 +47,7 @@ class MnemonicPhraseConfirm extends Component {
     }
   }
 
-  onClickSelectPhrase(word) {
+  onClickSelectPhrase (word) {
     let lastSelectedPhrase = this.state.shuffledWords.reduce((prev, current) =>
       prev.order > current.order ? prev : current
     )
@@ -58,8 +70,8 @@ class MnemonicPhraseConfirm extends Component {
     })
   }
 
-  onClickLater() {
-    goTo('NominatePassword')
+  onClickLater () {
+    this._next()
   }
 
   _createRows(row) {
@@ -115,7 +127,7 @@ class MnemonicPhraseConfirm extends Component {
 
   onClickSubmit() {
     const { shuffledWords } = this.state
-    const { mnemonic } = this.props
+    const { mnemonic,  } = this.props
 
     let sorted = shuffledWords.sort((a, b) => {
       if (a.order < b.order) {
@@ -144,12 +156,12 @@ class MnemonicPhraseConfirm extends Component {
         ]
       })
     } else {
-      Storage.set('is_mnemonic_set', true)
-      goTo('NominatePassword')
+      this.props.AppContext.persist({[this.storage.IS_SET_MNEMONIC]: true})
+      this._next()
     }
   }
 
-  isDisabledSubmit() {
+  isDisabledSubmit () {
     return (
       this.state.shuffledWords.findIndex(
         shuffledWord => shuffledWord.order === 0
@@ -157,65 +169,69 @@ class MnemonicPhraseConfirm extends Component {
     )
   }
 
-  render() {
+  _next = () => goTo(this.route.NOMINATED_PASSWORD)
+
+  render () {
     const { classes } = this.props
     // need to fix those circles some time
 
     const _disableSubmit = this.isDisabledSubmit()
 
     return (
-      <Page className="MnemonicPhrase">
-        <Navbar backButton={true} />
-        <div className="Content">
-          <Col>
-            <Col flex="10" className="Padding--row">
-              <Typography variant="subtitle1" align="center" gutterBottom>
-                Tap on the words in the correct order
-              </Typography>
+      <Page  navigationProps={this.navigationProps}>
+        <Col>
+          <Col flex="10" className="Padding--row">
+            <Typography variant="subtitle1" align="center" gutterBottom>
+              Tap on the words in the correct order
+            </Typography>
 
-              {this._createColumns(this.state.shuffledWords)}
-            </Col>
-            <Col flex="2" className="Padding--row">
-              <div className="Button--container">
-                <div className={classes.buttonHolder}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    size="medium"
-                    onClick={this.onClickClear.bind(this)}
-                  >
-                    Clear
-                  </Button>
-                </div>
-                <div className={classes.buttonHolder}>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    size="medium"
-                    disabled={_disableSubmit}
-                    onClick={this.onClickSubmit.bind(this)}
-                  >
-                    Submit
-                  </Button>
-                </div>
-
-                <div className={classes.buttonHolder}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    size="medium"
-                    onClick={this.onClickLater.bind(this)}
-                  >
-                    Do it later
-                  </Button>
-                </div>
-              </div>
-            </Col>
+            {this._createColumns(this.state.shuffledWords)}
           </Col>
-        </div>
+          <Col flex="2" className="Padding--row">
+            <div className="Button--container">
+              <div className={classes.buttonHolder}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="medium"
+                  onClick={this.onClickClear.bind(this)}
+                >
+                  Clear
+                </Button>
+              </div>
+              <div className={classes.buttonHolder}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="medium"
+                  disabled={_disableSubmit}
+                  onClick={this.onClickSubmit.bind(this)}
+                >
+                  Submit
+                </Button>
+              </div>
+
+              <div className={classes.buttonHolder}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="medium"
+                  onClick={this.onClickLater.bind(this)}
+                >
+                  Do it later
+                </Button>
+              </div>
+            </div>
+          </Col>
+        </Col>
       </Page>
     )
   }
 }
 
-export default withStyles(styles)(MnemonicPhraseConfirm)
+MnemonicPhraseConfirm.propTypes = {
+  AppContext: PropTypes.object.isRequired, // withAppContext
+  classes: PropTypes.object.isRequired // withStyles
+}
+
+export default withStyles(styles)(withAppContext(MnemonicPhraseConfirm))
