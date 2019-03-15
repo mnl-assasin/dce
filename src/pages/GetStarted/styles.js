@@ -1,12 +1,18 @@
 export default theme => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
   },
   container: {
-    display: 'flex',
+    padding: 10,
+    flex: 1,
     flexDirection: 'column',
-    padding: theme.spacing.unit * 3
+    display: 'flex'
+  },
+  logo: {
+  	display: 'flex',
+  	justifyContent: 'center',
+  	alignItems: 'center',
+  	flex: 2,
+  	height: 200
   },
   buttonGroup: {
     display: 'flex',
