@@ -7,7 +7,8 @@ import {
   IS_LOGGED,
   ACTIVE_PROVIDER_ID,
   ACTIVE_PROVIDER_NAME,
-  IS_SET_MNEMONIC
+  IS_SET_MNEMONIC,
+  ETHER_PRICE
 } from '../../constants/storage'
 
 
@@ -33,6 +34,7 @@ class AppContextProvider extends Component {
       [ACTIVE_PROVIDER_ID]: '',
       [ACTIVE_PROVIDER_NAME]: '',
       [IS_SET_MNEMONIC]: false,
+      [ETHER_PRICE]: '',
       userToken: null,
       ...props.value,
 
