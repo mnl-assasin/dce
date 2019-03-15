@@ -1,4 +1,4 @@
-import { Transaction } from 'dapper-js'
+import { Transaction } from 'dapper'
 
 //
 // setBlockNumber

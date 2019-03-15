@@ -1,4 +1,4 @@
-import { Wallet } from 'dapper-js'
+import { Wallet } from 'dapper'
 import { emptyMethod } from '../helper/function'
 
 /**

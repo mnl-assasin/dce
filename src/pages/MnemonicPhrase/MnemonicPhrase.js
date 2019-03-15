@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import chunk from 'lodash/chunk'
-import { Wallet } from 'dapper-js'
+import { Wallet } from 'dapper'
 
 import { withStyles } from '@material-ui/styles'
 import Button from '@material-ui/core/Button'
