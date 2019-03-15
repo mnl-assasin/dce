@@ -10,3 +10,8 @@ export const WALLET_MNEMONIC = 'mnemonic'
 export const WALLET_ADDRESS = 'address'
 export const WALLET_PRIVATE_KEY = 'privateKey'
 export const WALLET_PUBLIC_KEY = 'publicKey'
+
+//
+// 
+
+export const ETHER_PRICE = 'ether_price'
