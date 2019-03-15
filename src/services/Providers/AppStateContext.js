@@ -38,7 +38,7 @@ class AppContextProvider extends Component {
 
       onAppContextChange: this.onAppContextChange,
       persist: this.persist,
-      set: this.persist,
+      set: this.set,
       clear: this.clear,
     }
   }
@@ -62,7 +62,7 @@ class AppContextProvider extends Component {
     Object.keys(item).forEach((key) => {
       this._saveToStorage(key, item[key])
     })
-      
+
     //
     this.setState({...this.state, ...item})
   }
