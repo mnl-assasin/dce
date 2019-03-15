@@ -16,10 +16,10 @@ export default (context) => async (ACTIVE_PROVIDER_ID, onSuccess, onError) => {
       // context.setState({blockNumber: String(request.data.blockNumber)})
       return onSuccess(request.data.blockNumber)
     } else {
-      throw new Error('error in getting blockNumber')
+      throw new Error('code not 200')
     }
   } catch (e) {
-    onError(e)
-    return console.log('error in getting blockNumber: ', e)
+    console.log('error in getting blockNumber: ', e)
+    return onError(e)
   }
 }
