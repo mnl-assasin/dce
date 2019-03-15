@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
+import PropTypes from "prop-types";
+
+import { withStyles } from "@material-ui/styles"
+import Button from "@material-ui/core/Button"
+
 import { goTo } from '../../services/navigation'
-import { Page, Col, Button } from '../../common'
+import { Page } from '../../common'
 import { Navbar } from '../../components'
 import { WalletRepository } from 'dapper-node'
-import './GetStarted.css'
+// import './GetStarted.css'
 
-class GetStarted extends Component {
+import styles from "./styles"
+
+class GetStarted extends React.Component {
 
   _onGetStarted = async () => {
     let result = WalletRepository.create()
@@ -16,29 +23,39 @@ class GetStarted extends Component {
     goTo('RestoreBackup')
   }
 
-  render() {
+  render () {
+    const { classes } = this.props
     return (
       <Page className="GetStarted">
         <Navbar/>
         <div className="Content">
-          <Col flex="1"></Col>
-
-          <Col flex="1">
-            <div className="GetStarted--button-container">
-              <Button color="primary" outline="true" onClick={this._onGetStarted}>
-                Get Started
-              </Button>
-              
-              <Button outline="true" onClick={this._onRestoreBackup}>
-                Restore Backup
-              </Button>
-            </div>
-          </Col>
-
+          <div className={classes.buttonGroup}>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={this._onGetStarted}
+            >
+              Get Started
+            </Button>
+            <br />
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={this._onRestoreBackup}
+            >
+              Restore Backup
+            </Button>
+          </div>
         </div>
       </Page>
     )
   }
 }
 
-export default GetStarted
+GetStarted.propTypes = {
+  classes: PropTypes.object.isRequired // withStyles
+};
+
+export default withStyles(styles)(GetStarted)
