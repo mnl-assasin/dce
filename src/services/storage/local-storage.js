@@ -8,7 +8,14 @@ class LocalStorage {
   }
 
   get(key) {
-    return Promise.resolve(JSON.parse(window.localStorage.getItem(key)) || null);
+    //TODO:  must be match for chrome-storge
+    try {
+      const result =  JSON.parse(window.localStorage.getItem(key));
+      return Promise.resolve(result || null)
+    } catch (e) {
+      console.log('error in getting stroge: key:', key, ' error: ', e)
+      return Promise.resolve(null)
+    }
   }
 
   setObject(key, value) {
@@ -22,7 +29,7 @@ class LocalStorage {
   getObject(key) {
     return new Promise( (resolve) => {
       let value = window.localStorage.getItem(key) || '{}';
-      
+
       resolve(JSON.parse(value));
     })
   }
