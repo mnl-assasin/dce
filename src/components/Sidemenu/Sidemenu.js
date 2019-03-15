@@ -7,7 +7,9 @@ import {
   withAppContext
 } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { DASHBOARD, WALLET, WALLET_SEND, LOGIN, RESTORE_BACKUP, NOMINATED_PASSWORD, SETTING  } from '../../constants/route'
+import { DASHBOARD, WALLET, WALLET_SEND, LOGIN,
+  MNEMONIC_CONFIRM,
+  RESTORE_BACKUP, NOMINATED_PASSWORD, SETTING  } from '../../constants/route'
 import { IS_LOGGED, IS_SET_MNEMONIC } from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
@@ -101,7 +103,11 @@ class Sidemenu extends PureComponent {
     {
       title: 'Restore Backup',
       onClick: () =>{ SidemenuEvent.toggle(); goTo(RESTORE_BACKUP) }
-    },  
+    },
+    {
+      title: 'Confirm Mnemonic ',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(MNEMONIC_CONFIRM, {mnemonic: "jaylord torres"}) }
+    },
     {
       title: 'Nominate Password',
       onClick: () =>{ SidemenuEvent.toggle(); goTo(NOMINATED_PASSWORD) }
