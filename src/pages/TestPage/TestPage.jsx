@@ -1,7 +1,7 @@
 import React  from 'react'
 import PropTypes from "prop-types";
 
-import { Wallet, Transaction } from 'dapper-js'
+import { Wallet, Transaction } from 'dapper'
 
 import BasePage from "../../common/BasePage"
 import { goTo } from '../../services/navigation'
