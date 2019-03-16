@@ -1,4 +1,5 @@
 export const DASHBOARD = 'Dashboard'
+export const MNEMONIC_PHRASE = 'MnemonicPhrase'
 export const MNEMONIC_CONFIRM = 'MnemonicPhraseConfirm'
 export const GET_STARTED = 'GetStarted'
 export const NOMINATED_PASSWORD = 'NominatePassword'
