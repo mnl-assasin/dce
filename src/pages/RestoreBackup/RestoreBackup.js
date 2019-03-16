@@ -27,8 +27,7 @@ const RestoreBackup = props => {
   const classes = useStyles()
   const phraseState = useTextbox()
   const onClickSubmit = useCallback(
-    () =>
-      restoreBackup(appContext, navigate, alertDialog)(phraseState.value),
+    () => restoreBackup(appContext, navigate, alertDialog)(phraseState.value),
     [phraseState.value]
   )
 
