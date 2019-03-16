@@ -1,4 +1,6 @@
-export default theme => ({
+import { makeStyles } from '@material-ui/styles'
+
+export const styles = theme => ({
   root: {},
   container: {
     display: 'flex',
@@ -32,3 +34,5 @@ export default theme => ({
 
   }
 })
+
+export default makeStyles(styles)
