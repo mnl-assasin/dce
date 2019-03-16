@@ -1,4 +1,6 @@
-export default theme => ({
+import { makeStyles } from '@material-ui/styles'
+
+export const styles = theme => ({
   root: {},
   logo: {
   	display: 'flex',
@@ -17,3 +19,5 @@ export default theme => ({
     flexDirection: 'column'
   }
 })
+
+export default makeStyles(styles)
