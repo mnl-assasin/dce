@@ -1,57 +1,52 @@
 import React from 'react'
-import PropTypes from "prop-types"
-
-import { withStyles } from "@material-ui/styles"
-import Button from "@material-ui/core/Button"
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-import BasePage from "../../common/BasePage";
 import Page from '../../layout/Page'
+import * as route from '../../constants/route'
 import { goTo } from '../../services/navigation'
+import useStyles from './styles'
 
-import styles from "./styles"
-
-class GetStarted extends BasePage {
-  title = "Getting Started"
-  navigationProps = {title: this.title}
-
-  _onGetStarted = () => goTo('MnemonicPhrase')
-  _onRestoreBackup = () => goTo('RestoreBackup')
-
-  render () {
-    const { classes } = this.props
-
-    return (
-      <Page navigationProps={this.navigationProps}>
-        <div className={classes.logo}>
-          <Typography variant="h3"></Typography>
-        </div>
-        <div className={classes.buttonGroup}>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            onClick={this._onGetStarted}
-          >
-            Get Started
-          </Button>
-          <br />
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            onClick={this._onRestoreBackup}
-          >
-            Restore Backup
-          </Button>
-        </div>
-      </Page>
-    )
-  }
+// page setup
+const title = 'Getting Started'
+const navigationProps = {
+  title: title
 }
 
-GetStarted.propTypes = {
-  classes: PropTypes.object.isRequired // withStyles
-};
+// methods
+const onClickGetStarted = () => goTo(route.MNEMONIC_PHRASE)
+const onClickRestoreBackup = () => goTo(route.RESTORE_BACKUP)
 
-export default withStyles(styles)(GetStarted)
+// template
+const GetStarted = () => {
+  const classes = useStyles()
+
+  return (
+    <Page navigationProps={navigationProps}>
+      <div className={classes.logo}>
+        <Typography variant="h3"></Typography>
+      </div>
+      <div className={classes.buttonGroup}>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          onClick={onClickGetStarted}
+        >
+          Get Started
+        </Button>
+        <br />
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          onClick={onClickRestoreBackup}
+        >
+          Restore Backup
+        </Button>
+      </div>
+    </Page>
+  )
+}
+
+export default GetStarted

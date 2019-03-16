@@ -1,4 +1,6 @@
-export default theme => ({
+import { makeStyles } from '@material-ui/styles'
+
+export const styles =  theme => ({
   root: {
   },
   logo: {
@@ -16,3 +18,5 @@ export default theme => ({
     justifyContent: 'center'
   }
 })
+
+export default makeStyles(styles)
