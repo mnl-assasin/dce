@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -7,6 +7,8 @@ import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
 
 import Page from '../../../layout/Page'
+import sendWallet from '../../../hof/send_wallet'
+import estimateFee from '../../../hof/estimate_fee'
 import { Row } from '../../../common'
 import { useTextbox } from '../../../hook'
 import { inputTypes } from '../../../constants/types'
@@ -24,18 +26,33 @@ const navigationProps = {
 }
 
 // methods
-
+const TestWalletAddress = '0x14fe7926b260834b2d1a5124332deae9dcf20029'
 // template
 const WalletSend = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
+  const [fee, setFee] = useState('')
   const sendTo = useTextbox('')
   const amount = useTextbox('')
   const usd = useTextbox('')
   const gasLimit = useTextbox('')
   const transaction = useTextbox('')
   const yourAddresss = useTextbox(appContext[storage.WALLET_ADDRESS])
-  const onClickSubmit = useCallback(() => {console.log('sumitted')}, [])
+  const onClickEstimate = useCallback(() => estimateFee(appContext)({
+    network: appContext[storage.ACTIVE_PROVIDER_ID],
+    address: TestWalletAddress,
+    value: amount.value
+  }, ({estimatedTotalString}) =>setFee(estimatedTotalString)), [amount.value])
+  const onClickSubmit = () => {console.log('submitted: ')}
+
+  // const onClickSubmit = useCallback(() => sendWallet(appContext)({
+  //   network: appContext[storage.ACTIVE_PROVIDER_ID],
+  //   privateKey: appContext[storage.WALLET_PRIVATE_KEY],
+  //   address: TestWalletAddress,
+  //   value: amount.value,
+  //   gasLimit: '21000',
+  //   data: null
+  // }, (result) =>console.log('sent: ', result)), [amount.value])
 
   return (
     <Page navigationProps={navigationProps}>
@@ -122,7 +139,19 @@ const WalletSend = props => {
           type={inputTypes.text}
           {...transaction}
         />
+          <Typography variant="caption" gutterBottom>
+          estimate fee: {fee}
+          </Typography>
         <div className={classes.buttonHolder}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            onClick={onClickEstimate}
+          >
+            estimate
+          </Button>
+
           <Button
             variant="outlined"
             color="primary"
