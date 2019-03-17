@@ -14,6 +14,7 @@ import Splash from './pages/Splash/Splash'
 import Wallet from './pages/Wallet/Wallet'
 import WalletSend from './pages/Wallet/WalletSend/WalletSend'
 import WalletReceive from './pages/Wallet/WalletReceive/WalletReceive'
+import WalletHistory from './pages/WalletHistory/WalletHistory'
 import TestPage from './pages/TestPage/TestPage'
 
 export default {
@@ -33,6 +34,7 @@ export default {
   'Wallet': Wallet,
   'WalletSend': WalletSend,
   'WalletReceive': WalletReceive,
+  'WalletHistory': WalletHistory,
 
   'TestPage': TestPage
 }
