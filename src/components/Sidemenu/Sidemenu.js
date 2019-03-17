@@ -9,8 +9,8 @@ import {
 import SidemenuEvent from '../../events/SidemenuEvent'
 import { DASHBOARD, WALLET, WALLET_SEND, LOGIN,
   MNEMONIC_CONFIRM,
-  RESTORE_BACKUP, NOMINATED_PASSWORD, SETTING  } from '../../constants/route'
-import { IS_LOGGED, IS_SET_MNEMONIC, WALLET_ADDRESS } from '../../constants/storage'
+  RESTORE_BACKUP, NOMINATED_PASSWORD, SETTING,  WALLET_HISTORY  } from '../../constants/route'
+import { IS_LOGGED, IS_SET_MNEMONIC, WALLET_ADDRESS} from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
 import MenuDevtool from './component/MenuDevtool'
@@ -123,6 +123,10 @@ class Sidemenu extends PureComponent {
     {
       title: 'Wallet -> Send ',
       onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET_SEND) }
+    },
+    {
+      title: 'Wallet -> History ',
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET_HISTORY) }
     },
     {
       title: 'Setting ',
