@@ -1,4 +1,6 @@
-export default theme => ({
+import { makeStyles } from '@material-ui/styles'
+
+export const styles = theme => ({
   root: {},
   content: {
     display: 'flex',
@@ -83,6 +85,7 @@ export default theme => ({
 
   },
   gasLimit: {
+    // marginLeft: theme.spacing.unit,
 
   },
   gasIcon : {
@@ -91,7 +94,9 @@ export default theme => ({
 
   },
   transaction: {
-    display: 'felx',
+    display: 'flex',
 flex: 1
   }
 })
+
+export default makeStyles(styles)
