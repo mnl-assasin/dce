@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import BasePage from "../../common/BasePage"
+import setBalance from '../../hof/set_balance'
+import setEtherPrice from '../../hof/set_ether_price'
+import { convertedPricePerValue } from '../../helper/computation'
 import { Page, Row, Col, Icon as ThemeIcon } from '../../common'
 import { Navbar } from '../../components';
 import { goTo } from '../../services/navigation';
@@ -17,21 +20,41 @@ import './Dashboard.scss';
 import EtherImage from './icon_ether.png'
 import BitImage from './icon_bitcoin.png'
 
+const icons = {
+  ETHER: EtherImage,
+  BitImage
+}
+
 class Dashboard extends BasePage {
   title = 'Dashboard'
   // store = BasePage.store
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
 
+  setEtherPrice = setEtherPrice(this)
+  setBalance = setBalance(this)
+
+  componentDidMount () {
+    // get ether balance and set it to context
+    this.setEtherPrice()
+
+    this.setBalance(
+      this.props.AppContext[this.storage.ACTIVE_PROVIDER_ID],
+      this.props.AppContext[this.storage.WALLET_ADDRESS],
+      (value) => this.setState({amount: value})
+    )
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
+      amount: 0,
       items: [
         {
           model: {},
           isWallet: true,
-          amount: '0.123432',
+          amount: 'test value',
           value: '0.123432',
           iconComponent: <ThemeIcon src={EtherImage} size={70} />,
           onClick: (model) => {
@@ -41,7 +64,7 @@ class Dashboard extends BasePage {
         {
           model: {},
           isWallet: true,
-          amount: '0.123432',  
+          amount: '0.123432',
           value: '0.123432',
           iconComponent: <ThemeIcon size={70} src={EtherImage} />,
           onClick: (model) => {
@@ -51,7 +74,7 @@ class Dashboard extends BasePage {
         {
           model: {},
           isWallet: true,
-          amount: '2.123432',  
+          amount: '2.123432',
           value: '0.123432',
           iconComponent: <ThemeIcon size={70} src={EtherImage} />,
           onClick: (model) => {
@@ -61,29 +84,13 @@ class Dashboard extends BasePage {
         {
           model: {},
           isWallet: true,
-          amount: '4.123432',  
+          amount: '4.123432',
           value: '100.123432',
           iconComponent: <ThemeIcon size={70} src={BitImage} />,
           onClick: (model) => {
             goTo('Wallet', model)
           }
         },
-        // {
-        //   model: {},
-        //   label: '123',
-        //   iconComponent: <ThemeIcon size="70" iconName="card_travel"></ThemeIcon>,
-        //   onClick: (model) => {
-        //     goTo('Wallet', model)
-        //   }
-        // },
-        // {
-        //   model: {},
-        //   label: '1234',
-        //   iconComponent: <ThemeIcon size="70" iconName="card_travel" />,
-        //   onClick: (model) => {
-        //     goTo('Wallet', model)
-        //   }
-        // }
       ]
     };
 
@@ -92,7 +99,7 @@ class Dashboard extends BasePage {
   }
 
   onClickRestoreRecover() {}
-  
+
   onClickBackUpChain() {}
 
   onClickItem(item) {
@@ -107,7 +114,7 @@ class Dashboard extends BasePage {
     //
     if (item.isWallet) {
       return (
-        <div className="Dashboard--widget" key={i} onClick={this.onClickItem.bind(this, item)}>
+        <div className="Dashboard--widget pointer" key={i} onClick={this.onClickItem.bind(this, item)}>
           <div>
             {item.iconComponent}
           </div>
@@ -169,10 +176,26 @@ class Dashboard extends BasePage {
     return this.state.items.map((item, i) => this.onRenderWidget(item, i))
   }
 
+  _renderWallet = (amount , value, key = 'ETHER') => {
+      const item = {
+        key: key,
+        model: {},
+        isWallet: true,
+        amount: amount,
+        value: value,
+        iconComponent: <ThemeIcon src={icons[key]} size={70} />,
+        onClick: (model) => {
+          goTo('Wallet', model)
+        }
+      }
+      return this.onRenderWidget(item, key)
+  }
+
   render() {
     const { AppContext } = this.props
     let _renderedItems = this.onRenderList();
     let _renderedAddItem = this.onRenderAddWidget();
+    const _renderWallet = this._renderWallet(this.state.amount, convertedPricePerValue(AppContext[this.storage.ETHER_PRICE], this.state.amount), 'ETHER')
 
     return (
       <Page className="Dashboard">
@@ -189,6 +212,7 @@ class Dashboard extends BasePage {
           <Row flex="11" justifyContent="center">
             <Col flex="1">
               <div className="Dashboard--widget-container">
+                {_renderWallet}
                 {_renderedItems}
                 {_renderedAddItem}
               </div>
