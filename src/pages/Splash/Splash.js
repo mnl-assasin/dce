@@ -16,6 +16,7 @@ class Splash extends BasePage {
   setBlockNumber = setBlockNumber(this)
 
   async componentDidMount() {
+    return null
     // load session into react memory
     await this._init()
 
@@ -67,9 +68,9 @@ class Splash extends BasePage {
     this.storage.WALLET_MNEMONIC,
     this.storage.WALLET_ADDRESS,
     this.storage.WALLET_PRIVATE_KEY,
-    this.storage.WALLET_PUBLIC_KEY,  
+    this.storage.WALLET_PUBLIC_KEY,
 
-    // load selected network    
+    // load selected network
     this.storage.ACTIVE_PROVIDER_ID,
     this.storage.ACTIVE_PROVIDER_NAME,
     this.storage.ACTIVE_PROVIDER_BlOCKNUMBER
@@ -82,7 +83,7 @@ class Splash extends BasePage {
       this.startLoadArray.map(async (key) => {
              willSaveInState[key] = await this.store.get(key) || this.defaults.getDefault(key)
           })
-    )  
+    )
     this.props.AppContext.set(willSaveInState)
 
     // this will execute hof
@@ -100,7 +101,7 @@ class Splash extends BasePage {
     return (
       <div className="Splash">
         <div className="Content">
-          Splash Page
+          <span>Loading...</span>
         </div>
       </div>
     );
@@ -108,4 +109,3 @@ class Splash extends BasePage {
 }
 
 export default withAppContext(Splash);
- 
