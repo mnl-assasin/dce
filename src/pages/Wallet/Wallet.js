@@ -46,6 +46,7 @@ class Wallet extends BasePage {
   onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
 
   onSend = () => this.navigate(this.route.WALLET_SEND)
+  onHistory = () => this.navigate(this.route.WALLET_HISTORY)
 
   render () {
     const { amount } = this.state
@@ -69,6 +70,7 @@ class Wallet extends BasePage {
           classes={classes}
           onWalletReceive={this.onClickWalletReceice}
           onSend={this.onSend}
+          onHistory={this.onHistory}
         />
       </Page>
     );
