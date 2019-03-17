@@ -16,7 +16,6 @@ class Splash extends BasePage {
   setBlockNumber = setBlockNumber(this)
 
   async componentDidMount() {
-    return null
     // load session into react memory
     await this._init()
 
