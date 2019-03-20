@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/styles'
 
 const style = {
-  borderRadius: 3,
-  border: 0,
   borderRadius: 99,
-  border: 0,
+  paddingBottom: '0.8rem',
+  paddingTop: '0.8rem',
+
 }
 
 export const outlined = {
