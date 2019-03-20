@@ -11,7 +11,7 @@ import BasePage from '../../../common/BasePage'
 import Page from '../../../layout/Page'
 import { goTo } from '../../../services/navigation'
 import { Col, Row } from '../../../common'
-import { alertDialog } from '../../../components'
+import { alertDialog, PrimaryButton } from '../../../components'
 import { withAppContext } from '../../../services/Providers/AppStateContext'
 
 import styles from './styles'
@@ -190,36 +190,33 @@ class MnemonicPhraseConfirm extends BasePage {
           <Col flex="2" className="Padding--row">
             <div className="Button--container">
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
+                <PrimaryButton
+                  type="outlined"
                   size="medium"
                   onClick={this.onClickClear.bind(this)}
                 >
                   Clear
-                </Button>
+                </PrimaryButton>
               </div>
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="primary"
+                <PrimaryButton
+                  type="primary"
                   size="medium"
                   disabled={_disableSubmit}
                   onClick={this.onClickSubmit.bind(this)}
                 >
                   Submit
-                </Button>
+                </PrimaryButton>
               </div>
 
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
+                <PrimaryButton
+                  type="secondary"
                   size="medium"
                   onClick={this.onClickLater.bind(this)}
                 >
                   Do it later
-                </Button>
+                </PrimaryButton>
               </div>
             </div>
           </Col>
