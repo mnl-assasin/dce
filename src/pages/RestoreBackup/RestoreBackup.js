@@ -8,7 +8,7 @@ import restoreBackup from '../../hof/restore_backup'
 import { useTextbox } from '../../hook'
 import { Col } from '../../common'
 import { goTo as navigate } from '../../services/navigation'
-import { alertDialog } from '../../components'
+import { alertDialog, PrimaryButton } from '../../components'
 import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import useStyles from './styles'
@@ -16,7 +16,7 @@ import useStyles from './styles'
 // page setup
 // const title = 'RestoreBackup'
 const navigationProps = {
-  backButton: true
+  backButton: true,
 }
 
 // methods
@@ -46,14 +46,14 @@ const RestoreBackup = props => {
           {...phraseState}
         />
         <div className={classes.buttonHolder}>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
+          <PrimaryButton
+            type="primary"
+            size="medium"
+            fullWidth
             onClick={onClickSubmit}
           >
             Submit
-          </Button>
+          </PrimaryButton>
         </div>
       </Col>
     </Page>
