@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import Page from '../../layout/Page'
+import { PrimaryButton } from '../../components'
 import * as route from '../../constants/route'
 import { goTo } from '../../services/navigation'
 import useStyles from './styles'
@@ -10,7 +11,7 @@ import useStyles from './styles'
 // page setup
 const title = 'Getting Started'
 const navigationProps = {
-  title: title
+  title: title,
 }
 
 // methods
@@ -24,26 +25,26 @@ const GetStarted = () => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Typography variant="h3"></Typography>
+        <Typography variant="h3" />
       </div>
       <div className={classes.buttonGroup}>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="large"
+        <PrimaryButton
+          type="primary"
+          size="medium"
+          fullWidth
           onClick={onClickGetStarted}
         >
           Get Started
-        </Button>
+        </PrimaryButton>
         <br />
-        <Button
-          variant="outlined"
-          color="primary"
-          size="large"
+        <PrimaryButton
+          type="primary"
+          size="medium"
+          fullWidth
           onClick={onClickRestoreBackup}
         >
           Restore Backup
-        </Button>
+        </PrimaryButton>
       </div>
     </Page>
   )

@@ -11,24 +11,23 @@ import BasePage from '../../../common/BasePage'
 import Page from '../../../layout/Page'
 import { goTo } from '../../../services/navigation'
 import { Col, Row } from '../../../common'
-import { alertDialog } from '../../../components'
+import { alertDialog, PrimaryButton, SmallButton } from '../../../components'
 import { withAppContext } from '../../../services/Providers/AppStateContext'
 
 import styles from './styles'
 import './MnemonicPhraseConfirm.css'
 
 class MnemonicPhraseConfirm extends BasePage {
-  title = "Confirm Mnemonic"
+  title = 'Confirm Mnemonic'
   storage = BasePage.constants.storage
   route = BasePage.constants.route
 
   navigationProps = {
     title: this.title,
-    backButton: true
+    backButton: true,
   }
 
-
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     let shuffledWords = shuffle(props.mnemonic.split(' '))
@@ -38,16 +37,16 @@ class MnemonicPhraseConfirm extends BasePage {
         order: 0,
         word: word,
         index: index,
-        message: ''
+        message: '',
       }
     })
 
     this.state = {
-      shuffledWords: shuffledWords
+      shuffledWords: shuffledWords,
     }
   }
 
-  onClickSelectPhrase (word) {
+  onClickSelectPhrase(word) {
     let lastSelectedPhrase = this.state.shuffledWords.reduce((prev, current) =>
       prev.order > current.order ? prev : current
     )
@@ -58,7 +57,7 @@ class MnemonicPhraseConfirm extends BasePage {
         return {
           order: lastSelectedPhrase.order + 1,
           word: shuffledWord.word,
-          index: shuffledWord.index
+          index: shuffledWord.index,
         }
       }
 
@@ -66,11 +65,11 @@ class MnemonicPhraseConfirm extends BasePage {
     })
 
     this.setState({
-      shuffledWords: clonedShuffledWords
+      shuffledWords: clonedShuffledWords,
     })
   }
 
-  onClickLater () {
+  onClickLater() {
     this._next()
   }
 
@@ -84,14 +83,12 @@ class MnemonicPhraseConfirm extends BasePage {
           className="Phrase--item pointer"
           onClick={this.onClickSelectPhrase.bind(this, word)}
         >
-          <Col flex="1 0px" alignItems="center" className="Phrase--index">
-            <Typography variant="h6">
-              {word.order > 0 ? word.order : null}
-            </Typography>
-          </Col>
-          <Col flex="3">
-            <Typography variant="h6">&nbsp;{word.word}</Typography>
-          </Col>
+          <div className={this.props.classes.smallButtonHolder}>
+            <SmallButton
+              count={word.order > 0 ? word.order : null}
+              title={word.word}
+            />
+          </div>
         </Row>
       )
     })
@@ -116,18 +113,18 @@ class MnemonicPhraseConfirm extends BasePage {
       return {
         order: 0,
         word: shuffledWord.word,
-        index: shuffledWord.index
+        index: shuffledWord.index,
       }
     })
 
     this.setState({
-      shuffledWords: clonedShuffledWords
+      shuffledWords: clonedShuffledWords,
     })
   }
 
   onClickSubmit() {
     const { shuffledWords } = this.state
-    const { mnemonic,  } = this.props
+    const { mnemonic } = this.props
 
     let sorted = shuffledWords.sort((a, b) => {
       if (a.order < b.order) {
@@ -151,17 +148,17 @@ class MnemonicPhraseConfirm extends BasePage {
         buttons: [
           {
             text: 'Okay',
-            onClick: () => this.onClickClear()
-          }
-        ]
+            onClick: () => this.onClickClear(),
+          },
+        ],
       })
     } else {
-      this.props.AppContext.persist({[this.storage.IS_SET_MNEMONIC]: true})
+      this.props.AppContext.persist({ [this.storage.IS_SET_MNEMONIC]: true })
       this._next()
     }
   }
 
-  isDisabledSubmit () {
+  isDisabledSubmit() {
     return (
       this.state.shuffledWords.findIndex(
         shuffledWord => shuffledWord.order === 0
@@ -171,55 +168,54 @@ class MnemonicPhraseConfirm extends BasePage {
 
   _next = () => goTo(this.route.NOMINATED_PASSWORD)
 
-  render () {
+  render() {
     const { classes } = this.props
     // need to fix those circles some time
 
     const _disableSubmit = this.isDisabledSubmit()
 
     return (
-      <Page  navigationProps={this.navigationProps}>
+      <Page navigationProps={this.navigationProps}>
         <Col>
           <Col flex="10" className="Padding--row">
-            <Typography variant="subtitle1" align="center" gutterBottom>
+            <br />
+            <Typography variant="caption" align="center" gutterBottom>
               Tap on the words in the correct order
             </Typography>
-
             {this._createColumns(this.state.shuffledWords)}
           </Col>
+          <br />
+          <br />
           <Col flex="2" className="Padding--row">
             <div className="Button--container">
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
+                <PrimaryButton
+                  type="outlined"
                   size="medium"
                   onClick={this.onClickClear.bind(this)}
                 >
                   Clear
-                </Button>
+                </PrimaryButton>
               </div>
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="primary"
+                <PrimaryButton
+                  type="primary"
                   size="medium"
                   disabled={_disableSubmit}
                   onClick={this.onClickSubmit.bind(this)}
                 >
                   Submit
-                </Button>
+                </PrimaryButton>
               </div>
 
               <div className={classes.buttonHolder}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
+                <PrimaryButton
+                  type="secondary"
                   size="medium"
                   onClick={this.onClickLater.bind(this)}
                 >
                   Do it later
-                </Button>
+                </PrimaryButton>
               </div>
             </div>
           </Col>
@@ -231,7 +227,7 @@ class MnemonicPhraseConfirm extends BasePage {
 
 MnemonicPhraseConfirm.propTypes = {
   AppContext: PropTypes.object.isRequired, // withAppContext
-  classes: PropTypes.object.isRequired // withStyles
+  classes: PropTypes.object.isRequired, // withStyles
 }
 
 export default withStyles(styles)(withAppContext(MnemonicPhraseConfirm))

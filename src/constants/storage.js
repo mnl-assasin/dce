@@ -1,4 +1,3 @@
-
 export const IS_LOGGED = 'isLogged'
 export const IS_SET_MNEMONIC = 'is_mnemonic_set'
 export const IS_SET_PASSWORD = 'is_password_set'

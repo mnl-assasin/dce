@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { goBack } from '../../services/navigation';
+import React, { Component } from 'react'
+import { goBack } from '../../services/navigation'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import MenuIcon from '@material-ui/icons/Menu';
-import './Navbar.css';
-
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import MenuIcon from '@material-ui/icons/Menu'
+import './Navbar.css'
 
 const styles = {
   root: {
@@ -22,7 +21,7 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-};
+}
 
 class Navbar extends Component {
   onToggleMenu() {
@@ -30,7 +29,7 @@ class Navbar extends Component {
   }
 
   onClickBackButton() {
-    goBack();
+    goBack()
   }
 
   _renderBackButton() {
@@ -41,7 +40,7 @@ class Navbar extends Component {
         color="inherit"
         aria-label="Menu"
       >
-        <ArrowBackIosIcon />
+        <ArrowBackIcon />
       </IconButton>
     )
   }
@@ -53,7 +52,7 @@ class Navbar extends Component {
 
     return (
       <Typography variant="subtitle1" color="inherit" className="Navbar--title">
-        { (this.props.title || '') }
+        {this.props.title || ''}
       </Typography>
     )
   }
@@ -63,31 +62,26 @@ class Navbar extends Component {
     const hideBurger = this.props.hideBurger || false
 
     return (
-      <div className='Navbar'>
-        <AppBar position="static">
+      <div className="Navbar">
+        <AppBar
+          position="static"
+          style={{ backgroundColor: 'white', color: 'black' }}
+        >
           <Toolbar>
-            {
-              backButton 
-                ? this._renderBackButton()
-                : null
-            }
-            
-            { this.onRenderTitle() }
+            {backButton ? this._renderBackButton() : null}
 
-            {
-              !hideBurger 
-                ? (
-                  <IconButton
-                    onClick={this.onToggleMenu}
-                    className="Navbar--button"
-                    color="inherit"
-                    aria-label="Menu"
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                )
-                : null
-            }
+            {this.onRenderTitle()}
+
+            {!hideBurger ? (
+              <IconButton
+                onClick={this.onToggleMenu}
+                className="Navbar--button"
+                color="inherit"
+                aria-label="Menu"
+              >
+                <MenuIcon />
+              </IconButton>
+            ) : null}
           </Toolbar>
         </AppBar>
       </div>
@@ -96,4 +90,4 @@ class Navbar extends Component {
 }
 
 // export default Navbar;
-export default withStyles(styles)(Navbar);
+export default withStyles(styles)(Navbar)
