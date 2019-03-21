@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import BasePage from '../../common/BasePage'
-import { Navbar, PrimaryButton, SmallButton } from '../../components'
+import { Navbar, PrimaryButton, SmallButton, Center } from '../../components'
 import { Page, Col, Row } from '../../common'
 import { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
@@ -36,7 +36,10 @@ class MnemonicPhrase extends BasePage {
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    setTimeout(this.init, 0.5)
+  }
+  init = async () => {
     this.store.set([this.storage.WALLET_MNEMONIC], false)
     this.store.set([this.storage.IS_SET_PASSWORD], false)
 
@@ -116,7 +119,16 @@ class MnemonicPhrase extends BasePage {
     const { isLoaded, error, mnemonic } = this.state
 
     if (!isLoaded) {
-      return <span>Loading...</span>
+      return (
+        <Page className="MnemonicPhrase">
+          <Navbar backButton={true} />
+          <div className="Content">
+            <Center>
+              <span>Loading...</span>
+            </Center>
+          </div>
+        </Page>
+      )
     }
 
     if (error) {
@@ -139,8 +151,8 @@ class MnemonicPhrase extends BasePage {
               {this._createColumns(arrWords)}
             </Col>
             <Col flex="2" className="Padding--row">
-            <br />
-            <br />
+              <br />
+              <br />
               <div className={classes.button}>
                 <PrimaryButton
                   type="primary"
