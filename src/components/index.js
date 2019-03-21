@@ -8,6 +8,7 @@ import Notifier, { openSnackbar } from './Notifier/Notifier'
 import AlertDialog, { alertDialog } from './AlertDialog/AlertDialog'
 import Snackbar, { showSnackbar } from './Snackbar/Snackbar'
 import PrimaryButton from './PrimaryButton'
+import SmallButton from './SmallButton'
 
 export {
   Navbar,
@@ -17,6 +18,7 @@ export {
   AlertDialog,
   Snackbar,
   PrimaryButton,
+  SmallButton,
   //
   // functions
   openSnackbar,
