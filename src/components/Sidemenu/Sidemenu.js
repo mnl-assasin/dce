@@ -106,7 +106,7 @@ class Sidemenu extends PureComponent {
     },
     {
       title: 'Confirm Mnemonic ',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(MNEMONIC_CONFIRM, {mnemonic: "jaylord torres"}) }
+      onClick: () =>{ SidemenuEvent.toggle(); goTo(MNEMONIC_CONFIRM, {mnemonic: "scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch"}) }
     },
     {
       title: 'Nominate Password',
