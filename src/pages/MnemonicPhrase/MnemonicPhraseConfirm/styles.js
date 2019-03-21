@@ -4,6 +4,7 @@ export default theme => ({
   buttonHolder: {
     margin: theme.spacing.unit,
     display: 'flex',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
+  smallButtonHolder: { padding: 5, display: 'flex', flex: 1 },
 })

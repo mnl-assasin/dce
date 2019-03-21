@@ -83,7 +83,7 @@ class MnemonicPhraseConfirm extends BasePage {
           className="Phrase--item pointer"
           onClick={this.onClickSelectPhrase.bind(this, word)}
         >
-          <div style={{ padding: 5, display: 'flex', flex: 1 }}>
+          <div className={this.props.classes.smallButtonHolder}>
             <SmallButton
               count={word.order > 0 ? word.order : null}
               title={word.word}
@@ -179,7 +179,7 @@ class MnemonicPhraseConfirm extends BasePage {
         <Col>
           <Col flex="10" className="Padding--row">
             <br />
-            <Typography variant="subheading" align="center" gutterBottom>
+            <Typography variant="caption" align="center" gutterBottom>
               Tap on the words in the correct order
             </Typography>
             {this._createColumns(this.state.shuffledWords)}
