@@ -9,8 +9,10 @@ import AlertDialog, { alertDialog } from './AlertDialog/AlertDialog'
 import Snackbar, { showSnackbar } from './Snackbar/Snackbar'
 import PrimaryButton from './PrimaryButton'
 import SmallButton from './SmallButton'
+import Center from './Center'
 
 export {
+  Center,
   Navbar,
   Sidemenu,
   FullScreenLoading,
