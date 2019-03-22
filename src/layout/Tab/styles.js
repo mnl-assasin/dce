@@ -3,7 +3,7 @@ export const titleStyle = {
   fontSize: 12,
   fontWeight: 'bolder',
 }
-export const textStyle = {
+export const subTitleStyle = {
   fontSize: 12,
   color: 'gray',
   fontWeight: 'bolder',
@@ -14,6 +14,7 @@ export const wraperStyle = {
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  paddingBottom: 12
 }
 
 export const headerContainer = { flexDirection: 'row', display: 'flex' }

@@ -18,7 +18,7 @@ class TabContainer extends React.PureComponent {
           <div style={styles.headerContainer}>
             <Typography style={styles.titleStyle}>{title}</Typography>
             <Padder size={2} horizontal>
-              <Typography style={styles.textStyle}>{subTitle}</Typography>
+              <Typography style={styles.subTitleStyle}>{subTitle}</Typography>
             </Padder>
           </div>
           <div style={styles.headerContainer}>{renderButton}</div>
