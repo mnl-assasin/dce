@@ -14,7 +14,8 @@ export const wraperStyle = {
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  paddingBottom: 12
+  paddingBottom: 12,
+  paddingTop: 12
 }
 
 export const headerContainer = { flexDirection: 'row', display: 'flex' }
