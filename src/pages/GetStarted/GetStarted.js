@@ -38,9 +38,8 @@ const GetStarted = () => {
         </PrimaryButton>
         <br />
         <PrimaryButton
-          type="primary"
+          type="secondary"
           size="medium"
-          fullWidth
           onClick={onClickRestoreBackup}
         >
           Restore Backup
