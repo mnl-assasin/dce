@@ -65,12 +65,6 @@ class MnemonicPhrase extends BasePage {
       })
     }
   }
-  // <Col flex="1 0px" alignItems="center" className="Phrase--index">
-  //   <Typography variant="h6">{item.index}</Typography>
-  // </Col>
-  // <Col flex="3">
-  //   <Typography variant="h6">&nbsp;{item.item}</Typography>
-  // </Col>
 
   _createRows(items) {
     return items.map((item, key) => {
@@ -82,7 +76,12 @@ class MnemonicPhrase extends BasePage {
           key={key}
         >
           <div className={this.props.classes.smallButtonHolder}>
-            <SmallButton count={item.index} title={item.item} />
+            <SmallButton
+              count={item.index}
+              title={item.item}
+              noEffect
+              disableRipple
+            />
           </div>
         </Row>
       )
