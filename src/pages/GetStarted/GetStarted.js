@@ -11,7 +11,7 @@ import useStyles from './styles'
 // page setup
 const title = 'Getting Started'
 const navigationProps = {
-  title: title,
+  // title: title,
 }
 
 // methods
