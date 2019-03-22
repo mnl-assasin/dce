@@ -17,14 +17,21 @@ const pink = {
   colorRight: '#f10c91',
 }
 
-function grad(f, s) {
-  return `linear-gradient(to right, ${f} 0%, ${s} 100%)`
+const green = {
+  colorLeft: '#0bc1ea',
+  colorRight: '#3dc38c',
 }
+
 export default {
   primary: { background: grad(primary.colorLeft, primary.colorRight) },
   secondary: { background: grad(secondary.colorLeft, secondary.colorRight) },
   third: { background: grad(third.colorLeft, third.colorRight) },
   pink: { background: grad(pink.colorLeft, pink.colorRight) },
+  green: { background: grad(green.colorLeft, green.colorRight) },
 }
 export const primaryBackground = grad(primary.colorLeft, primary.colorRight)
-export const boxShadow = '#efeaea 0px 0px 7px 1px'
+export const boxShadow = '#efeaea 0px 0px 36px 3px'
+
+function grad(f, s) {
+  return `linear-gradient(to right, ${f} 0%, ${s} 100%)`
+}
