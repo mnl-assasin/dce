@@ -17,16 +17,7 @@ import CardWallet from '../../layout/CardWallet'
 import Tab from '../../layout/Tab'
 
 import Fab from '@material-ui/core/Fab'
-export const titleStyle = {
-  textTransform: 'uppercase',
-  fontSize: 12,
-  fontWeight: 'bolder',
-}
-export const subTitleStyle = {
-  fontSize: 12,
-  color: 'gray',
-  fontWeight: 'bolder',
-}
+
 class TestPage extends BasePage {
   render() {
     return (
@@ -48,6 +39,48 @@ class TestPage extends BasePage {
               </Padder>
               <Padder size={1} horizontal>
                 <FabButton color="red" type="third" size="medium">
+                  A
+                </FabButton>
+              </Padder>
+            </React.Fragment>
+          }
+        >
+          <CardWallet
+            title="$231231.3123"
+            subTitle="@jaylordTorres"
+            componentIcon={
+              <FabButton color="red" type="third" size="small">
+                l
+              </FabButton>
+            }
+          />
+          <CardWallet
+            title="$2311.312233"
+            subTitle="@Torresjaylord"
+            componentIcon={
+              <FabButton color="red" type="third" size="small">
+                l
+              </FabButton>
+            }
+          />
+          <CardWallet
+            title="$2311.312233"
+            subTitle="@Torresjaylord"
+            componentIcon={
+              <FabButton color="red" type="third" size="small">
+                E
+              </FabButton>
+            }
+          />
+        </Tab>
+
+        <Tab
+          title="dapps"
+          subTitle=""
+          renderButton={
+            <React.Fragment>
+              <Padder size={1} horizontal>
+                <FabButton type="green" size="medium">
                   A
                 </FabButton>
               </Padder>
