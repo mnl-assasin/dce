@@ -27,3 +27,4 @@ export default {
   pink: { background: grad(pink.colorLeft, pink.colorRight) },
 }
 export const primaryBackground = grad(primary.colorLeft, primary.colorRight)
+export const boxShadow = '#efeaea 0px 0px 7px 1px'
