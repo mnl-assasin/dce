@@ -18,8 +18,8 @@ const pink = {
 }
 
 const green = {
-  colorLeft: '#0bc1ea',
   colorRight: '#3dc38c',
+  colorLeft: '#0bc1ea',
 }
 
 export default {
@@ -30,7 +30,7 @@ export default {
   green: { background: grad(green.colorLeft, green.colorRight) },
 }
 export const primaryBackground = grad(primary.colorLeft, primary.colorRight)
-export const boxShadow = '#efeaea 0px 0px 36px 3px'
+export const boxShadow = '#ccc5c5 0px 0px 36px 3px'
 
 function grad(f, s) {
   return `linear-gradient(to right, ${f} 0%, ${s} 100%)`
