@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Wallet, Transaction } from 'dapper'
-import Typography from '@material-ui/core/Typography'
 
 import BasePage from '../../common/BasePage'
 import { goTo } from '../../services/navigation'
@@ -13,8 +12,10 @@ import { withAppContext } from '../../services/Providers/AppStateContext'
 import FabButton from '../../components/FabButton'
 import CardWallet from '../../components/CardWallet'
 import CardDapp from '../../components/CardDapp'
+import { Text } from '../../components'
+
 import Page from '../../layout/Page'
-import Padder from '../../layout/Padder'
+import Padding from '../../layout/Padding'
 import Tab from '../../layout/Tab'
 import TabContent from '../../layout/TabContent'
 
@@ -29,21 +30,21 @@ class TestPage extends BasePage {
           subTitle="$3214.23"
           renderButton={
             <React.Fragment>
-              <Padder size={1} horizontal>
+              <Padding horizontal={4}>
                 <FabButton color="red" type="pink" size="medium">
                   +
                 </FabButton>
-              </Padder>
-              <Padder size={1} horizontal>
+              </Padding>
+              <Padding horizontal={4}>
                 <FabButton color="red" type="primary" size="medium">
                   l
                 </FabButton>
-              </Padder>
-              <Padder size={1} horizontal>
+              </Padding>
+              <Padding horizontal={4}>
                 <FabButton color="red" type="third" size="medium">
                   A
                 </FabButton>
-              </Padder>
+              </Padding>
             </React.Fragment>
           }
         >
@@ -71,11 +72,11 @@ class TestPage extends BasePage {
           title="dapps"
           renderButton={
             <React.Fragment>
-              <Padder size={1} horizontal>
+              <Padding horizontal={4}>
                 <FabButton type="green" size="medium">
                   A
                 </FabButton>
-              </Padder>
+              </Padding>
             </React.Fragment>
           }
         >
@@ -109,17 +110,17 @@ class TestPage extends BasePage {
           </TabContent>
         </Tab>
 
-        <Padder size={3} vertical />
-        <Padder size={2} vertical>
+        <Padding vertical={12} />
+        <Padding vertical={8}>
           <PrimaryButton fullWidth type="primary">
             record recovery
           </PrimaryButton>
-        </Padder>
-        <Padder size={2} vertical>
+        </Padding>
+        <Padding vertical={8}>
           <PrimaryButton fullWidth type="secondary">
             backup on chain
           </PrimaryButton>
-        </Padder>
+        </Padding>
       </Page>
     )
   }
