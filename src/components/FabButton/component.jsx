@@ -27,8 +27,8 @@ const component = ({
     fontSize = baseSize * 2
   }
   if (size === 'large') {
-    style.width = baseSize * 5
-    style.height = baseSize *  5
+    style.width = baseSize * 4
+    style.height = baseSize *  4
     fontSize = baseSize * 3
   }
 
