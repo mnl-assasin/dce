@@ -1,17 +1,17 @@
-import { boxShadow } from '../../constants/style'
+import { boxShadowWeak } from '../../constants/style'
 import styles from '../../constants/style'
 
 export const container = isActive => ({
   borderRadius: 20,
   background: isActive ? styles.green.background : 'white',
-  boxShadow: boxShadow,
+  boxShadow: boxShadowWeak,
   flexDirection: 'column',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   width: 93,
 })
- 
+
 export const titleStyle = isActive => ({
   fontSize: 15,
   fontWeight: 'bolder',
