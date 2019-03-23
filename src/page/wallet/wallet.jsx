@@ -1,22 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { withStyles } from "@material-ui/core/styles"
+import { withStyles } from '@material-ui/core/styles'
 
-import BasePage from "../../common/BasePage";
+import BasePage from '../../common/BasePage'
 import Page from '../../layout/Page'
-import setBlockNumber from "../../hof/setBlockNumber";
-import setEtherPrice from '../../hof/set_ether_price'
-import setBalance from '../../hof/set_balance'
-import { goTo } from "../../services/navigation"
-import { convertedPricePerValue } from "../../helper/computation";
-import { withAppContext } from "../../services/Providers/AppStateContext";
-import WalletButtons from "./component/WalletButtons";
-import WalletHeader, { WalletHeaderTestValue } from "./component/WalletHeader";
-import WalletContent, { WalletContentTestValue } from "./component/WalletContent";
+import { setBlockNumber, setEtherPrice, setBalance } from '../../hof'
+import { goTo } from '../../services/navigation'
+import { convertedPricePerValue } from '../../helper/computation'
+import { withAppContext } from '../../services/Providers/AppStateContext'
+import WalletButtons from './component/WalletButtons'
+import WalletHeader, { WalletHeaderTestValue } from './component/WalletHeader'
+import WalletContent, {
+  WalletContentTestValue,
+} from './component/WalletContent'
 
-import componentDidMount from "./method/_componentDidMount";
-import styles from "./styles"
+import componentDidMount from './method/_componentDidMount'
+import styles from './styles'
 
 class Wallet extends BasePage {
   title = 'Wallet'
@@ -28,7 +28,7 @@ class Wallet extends BasePage {
 
   navigationProps = {
     backButton: true,
-    title: ''
+    title: '',
   }
 
   // hof bindings
@@ -40,7 +40,7 @@ class Wallet extends BasePage {
   state = {
     blockNumber: '',
     networkName: '',
-    amount: ''
+    amount: '',
   }
 
   onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
@@ -48,14 +48,15 @@ class Wallet extends BasePage {
   onSend = () => this.navigate(this.route.WALLET_SEND)
   onHistory = () => this.navigate(this.route.WALLET_HISTORY)
 
-  render () {
+  render() {
     const { amount } = this.state
     const { classes } = this.props
 
     return (
       <Page navigationProps={this.navigationProps}>
         <WalletHeader
-          classes={classes} {...WalletHeaderTestValue}
+          classes={classes}
+          {...WalletHeaderTestValue}
           networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
           networkNumber={this.state.blockNumber}
           coinPrice={this.props.AppContext[this.storage.ETHER_PRICE]}
@@ -64,7 +65,10 @@ class Wallet extends BasePage {
           classes={classes}
           {...WalletContentTestValue}
           amount={amount}
-          value={convertedPricePerValue(this.props.AppContext[this.storage.ETHER_PRICE], amount)}
+          value={convertedPricePerValue(
+            this.props.AppContext[this.storage.ETHER_PRICE],
+            amount
+          )}
         />
         <WalletButtons
           classes={classes}
@@ -73,13 +77,13 @@ class Wallet extends BasePage {
           onHistory={this.onHistory}
         />
       </Page>
-    );
+    )
   }
 }
 
 Wallet.propTypes = {
   AppContext: PropTypes.object.isRequired, // withAppContext
-  classes: PropTypes.object.isRequired // withStyles
-};
+  classes: PropTypes.object.isRequired, // withStyles
+}
 
-export default withStyles(styles)(withAppContext(Wallet));
+export default withStyles(styles)(withAppContext(Wallet))

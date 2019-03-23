@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react'
 import TextField from '@material-ui/core/TextField'
 
 import Page from '../../layout/Page'
-import restoreBackup from '../../hof/restore_backup'
+import { restoreBackup } from '../../hof'
 import { useTextbox } from '../../hook'
 import { Col } from '../../common'
 import { goTo as navigate } from '../../services/navigation'

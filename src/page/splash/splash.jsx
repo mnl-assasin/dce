@@ -1,14 +1,14 @@
 import React from 'react'
 
-import BasePage from "../../common/BasePage"
-import setBlockNumber from "../../hof/setBlockNumber"
+import BasePage from '../../common/BasePage'
 import Navigation, { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
+import { setBlockNumber } from '../../hof'
 
-import './Splash.css';
+import './Splash.css'
 
 class Splash extends BasePage {
-  title = "Splash"
+  title = 'Splash'
   store = BasePage.store
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
@@ -38,7 +38,6 @@ class Splash extends BasePage {
       // not logged
       this.setContext(this.storage.IS_LOGGED, false)
       return goTo('Login')
-
     } else {
       // not loggedin
       // must set app state to not log for updated component child
@@ -48,12 +47,12 @@ class Splash extends BasePage {
         return goTo(this.defaults.forceDefaultRouteName)
       }
 
-      Navigation.init(this.defaults.defaultRouteName);
+      Navigation.init(this.defaults.defaultRouteName)
     }
   }
 
-  setContext (name, value) {
-    this.props.AppContext.onAppContextChange({[name]: value})
+  setContext(name, value) {
+    this.props.AppContext.onAppContextChange({ [name]: value })
   }
 
   //
@@ -72,16 +71,17 @@ class Splash extends BasePage {
     // load selected network
     this.storage.ACTIVE_PROVIDER_ID,
     this.storage.ACTIVE_PROVIDER_NAME,
-    this.storage.ACTIVE_PROVIDER_BlOCKNUMBER
+    this.storage.ACTIVE_PROVIDER_BlOCKNUMBER,
   ]
 
   _init = async () => {
     let willSaveInState = {}
 
     await Promise.all(
-      this.startLoadArray.map(async (key) => {
-             willSaveInState[key] = await this.store.get(key) || this.defaults.getDefault(key)
-          })
+      this.startLoadArray.map(async key => {
+        willSaveInState[key] =
+          (await this.store.get(key)) || this.defaults.getDefault(key)
+      })
     )
     this.props.AppContext.set(willSaveInState)
 
@@ -89,10 +89,13 @@ class Splash extends BasePage {
     // this will ensure block number will refresh every app start
     await this.setBlockNumber(
       willSaveInState[this.storage.ACTIVE_PROVIDER_ID],
-      (value) => this.props.AppContext.persist({
-          [BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value)
+      value =>
+        this.props.AppContext.persist({
+          [BasePage.constants.storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(
+            value
+          ),
         }),
-      (error) => this.setState({blockNumber: ''})
+      error => this.setState({ blockNumber: '' })
     )
   }
 
@@ -103,8 +106,8 @@ class Splash extends BasePage {
           <span>Loading...</span>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withAppContext(Splash);
+export default withAppContext(Splash)

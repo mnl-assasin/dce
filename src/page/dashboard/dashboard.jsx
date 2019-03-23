@@ -1,28 +1,27 @@
 import React from 'react'
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types'
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-import BasePage from "../../common/BasePage"
-import setBalance from '../../hof/set_balance'
-import setEtherPrice from '../../hof/set_ether_price'
+import BasePage from '../../common/BasePage'
+import { setBalance, setEtherPrice } from '../../hof'
 import { convertedPricePerValue } from '../../helper/computation'
 import { Page, Row, Col, Icon as ThemeIcon } from '../../common'
-import { Navbar } from '../../components';
-import { goTo } from '../../services/navigation';
-import { withAppContext } from "../../services/Providers/AppStateContext";
+import { Navbar } from '../../components'
+import { goTo } from '../../services/navigation'
+import { withAppContext } from '../../services/Providers/AppStateContext'
 
-import styles from './styles';
-import './Dashboard.scss';
+import styles from './styles'
+import './Dashboard.scss'
 
 import EtherImage from './icon_ether.png'
 import BitImage from './icon_bitcoin.png'
 
 const icons = {
   ETHER: EtherImage,
-  BitImage
+  BitImage,
 }
 
 class Dashboard extends BasePage {
@@ -34,14 +33,14 @@ class Dashboard extends BasePage {
   setEtherPrice = setEtherPrice(this)
   setBalance = setBalance(this)
 
-  componentDidMount () {
+  componentDidMount() {
     // get ether balance and set it to context
     this.setEtherPrice()
 
     this.setBalance(
       this.props.AppContext[this.storage.ACTIVE_PROVIDER_ID],
       this.props.AppContext[this.storage.WALLET_ADDRESS],
-      (value) => this.setState({amount: value})
+      value => this.setState({ amount: value })
     )
   }
 
@@ -57,9 +56,9 @@ class Dashboard extends BasePage {
           amount: 'test value',
           value: '0.123432',
           iconComponent: <ThemeIcon src={EtherImage} size={70} />,
-          onClick: (model) => {
+          onClick: model => {
             goTo('Wallet', model)
-          }
+          },
         },
         {
           model: {},
@@ -67,9 +66,9 @@ class Dashboard extends BasePage {
           amount: '0.123432',
           value: '0.123432',
           iconComponent: <ThemeIcon size={70} src={EtherImage} />,
-          onClick: (model) => {
+          onClick: model => {
             goTo('Wallet', model)
-          }
+          },
         },
         {
           model: {},
@@ -77,9 +76,9 @@ class Dashboard extends BasePage {
           amount: '2.123432',
           value: '0.123432',
           iconComponent: <ThemeIcon size={70} src={EtherImage} />,
-          onClick: (model) => {
+          onClick: model => {
             goTo('Wallet', model)
-          }
+          },
         },
         {
           model: {},
@@ -87,14 +86,14 @@ class Dashboard extends BasePage {
           amount: '4.123432',
           value: '100.123432',
           iconComponent: <ThemeIcon size={70} src={BitImage} />,
-          onClick: (model) => {
+          onClick: model => {
             goTo('Wallet', model)
-          }
+          },
         },
-      ]
-    };
+      ],
+    }
 
-    this.onRenderWidget.bind(this);
+    this.onRenderWidget.bind(this)
     // this.onClickItem.bind(this);
   }
 
@@ -104,7 +103,7 @@ class Dashboard extends BasePage {
 
   onClickItem(item) {
     if (item.onClick) {
-      item.onClick(item.model);
+      item.onClick(item.model)
     }
   }
 
@@ -114,15 +113,15 @@ class Dashboard extends BasePage {
     //
     if (item.isWallet) {
       return (
-        <div className="Dashboard--widget pointer" key={i} onClick={this.onClickItem.bind(this, item)}>
-          <div>
-            {item.iconComponent}
-          </div>
-          <Typography align="center">
-              { item.amount }
-            </Typography>
-          <Typography  gutterBottom align="center">
-              ${ item.value }
+        <div
+          className="Dashboard--widget pointer"
+          key={i}
+          onClick={this.onClickItem.bind(this, item)}
+        >
+          <div>{item.iconComponent}</div>
+          <Typography align="center">{item.amount}</Typography>
+          <Typography gutterBottom align="center">
+            ${item.value}
           </Typography>
         </div>
       )
@@ -132,16 +131,17 @@ class Dashboard extends BasePage {
     // only icon and 1 label
     //
     return (
-      <div className="Dashboard--widget" key={i} onClick={this.onClickItem.bind(this, item)}>
-        <div>
-          {item.iconComponent}
-        </div>
-          <Typography  gutterBottom align="center">
-              { item.label }
-          </Typography>
+      <div
+        className="Dashboard--widget"
+        key={i}
+        onClick={this.onClickItem.bind(this, item)}
+      >
+        <div>{item.iconComponent}</div>
+        <Typography gutterBottom align="center">
+          {item.label}
+        </Typography>
       </div>
     )
-
   }
 
   onRenderAddWidget() {
@@ -159,14 +159,14 @@ class Dashboard extends BasePage {
               label: '123',
               icon: 'card_travel',
               iconComponent: <ThemeIcon size={70} src={EtherImage} />,
-              onClick: (model) => {
+              onClick: model => {
                 goTo('Wallet', model)
                 // goTo('Wallet', model)
-              }
-            }
-          ]
+              },
+            },
+          ],
         })
-      }
+      },
     }
 
     return this.onRenderWidget(addItem, this.state.items.length)
@@ -176,39 +176,51 @@ class Dashboard extends BasePage {
     return this.state.items.map((item, i) => this.onRenderWidget(item, i))
   }
 
-  _renderWallet = (amount , value, key = 'ETHER') => {
-      const item = {
-        key: key,
-        model: {},
-        isWallet: true,
-        amount: amount,
-        value: value,
-        iconComponent: <ThemeIcon src={icons[key]} size={70} />,
-        onClick: (model) => {
-          goTo('Wallet', model)
-        }
-      }
-      return this.onRenderWidget(item, key)
+  _renderWallet = (amount, value, key = 'ETHER') => {
+    const item = {
+      key: key,
+      model: {},
+      isWallet: true,
+      amount: amount,
+      value: value,
+      iconComponent: <ThemeIcon src={icons[key]} size={70} />,
+      onClick: model => {
+        goTo('Wallet', model)
+      },
+    }
+    return this.onRenderWidget(item, key)
   }
 
   render() {
     const { AppContext } = this.props
-    let _renderedItems = this.onRenderList();
-    let _renderedAddItem = this.onRenderAddWidget();
-    const _renderWallet = this._renderWallet(this.state.amount, convertedPricePerValue(AppContext[this.storage.ETHER_PRICE], this.state.amount), 'ETHER')
+    let _renderedItems = this.onRenderList()
+    let _renderedAddItem = this.onRenderAddWidget()
+    const _renderWallet = this._renderWallet(
+      this.state.amount,
+      convertedPricePerValue(
+        AppContext[this.storage.ETHER_PRICE],
+        this.state.amount
+      ),
+      'ETHER'
+    )
 
     return (
       <Page className="Dashboard">
-        <Navbar/>
+        <Navbar />
         <div className="Content">
-          {
-            AppContext[this.storage.IS_SET_MNEMONIC] ? null :
-           <Row flex="1" justifyContent="center">
-              <Button variant="outlined" color="secondary" className="Button" size="large" onClick={this.onClickRestoreRecover.bind(this)}>
+          {AppContext[this.storage.IS_SET_MNEMONIC] ? null : (
+            <Row flex="1" justifyContent="center">
+              <Button
+                variant="outlined"
+                color="secondary"
+                className="Button"
+                size="large"
+                onClick={this.onClickRestoreRecover.bind(this)}
+              >
                 Restore recovery
               </Button>
             </Row>
-          }
+          )}
           <Row flex="11" justifyContent="center">
             <Col flex="1">
               <div className="Dashboard--widget-container">
@@ -219,19 +231,25 @@ class Dashboard extends BasePage {
             </Col>
           </Row>
           <Row flex="1" justifyContent="center">
-            <Button variant="outlined" color="primary" className="Button" size="large" onClick={this.onClickBackUpChain.bind(this)}>
+            <Button
+              variant="outlined"
+              color="primary"
+              className="Button"
+              size="large"
+              onClick={this.onClickBackUpChain.bind(this)}
+            >
               Backup on chain
             </Button>
           </Row>
         </div>
       </Page>
-    );
+    )
   }
 }
 
 Dashboard.propTypes = {
   AppContext: PropTypes.object.isRequired, // withAppContext
-  classes: PropTypes.object.isRequired // withStyles
-};
+  classes: PropTypes.object.isRequired, // withStyles
+}
 
-export default withStyles(styles)(withAppContext(Dashboard));
+export default withStyles(styles)(withAppContext(Dashboard))

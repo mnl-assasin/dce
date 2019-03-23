@@ -7,8 +7,8 @@ import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
 
 import Page from '../../../layout/Page'
-import sendWallet from '../../../hof/send_wallet'
-import estimateFee from '../../../hof/estimate_fee'
+import { sendWallet } from '../../../hof/send_wallet'
+import { estimateFee } from '../../../hof'
 import { Row } from '../../../common'
 import { useTextbox } from '../../../hook'
 import { inputTypes } from '../../../constants/types'
@@ -22,7 +22,7 @@ const subTitle = 'send'
 
 const navigationProps = {
   title: title,
-  backButton: true
+  backButton: true,
 }
 
 // methods
@@ -38,12 +38,21 @@ const WalletSend = props => {
   const gasLimit = useTextbox('')
   const transaction = useTextbox('')
   const yourAddresss = useTextbox(appContext[storage.WALLET_ADDRESS])
-  const onClickEstimate = useCallback(() => estimateFee(appContext)({
-    network: appContext[storage.ACTIVE_PROVIDER_ID],
-    address: TestWalletAddress,
-    value: amount.value
-  }, ({estimatedTotalString}) =>setFee(estimatedTotalString)), [amount.value])
-  const onClickSubmit = () => {console.log('submitted: ')}
+  const onClickEstimate = useCallback(
+    () =>
+      estimateFee(appContext)(
+        {
+          network: appContext[storage.ACTIVE_PROVIDER_ID],
+          address: TestWalletAddress,
+          value: amount.value,
+        },
+        ({ estimatedTotalString }) => setFee(estimatedTotalString)
+      ),
+    [amount.value]
+  )
+  const onClickSubmit = () => {
+    console.log('submitted: ')
+  }
 
   // const onClickSubmit = useCallback(() => sendWallet(appContext)({
   //   network: appContext[storage.ACTIVE_PROVIDER_ID],
@@ -139,9 +148,9 @@ const WalletSend = props => {
           type={inputTypes.text}
           {...transaction}
         />
-          <Typography variant="caption" gutterBottom>
+        <Typography variant="caption" gutterBottom>
           estimate fee: {fee}
-          </Typography>
+        </Typography>
         <div className={classes.buttonHolder}>
           <Button
             variant="outlined"
