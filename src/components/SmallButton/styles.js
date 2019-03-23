@@ -1,5 +1,3 @@
-import { makeStyles } from '@material-ui/styles'
-
 export default theme => ({
   root: {
     borderRadius: 2,
