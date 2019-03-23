@@ -36,3 +36,19 @@ export const boxShadowWeak = '#ece7e7 0px 0px 36px 3px'
 function grad(f, s) {
   return `linear-gradient(to right, ${f} 0%, ${s} 100%)`
 }
+
+export const center = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
+export const row = {
+  display: 'flex',
+  flexDirection: 'column',
+}
+
+export const column = {
+  display: 'flex',
+  flexDirection: 'column',
+}
