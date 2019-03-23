@@ -1,10 +1,10 @@
 export const titleStyle = {
   textTransform: 'uppercase',
-  fontSize: 12,
+  fontSize: 10,
   fontWeight: 'bolder',
 }
 export const subTitleStyle = {
-  fontSize: 12,
+  fontSize: 10,
   color: 'gray',
   fontWeight: 'bolder',
 }
