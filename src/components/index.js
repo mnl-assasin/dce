@@ -8,19 +8,23 @@ import Notifier, { openSnackbar } from './Notifier/Notifier'
 import AlertDialog, { alertDialog } from './AlertDialog/AlertDialog'
 import Snackbar, { showSnackbar } from './Snackbar/Snackbar'
 import PrimaryButton from './PrimaryButton'
+import CardDapp from './CardDapp'
+import CardWallet from './CardWallet'
 import SmallButton from './SmallButton'
-import Center from './Center'
+import Text from './Text'
 
 export {
-  Center,
-  Navbar,
-  Sidemenu,
-  FullScreenLoading,
-  Notifier,
   AlertDialog,
-  Snackbar,
+  CardDapp,
+  CardWallet,
+  FullScreenLoading,
+  Navbar,
+  Notifier,
   PrimaryButton,
+  Sidemenu,
+  Snackbar,
   SmallButton,
+  Text,
   //
   // functions
   openSnackbar,
