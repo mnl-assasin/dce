@@ -4,11 +4,9 @@ import chunk from 'lodash/chunk'
 import { Wallet } from 'dapper'
 
 import { withStyles } from '@material-ui/styles'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import BasePage from '../../common/BasePage'
-import { Navbar, PrimaryButton, SmallButton } from '../../components'
+import { Navbar, PrimaryButton, SmallButton, Text } from '../../components'
 import { Center } from '../../layout'
 import { Page, Col, Row } from '../../common'
 import { goTo } from '../../services/navigation'
@@ -144,10 +142,10 @@ class MnemonicPhrase extends BasePage {
         <div className="Content">
           <Col>
             <Col flex="10" className="Padding--row">
-              <Typography variant="caption" gutterBottom>
+              <Text variant="caption" gutterBottom>
                 This is your only way to backup. Write this down and store it
                 somewhere safe.
-              </Typography>
+              </Text>
               {this._createColumns(arrWords)}
             </Col>
             <Col flex="2" className="Padding--row">
