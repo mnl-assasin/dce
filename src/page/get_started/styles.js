@@ -1,22 +1,19 @@
 import { makeStyles } from '@material-ui/styles'
+import { column, center } from '../../constants/style'
 
-export const styles =  theme => ({
-  root: {
-  },
+export const styles = theme => ({
+  root: {},
   logo: {
-  	display: 'flex',
-  	justifyContent: 'center',
-  	alignItems: 'center',
-  	flex: 2,
-  	height: 200
+    ...center,
+    flex: 2,
+    height: 200,
   },
   buttonGroup: {
-    display: 'flex',
+    ...column,
     flex: 1,
-    flexDirection: 'column',
     padding: theme.spacing.unit * 3,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 })
 
 export default makeStyles(styles)
