@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import FabButton from '../../components/FabButton'
+import Text from '../Text'
 import Page from '../../layout/Page'
-import Padder from '../../layout/Padder'
+import Padding from '../../layout/Padding'
 import Tab from '../../layout/Tab'
 import * as styles from './styles'
 
@@ -13,36 +13,21 @@ class CardWallet extends React.PureComponent {
   render() {
     const { title, subTitle, children, classes, componentIcon } = this.props
     return (
-      <Padder size={2} vertical>
-        <Padder style={styles.container} size={4}>
-          <div
-            style={{
-              flexDirection: 'row',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
+      <Padding vertical={8}>
+        <Padding style={styles.container} all={16}>
+          <div style={styles.titleContainer}>
             {componentIcon}
-            <Padder size={1} horizontal>
-              <Typography style={styles.titleStyle}>{title}</Typography>
-            </Padder>
+            <Padding horizontal={4}>
+              <Text style={styles.titleStyle}>{title}</Text>
+            </Padding>
           </div>
-          <Padder size={1} horizontal>
-            <Typography style={styles.subTitleStyle}>{subTitle}</Typography>
-          </Padder>
-        </Padder>
-      </Padder>
+          <Padding horizontal={1}>
+            <Text style={styles.subTitleStyle}>{subTitle}</Text>
+          </Padding>
+        </Padding>
+      </Padding>
     )
   }
 }
-//
-// const component = ({ classes, type = 'primary', ...props }) => {
-//   return <Button style={styles[type]} {...props} />
-// }
-
-// component.propTypes = {
-//   classes: PropTypes.object.isRequired, // withStyles
-//   type: PropTypes.string.isRequired,
-// }
 
 export default CardWallet

@@ -9,7 +9,11 @@ export const container = {
   alignItems: 'center',
   justifyContent: 'space-between',
 }
-
+export const titleContainer = {
+  flexDirection: 'row',
+  display: 'flex',
+  alignItems: 'center',
+}
 export const titleStyle = {
   textTransform: 'uppercase',
   fontSize: 15,
