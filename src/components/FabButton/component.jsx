@@ -1,53 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
-import * as styles from './styles'
 import backgrounds from '../../constants/style'
-
-const baseSize = 14
-
+import { getStyle } from './styles'
 const component = ({
   classes,
   color,
   children,
   type = 'primary',
   size = 'medium',
+  style = {},
   ...props
 }) => {
-  const style = {}
-  let fontSize = baseSize
-  if (size === 'small') {
-    style.width = baseSize * 2
-    style.height = baseSize * 2
-    fontSize = baseSize * 1
-  }
-  if (size === 'medium') {
-    style.width = baseSize * 3.5
-    style.height = baseSize *  3.5
-    fontSize = baseSize * 2
-  }
-  if (size === 'large') {
-    style.width = baseSize * 4
-    style.height = baseSize *  4
-    fontSize = baseSize * 3
-  }
-
+  const styles = getStyle(size, style)
   return (
     <div
       className={classes.root}
-      style={{ background: backgrounds[type].background, ...style }}
+      style={{
+        background: backgrounds[type].background,
+        ...styles.box,
+      }}
       color="none"
       {...props}
     >
-      <span className={classes.label} style={{ fontSize: fontSize }}>
+      <span className={classes.label} style={styles.font}>
         {children}
       </span>
     </div>
   )
 }
-
-// component.propTypes = {
-//   classes: PropTypes.object.isRequired, // withStyles
-// }
 
 export default component
