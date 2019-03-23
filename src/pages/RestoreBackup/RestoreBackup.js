@@ -1,14 +1,12 @@
 import React, { useCallback, useContext } from 'react'
-import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
 
 import Page from '../../layout/Page'
 import restoreBackup from '../../hof/restore_backup'
 import { useTextbox } from '../../hook'
 import { Col } from '../../common'
 import { goTo as navigate } from '../../services/navigation'
-import { alertDialog, PrimaryButton } from '../../components'
+import { alertDialog, PrimaryButton, Text } from '../../components'
 import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import useStyles from './styles'
@@ -34,7 +32,7 @@ const RestoreBackup = props => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Typography variant="h5">Welcome back and logo</Typography>
+        <Text variant="h5">Welcome back and logo</Text>
       </div>
       <Col flex="1">
         <TextField
