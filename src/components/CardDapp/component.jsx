@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import FabButton from '../../components/FabButton'
 import Page from '../../layout/Page'
-import Padder from '../../layout/Padder'
+import Padding from '../../layout/Padding'
 import Tab from '../../layout/Tab'
+import Text from '../Text'
 import * as styles from './styles'
 
 class CardDapp extends React.PureComponent {
@@ -21,15 +21,14 @@ class CardDapp extends React.PureComponent {
     } = this.props
     {
       return (
-        <Padder
-          size={2}
-          horizontal
+        <Padding
+          horizontal={8}
           style={{ display: 'flex', flexDirection: 'row' }}
         >
-          <Padder style={styles.container(isActive)} size={4} vertical>
+          <Padding style={styles.container(isActive)} vertical={16}>
             {componentIcon}
-            <Padder size={1} horizontal>
-              <Typography
+            <Padding horizontal={4}>
+              <Text
                 style={{
                   fontSize: 10,
                   fontWeight: 'bolder',
@@ -39,22 +38,13 @@ class CardDapp extends React.PureComponent {
                 }}
               >
                 {title}
-              </Typography>
-            </Padder>
-          </Padder>
-        </Padder>
+              </Text>
+            </Padding>
+          </Padding>
+        </Padding>
       )
     }
   }
 }
-//
-// const component = ({ classes, type = 'primary', ...props }) => {
-//   return <Button style={styles[type]} {...props} />
-// }
-
-// component.propTypes = {
-//   classes: PropTypes.object.isRequired, // withStyles
-//   type: PropTypes.string.isRequired,
-// }
 
 export default CardDapp
