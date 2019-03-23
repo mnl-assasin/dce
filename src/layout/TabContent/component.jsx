@@ -1,9 +1,5 @@
 import React from 'react'
-import FabButton from '../../components/FabButton'
-import Page from '../../layout/Page'
 import Padding from '../../layout/Padding'
-import Tab from '../../layout/Tab'
-import * as styles from './styles'
 
 class TabContent extends React.PureComponent {
   render() {
