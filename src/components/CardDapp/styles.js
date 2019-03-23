@@ -26,6 +26,3 @@ export const wraperStyle = {
 }
 
 export const headerContainer = { flexDirection: 'row', display: 'flex' }
-
-export default theme => ({
-})
