@@ -1,5 +1,5 @@
 import React from 'react'
-import Padding from '../../layout/Padding'
+import { Padding } from '../../layout'
 
 class TabContent extends React.PureComponent {
   render() {

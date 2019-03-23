@@ -5,7 +5,7 @@ import chunk from 'lodash/chunk'
 import { withStyles } from '@material-ui/styles'
 
 import BasePage from '../../../common/BasePage'
-import Page from '../../../layout/Page'
+import { Page } from '../../../layout'
 import { goTo } from '../../../services/navigation'
 import { Col, Row } from '../../../common'
 import {

@@ -14,10 +14,7 @@ import CardWallet from '../../components/CardWallet'
 import CardDapp from '../../components/CardDapp'
 import { Text } from '../../components'
 
-import Page from '../../layout/Page'
-import Padding from '../../layout/Padding'
-import Tab from '../../layout/Tab'
-import TabContent from '../../layout/TabContent'
+import { Page, Padding, Tab, TabContent } from '../../layout'
 
 import Fab from '@material-ui/core/Fab'
 

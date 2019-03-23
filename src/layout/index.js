@@ -1,7 +1,7 @@
-import Center from './Center'
-import Padding from './Padding'
-import Page from './Page'
-import Tab from './Tab'
-import TabContent from './TabContent'
+import Center from './center'
+import Padding from './padding'
+import Page from './page'
+import Tab from './tab'
+import TabContent from './tab_content'
 
 export { Center, Padding, Page, Tab, TabContent }

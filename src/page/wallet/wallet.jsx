@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 
 import BasePage from '../../common/BasePage'
-import Page from '../../layout/Page'
+import { Page } from '../../layout'
 import { setBlockNumber, setEtherPrice, setBalance } from '../../hof'
 import { goTo } from '../../services/navigation'
 import { convertedPricePerValue } from '../../helper/computation'

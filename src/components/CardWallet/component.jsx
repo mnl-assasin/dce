@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Text from '../Text'
-import Padding from '../../layout/Padding'
+import { Padding } from '../../layout'
 import * as styles from './styles'
 
 class CardWallet extends React.PureComponent {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page from '../../layout/Page'
+import { Page } from '../../layout'
 import { PrimaryButton, Text } from '../../components'
 import * as route from '../../constants/route'
 import { goTo } from '../../services/navigation'

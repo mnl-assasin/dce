@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Padding from '../../layout/Padding'
+import { Padding } from '../../layout'
 import Text from '../Text'
 import * as styles from './styles'
 

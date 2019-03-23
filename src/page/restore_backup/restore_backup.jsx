@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react'
 import TextField from '@material-ui/core/TextField'
 
-import Page from '../../layout/Page'
+import { Page } from '../../layout'
 import { restoreBackup } from '../../hof'
 import { useTextbox } from '../../hook'
 import { Col } from '../../common'

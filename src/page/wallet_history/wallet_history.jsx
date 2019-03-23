@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import Page from '../../layout/Page'
+import { Page } from '../../layout'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import * as storage from '../../constants/storage'
 import useStyles from './styles'
@@ -14,7 +14,7 @@ import { Wallet } from 'dapper'
 const title = 'Wallet History'
 const navigationProps = {
   title,
-  backButton: true
+  backButton: true,
 }
 
 // methods
@@ -29,7 +29,7 @@ const WalletHistory = props => {
     Wallet.ethers
       .history({
         network: appContext[storage.ACTIVE_PROVIDER_ID],
-        address: appContext[storage.WALLET_ADDRESS]
+        address: appContext[storage.WALLET_ADDRESS],
       })
       .then(data => {
         console.log(data)

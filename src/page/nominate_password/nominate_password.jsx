@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
-import Page from '../../layout/Page'
+import { Page } from '../../layout'
 import { useTextbox, useToggle } from '../../hook'
 import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
@@ -17,11 +17,10 @@ import useStyles from './styles'
 // page setup
 const title = 'Nominate Password'
 const navigationProps = {
-  backButton: true
+  backButton: true,
 }
 
 // methods
-
 
 // template
 const NominatePassword = props => {
@@ -71,7 +70,7 @@ const NominatePassword = props => {
                   )}
                 </IconButton>
               </InputAdornment>
-            )
+            ),
           }}
         />
 
@@ -101,7 +100,7 @@ const NominatePassword = props => {
                   )}
                 </IconButton>
               </InputAdornment>
-            )
+            ),
           }}
         />
         <div className={classes.buttonHolder}>
