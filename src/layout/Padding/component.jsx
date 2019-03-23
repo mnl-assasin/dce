@@ -1,7 +1,7 @@
 import React from 'react'
 import Proptypes from 'prop-types'
 import { getStyle } from './styles'
-
+ 
 const component = ({
   children,
   style,
