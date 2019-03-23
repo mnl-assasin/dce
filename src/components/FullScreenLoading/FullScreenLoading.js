@@ -4,7 +4,7 @@ import './FullScreenLoading.css';
 
 let showLoadingFn,
     hideLoadingFn;
-
+// this must be on module not here 
 class FullScreenLoading extends Component {
 
   constructor(props) {
