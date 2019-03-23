@@ -11,10 +11,10 @@ import Button from '@material-ui/core/Button'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 
 import FabButton from '../../components/FabButton'
+import CardWallet from '../../components/CardWallet'
+import CardDapp from '../../components/CardDapp'
 import Page from '../../layout/Page'
 import Padder from '../../layout/Padder'
-import CardWallet from '../../layout/CardWallet'
-import CardDapp from '../../layout/CardDapp'
 import Tab from '../../layout/Tab'
 import TabContent from '../../layout/TabContent'
 
