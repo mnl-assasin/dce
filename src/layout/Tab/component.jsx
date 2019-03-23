@@ -5,8 +5,9 @@ import Typography from '@material-ui/core/Typography'
 
 import FabButton from '../../components/FabButton'
 import Page from '../../layout/Page'
-import Padder from '../../layout/Padder'
+import Padding from '../../layout/Padding'
 import Tab from '../../layout/Tab'
+import Text from '../../components/Text'
 import * as styles from './styles'
 
 class TabContainer extends React.PureComponent {
@@ -16,10 +17,10 @@ class TabContainer extends React.PureComponent {
       <div>
         <div style={styles.wraperStyle}>
           <div style={styles.headerContainer}>
-            <Typography style={styles.titleStyle}>{title}</Typography>
-            <Padder size={2} horizontal>
-              <Typography style={styles.subTitleStyle}>{subTitle}</Typography>
-            </Padder>
+            <Text style={styles.titleStyle}>{title}</Text>
+            <Padding horizontal={8}>
+              <Text style={styles.subTitleStyle}>{subTitle}</Text>
+            </Padding>
           </div>
           <div style={styles.headerContainer}>{renderButton}</div>
         </div>
