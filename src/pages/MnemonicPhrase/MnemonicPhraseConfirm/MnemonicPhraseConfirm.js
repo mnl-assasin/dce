@@ -2,16 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import shuffle from 'lodash/shuffle'
 import chunk from 'lodash/chunk'
-
 import { withStyles } from '@material-ui/styles'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import BasePage from '../../../common/BasePage'
 import Page from '../../../layout/Page'
 import { goTo } from '../../../services/navigation'
 import { Col, Row } from '../../../common'
-import { alertDialog, PrimaryButton, SmallButton } from '../../../components'
+import {
+  alertDialog,
+  PrimaryButton,
+  SmallButton,
+  Text,
+} from '../../../components'
 import { withAppContext } from '../../../services/Providers/AppStateContext'
 
 import styles from './styles'
@@ -179,9 +181,9 @@ class MnemonicPhraseConfirm extends BasePage {
         <Col>
           <Col flex="10" className="Padding--row">
             <br />
-            <Typography variant="caption" align="center" gutterBottom>
+            <Text variant="caption" align="center" gutterBottom>
               Tap on the words in the correct order
-            </Typography>
+            </Text>
             {this._createColumns(this.state.shuffledWords)}
           </Col>
           <br />
