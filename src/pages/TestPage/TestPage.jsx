@@ -14,7 +14,9 @@ import FabButton from '../../components/FabButton'
 import Page from '../../layout/Page'
 import Padder from '../../layout/Padder'
 import CardWallet from '../../layout/CardWallet'
+import CardDapp from '../../layout/CardDapp'
 import Tab from '../../layout/Tab'
+import TabContent from '../../layout/TabContent'
 
 import Fab from '@material-ui/core/Fab'
 
@@ -63,20 +65,10 @@ class TestPage extends BasePage {
               </FabButton>
             }
           />
-          <CardWallet
-            title="$2311.312233"
-            subTitle="@Torresjaylord"
-            componentIcon={
-              <FabButton color="red" type="third" size="small">
-                E
-              </FabButton>
-            }
-          />
         </Tab>
 
         <Tab
           title="dapps"
-          subTitle=""
           renderButton={
             <React.Fragment>
               <Padder size={1} horizontal>
@@ -87,35 +79,37 @@ class TestPage extends BasePage {
             </React.Fragment>
           }
         >
-          <CardWallet
-            title="$231231.3123"
-            subTitle="@jaylordTorres"
-            componentIcon={
-              <FabButton color="red" type="third" size="small">
-                l
-              </FabButton>
-            }
-          />
-          <CardWallet
-            title="$2311.312233"
-            subTitle="@Torresjaylord"
-            componentIcon={
-              <FabButton color="red" type="third" size="small">
-                l
-              </FabButton>
-            }
-          />
-          <CardWallet
-            title="$2311.312233"
-            subTitle="@Torresjaylord"
-            componentIcon={
-              <FabButton color="red" type="third" size="small">
-                E
-              </FabButton>
-            }
-          />
+          <TabContent direction="row">
+            <CardDapp
+              isActive
+              textTransform="uppercase"
+              title="new dapp"
+              componentIcon={
+                <FabButton color="red" type="third" size="large">
+                  l
+                </FabButton>
+              }
+            />
+            <CardDapp
+              title="Dapper"
+              componentIcon={
+                <FabButton color="red" type="third" size="large">
+                  l
+                </FabButton>
+              }
+            />
+            <CardDapp
+              title="Contacts"
+              componentIcon={
+                <FabButton color="red" type="third" size="large">
+                  l
+                </FabButton>
+              }
+            />
+          </TabContent>
         </Tab>
 
+        <Padder size={3} vertical />
         <Padder size={2} vertical>
           <PrimaryButton fullWidth type="primary">
             record recovery
