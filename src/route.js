@@ -22,7 +22,7 @@ import Dashboard from './page/dashboard'
 import GetStarted from './page/get_started'
 import Login from './page/login'
 import MnemonicPhrase from './page/mnemonic_phrase'
-import MnemonicPhraseConfirm from './page/mnemonic_phrase/MnemonicPhraseConfirm/MnemonicPhraseConfirm'
+import MnemonicConfirm from './page/mnemonic_confirm'
 import NominatePassword from './page/nominate_password'
 import RestoreBackup from './page/restore_backup'
 import Settings from './page/setting'
@@ -43,7 +43,7 @@ export default {
   GetStarted: GetStarted,
   Login: Login,
   MnemonicPhrase: MnemonicPhrase,
-  MnemonicPhraseConfirm: MnemonicPhraseConfirm,
+  MnemonicConfirm: MnemonicConfirm,
   NominatePassword: NominatePassword,
   Provider: Provider,
   Network: Network,

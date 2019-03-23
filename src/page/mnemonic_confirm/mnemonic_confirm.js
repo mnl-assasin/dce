@@ -4,17 +4,17 @@ import shuffle from 'lodash/shuffle'
 import chunk from 'lodash/chunk'
 import { withStyles } from '@material-ui/styles'
 
-import BasePage from '../../../common/BasePage'
-import { Page } from '../../../layout'
-import { goTo } from '../../../services/navigation'
-import { Col, Row } from '../../../common'
+import BasePage from '../../common/BasePage'
+import { Page } from '../../layout'
+import { goTo } from '../../services/navigation'
+import { Col, Row } from '../../common'
 import {
   alertDialog,
   PrimaryButton,
   SmallButton,
   Text,
-} from '../../../components'
-import { withAppContext } from '../../../services/Providers/AppStateContext'
+} from '../../components'
+import { withAppContext } from '../../services/Providers/AppStateContext'
 
 import styles from './styles'
 import './MnemonicPhraseConfirm.css'
