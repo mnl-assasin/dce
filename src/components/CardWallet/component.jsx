@@ -1,17 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
 
-import FabButton from '../../components/FabButton'
 import Text from '../Text'
-import Page from '../../layout/Page'
 import Padding from '../../layout/Padding'
-import Tab from '../../layout/Tab'
 import * as styles from './styles'
 
 class CardWallet extends React.PureComponent {
   render() {
-    const { title, subTitle, children, classes, componentIcon } = this.props
+    const { title, subTitle, componentIcon } = this.props
     return (
       <Padding vertical={8}>
         <Padding style={styles.container} all={16}>
