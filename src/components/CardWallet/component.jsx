@@ -9,7 +9,7 @@ import Padder from '../../layout/Padder'
 import Tab from '../../layout/Tab'
 import * as styles from './styles'
 
-class TabContainer extends React.PureComponent {
+class CardWallet extends React.PureComponent {
   render() {
     const { title, subTitle, children, classes, componentIcon } = this.props
     return (
@@ -45,4 +45,4 @@ class TabContainer extends React.PureComponent {
 //   type: PropTypes.string.isRequired,
 // }
 
-export default TabContainer
+export default CardWallet
