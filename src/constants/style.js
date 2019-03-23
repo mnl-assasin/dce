@@ -30,7 +30,8 @@ export default {
   green: { background: grad(green.colorLeft, green.colorRight) },
 }
 export const primaryBackground = grad(primary.colorLeft, primary.colorRight)
-export const boxShadow = '#ccc5c5 0px 0px 36px 3px'
+export const boxShadow = '#e6e3e3 0px 0px 36px 3px'
+export const boxShadowWeak = '#ece7e7 0px 0px 36px 3px'
 
 function grad(f, s) {
   return `linear-gradient(to right, ${f} 0%, ${s} 100%)`
