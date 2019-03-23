@@ -1,15 +1,13 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import Page from '../../layout/Page'
-import { PrimaryButton } from '../../components'
+import { PrimaryButton, Text } from '../../components'
 import * as route from '../../constants/route'
 import { goTo } from '../../services/navigation'
 import useStyles from './styles'
 
 // page setup
-const title = 'Getting Started'
+// const title = 'Getting Started'
 const navigationProps = {
   // title: title,
 }
@@ -25,7 +23,7 @@ const GetStarted = () => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Typography variant="h3" />
+        <Text variant="h3" />
       </div>
       <div className={classes.buttonGroup}>
         <PrimaryButton
