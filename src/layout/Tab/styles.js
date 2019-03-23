@@ -15,11 +15,7 @@ export const wraperStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
   paddingBottom: 12,
-  paddingTop: 12
+  paddingTop: 12,
 }
 
 export const headerContainer = { flexDirection: 'row', display: 'flex' }
-
-export default theme => ({
-  root: {},
-})

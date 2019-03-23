@@ -1,18 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
-import FabButton from '../../components/FabButton'
-import Page from '../../layout/Page'
 import Padding from '../../layout/Padding'
-import Tab from '../../layout/Tab'
 import Text from '../../components/Text'
 import * as styles from './styles'
 
 class TabContainer extends React.PureComponent {
   render() {
-    const { title, subTitle, children, classes, renderButton } = this.props
+    const { title, subTitle, children, renderButton } = this.props
     return (
       <div>
         <div style={styles.wraperStyle}>
