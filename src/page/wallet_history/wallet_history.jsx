@@ -26,10 +26,11 @@ const WalletHistory = props => {
   const [histories, setHistories] = useState([])
 
   useEffect(() => {
+    console.log('props.wallet', props.wallet)
     Wallet.ethers
       .history({
         network: appContext[storage.ACTIVE_PROVIDER_ID],
-        address: appContext[storage.WALLET_ADDRESS],
+        address: props.wallet[storage.WALLET_ADDRESS],
       })
       .then(data => {
         console.log(data)
