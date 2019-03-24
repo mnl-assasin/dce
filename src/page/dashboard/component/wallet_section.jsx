@@ -1,15 +1,7 @@
 import React from 'react'
-import { Page, Padding, Tab, TabContent } from '../../../layout'
+import { Padding, Tab, TabContent } from '../../../layout'
 import { WALLET } from '../../../constants/storage'
-import {
-  PrimaryButton,
-  SmallButton,
-  FabButton,
-  CardWallet,
-  CardDapp,
-  Navbar,
-  Text,
-} from '../../../components'
+import { FabButton, CardWallet } from '../../../components'
 
 export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
   <Tab
@@ -35,20 +27,22 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
       </React.Fragment>
     }
   >
-    {Object.keys(wallets).map((_id, index) => (
-      <CardWallet
-        key={_id}
-        amount={wallets[_id][WALLET.WALLET_AMOUNT]}
-        userName={wallets[_id][WALLET.WALLET_USERNAME]}
-        basePrice={coinPrice}
-        componentIcon={
-          <FabButton color="red" type="third" size="small">
-            E
-          </FabButton>
-        }
-        onPress={onPress}
-        param={wallets[_id]}
-      />
-    ))}
+    <TabContent direction="column">
+      {Object.keys(wallets).map((_id, index) => (
+        <CardWallet
+          key={_id}
+          amount={wallets[_id][WALLET.WALLET_AMOUNT]}
+          userName={wallets[_id][WALLET.WALLET_USERNAME]}
+          basePrice={coinPrice}
+          componentIcon={
+            <FabButton color="red" type="third" size="small">
+              E
+            </FabButton>
+          }
+          onPress={onPress}
+          param={wallets[_id]}
+        />
+      ))}
+    </TabContent>
   </Tab>
 )
