@@ -1,41 +1,40 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { withStyles } from "@material-ui/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff"
-import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/styles'
+import TextField from '@material-ui/core/TextField'
+import IconButton from '@material-ui/core/IconButton'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
+import { Navbar, PrimaryButton, Text } from '../../components'
+import { Padding } from '../../layout'
 
-import BasePage from "../../common/BasePage";
-import { inputTypes } from "../../constants/types";
+import BasePage from '../../common/BasePage'
+import { inputTypes } from '../../constants/types'
 import { Page } from '../../common'
-import { Navbar } from '../../components';
 import { goTo as navigate } from '../../services/navigation'
-import { withAppContext } from "../../services/Providers/AppStateContext";
+import { withAppContext } from '../../services/Providers/AppStateContext'
 
-import styles from "./styles"
+import styles from './styles'
 
 class Login extends BasePage {
-  title = "Dapper Wallet"
+  title = 'Dapper Wallet'
 
   state = {
     password: '',
-    passwordVisible: false
+    passwordVisible: false,
   }
 
   onHandlePassword = e => {
     this.setState({
-      password: e.target.value
-    });
+      password: e.target.value,
+    })
   }
 
   onShowPasswordVisibility = () => {
-    this.setState({passwordVisible: !this.state.passwordVisible})
+    this.setState({ passwordVisible: !this.state.passwordVisible })
   }
 
   onUseBackup = () => {
@@ -50,7 +49,7 @@ class Login extends BasePage {
         <Navbar title={this.title} />
         <div className={classes.content}>
           <div className={classes.logo}>
-            <Typography variant="h3">login</Typography>
+            <Text variant="h3">login</Text>
           </div>
 
           <form className={classes.container} noValidate autoComplete="off">
@@ -79,35 +78,37 @@ class Login extends BasePage {
                       )}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }}
             />
-            <div className={classes.buttonHolder}>
-              <Button
-                variant="outlined"
-                color="primary"
-                size="large"
+            <Padding bottom={4} top={32}>
+              <PrimaryButton
+                type="primary"
                 onClick={this.onClickSubmit}
+                fullWidth
               >
                 Confirm
-              </Button>
-            </div>
+              </PrimaryButton>
+            </Padding>
+            <Padding vertical={4}>
+              <PrimaryButton
+                type="secondary"
+                onClick={this.onUseBackup}
+                fullWidth
+              >
+                use backup phrase to login
+              </PrimaryButton>
+            </Padding>
           </form>
-          <div className={classes.spacer} />
-          <div className={classes.fixBottom}>
-            <Button color="primary" onClick={this.onUseBackup}>
-              use backup phrase to login
-            </Button>
-          </div>
         </div>
       </Page>
-    );
+    )
   }
 }
 
 Login.propTypes = {
   AppContext: PropTypes.object.isRequired, // withAppContext
-  classes: PropTypes.object.isRequired // withStyles
-};
+  classes: PropTypes.object.isRequired, // withStyles
+}
 
-export default withStyles(styles)(withAppContext(Login));
+export default withStyles(styles)(withAppContext(Login))
