@@ -1,5 +1,6 @@
 import { Transaction } from 'dapper'
 import { emptyMethod } from '../helper/function'
+import { ETHER_PRICE } from '../constants/storage'
 
 /**
  *
@@ -9,20 +10,24 @@ import { emptyMethod } from '../helper/function'
  *
  */
 
-export default (context) => async (onSuccess = emptyMethod, onError = emptyMethod) => {
+export default appContext => async (
+  onSuccess = emptyMethod,
+  onError = emptyMethod
+) => {
   try {
     const request = await Transaction.ethers.etherPrice()
     if (request.code === 200) {
-      context.props.AppContext.set({
-        [context.storage.ETHER_PRICE]: String(request.data.price)
+      appContext.set({
+        [ETHER_PRICE]: String(request.data.price),
       })
-      return onSuccess(request.data.price)
-
+      onSuccess(request.data.price)
+      return request.data.price
     } else {
       throw new Error('code not 200')
     }
   } catch (e) {
     console.log('error in getting ether price: ', e)
-    return onError(e)
+    onError(e)
+    return null
   }
 }

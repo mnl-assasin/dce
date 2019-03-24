@@ -9,11 +9,12 @@ import { emptyMethod } from '../helper/function'
  *
  */
 
-export default (context) => async (
+export default context => async (
   ACTIVE_PROVIDER_ID,
   WALLET_ADDRESS,
   onSuccess = emptyMethod,
-  onError = emptyMethod) => {
+  onError = emptyMethod
+) => {
   try {
     if (!ACTIVE_PROVIDER_ID) {
       throw new Error('invalid provider')
@@ -21,19 +22,21 @@ export default (context) => async (
     if (!ACTIVE_PROVIDER_ID) {
       throw new Error('invalid provider')
     }
-    const request = await  Wallet.ethers.balance({
+    const request = await Wallet.ethers.balance({
       provider: ACTIVE_PROVIDER_ID,
-      address: WALLET_ADDRESS
+      address: WALLET_ADDRESS,
     })
     if (request.code === 200) {
       // converted amount price is a component value.
       // so success must handle by the caller
-      return onSuccess(request.data.balance)
+      onSuccess(request.data.balance)
+      return request.data.balance
     } else {
       throw new Error('code not 200')
     }
   } catch (e) {
     console.log('error in getting wallet balance: ', e)
-    return onError(e)
+    onError(e)
+    return ''
   }
 }

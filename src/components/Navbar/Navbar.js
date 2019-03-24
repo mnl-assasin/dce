@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { goBack } from '../../services/navigation'
-import SidemenuEvent from '../../events/SidemenuEvent'
+
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -8,6 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import MenuIcon from '@material-ui/icons/Menu'
+
+import SidemenuEvent from '../../events/SidemenuEvent'
+import { goBack } from '../../services/navigation'
+import { boxShadow } from '../../constants/style'
 import './Navbar.css'
 
 const styles = {
@@ -65,7 +68,7 @@ class Navbar extends Component {
       <div className="Navbar">
         <AppBar
           position="static"
-          style={{ backgroundColor: 'white', color: 'black' }}
+          style={{ backgroundColor: 'white', color: 'black', boxShadow }}
         >
           <Toolbar>
             {backButton ? this._renderBackButton() : null}

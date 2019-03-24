@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { ThemeProvider } from '@material-ui/styles'
 
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@material-ui/core/CssBaseline'
 import Router from 'route-lite'
 import { IntlProvider } from 'react-intl'
-import AppContext from './services/Providers/AppStateContext' 
-import Splash from './pages/Splash/Splash'
+import AppContext from './services/Providers/AppStateContext'
+import Splash from './page/splash'
 import {
   Sidemenu,
   FullScreenLoading,
   Notifier,
   AlertDialog,
-  Snackbar
+  Snackbar,
 } from './components'
 
 import theme from './styles'
@@ -22,7 +22,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      locale: 'en'
+      locale: 'en',
     }
   }
   componentDidMount() {

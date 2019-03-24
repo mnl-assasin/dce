@@ -1,10 +1,7 @@
-import { makeStyles } from '@material-ui/styles'
-
 const style = {
   borderRadius: 99,
   paddingBottom: '0.8rem',
   paddingTop: '0.8rem',
-
 }
 
 export const outlined = {
@@ -27,8 +24,7 @@ export const secondary = {
 }
 
 export default theme => ({
-  root: {
-  },
+  root: {},
   label: {
     textTransform: 'uppercase',
   },
