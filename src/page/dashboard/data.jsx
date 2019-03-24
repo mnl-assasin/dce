@@ -7,7 +7,7 @@ import { WALLET } from '../../constants/storage'
 // test account
 export const wallets = {
   '0x83287fc34Bd986A23e2C0BAaf09C898d80ff34c2': {
-    [WALLET.WALLET_COINTBASE]: 'ETH',
+    [WALLET.WALLET_COINBASE]: 'ETH',
     [WALLET.WALLET_USERNAME]: '@jaylordTorres',
     [WALLET.WALLET_AMOUNT]: '2.2',
     [WALLET.WALLET_MNEMONIC]:
@@ -18,12 +18,12 @@ export const wallets = {
     [WALLET.WALLET_PUBLIC_KEY]: '',
   },
   '0x83287fc34Bd986A23e2C0BAaf09C898d80ff34c2TEST': {
-    [WALLET.WALLET_COINTBASE]: 'BIT',
+    [WALLET.WALLET_COINBASE]: 'BIT',
     [WALLET.WALLET_USERNAME]: '@test2',
     [WALLET.WALLET_AMOUNT]: '3.3',
     [WALLET.WALLET_MNEMONIC]:
-      'scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch',
-    [WALLET.WALLET_ADDRESS]: '0x83287fc34Bd986A23e2C0BAaf09C898d80ff34c2',
+      'crunch soldier universe crunch flight clip urge chalk giant silver rug tank',
+    [WALLET.WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
     [WALLET.WALLET_PRIVATE_KEY]:
       '0x7a7ac95588a98d1203f4781e3aa3fcc3e86c81edd637257b34393e7e602ded36',
     [WALLET.WALLET_PUBLIC_KEY]: '',

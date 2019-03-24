@@ -58,17 +58,17 @@ class Wallet extends BasePage {
           classes={classes}
           networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
           networkNumber={this.state.blockNumber}
-          userName={this.props[this.storage.WALLET_USERNAME]}
           coinPrice={this.props.AppContext[this.storage.ETHER_PRICE]}
-          coinBase={this.props[this.storage.WALLET_COINTBASE]}
+          userName={this.props[this.storage.WALLET_USERNAME]}
+          coinBase={this.props[this.storage.WALLET_COINBASE]}
         />
         <WalletContent
           classes={classes}
           {...WalletContentTestValue}
-          amount={amount}
+          amount={this.props[this.storage.WALLET_AMOUNT]}
           value={convertedPricePerValue(
             this.props.AppContext[this.storage.ETHER_PRICE],
-            amount
+            this.props[this.storage.WALLET_AMOUNT]
           )}
         />
         <WalletButtons

@@ -4,6 +4,7 @@ import setBlockNumber from './set_block_number'
 import setEtherPrice from './set_ether_price'
 import restoreBackup from './restore_backup'
 import sendWallet from './send_wallet'
+import setWalletBalances from './set_wallet_balances'
 
 export {
   estimateFee,
@@ -12,4 +13,5 @@ export {
   setBalance,
   restoreBackup,
   sendWallet,
+  setWalletBalances,
 }
