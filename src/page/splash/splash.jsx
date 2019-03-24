@@ -3,7 +3,7 @@ import React from 'react'
 import BasePage from '../../common/BasePage'
 import Navigation, { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
-import { setBlockNumber } from '../../hof'
+import { setBlockNumber, setEtherPrice } from '../../hof'
 
 import './Splash.css'
 
@@ -14,6 +14,7 @@ class Splash extends BasePage {
   storage = BasePage.constants.storage
 
   setBlockNumber = setBlockNumber(this)
+  setEtherPrice = setEtherPrice(this)
 
   async componentDidMount() {
     // load session into react memory
@@ -72,6 +73,9 @@ class Splash extends BasePage {
     this.storage.ACTIVE_PROVIDER_ID,
     this.storage.ACTIVE_PROVIDER_NAME,
     this.storage.ACTIVE_PROVIDER_BlOCKNUMBER,
+
+    //
+    this.storage.ETHER_PRICE,
   ]
 
   _init = async () => {
@@ -97,6 +101,8 @@ class Splash extends BasePage {
         }),
       error => this.setState({ blockNumber: '' })
     )
+
+    await this.setEtherPrice()
   }
 
   render() {
