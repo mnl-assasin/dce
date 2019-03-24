@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
-import { PrimaryButton, Text } from '../../../components'
+import { PrimaryButton } from '../../../components'
 import { Padding } from '../../../layout'
 
 const component = ({ classes, onSend, onWalletReceive, onHistory }) => (

@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from '../../../common'
-import Typography from '@material-ui/core/Typography'
+import { Text } from '../../../components'
 
 const component = ({ classes, amount, value }) => (
   <div className={classes.contentHolder}>
     <Row className={classes.amountHolder}>
       <Col>
-        <Typography variant="h5">wallet amount</Typography>
+        <Text variant="h6">wallet amount</Text>
       </Col>
       <Col>
-        <Typography variant="h5" align="right">
+        <Text variant="h6" align="right">
           {amount}
-        </Typography>
+        </Text>
       </Col>
     </Row>
     <Row className={classes.valueHolder}>
       <Col>
-        <Typography variant="h5">wallet value</Typography>
+        <Text variant="h6">wallet value</Text>
       </Col>
       <Col>
-        <Typography variant="h5" gutterBottom align="right">
+        <Text variant="h6" gutterBottom align="right">
           ${value}
-        </Typography>
+        </Text>
       </Col>
     </Row>
   </div>
@@ -30,18 +30,18 @@ const component = ({ classes, amount, value }) => (
 
 component.defaultProps = {
   amount: '',
-  value: ''
+  value: '',
 }
 
 component.propTypes = {
   amount: PropTypes.string,
   value: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default component
 
 export const WalletContentTestValue = {
   amount: '0.22222456',
-  value: '$25'
+  value: '$25',
 }
