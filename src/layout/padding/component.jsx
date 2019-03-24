@@ -12,6 +12,7 @@ const component = ({
   bottom = undefined,
   horizontal = undefined,
   vertical = undefined,
+  button = false,
   ...props
 }) => {
   const styles = getStyle({
@@ -23,6 +24,7 @@ const component = ({
     bottom,
     horizontal,
     vertical,
+    button,
   })
   return (
     <div style={{ ...styles, ...style }} {...props}>

@@ -9,6 +9,7 @@ export const getStyle = ({
   bottom,
   horizontal,
   vertical,
+  button,
 }) => {
   const paddingStyle = {}
   if (isDefined(all)) {
@@ -40,6 +41,9 @@ export const getStyle = ({
   if (isDefined(vertical)) {
     paddingStyle.paddingTop = vertical
     paddingStyle.paddingBottom = vertical
+  }
+  if (button) {
+    paddingStyle.cursor = 'pointer'
   }
 
   return paddingStyle
