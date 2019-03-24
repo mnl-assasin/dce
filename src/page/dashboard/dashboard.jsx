@@ -27,15 +27,6 @@ import useStyles from './styles'
 import { wallets } from './data'
 import './Dashboard.scss'
 
-// setEtherPrice = setEtherPrice(this)
-// setBalance = setBalance(this)
-// this.setBalance(
-//   this.props.AppContext[this.storage.ACTIVE_PROVIDER_ID],
-//   this.props.AppContext[this.storage.WALLET_ADDRESS],
-//   value => this.setState({ amount: value })
-// )
-//
-
 // here must be loaded to appcontext all wallets on first loaded,
 
 const component = props => {
@@ -61,7 +52,6 @@ const component = props => {
     },
     [appContext[storage.ACTIVE_PROVIDER_ID], wallets]
   )
-  console.log(appContext)
   return (
     <Page>
       <WalletSection

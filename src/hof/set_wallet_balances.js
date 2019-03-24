@@ -26,6 +26,5 @@ export default (appContext, ACTIVE_PROVIDER_ID) => async (wallets = []) => {
   appContext.set({
     [USER_WALLETS]: newWallet,
   })
-  console.log(balances)
   return true
 }

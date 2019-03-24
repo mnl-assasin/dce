@@ -48,13 +48,11 @@ class Wallet extends BasePage {
   onSend = () =>
     this.navigate(this.route.WALLET_SEND, { wallet: this.props.wallet })
   onHistory = () =>{
-    console.log(this.props.wallet)
     this.navigate(this.route.WALLET_HISTORY, { wallet: this.props.wallet })}
 
   render() {
     const { amount } = this.state
     const { classes } = this.props
-    console.log(this.props)
     return (
       <Page navigationProps={this.navigationProps}>
         <WalletHeader
