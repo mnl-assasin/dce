@@ -10,7 +10,7 @@ import { goTo } from '../../services/navigation'
 import { convertedPricePerValue } from '../../helper/computation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 import WalletButtons from './component/WalletButtons'
-import WalletHeader, { WalletHeaderTestValue } from './component/WalletHeader'
+import WalletHeader from './component/WalletHeader'
 import WalletContent, {
   WalletContentTestValue,
 } from './component/WalletContent'
@@ -40,18 +40,17 @@ class Wallet extends BasePage {
   state = {
     blockNumber: '',
     networkName: '',
-    amount: '',
   }
 
   onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
 
   onSend = () =>
     this.navigate(this.route.WALLET_SEND, { wallet: this.props.wallet })
-  onHistory = () =>{
-    this.navigate(this.route.WALLET_HISTORY, { wallet: this.props.wallet })}
+  onHistory = () => {
+    this.navigate(this.route.WALLET_HISTORY, { wallet: this.props.wallet })
+  }
 
   render() {
-    const { amount } = this.state
     const { classes } = this.props
     return (
       <Page navigationProps={this.navigationProps}>
