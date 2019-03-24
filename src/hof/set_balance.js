@@ -36,6 +36,7 @@ export default context => async (
     }
   } catch (e) {
     console.log('error in getting wallet balance: ', e)
-    return onError(e)
+    onError(e)
+    return ''
   }
 }
