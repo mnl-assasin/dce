@@ -1,14 +1,14 @@
 .MnemonicPhraseConfirm {
-  
+
 }
 
-.Button--container {
+.Button--container1 {
     display: flex;
     flex-direction: column;
     padding-top: 1em
 
 }
 
-.py-2{
+.py-21{
 	margin: calc(8 * 2px);
 }
