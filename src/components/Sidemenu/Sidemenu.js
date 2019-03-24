@@ -3,14 +3,25 @@ import React, { PureComponent } from 'react'
 import { withStyles } from '@material-ui/styles'
 import Drawer from '@material-ui/core/Drawer'
 
-import {
-  withAppContext
-} from '../../services/Providers/AppStateContext'
+import { withAppContext } from '../../services/Providers/AppStateContext'
 import SidemenuEvent from '../../events/SidemenuEvent'
-import { DASHBOARD, WALLET, WALLET_SEND, LOGIN,
+import {
+  DASHBOARD,
+  WALLET,
+  WALLET_SEND,
+  LOGIN,
   MNEMONIC_CONFIRM,
-  RESTORE_BACKUP, NOMINATED_PASSWORD, SETTING,  WALLET_HISTORY  } from '../../constants/route'
-import { IS_LOGGED, IS_SET_MNEMONIC, WALLET_ADDRESS} from '../../constants/storage'
+  RESTORE_BACKUP,
+  NOMINATED_PASSWORD,
+  SETTING,
+  WALLET_HISTORY,
+} from '../../constants/route'
+import {
+  IS_LOGGED,
+  IS_SET_MNEMONIC,
+  WALLET_ADDRESS,
+  WALLET as WALLET_STORAGE,
+} from '../../constants/storage'
 import { goTo } from '../../services/navigation'
 import Storage from '../../services/storage/storage'
 import MenuDevtool from './component/MenuDevtool'
@@ -18,35 +29,47 @@ import Title from './component/MenuHeaderTitle'
 import Items from './component/MenuItems'
 import styles from './styles'
 
+const walletData = {
+  [WALLET_STORAGE.WALLET_COINBASE]: 'ETH',
+  [WALLET_STORAGE.WALLET_USERNAME]: '@jaylordTorres',
+  [WALLET_STORAGE.WALLET_AMOUNT]: '2.2',
+  [WALLET_STORAGE.WALLET_MNEMONIC]:
+    'scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch',
+  [WALLET_STORAGE.WALLET_ADDRESS]: '0x83287fc34Bd986A23e2C0BAaf09C898d80ff34c2',
+  [WALLET_STORAGE.WALLET_PRIVATE_KEY]:
+    '0x7a7ac95588a98d1203f4781e3aa3fcc3e86c81edd637257b34393e7e602ded36',
+  [WALLET_STORAGE.WALLET_PUBLIC_KEY]: '',
+}
+
 class Sidemenu extends PureComponent {
   state = {
     shouldShowSideMenu: false,
-    devMenuOpen: false
+    devMenuOpen: false,
   }
 
   menuTopOptions = [
     {
       title: 'terms and condition',
-      onClick: () => this.goTo('Settings')
+      onClick: () => this.goTo('Settings'),
     },
     {
       title: 'privacy policy',
-      onClick: () => this.goTo('Settings')
+      onClick: () => this.goTo('Settings'),
     },
     {
       key: 'settings',
       title: 'settings',
-      onClick: () => this.goTo('Settings')
+      onClick: () => this.goTo('Settings'),
     },
     {
       key: 'logout',
       title: 'logout',
-      onClick: () => this.onClickLogout()
+      onClick: () => this.onClickLogout(),
     },
     {
       key: 'login',
       title: 'Login',
-      onClick: () => this.onLogin()
+      onClick: () => this.onLogin(),
     },
   ]
 
@@ -69,68 +92,95 @@ class Sidemenu extends PureComponent {
     //   onClick: () => this.onClickLogout()
     // },
     {
-      title: 'build dapps'
+      title: 'build dapps',
     },
     {
-      title: 'join the team'
+      title: 'join the team',
     },
     {
-      title: 'investors'
+      title: 'investors',
     },
     {
-      title: 'website'
-    }
+      title: 'website',
+    },
   ]
 
   devMenus = [
     {
       key: 'login',
       title: 'Force SignIn',
-      onClick: () => this.onClickTestLogin()
+      onClick: () => this.onClickTestLogin(),
     },
     {
       title: 'force logout',
-      onClick: () => this.onClickLogout()
+      onClick: () => this.onClickLogout(),
     },
     {
       title: 'set mnemonic',
-      onClick: () => this.onSetMnemonic()
+      onClick: () => this.onSetMnemonic(),
     },
     {
       title: 'got testRoute',
-      onClick: () => this.testRoute()
+      onClick: () => this.testRoute(),
     },
     {
       title: 'Restore Backup',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(RESTORE_BACKUP) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(RESTORE_BACKUP)
+      },
     },
     {
       title: 'Confirm Mnemonic ',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(MNEMONIC_CONFIRM, {mnemonic: "scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch"}) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(MNEMONIC_CONFIRM, {
+          mnemonic:
+            'scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch',
+        })
+      },
     },
     {
       title: 'Nominate Password',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(NOMINATED_PASSWORD) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(NOMINATED_PASSWORD)
+      },
     },
     {
       title: 'Wallet',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(WALLET, { wallet: walletData })
+      },
     },
     {
       title: 'Dashboard',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(DASHBOARD) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(DASHBOARD)
+      },
     },
     {
       title: 'Wallet -> Send ',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET_SEND) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(WALLET_SEND, { wallet: walletData })
+      },
     },
     {
       title: 'Wallet -> History ',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(WALLET_HISTORY) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(WALLET_HISTORY, { wallet: walletData })
+      },
     },
     {
       title: 'Setting ',
-      onClick: () =>{ SidemenuEvent.toggle(); goTo(SETTING) }
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(SETTING)
+      },
     },
   ]
 
@@ -141,13 +191,13 @@ class Sidemenu extends PureComponent {
   appInfo = {
     version: '2.2.2',
     code: '2',
-    title: 'dapper wallet'
+    title: 'dapper wallet',
   }
 
   componentDidMount() {
     SidemenuEvent.on('sidemenu:toggle', () => {
       this.setState({
-        shouldShowSideMenu: !this.state.shouldShowSideMenu
+        shouldShowSideMenu: !this.state.shouldShowSideMenu,
       })
     })
   }
@@ -157,9 +207,8 @@ class Sidemenu extends PureComponent {
   }
 
   onToggleDevMenu = () => {
-    this.setState({devMenuOpen: !this.state.devMenuOpen})
+    this.setState({ devMenuOpen: !this.state.devMenuOpen })
   }
-
 
   onClickLogout = () => {
     this.onToggleMenu()
@@ -217,7 +266,12 @@ class Sidemenu extends PureComponent {
           </div>
           <div className={classes.devider} />
           <div className={classes.devMenu}>
-            <MenuDevtool items={this.devMenus} isOpen={this.state.devMenuOpen} onOpen={this.onToggleDevMenu} classes={classes} />
+            <MenuDevtool
+              items={this.devMenus}
+              isOpen={this.state.devMenuOpen}
+              onOpen={this.onToggleDevMenu}
+              classes={classes}
+            />
           </div>
           <div className={classes.bottomDevider}>
             <Items
