@@ -23,7 +23,7 @@ const component = props => {
   const navigationPropsMem = useMemo(() => ({ title, backButton: true }), [])
   const onSetActiveMem = useMemo(
     () => setIsActive(appContext, navigate, setBlockNumber(appContext)),
-    []
+    [appContext]
   )
   const getIsActiveMem = useMemo(() => getIsActive(appContext), [])
   const onGetIsActive = useCallback(getIsActiveMem, [])

@@ -20,6 +20,7 @@ export const setIsActive = (
   if (network._id === appContext[storage.ACTIVE_PROVIDER_ID]) {
     return ''
   }
+  console.log(network)
   setBlockNumber(
     network._id,
     value =>
@@ -28,7 +29,7 @@ export const setIsActive = (
         [storage.ACTIVE_PROVIDER_NAME]: network.title,
         [storage.ACTIVE_PROVIDER_BlOCKNUMBER]: String(value),
       }),
-    error => setError({ blockNumber: '' })
+    error => setError('error')
   )
   return navigate(route.SETTING)
 }
