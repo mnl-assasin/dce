@@ -1,4 +1,6 @@
-export default theme => ({
+import { makeStyles } from '@material-ui/styles'
+
+export const styles = theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -6,37 +8,38 @@ export default theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing.unit * 3
   },
   content: {
     padding: 10,
     flex: 1,
     flexDirection: 'column',
-    display: 'flex'
+    display: 'flex',
   },
   logo: {
-  	display: 'flex',
-  	justifyContent: 'center',
-  	alignItems: 'center',
-  	flex: 2,
-  	height: 200
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2,
+    height: 200,
   },
   textField: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   buttonHolder: {
     marginTop: theme.spacing.unit * 3,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
-  spacer:{
-		height: 30,
+  spacer: {
+    height: 30,
   },
   fixBottom: {
     marginTop: theme.spacing.unit * 3,
     display: 'flex',
-  	justifyContent: 'flex-end',
-  	alignItems: 'flex-end',
-  }
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
 })
+
+export default makeStyles(styles)
