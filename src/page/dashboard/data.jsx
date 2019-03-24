@@ -7,7 +7,7 @@ import { WALLET } from '../../constants/storage'
 // test account
 export const wallets = {
   '0x83287fc34Bd986A23e2C0BAaf09C898d80ff34c2': {
-    [WALLET.WALLET_COINTBASE]: 'ETHER',
+    [WALLET.WALLET_COINTBASE]: 'ETH',
     [WALLET.WALLET_USERNAME]: '@jaylordTorres',
     [WALLET.WALLET_AMOUNT]: '2.2',
     [WALLET.WALLET_MNEMONIC]:
