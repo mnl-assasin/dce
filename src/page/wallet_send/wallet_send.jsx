@@ -19,13 +19,13 @@ import useStyles from './styles'
 const title = '@blocksmith'
 const subTitle = 'send'
 
-const navigationProps = {
-  title: title,
-  backButton: true,
-}
+// const navigationProps = {
+//   title: title,
+//   backButton: true,
+// }
 
 // methods
-const TestWalletAddress = '0x14fe7926b260834b2d1a5124332deae9dcf20029'
+
 // template
 const WalletSend = props => {
   const appContext = useContext(AppContextObject)
@@ -36,32 +36,42 @@ const WalletSend = props => {
   const usd = useTextbox('')
   const gasLimit = useTextbox('')
   const transaction = useTextbox('')
-  const yourAddresss = useTextbox(appContext[storage.WALLET_ADDRESS])
+  const yourAddresss = useTextbox(props.wallet[storage.WALLET_ADDRESS])
   const onClickEstimate = useCallback(
     () =>
       estimateFee(appContext)(
         {
           network: appContext[storage.ACTIVE_PROVIDER_ID],
-          address: TestWalletAddress,
+          address: sendTo.value,
           value: amount.value,
         },
         ({ estimatedTotalString }) => setFee(estimatedTotalString)
       ),
+    [amount.value, sendTo.value]
+  )
+  // const onClickSubmit = () => {
+  //   console.log('submitted: ')
+  // }
+
+  const onClickSubmit = useCallback(
+    () =>
+      sendWallet(appContext)(
+        {
+          network: appContext[storage.ACTIVE_PROVIDER_ID],
+          privateKey: props.wallet[storage.WALLET_PRIVATE_KEY],
+          address: sendTo.value,
+          value: amount.value,
+          gasLimit: '21000',
+          data: null,
+        },
+        result => console.log('sent: ', result)
+      ),
     [amount.value]
   )
-  const onClickSubmit = () => {
-    console.log('submitted: ')
+  const navigationProps = {
+    title: props.wallet[storage.WALLET_USERNAME],
+    backButton: true,
   }
-
-  // const onClickSubmit = useCallback(() => sendWallet(appContext)({
-  //   network: appContext[storage.ACTIVE_PROVIDER_ID],
-  //   privateKey: appContext[storage.WALLET_PRIVATE_KEY],
-  //   address: TestWalletAddress,
-  //   value: amount.value,
-  //   gasLimit: '21000',
-  //   data: null
-  // }, (result) =>console.log('sent: ', result)), [amount.value])
-
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.headerCoin}>
