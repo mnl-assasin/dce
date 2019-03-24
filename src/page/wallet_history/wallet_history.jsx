@@ -21,6 +21,7 @@ const navigationProps = {
 
 // template
 const WalletHistory = props => {
+  console.log(props)
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
   const [histories, setHistories] = useState([])
