@@ -45,8 +45,11 @@ class Wallet extends BasePage {
 
   onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
 
-  onSend = () => this.navigate(this.route.WALLET_SEND)
-  onHistory = () => this.navigate(this.route.WALLET_HISTORY)
+  onSend = () =>
+    this.navigate(this.route.WALLET_SEND, { wallet: this.props.wallet })
+  onHistory = () =>{
+    console.log(this.props.wallet)
+    this.navigate(this.route.WALLET_HISTORY, { wallet: this.props.wallet })}
 
   render() {
     const { amount } = this.state
@@ -59,16 +62,16 @@ class Wallet extends BasePage {
           networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
           networkNumber={this.state.blockNumber}
           coinPrice={this.props.AppContext[this.storage.ETHER_PRICE]}
-          userName={this.props[this.storage.WALLET_USERNAME]}
-          coinBase={this.props[this.storage.WALLET_COINBASE]}
+          userName={this.props.wallet[this.storage.WALLET_USERNAME]}
+          coinBase={this.props.wallet[this.storage.WALLET_COINBASE]}
         />
         <WalletContent
           classes={classes}
           {...WalletContentTestValue}
-          amount={this.props[this.storage.WALLET_AMOUNT]}
+          amount={this.props.wallet[this.storage.WALLET_AMOUNT]}
           value={convertedPricePerValue(
             this.props.AppContext[this.storage.ETHER_PRICE],
-            this.props[this.storage.WALLET_AMOUNT]
+            this.props.wallet[this.storage.WALLET_AMOUNT]
           )}
         />
         <WalletButtons

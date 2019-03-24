@@ -20,7 +20,7 @@ class CardWallet extends React.PureComponent {
         <Padding
           style={styles.container}
           all={16}
-          onClick={() => onPress(param)}
+          onClick={() => onPress({ wallet: param })}
           button
         >
           <div style={styles.titleContainer}>

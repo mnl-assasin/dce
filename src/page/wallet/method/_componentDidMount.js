@@ -24,7 +24,7 @@ export default context => async () => {
   // get balance of wallet and set to state for update
   context.setBalance(
     context.props.AppContext[context.storage.ACTIVE_PROVIDER_ID],
-    context.props[context.storage.WALLET_ADDRESS],
+    context.props.wallet[context.storage.WALLET_ADDRESS],
     value => context.setState({ amount: value })
   )
 }
