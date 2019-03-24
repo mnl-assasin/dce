@@ -1,29 +1,14 @@
-import React, {
-  useState,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-} from 'react'
-import {
-  PrimaryButton,
-  SmallButton,
-  FabButton,
-  CardWallet,
-  CardDapp,
-  Navbar,
-  Text,
-} from '../../components'
-import { Page, Padding, Tab, TabContent } from '../../layout'
-import { setBalance, setEtherPrice, setWalletBalances } from '../../hof'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import { PrimaryButton } from '../../components'
+import { Page, Padding } from '../../layout'
+import { setWalletBalances } from '../../hof'
 import { computeTotalCoinValue } from '../../helper/computation'
-import { Icon as ThemeIcon } from '../../common'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { navigate } from '../../services/navigation'
 import * as storage from '../../constants/storage'
 import WalletSection from './component/wallet_section'
 import DappSection from './component/dapp_section'
-import useStyles from './styles'
+// import useStyles from './styles'
 import { wallets } from './data'
 import './Dashboard.scss'
 
@@ -31,7 +16,7 @@ import './Dashboard.scss'
 
 const component = props => {
   const appContext = useContext(AppContextObject)
-  const classes = useStyles()
+  // const classes = useStyles()
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
   const totalCoins = useMemo(
     () =>
