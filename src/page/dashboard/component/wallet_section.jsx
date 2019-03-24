@@ -35,7 +35,6 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
       </React.Fragment>
     }
   >
-    {console.log(wallets)}
     {Object.keys(wallets).map((_id, index) => (
       <CardWallet
         key={_id}

@@ -38,17 +38,10 @@ const component = props => {
   const totalCoins = useMemo(
     () => '$' + computeTotalCoinValue(appContext[storage.ETHER_PRICE], wallets),
     // [appContext[storage.ETHER_PRICE], appContext[storage.USER_WALLETS]]
-    [appContext[storage.ETHER_PRICE], wallets]
+    [appContext[storage.ETHER_PRICE], wallets] // test data
   )
-
-  // const [error, setError] = useState('')
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
-  // const onSetActive = useCallback(
-  //   setIsActive(appContext, navigate, setBlockNumber(appContext), setError),
-  //   []
-  // )
-  console.log(appContext)
-  console.log(totalCoins)
+
   return (
     <Page>
       <WalletSection
