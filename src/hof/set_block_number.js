@@ -21,7 +21,7 @@ export default appContext => async (
       appContext.persist({
         [ACTIVE_PROVIDER_BlOCKNUMBER]: String(request.data.blockNumber),
       })
-
+      onSuccess(request.data.blockNumber)
       return request.data.blockNumber
     } else {
       throw new Error('code not 200')
