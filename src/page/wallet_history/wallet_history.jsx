@@ -54,13 +54,13 @@ const WalletHistory = props => {
                   <ListItemText
                     primary={
                       '' +
-                      moment(1552795756).format('LLL') +
+                      moment(item.timestamp).format('LLL') +
                       ' - ' +
                       item.confirmations +
                       ' - ' +
                       item.value
                     }
-                    secondary={item.from}
+                    secondary={item.hash}
                   />
                 </ListItem>
               )
