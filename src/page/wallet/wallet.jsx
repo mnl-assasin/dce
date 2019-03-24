@@ -51,15 +51,16 @@ class Wallet extends BasePage {
   render() {
     const { amount } = this.state
     const { classes } = this.props
-
+    console.log(this.props)
     return (
       <Page navigationProps={this.navigationProps}>
         <WalletHeader
           classes={classes}
-          {...WalletHeaderTestValue}
           networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
           networkNumber={this.state.blockNumber}
+          userName={this.props[this.storage.WALLET_USERNAME]}
           coinPrice={this.props.AppContext[this.storage.ETHER_PRICE]}
+          coinBase={this.props[this.storage.WALLET_COINTBASE]}
         />
         <WalletContent
           classes={classes}

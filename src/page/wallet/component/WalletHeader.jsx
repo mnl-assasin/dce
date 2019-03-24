@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 const component = ({
   classes,
   userName,
-  coinName,
+  coinBase,
   coinPrice,
   networkName,
   networkNumber
@@ -17,7 +17,7 @@ const component = ({
     </div>
 
     <div className={classes.headerCoin}>
-      <Typography variant="h4">{coinName}</Typography>
+      <Typography variant="h4">{coinBase}</Typography>
       <Typography>${coinPrice}</Typography>
     </div>
 
