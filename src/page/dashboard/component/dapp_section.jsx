@@ -1,14 +1,6 @@
 import React from 'react'
-import { Page, Padding, Tab, TabContent } from '../../../layout'
-import {
-  PrimaryButton,
-  SmallButton,
-  FabButton,
-  CardWallet,
-  CardDapp,
-  Navbar,
-  Text,
-} from '../../../components'
+import { Padding, Tab, TabContent } from '../../../layout'
+import { FabButton, CardDapp } from '../../../components'
 
 export default props => (
   <Tab
