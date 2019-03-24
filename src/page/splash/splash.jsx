@@ -13,7 +13,7 @@ class Splash extends BasePage {
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
 
-  setBlockNumber = setBlockNumber(this)
+  setBlockNumber = setBlockNumber(this.props.AppContext)
   setEtherPrice = setEtherPrice(this.props.AppContext)
 
   async componentDidMount() {
