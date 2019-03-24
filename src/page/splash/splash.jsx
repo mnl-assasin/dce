@@ -14,7 +14,7 @@ class Splash extends BasePage {
   storage = BasePage.constants.storage
 
   setBlockNumber = setBlockNumber(this)
-  setEtherPrice = setEtherPrice(this)
+  setEtherPrice = setEtherPrice(this.props.AppContext)
 
   async componentDidMount() {
     // load session into react memory
