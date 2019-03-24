@@ -1,66 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import { PrimaryButton, Text } from '../../../components'
+import { Padding } from '../../../layout'
 
 const component = ({ classes, onSend, onWalletReceive, onHistory }) => (
-  <div className={classes.buttonContainer}>
-    <div className={classes.buttonHolder}>
-      <Button
-        variant="outlined"
-        color="primary"
-        className="Button"
-        size="large"
-        onClick={onSend}
-      >
+  <Padding top={4}>
+    <Padding vertical={4}>
+      <PrimaryButton type="primary" onClick={onSend} fullWidth>
         Send
-      </Button>
-    </div>
-    <div className={classes.buttonHolder}>
-      <Button
-        variant="outlined"
-        color="primary"
-        className="Button"
-        size="large"
-        onClick={onWalletReceive}
-      >
+      </PrimaryButton>
+    </Padding>
+    <Padding vertical={4}>
+      <PrimaryButton type="primary" onClick={onWalletReceive} fullWidth>
         Receive
-      </Button>
-    </div>
-
-    <div className={classes.buttonHolder}>
-      <Button
-        variant="outlined"
-        color="primary"
-        className="Button"
-        size="large"
-      >
+      </PrimaryButton>
+    </Padding>
+    <Padding vertical={4}>
+      <PrimaryButton type="primary" fullWidth>
         Deploy
-      </Button>
-    </div>
-
-    <div className={classes.buttonHolder}>
-      <Button
-        variant="outlined"
-        color="primary"
-        className="Button"
-        size="large"
-        onClick={onHistory}
-      >
+      </PrimaryButton>
+    </Padding>
+    <Padding vertical={4}>
+      <PrimaryButton type="primary" onClick={onHistory} fullWidth>
         History
-      </Button>
-    </div>
-
-    <div className={classes.buttonHolder}>
-      <Button
-        variant="outlined"
-        color="secondary"
-        className="Button"
-        size="large"
-      >
+      </PrimaryButton>
+    </Padding>
+    <Padding vertical={4}>
+      <PrimaryButton type="secondary" fullWidth>
         Get Handle
-      </Button>
-    </div>
-  </div>
+      </PrimaryButton>
+    </Padding>
+  </Padding>
 )
 
 component.defaultProps = {}
