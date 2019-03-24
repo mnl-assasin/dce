@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'
+import React, { useEffect, useCallback, useContext } from 'react'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { convertedPricePerValue } from '../../helper/computation'
 import { navigate } from '../../services/navigation'
@@ -19,7 +19,6 @@ const navigationProps = {
 const component = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
-  const [networkName, _networkName] = useState('')
   const _send = useCallback(
     () => navigate(route.WALLET_SEND, { wallet: props.wallet }),
     [props.wallet]
