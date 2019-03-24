@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react'
+import React, { useState, useCallback, useContext, useMemo } from 'react'
 import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -15,22 +15,22 @@ import { settingItems } from './data'
 import useStyles from './styles'
 
 const title = 'Network'
-const navigationProps = {
-  title,
-  backButton: true,
-}
 
 const component = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
-  const [error, setError] = useState('')
-  const onGetIsActive = useCallback(getIsActive(appContext), [])
-  const onSetActive = useCallback(
-    setIsActive(appContext, navigate, setBlockNumber(appContext), setError),
+  const [, setError] = useState('')
+  const navigationPropsMem = useMemo(() => ({ title, backButton: true }), [])
+  const onSetActiveMem = useMemo(
+    () => setIsActive(appContext, navigate, setBlockNumber(appContext)),
     []
   )
+  const getIsActiveMem = useMemo(() => getIsActive(appContext), [])
+  const onGetIsActive = useCallback(getIsActiveMem, [])
+  const onSetActive = useCallback(onSetActiveMem, setError, [])
+
   return (
-    <Page navigationProps={navigationProps}>
+    <Page navigationProps={navigationPropsMem}>
       <div className={classes.logo}>
         <Text variant="h5">ETH</Text>
       </div>
