@@ -9,8 +9,7 @@ import {
 export default (appContext, ACTIVE_PROVIDER_ID) => async (wallets = []) => {
   let newWallet = {}
   const _setBalance = setBalance(appContext)
-
-  const balances = await Promise.all(
+  await Promise.all(
     Object.keys(wallets).map(async key => {
       newWallet[key] = {
         ...wallets[key],
