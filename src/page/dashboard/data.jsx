@@ -1,7 +1,3 @@
-import React from 'react'
-import { goTo as navigate } from '../../services/navigation'
-import { Icon as ThemeIcon } from '../../common'
-import { icon } from '../../asset'
 import { WALLET } from '../../constants/storage'
 
 // test account
