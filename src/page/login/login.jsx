@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
-import { useTextbox, useToggle } from '../../hook'
 import IconButton from '@material-ui/core/IconButton'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField from '@material-ui/core/TextField'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import { useTextbox, useToggle } from '../../hook'
 import { PrimaryButton, Text } from '../../components'
 import { navigate } from '../../services/navigation'
 import { inputTypes } from '../../constants/types'
@@ -36,7 +36,7 @@ const Login = props => {
           variant="outlined"
           className={classes.textField}
           value={passwordState.value}
-          onChange={passwordState.onClick}
+          onChange={passwordState.onChange}
           type={
             isPasswordVisibleState.value ? inputTypes.text : inputTypes.password
           }
@@ -45,7 +45,7 @@ const Login = props => {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="Toggle password visibility"
-                  onClick={isPasswordVisibleState.onClick}
+                  onClick={isPasswordVisibleState.onChange}
                 >
                   {isPasswordVisibleState.value ? (
                     <VisibilityOff />
