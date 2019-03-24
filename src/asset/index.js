@@ -1,7 +1,7 @@
 import EtherImage from './icon/icon_ether.png'
-import BitImage from './icon_bitcoin.png'
+import BitImage from './icon/icon_bitcoin.png'
 
-export const icons = {
+export const icon = {
   ETHER: EtherImage,
-  BitImage,
+  BIT: BitImage,
 }
