@@ -1,90 +1,64 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import { withStyles } from '@material-ui/core/styles'
-
-import BasePage from '../../common/BasePage'
-import { Page } from '../../layout'
-import { setBlockNumber, setEtherPrice, setBalance } from '../../hof'
-import { goTo } from '../../services/navigation'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
+import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { convertedPricePerValue } from '../../helper/computation'
-import { withAppContext } from '../../services/Providers/AppStateContext'
+import { navigate } from '../../services/navigation'
+import { Page } from '../../layout'
+import * as storage from '../../constants/storage'
+import * as route from '../../constants/route'
 import WalletButtons from './component/WalletButtons'
 import WalletHeader from './component/WalletHeader'
-import WalletContent, {
-  WalletContentTestValue,
-} from './component/WalletContent'
+import WalletContent from './component/WalletContent'
+import init from './method/init'
+import useStyles from './styles'
 
-import componentDidMount from './method/_componentDidMount'
-import styles from './styles'
-
-class Wallet extends BasePage {
-  title = 'Wallet'
-  defaults = BasePage.constants.defaults
-  storage = BasePage.constants.storage
-  route = BasePage.constants.route
-
-  navigate = goTo
-
-  navigationProps = {
-    backButton: true,
-    title: '',
-  }
-
-  // hof bindings
-  setBlockNumber = setBlockNumber(this)
-  setEtherPrice = setEtherPrice(this)
-  setBalance = setBalance(this)
-  componentDidMount = componentDidMount(this)
-
-  state = {
-    blockNumber: '',
-    networkName: '',
-  }
-
-  onClickWalletReceice = () => this.navigate(this.route.WALLET_RECEIVE)
-
-  onSend = () =>
-    this.navigate(this.route.WALLET_SEND, { wallet: this.props.wallet })
-  onHistory = () => {
-    this.navigate(this.route.WALLET_HISTORY, { wallet: this.props.wallet })
-  }
-
-  render() {
-    const { classes } = this.props
-    return (
-      <Page navigationProps={this.navigationProps}>
-        <WalletHeader
-          classes={classes}
-          networkName={this.props.AppContext[this.storage.ACTIVE_PROVIDER_NAME]}
-          networkNumber={this.state.blockNumber}
-          coinPrice={this.props.AppContext[this.storage.ETHER_PRICE]}
-          userName={this.props.wallet[this.storage.WALLET_USERNAME]}
-          coinBase={this.props.wallet[this.storage.WALLET_COINBASE]}
-        />
-        <WalletContent
-          classes={classes}
-          {...WalletContentTestValue}
-          amount={this.props.wallet[this.storage.WALLET_AMOUNT]}
-          value={convertedPricePerValue(
-            this.props.AppContext[this.storage.ETHER_PRICE],
-            this.props.wallet[this.storage.WALLET_AMOUNT]
-          )}
-        />
-        <WalletButtons
-          classes={classes}
-          onWalletReceive={this.onClickWalletReceice}
-          onSend={this.onSend}
-          onHistory={this.onHistory}
-        />
-      </Page>
-    )
-  }
+const navigationProps = {
+  title: 'Wallet',
+  backButton: true,
 }
 
-Wallet.propTypes = {
-  AppContext: PropTypes.object.isRequired, // withAppContext
-  classes: PropTypes.object.isRequired, // withStyles
+const component = props => {
+  const appContext = useContext(AppContextObject)
+  const classes = useStyles()
+  const [networkName, _networkName] = useState('')
+  const _send = useCallback(
+    () => navigate(route.WALLET_SEND, { wallet: props.wallet }),
+    [props.wallet]
+  )
+  const _history = useCallback(
+    () => navigate(route.WALLET_HISTORY, { wallet: props.wallet }),
+    [props.wallet]
+  )
+  const _walletReceice = useCallback(
+    () => navigate(route.WALLET_RECEIVE, { wallet: props.wallet }),
+    [props.wallet]
+  )
+  useEffect(() => init(appContext)(props.wallet), [props.wallet])
+  return (
+    <Page navigationProps={navigationProps}>
+      <WalletHeader
+        classes={classes}
+        networkName={appContext[storage.ACTIVE_PROVIDER_NAME]}
+        networkNumber={appContext[storage.ACTIVE_PROVIDER_BlOCKNUMBER]}
+        coinPrice={appContext[storage.ETHER_PRICE]}
+        userName={props.wallet[storage.WALLET_USERNAME]}
+        coinBase={props.wallet[storage.WALLET_COINBASE]}
+      />
+      <WalletContent
+        classes={classes}
+        amount={props.wallet[storage.WALLET_AMOUNT]}
+        value={convertedPricePerValue(
+          appContext[storage.ETHER_PRICE],
+          props.wallet[storage.WALLET_AMOUNT]
+        )}
+      />
+      <WalletButtons
+        classes={classes}
+        onWalletReceive={_walletReceice}
+        onSend={_send}
+        onHistory={_history}
+      />
+    </Page>
+  )
 }
 
-export default withStyles(styles)(withAppContext(Wallet))
+export default component
