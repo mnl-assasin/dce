@@ -5,17 +5,17 @@ export const styles = theme => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 2,
   },
   header: {},
   headerHolder: {
-    display: 'flex'
+    display: 'flex',
   },
   headerProvider: {
     display: 'flex',
     flex: 1,
     justifyContent: 'flex-start',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   headerCoin: {
     display: 'flex',
@@ -23,80 +23,75 @@ export const styles = theme => ({
     justifyContent: 'flex-start',
     textAlign: 'center',
     flexDirection: 'column',
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   headerUser: {
     display: 'flex',
     flex: 1,
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    textAlign: 'right'
+    textAlign: 'right',
   },
   contentHolder: {
     paddingTop: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   amountHolder: {
     paddingTop: theme.spacing.unit * 2,
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'right'
+    textAlign: 'right',
   },
   valueHolder: {
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: theme.spacing.unit * 2,
-    textAlign: 'right'
+    textAlign: 'right',
   },
   buttonContainer: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   container: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   textField: {
     marginBottom: theme.spacing.unit * 2,
+    flexBasis: 200,
+    fontSize: 10,
     // marginRight: theme.spacing.unit
   },
   buttonHolder: {
     marginTop: theme.spacing.unit * 3,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
-  sendTo:{
-
-  },
+  sendTo: {},
   addIcon: {
     fontSize: 56,
     color: 'dimgray',
-    cursor: 'pointer'
-
+    cursor: 'pointer',
   },
   amount: {
     marginRight: theme.spacing.unit,
-
   },
   usd: {
     marginLeft: theme.spacing.unit,
-
   },
   gasLimit: {
     // marginLeft: theme.spacing.unit,
-
   },
-  gasIcon : {
+  gasIcon: {
     fontSize: 56,
-    color: 'dimgray'
-
+    color: 'dimgray',
   },
   transaction: {
     display: 'flex',
-flex: 1
-  }
+    flex: 1,
+  },
 })
 
 export default makeStyles(styles)
