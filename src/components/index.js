@@ -11,6 +11,7 @@ import PrimaryButton from './PrimaryButton'
 import CardDapp from './CardDapp'
 import CardWallet from './CardWallet'
 import SmallButton from './SmallButton'
+import Loading from './loading'
 import FabButton from './FabButton'
 import Text from './Text'
 
@@ -27,6 +28,7 @@ export {
   SmallButton,
   Text,
   FabButton,
+  Loading,
   //
   // functions
   openSnackbar,
