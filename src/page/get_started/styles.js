@@ -6,12 +6,10 @@ export const styles = theme => ({
   logo: {
     ...center,
     flex: 2,
-    height: 200,
   },
   buttonGroup: {
     ...column,
     flex: 1,
-    padding: theme.spacing.unit * 3,
     justifyContent: 'center',
   },
 })

@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { Page } from '../../layout'
-import { PrimaryButton, Text } from '../../components'
+import { Page, Padding } from '../../layout'
+import { PrimaryButton, Text, Icon } from '../../components'
 import * as route from '../../constants/route'
 import { goTo } from '../../services/navigation'
+import { Dapper } from '../../asset'
 import useStyles from './styles'
 
 // page setup
@@ -23,25 +24,31 @@ const GetStarted = () => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Text variant="h3" />
+        <Padding top={30} bottom={150}>
+          <Icon src={Dapper} size={120} />
+        </Padding>
       </div>
       <div className={classes.buttonGroup}>
-        <PrimaryButton
-          type="primary"
-          size="medium"
-          fullWidth
-          onClick={onClickGetStarted}
-        >
-          Get Started
-        </PrimaryButton>
-        <br />
-        <PrimaryButton
-          type="secondary"
-          size="medium"
-          onClick={onClickRestoreBackup}
-        >
-          Restore Backup
-        </PrimaryButton>
+        <Padding vertical={5}>
+          <PrimaryButton
+            type="primary"
+            size="medium"
+            fullWidth
+            onClick={onClickGetStarted}
+          >
+            Get Started
+          </PrimaryButton>
+        </Padding>
+        <Padding vertical={5}>
+          <PrimaryButton
+            type="secondary"
+            size="medium"
+            fullWidth
+            onClick={onClickRestoreBackup}
+          >
+            Restore Backup
+          </PrimaryButton>
+        </Padding>
       </div>
     </Page>
   )
