@@ -6,7 +6,7 @@ import { Wallet } from 'dapper'
 import { withStyles } from '@material-ui/styles'
 
 import BasePage from '../../common/BasePage'
-import { Navbar, PrimaryButton, SmallButton, Text } from '../../components'
+import { Navbar, PrimaryButton, SmallButton, Text, Loading } from '../../components'
 import { Center } from '../../layout'
 import { Page, Col, Row } from '../../common'
 import { goTo } from '../../services/navigation'
@@ -19,6 +19,7 @@ class MnemonicPhrase extends BasePage {
   title = 'MnemonicPhrase'
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
+  route = BasePage.constants.route
   store = BasePage.store
 
   state = {
@@ -106,8 +107,8 @@ class MnemonicPhrase extends BasePage {
     })
   }
 
-  _onClickAgree = words => {
-    goTo('MnemonicPhraseConfirm', {
+  _onClickAgree = () => {
+    goTo(this.route.MNEMONIC_CONFIRM, {
       mnemonic: this.state.mnemonic,
     })
   }
@@ -122,7 +123,7 @@ class MnemonicPhrase extends BasePage {
           <Navbar backButton={true} />
           <div className="Content">
             <Center>
-              <span>Loading...</span>
+              <Loading />
             </Center>
           </div>
         </Page>
