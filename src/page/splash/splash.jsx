@@ -4,6 +4,7 @@ import BasePage from '../../common/BasePage'
 import Navigation, { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 import { setBlockNumber, setEtherPrice } from '../../hof'
+import { Loading } from '../../components'
 
 import './Splash.css'
 
@@ -109,7 +110,7 @@ class Splash extends BasePage {
     return (
       <div className="Splash">
         <div className="Content">
-          <span>Loading...</span>
+          <Loading size={250} />
         </div>
       </div>
     )
