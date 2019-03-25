@@ -9,8 +9,11 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import SidemenuEvent from '../../events/SidemenuEvent'
+import { Icon } from '../../components'
 import { goBack } from '../../services/navigation'
 import { boxShadow } from '../../constants/style'
+import { Hamburger } from '../../asset'
+
 import './Navbar.css'
 
 const styles = {
@@ -82,7 +85,7 @@ class Navbar extends Component {
                 color="inherit"
                 aria-label="Menu"
               >
-                <MenuIcon />
+                <Icon src={Hamburger} size={25} />
               </IconButton>
             ) : null}
           </Toolbar>
