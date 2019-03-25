@@ -5,14 +5,20 @@ import Button from '@material-ui/core/Button'
 import LocalGasStation from '@material-ui/icons/LocalGasStation'
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import IconButton from '@material-ui/core/IconButton'
+import InputBase from '@material-ui/core/InputBase';
 
 import { Page } from '../../layout'
+import { Icon } from '../../components'
 import { estimateFee, sendWallet } from '../../hof'
 import { Row } from '../../common'
 import { useTextbox } from '../../hook'
 import { inputTypes } from '../../constants/types'
+import { Add } from '../../asset'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import * as storage from '../../constants/storage'
+import Header from './component/header'
 import useStyles from './styles'
 
 // page setup
@@ -72,40 +78,29 @@ const WalletSend = props => {
     title: props.wallet[storage.WALLET_USERNAME],
     backButton: true,
   }
+
   return (
     <Page navigationProps={navigationProps}>
-      <div className={classes.headerCoin}>
-        <Typography variant="h4" gutterBottom>
-          {subTitle}
-        </Typography>
-      </div>
+      <Header title={yourAddresss.value} label={'Your Address ' + title} />
       <form className={classes.container} noValidate autoComplete="off">
+        <InputBase
+          className={classes.textField}
+          variant="outlined"
+          type="text"
+          name="sendTo"
+          label="Send To"
+          {...sendTo}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Icon src={Add} size={25} />
+              </InputAdornment>
+            ),
+          }}
+        />
+
         <Row>
-          <div className={classes.myWalletAddress}>
-            <TextField
-              title={yourAddresss.value}
-              label={'Your Address ' + title}
-              variant="outlined"
-              className={classes.textField}
-              value={yourAddresss.value}
-              type={inputTypes.text}
-            />
-          </div>
-          <div className={classes.addIcon}>
-            <FileCopy fontSize="inherit" />
-          </div>
-        </Row>
-        <Row>
-          <div className={classes.sendTo}>
-            <TextField
-              name="sendTo"
-              label="Send To"
-              variant="outlined"
-              className={classes.textField}
-              type={inputTypes.text}
-              {...sendTo}
-            />
-          </div>
+          <div className={classes.sendTo} />
           <div className={classes.addIcon}>
             <AddCircleOutline fontSize="inherit" />
           </div>
