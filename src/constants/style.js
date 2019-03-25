@@ -1,10 +1,10 @@
 const primary = {
-  colorLeft: 'rgb(255, 168, 90)',
-  colorRight: 'rgb(243, 129, 129)',
-}
-const secondary = {
   colorLeft: ' #17ead9',
   colorRight: '#6078ea',
+}
+const secondary = {
+  colorLeft: 'rgb(255, 168, 90)',
+  colorRight: 'rgb(243, 129, 129)',
 }
 
 const third = {
