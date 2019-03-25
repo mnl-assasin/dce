@@ -1,6 +1,7 @@
 import React from 'react'
 import { Padding, Tab, TabContent } from '../../../layout'
-import { FabButton, CardDapp } from '../../../components'
+import { FabButton, CardDapp, Icon } from '../../../components'
+import { DappInactive, DappActive, WalletGreen } from '../../../asset'
 
 export default props => (
   <Tab
@@ -8,9 +9,7 @@ export default props => (
     renderButton={
       <React.Fragment>
         <Padding horizontal={4}>
-          <FabButton type="green" size="medium">
-            A
-          </FabButton>
+          <Icon src={WalletGreen} size={50} />
         </Padding>
       </React.Fragment>
     }
@@ -21,25 +20,19 @@ export default props => (
         textTransform="uppercase"
         title="new dapp"
         componentIcon={
-          <FabButton color="red" type="third" size="large">
-            l
-          </FabButton>
+          <Icon src={DappActive} size={56} />
         }
       />
       <CardDapp
         title="Dapper"
         componentIcon={
-          <FabButton color="red" type="third" size="large">
-            l
-          </FabButton>
+          <Icon src={DappInactive} size={56} />
         }
       />
       <CardDapp
         title="Contacts"
         componentIcon={
-          <FabButton color="red" type="third" size="large">
-            l
-          </FabButton>
+          <Icon src={DappInactive} size={56} />
         }
       />
     </TabContent>

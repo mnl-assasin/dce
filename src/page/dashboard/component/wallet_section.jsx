@@ -1,7 +1,8 @@
 import React from 'react'
 import { Padding, Tab, TabContent } from '../../../layout'
 import { WALLET } from '../../../constants/storage'
-import { FabButton, CardWallet } from '../../../components'
+import { FabButton, CardWallet, Icon } from '../../../components'
+import { Add, CoinMenu, WalletViolet, icon } from '../../../asset'
 
 export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
   <Tab
@@ -10,19 +11,13 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
     renderButton={
       <React.Fragment>
         <Padding horizontal={4}>
-          <FabButton color="red" type="pink" size="medium">
-            +
-          </FabButton>
+          <Icon src={Add} size={50} />
         </Padding>
         <Padding horizontal={4}>
-          <FabButton color="red" type="primary" size="medium">
-            l
-          </FabButton>
+          <Icon src={CoinMenu} size={50} />
         </Padding>
         <Padding horizontal={4}>
-          <FabButton color="red" type="third" size="medium">
-            A
-          </FabButton>
+          <Icon src={WalletViolet} size={50} />
         </Padding>
       </React.Fragment>
     }
@@ -35,9 +30,7 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
           userName={wallets[_id][WALLET.WALLET_USERNAME]}
           basePrice={coinPrice}
           componentIcon={
-            <FabButton color="red" type="third" size="small">
-              E
-            </FabButton>
+            <Icon src={icon.ETHER} size={28} />
           }
           onPress={onPress}
           param={wallets[_id]}
