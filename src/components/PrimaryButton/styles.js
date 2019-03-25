@@ -1,3 +1,5 @@
+import color from '../../constants/style'
+
 const style = {
   borderRadius: 99,
   paddingBottom: '0.8rem',
@@ -13,13 +15,13 @@ export const outlined = {
 
 export const primary = {
   ...style,
-  background: 'linear-gradient(to right, #ffa85a 0%,#f38181 100%)',
+  ...color.primary,
   color: 'white',
 }
 
 export const secondary = {
   ...style,
-  background: 'linear-gradient(to right, #17ead9 0%,#6078ea 100%)',
+  ...color.secondary,
   color: 'white',
 }
 
