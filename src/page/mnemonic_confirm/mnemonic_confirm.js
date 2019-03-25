@@ -5,10 +5,17 @@ import chunk from 'lodash/chunk'
 import { withStyles } from '@material-ui/styles'
 
 import BasePage from '../../common/BasePage'
+import { Center } from '../../layout'
 import { Page } from '../../layout'
 import { goTo } from '../../services/navigation'
 import { Col, Row } from '../../common'
-import { alertDialog, PrimaryButton, SmallButton, Text } from '../../components'
+import {
+  alertDialog,
+  PrimaryButton,
+  SmallButton,
+  Text,
+  Loading,
+} from '../../components'
 import { withAppContext } from '../../services/Providers/AppStateContext'
 
 import styles from './styles'
@@ -40,6 +47,7 @@ class MnemonicPhraseConfirm extends BasePage {
 
     this.state = {
       shuffledWords: shuffledWords,
+      isLoaded: false,
     }
   }
 
@@ -165,9 +173,24 @@ class MnemonicPhraseConfirm extends BasePage {
 
   _next = () => goTo(this.route.NOMINATED_PASSWORD)
 
+  componentDidMount() {
+    setTimeout(() => this.setState({ isLoaded: true }), 0.3)
+  }
   render() {
     const { classes } = this.props
     // need to fix those circles some time
+
+    if (!this.state.isLoaded) {
+      return (
+        <Page navigationProps={this.navigationProps}>
+          <div className="Content">
+            <Center>
+              <Loading />
+            </Center>
+          </div>
+        </Page>
+      )
+    }
 
     const _disableSubmit = this.isDisabledSubmit()
 
