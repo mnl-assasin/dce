@@ -2,6 +2,7 @@ import EtherImage from './icon/icon_ether.png'
 import BitImage from './icon/icon_bitcoin.png'
 import Logo from './logo.png'
 import Dapper from './icon/icon_dapper.png'
+import ContentCopy from './icon/content_copy.png'
 
 import CoinMenu from './icon/icon_coin_menu.png'
 import Add from './icon/icon_add.png'
@@ -29,4 +30,5 @@ export {
   Hamburger,
   WalletGreen,
   WalletViolet,
+  ContentCopy
 }
