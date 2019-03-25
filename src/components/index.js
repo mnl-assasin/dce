@@ -13,9 +13,9 @@ import CardWallet from './CardWallet'
 import SmallButton from './SmallButton'
 import Loading from './loading'
 import FabButton from './FabButton'
+import InputTextBox from './input_text_box'
 import Text from './Text'
 import Icon from './icon'
-
 
 export {
   AlertDialog,
@@ -32,6 +32,7 @@ export {
   Text,
   FabButton,
   Loading,
+  InputTextBox,
   //
   // functions
   openSnackbar,
