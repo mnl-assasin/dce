@@ -1,6 +1,7 @@
 import EtherImage from './icon/icon_ether.png'
 import BitImage from './icon/icon_bitcoin.png'
 import Logo from './logo.png'
+import Dapper from './icon/icon_dapper.png'
 
 import CoinMenu from './icon/icon_coin_menu.png'
 import Add from './icon/icon_add.png'
@@ -17,6 +18,7 @@ export const icon = {
   BIT: BitImage,
 }
 export {
+  Dapper,
   Logo,
   EtherImage,
   CoinMenu,
