@@ -1,3 +1,4 @@
+import { orderObjectByKey } from '../helper/function'
 import setBalance from './set_balance'
 import {
   WALLET_ADDRESS,
@@ -22,8 +23,8 @@ export default (appContext, ACTIVE_PROVIDER_ID) => async (wallets = []) => {
       return true
     })
   )
-  appContext.set({
-    [USER_WALLETS]: newWallet,
-  })
+
+  appContext.set({ [USER_WALLETS]: orderObjectByKey(newWallet) })
+  // return not the result because what will return is a promise. and a promise is not good in lifecycle hooks
   return true
 }
