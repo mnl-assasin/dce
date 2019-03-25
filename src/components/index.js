@@ -14,12 +14,15 @@ import SmallButton from './SmallButton'
 import Loading from './loading'
 import FabButton from './FabButton'
 import Text from './Text'
+import Icon from './icon'
+
 
 export {
   AlertDialog,
   CardDapp,
   CardWallet,
   FullScreenLoading,
+  Icon,
   Navbar,
   Notifier,
   PrimaryButton,
