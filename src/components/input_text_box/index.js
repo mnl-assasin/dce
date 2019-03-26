@@ -5,7 +5,7 @@ import { boxShadow } from '../../constants/style'
 import { ContentCopy } from '../../asset'
 import { Page, Padding, Tab, TabContent } from '../../layout'
 
-export default props => (
+export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) => (
   <div style={{ flexDirection: 'row', position: 'relative' }}>
     <input
       type="text"
@@ -14,18 +14,21 @@ export default props => (
         color: 'gray',
         fontWeight: 'bold',
         backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 3,
+        padding: '1rem',
+        borderRadius: 2,
         borderColor: '#c1c1c1',
         borderStyle: 'solid',
         borderWidth: 1,
         width: '100%',
-        paddingRight: 40,
+        paddingRight: hasIcon ? 40 : '1rem',
       }}
-      placeholder="Send To"
+      placeholder=""
+      {...props}
     />
-    <span style={{ position: 'absolute', right: 8, top: 7 }}>
-      <Icon iconName="file_copy" size={20} />
-    </span>
+    {hasIcon ? (
+      <span style={{ position: 'absolute', right: 12, top: 11 }}>
+        {renderIcon}
+      </span>
+    ) : null}
   </div>
 )
