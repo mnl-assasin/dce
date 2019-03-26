@@ -7,6 +7,7 @@ import FullScreenLoading, {
 import Notifier, { openSnackbar } from './Notifier/Notifier'
 import AlertDialog, { alertDialog } from './AlertDialog/AlertDialog'
 import Snackbar, { showSnackbar } from './Snackbar/Snackbar'
+import Divider from './divider'
 import PrimaryButton from './PrimaryButton'
 import CardDapp from './CardDapp'
 import CardWallet from './CardWallet'
@@ -21,6 +22,7 @@ export {
   AlertDialog,
   CardDapp,
   CardWallet,
+  Divider,
   FullScreenLoading,
   Icon,
   Navbar,
