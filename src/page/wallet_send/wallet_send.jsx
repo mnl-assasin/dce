@@ -43,7 +43,9 @@ const WalletSend = props => {
   const usd = useTextbox('')
   const gasLimit = useTextbox('')
   const transaction = useTextbox('')
-  const yourAddresss = useTextbox(props.wallet[storage.WALLET_ADDRESS])
+  const yourAddresss = useTextbox(
+    props.wallet ? props.wallet[storage.WALLET_ADDRESS] : ''
+  )
   const onClickEstimate = useCallback(
     () =>
       estimateFee(appContext)(
@@ -65,7 +67,9 @@ const WalletSend = props => {
       sendWallet(appContext)(
         {
           network: appContext[storage.ACTIVE_PROVIDER_ID],
-          privateKey: props.wallet[storage.WALLET_PRIVATE_KEY],
+          privateKey: props.wallet
+            ? props.wallet[storage.WALLET_PRIVATE_KEY]
+            : '',
           address: sendTo.value,
           value: amount.value,
           gasLimit: '21000',
@@ -76,7 +80,7 @@ const WalletSend = props => {
     [amount.value]
   )
   const navigationProps = {
-    title: props.wallet[storage.WALLET_USERNAME],
+    title: props.wallet ? props.wallet[storage.WALLET_USERNAME] : '',
     backButton: true,
   }
 
@@ -118,10 +122,7 @@ const WalletSend = props => {
           placeholder="Tansaction Data (optional)"
           renderIcon={<Icon src={Add} size={25} hasIcon />}
         />
-        <Divider />
-        <Divider />
-        <Divider />
-        <Divider />
+        <Divider size={10} />
 
         <PrimaryButton type="primary" title="">
           SUBMTI
@@ -131,7 +132,8 @@ const WalletSend = props => {
   )
 }
 
-const Divider = props => <span style={{ padding: '0.3rem' }} />
+const Divider = ({ size = 1 }) => <span style={{ padding: size * 4 }} />
+
 export default WalletSend
 // <InputBase
 //   className={classes.textField}
