@@ -28,7 +28,7 @@ const style = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '10px 16px',
+    padding: '16px 16px',
   },
   title: { fontSize: 9, fontWeight: 'bold', color: 'gray' },
   address: { fontSize: 10.3, fontWeight: 'bold' },
