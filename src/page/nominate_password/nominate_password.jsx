@@ -13,6 +13,7 @@ import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import submit from './method/submit'
 import useStyles from './styles'
+import { Divider, Text, InputTextBox, PrimaryButton } from '../../components'
 
 // page setup
 const title = 'Nominate Password'
@@ -40,79 +41,24 @@ const NominatePassword = props => {
         <Typography variant="h5">{title}</Typography>
       </div>
       <form className={classes.container} noValidate autoComplete="off">
-        <div className={classes.description}>
-          <Typography variant="caption" gutterBottom>
-            Password must be at least 8 characters At least 1 uppercase letter,
-            At least 1 lowecase letter, At least 1 number, At least 1 special
-            character,
-          </Typography>
-        </div>
-        <TextField
-          label="Enter Password"
-          variant="outlined"
-          className={classes.textField}
+        <div className={classes.description} />
+        <InputTextBox
+          placeholder="Enter Password"
           value={passwordState.value}
           onChange={passwordState.onChange}
-          type={
-            passwordVisivility.value ? inputTypes.text : inputTypes.password
-          }
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={passwordVisivility.onChange}
-                >
-                  {passwordVisivility.value ? (
-                    <VisibilityOff />
-                  ) : (
-                    <Visibility />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          type={inputTypes.password}
         />
-
-        <TextField
-          label="Enter Confirm Password"
-          margin="normal"
-          variant="outlined"
-          className={classes.textField}
+        <Divider size={1} />
+        <InputTextBox
+          placeholder="Enter Confirm Password"
           value={passwordConfirmState.value}
           onChange={passwordConfirmState.onChange}
-          type={
-            passwordConfirmVisivility.value
-              ? inputTypes.text
-              : inputTypes.password
-          }
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={passwordConfirmVisivility.onChange}
-                >
-                  {passwordConfirmVisivility.value ? (
-                    <VisibilityOff />
-                  ) : (
-                    <Visibility />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          type={inputTypes.password}
         />
-        <div className={classes.buttonHolder}>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            onClick={onClickSubmit}
-          >
-            Submit
-          </Button>
-        </div>
+        <Divider size={1} />
+        <PrimaryButton type="primary" onClick={onClickSubmit}>
+          Submit
+        </PrimaryButton>
       </form>
     </Page>
   )
