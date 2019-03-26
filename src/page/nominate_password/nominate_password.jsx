@@ -57,7 +57,7 @@ const NominatePassword = props => {
         />
         <Divider size={1} />
         <PrimaryButton type="primary" onClick={onClickSubmit}>
-          Submit
+          CONFIRM
         </PrimaryButton>
       </form>
     </Page>
