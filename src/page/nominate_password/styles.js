@@ -7,7 +7,6 @@ export const styles = theme => {
     container: {
       display: 'flex',
       flexDirection: 'column',
-      padding: theme.spacing.unit * 3,
     },
     content: {
       padding: 10,
