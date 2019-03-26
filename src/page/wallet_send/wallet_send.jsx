@@ -10,7 +10,13 @@ import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 
 import { Page } from '../../layout'
-import { Text, Icon, InputTextBox, PrimaryButton } from '../../components'
+import {
+  Divider,
+  Icon,
+  InputTextBox,
+  PrimaryButton,
+  Text,
+} from '../../components'
 import { estimateFee, sendWallet } from '../../hof'
 import { Row } from '../../common'
 
@@ -125,14 +131,13 @@ const WalletSend = props => {
         <Divider size={10} />
 
         <PrimaryButton type="primary" title="">
-          SUBMTI
+          SEND
         </PrimaryButton>
       </form>
     </Page>
   )
 }
 
-const Divider = ({ size = 1 }) => <span style={{ padding: size * 4 }} />
 
 export default WalletSend
 // <InputBase
