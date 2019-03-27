@@ -72,7 +72,8 @@ const WalletSend = props => {
     [sendTo.value, amount.value]
   )
   const navigationProps = {
-    title: props.wallet ? props.wallet[storage.WALLET_USERNAME] : '',
+    // title: props.wallet ? props.wallet[storage.WALLET_USERNAME] : '',
+    title: '',
     backButton: true,
   }
   return (

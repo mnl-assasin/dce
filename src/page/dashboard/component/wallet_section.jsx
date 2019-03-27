@@ -27,7 +27,8 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
         <CardWallet
           key={_id}
           amount={wallets[_id][WALLET.WALLET_AMOUNT]}
-          userName={wallets[_id][WALLET.WALLET_USERNAME]}
+          userName=""
+          // userName={wallets[_id][WALLET.WALLET_USERNAME]}
           basePrice={coinPrice}
           componentIcon={
             <Icon src={icon.ETHER} size={28} />

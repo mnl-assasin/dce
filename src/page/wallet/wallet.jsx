@@ -39,7 +39,8 @@ const component = props => {
         networkName={appContext[storage.ACTIVE_PROVIDER_NAME]}
         networkNumber={appContext[storage.ACTIVE_PROVIDER_BlOCKNUMBER]}
         coinPrice={appContext[storage.ETHER_PRICE]}
-        userName={props.wallet[storage.WALLET_USERNAME]}
+        // userName={props.wallet[storage.WALLET_USERNAME]}
+        userName=""
         coinBase={props.wallet[storage.WALLET_COINBASE]}
       />
       <WalletContent
