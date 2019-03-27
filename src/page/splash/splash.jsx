@@ -13,6 +13,7 @@ class Splash extends BasePage {
   store = BasePage.store
   defaults = BasePage.constants.defaults
   storage = BasePage.constants.storage
+  route = BasePage.constants.route
 
   setBlockNumber = setBlockNumber(this.props.AppContext)
   setEtherPrice = setEtherPrice(this.props.AppContext)
@@ -26,31 +27,35 @@ class Splash extends BasePage {
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
 
+// here must be filter if user goto dashboard or getting started
     if (isLogged) {
       return goTo('Dashboard')
     }
 
-    if (isMnemonicSet) {
-      if (isPasswordSet && isConfirmedMnemonic) {
-        // user already logged
-        this.setContext(this.storage.IS_LOGGED, true)
-        return goTo('Dashboard')
-      }
-
-      // not logged
-      this.setContext(this.storage.IS_LOGGED, false)
-      return goTo('Login')
-    } else {
-      // not loggedin
-      // must set app state to not log for updated component child
-      this.setContext(this.storage.IS_LOGGED, false)
-
-      if (this.defaults.forceDefaultRouteName) {
-        return goTo(this.defaults.forceDefaultRouteName)
-      }
-
-      Navigation.init(this.defaults.defaultRouteName)
-    }
+    return goTo(this.route.GET_STARTED)
+    // return Navigation.init(this.defaults.defaultRouteName)
+    //
+    // if (isMnemonicSet) {
+    //   if (isPasswordSet && isConfirmedMnemonic) {
+    //     // user already logged
+    //     this.setContext(this.storage.IS_LOGGED, true)
+    //     return goTo('Dashboard')
+    //   }
+    //
+    //   // not logged
+    //   this.setContext(this.storage.IS_LOGGED, false)
+    //   return goTo('Login')
+    // } else {
+    //   // not loggedin
+    //   // must set app state to not log for updated component child
+    //   this.setContext(this.storage.IS_LOGGED, false)
+    //
+    //   if (this.defaults.forceDefaultRouteName) {
+    //     return goTo(this.defaults.forceDefaultRouteName)
+    //   }
+    //
+    //   Navigation.init(this.defaults.defaultRouteName)
+    // }
   }
 
   setContext(name, value) {
