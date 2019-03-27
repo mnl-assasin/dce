@@ -66,7 +66,7 @@ class AppContextProvider extends Component {
     })
 
     //
-    this.setState({...this.state, ...item})
+    this.setState(item)
   }
 
   _saveToStorage = (key, value) => {

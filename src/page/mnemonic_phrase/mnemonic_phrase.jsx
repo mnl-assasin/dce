@@ -26,6 +26,7 @@ class MnemonicPhrase extends BasePage {
     isLoaded: false,
     error: '',
     mnemonic: '',
+    wallet: {}
   }
 
   constructor(props) {
@@ -56,6 +57,7 @@ class MnemonicPhrase extends BasePage {
       this.setState({
         mnemonic: wallet.data.mnemonic,
         isLoaded: true,
+        wallet: wallet.data
       })
     } catch (e) {
       console.log('error creating mnemonic', e)
@@ -110,6 +112,7 @@ class MnemonicPhrase extends BasePage {
   _onClickAgree = () => {
     goTo(this.route.MNEMONIC_CONFIRM, {
       mnemonic: this.state.mnemonic,
+      wallet: this.state.wallet
     })
   }
 

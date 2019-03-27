@@ -32,11 +32,12 @@ const component = props => {
   useEffect(
     () => {
       setWalletBalances(appContext, appContext[storage.ACTIVE_PROVIDER_ID])(
-        wallets
+        appContext[storage.USER_WALLETS]
       )
     },
-    [appContext[storage.ACTIVE_PROVIDER_ID], wallets]
+    [appContext[storage.ACTIVE_PROVIDER_ID]]
   )
+  console.log(appContext)
   return (
     <Page>
       <WalletSection

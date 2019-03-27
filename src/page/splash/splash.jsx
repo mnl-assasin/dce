@@ -27,7 +27,7 @@ class Splash extends BasePage {
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
 
-// here must be filter if user goto dashboard or getting started
+    // here must be filter if user goto dashboard or getting started
     if (isLogged) {
       return goTo('Dashboard')
     }
@@ -82,6 +82,7 @@ class Splash extends BasePage {
 
     //
     this.storage.ETHER_PRICE,
+    this.storage.USER_WALLETS,
   ]
 
   _init = async () => {

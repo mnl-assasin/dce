@@ -158,8 +158,7 @@ class MnemonicPhraseConfirm extends BasePage {
         ],
       })
     } else {
-      this.props.AppContext.persist({ [this.storage.IS_SET_MNEMONIC]: true })
-      this._next()
+      this._success()
     }
   }
 
@@ -170,7 +169,25 @@ class MnemonicPhraseConfirm extends BasePage {
       ) >= 0
     )
   }
-
+  _success = () => {
+    // success in mnemonic
+    // console.log('saving to state', this.props.wallet)
+    this.props.AppContext.persist({
+      // add walllet to wallet db
+      [this.storage.USER_WALLETS]: {
+        ...this.props.AppContext[this.storage.USER_WALLETS],
+        [this.props.wallet.address]: {
+          [this.storage.WALLET_COINBASE]: 'ETH',
+          [this.storage.WALLET_ADDRESS]: this.props.wallet.address,
+          [this.storage.WALLET_PRIVATE_KEY]: this.props.wallet.privateKey,
+          [this.storage.WALLET_PUBLIC_KEY]: this.props.wallet.publicKey,
+          [this.storage.WALLET_MNEMONIC]: this.props.wallet.mnemonic,
+        },
+      },
+      [this.storage.IS_SET_MNEMONIC]: true,
+    })
+    this._next()
+  }
   _next = () => goTo(this.route.NOMINATED_PASSWORD)
 
   componentDidMount() {
@@ -179,7 +196,7 @@ class MnemonicPhraseConfirm extends BasePage {
   render() {
     const { classes } = this.props
     // need to fix those circles some time
-
+    console.log(this.props.wallet)
     if (!this.state.isLoaded) {
       return (
         <Page navigationProps={this.navigationProps}>
