@@ -9,6 +9,12 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 
+import { AppContextObject } from '../../services/Providers/AppStateContext'
+import { estimateFee, sendWallet } from '../../hof'
+import * as storage from '../../constants/storage'
+import { inputTypes } from '../../constants/types'
+import { ContentCopy, Add } from '../../asset'
+import { useTextbox } from '../../hook'
 import { Page } from '../../layout'
 import {
   Divider,
@@ -17,29 +23,13 @@ import {
   PrimaryButton,
   Text,
 } from '../../components'
-import { estimateFee, sendWallet } from '../../hof'
 import { Row } from '../../common'
-
-import { useTextbox } from '../../hook'
-import { inputTypes } from '../../constants/types'
-import { ContentCopy, Add } from '../../asset'
-import { AppContextObject } from '../../services/Providers/AppStateContext'
-import * as storage from '../../constants/storage'
 import Header from './component/header'
 import useStyles from './styles'
 
-// page setup
 const title = '@blocksmith'
 const subTitle = 'send'
 
-// const navigationProps = {
-//   title: title,
-//   backButton: true,
-// }
-
-// methods
-
-// template
 const WalletSend = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
@@ -64,10 +54,6 @@ const WalletSend = props => {
       ),
     [amount.value, sendTo.value]
   )
-  // const onClickSubmit = () => {
-  //   console.log('submitted: ')
-  // }
-
   const onClickSubmit = useCallback(
     () =>
       sendWallet(appContext)(
@@ -83,18 +69,18 @@ const WalletSend = props => {
         },
         result => console.log('sent: ', result)
       ),
-    [amount.value]
+    [sendTo.value, amount.value]
   )
   const navigationProps = {
     title: props.wallet ? props.wallet[storage.WALLET_USERNAME] : '',
     backButton: true,
   }
-
   return (
     <Page navigationProps={navigationProps}>
       <Header title={yourAddresss.value} label={'Your Address ' + title} />
       <form className={classes.container} noValidate autoComplete="off">
         <InputTextBox
+          {...sendTo}
           placeholder="Send To"
           hasIcon
           renderIcon={<Icon src={Add} size={25} />}
@@ -102,21 +88,25 @@ const WalletSend = props => {
         <Divider />
         <Row>
           <InputTextBox
+            {...amount}
             placeholder="Amount"
             renderIcon={<Icon src={Add} size={25} hasIcon />}
           />
           <Divider />
           <InputTextBox
+            {...usd}
             placeholder="USD"
             renderIcon={<Icon src={Add} size={25} hasIcon />}
           />
         </Row>
         <Divider />
         <InputTextBox
+          {...gasLimit}
           placeholder="Gas Limit (recomended)"
           hasIcon
           renderIcon={
             <Icon
+              onClick={onClickEstimate}
               iconName="local_gas_station"
               style={{ backgroundColorcolor: '#ee5791' }}
               size={25}
@@ -125,19 +115,22 @@ const WalletSend = props => {
         />
         <Divider />
         <InputTextBox
+          {...transaction}
           placeholder="Tansaction Data (optional)"
           renderIcon={<Icon src={Add} size={25} hasIcon />}
         />
         <Divider size={10} />
-
-        <PrimaryButton type="primary" title="">
+        <Typography variant="caption" gutterBottom>
+          estimate fee: {fee}
+        </Typography>
+        <Divider size={10} />
+        <PrimaryButton type="primary" onClick={onClickSubmit}>
           SEND
         </PrimaryButton>
       </form>
     </Page>
   )
 }
-
 
 export default WalletSend
 // <InputBase
