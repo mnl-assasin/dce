@@ -6,6 +6,7 @@ import { computeTotalCoinValue } from '../../helper/computation'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { navigate } from '../../services/navigation'
 import * as storage from '../../constants/storage'
+import * as route from '../../constants/route'
 import WalletSection from './component/wallet_section'
 import DappSection from './component/dapp_section'
 // import useStyles from './styles'
@@ -18,6 +19,10 @@ const component = props => {
   const appContext = useContext(AppContextObject)
   // const classes = useStyles()
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
+  const onCreateWallet = useCallback(
+    () => navigate(route.MNEMONIC_PHRASE, { successLocation: route.DASHBOARD }),
+    []
+  )
   const totalCoins = useMemo(
     () =>
       '$' +
@@ -45,6 +50,7 @@ const component = props => {
         totalCoins={totalCoins}
         onPress={onSelectWallet}
         coinPrice={appContext[storage.ETHER_PRICE]}
+        onCreateWallet={onCreateWallet}
       />
       <DappSection />
 
