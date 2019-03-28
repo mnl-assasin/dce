@@ -84,6 +84,7 @@ class Navbar extends Component {
                 className="Navbar--button"
                 color="inherit"
                 aria-label="Menu"
+                style={{fontSize: 1}}
               >
                 <Icon src={Hamburger} size={25} />
               </IconButton>
