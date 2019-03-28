@@ -21,11 +21,21 @@ export default (
     wallet = await Wallet.ethers.restore({ mnemonic: phrase })
     if (wallet.code === 200) {
       appContext.persist({
+        [storage.USER_WALLETS]: {
+          ...appContext[storage.USER_WALLETS],
+          [wallet.data.address]: {
+            [storage.WALLET_COINBASE]: 'ETH',
+            [storage.WALLET_ADDRESS]: wallet.data.address,
+            [storage.WALLET_PRIVATE_KEY]: wallet.data.privateKey,
+            [storage.WALLET_PUBLIC_KEY]: wallet.data.publicKey,
+            [storage.WALLET_MNEMONIC]:  wallet.data.mnemonic,
+          },
+        },
         [storage.IS_SET_MNEMONIC]: true,
-        [storage.WALLET_MNEMONIC]: wallet.data.mnemonic,
-        [storage.WALLET_ADDRESS]: wallet.data.address,
-        [storage.WALLET_PRIVATE_KEY]: wallet.data.privateKey,
-        [storage.WALLET_PUBLIC_KEY]: wallet.data.publicKey
+        // [storage.WALLET_MNEMONIC]: wallet.data.mnemonic,
+        // [storage.WALLET_ADDRESS]: wallet.data.address,
+        // [storage.WALLET_PRIVATE_KEY]: wallet.data.privateKey,
+        // [storage.WALLET_PUBLIC_KEY]: wallet.data.publicKey
       })
       // redir
       navigate(route.NOMINATED_PASSWORD, wallet)

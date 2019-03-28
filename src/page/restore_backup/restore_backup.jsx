@@ -28,7 +28,6 @@ const RestoreBackup = props => {
     () => restoreBackup(appContext, navigate, alertDialog)(phraseState.value),
     [phraseState.value]
   )
-
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
