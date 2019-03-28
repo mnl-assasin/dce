@@ -6,8 +6,6 @@ export const styles = theme => ({
   	display: 'flex',
   	justifyContent: 'center',
   	alignItems: 'center',
-  	flex: 2,
-  	height: 200
   },
   textField: {
     marginLeft: theme.spacing.unit,
