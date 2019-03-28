@@ -5,6 +5,8 @@ export const styles = theme => ({
   header: {},
   headerHolder: {
     display: 'flex',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   headerProvider: {
     display: 'flex',
@@ -32,16 +34,22 @@ export const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
   },
   amountHolder: {
-    paddingTop: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
+    // paddingBottom: theme.spacing.unit * 2,
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'right',
+    borderTop: '1px solid #bdbaba',
   },
   valueHolder: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
+    // paddingTop: theme.spacing.unit * 2,
+    // paddingBottom: theme.spacing.unit * 2,
     textAlign: 'right',
+    borderTop: '1px solid #bdbaba',
+    borderBottom: '1px solid #bdbaba',
   },
   buttonContainer: {
     display: 'flex',

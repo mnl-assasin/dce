@@ -4,7 +4,7 @@ import { PrimaryButton } from '../../../components'
 import { Padding } from '../../../layout'
 
 const component = ({ classes, onSend, onWalletReceive, onHistory }) => (
-  <Padding top={4}>
+  <Padding top={4} horizontal={20}>
     <Padding vertical={4}>
       <PrimaryButton type="primary" onClick={onSend} fullWidth>
         Send

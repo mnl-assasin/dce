@@ -27,6 +27,9 @@ class Splash extends BasePage {
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
 
+    if (this.defaults.forceDefaultRouteName) {
+      return goTo(this.defaults.forceDefaultRouteName)
+    }
     // here must be filter if user goto dashboard or getting started
     if (isLogged) {
       return goTo('Dashboard')

@@ -6,21 +6,31 @@ import { Text } from '../../../components'
 const component = ({ classes, amount, value }) => (
   <div className={classes.contentHolder}>
     <Row className={classes.amountHolder}>
-      <Col>
-        <Text variant="h6">wallet amount</Text>
+      <Col justifyContent="center">
+        <Text style={{ fontWeight: 'bold', fontSize: 10, color: 'gray' }}>
+          WALLET AMOUNT
+        </Text>
       </Col>
-      <Col>
-        <Text variant="h6" align="right">
+      <Col justifyContent="center">
+        <Text
+          style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}
+          align="right"
+        >
           {amount}
         </Text>
       </Col>
     </Row>
     <Row className={classes.valueHolder}>
-      <Col>
-        <Text variant="h6">wallet value</Text>
+      <Col justifyContent="center">
+        <Text style={{ fontWeight: 'bold', fontSize: 10, color: 'gray' }}>
+          WALLET VALUE
+        </Text>
       </Col>
-      <Col>
-        <Text variant="h6" gutterBottom align="right">
+      <Col justifyContent="center">
+        <Text
+          style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}
+          align="right"
+        >
           ${value}
         </Text>
       </Col>

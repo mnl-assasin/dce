@@ -33,7 +33,10 @@ const component = props => {
   )
   useEffect(() => init(appContext)(props.wallet), [props.wallet])
   return (
-    <Page navigationProps={navigationProps}>
+    <Page
+      navigationProps={navigationProps}
+      containerProps={{ style: { paddingLeft: 0, paddingRight: 0 } }}
+    >
       <WalletHeader
         classes={classes}
         networkName={appContext[storage.ACTIVE_PROVIDER_NAME]}
