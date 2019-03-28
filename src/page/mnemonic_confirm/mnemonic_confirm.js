@@ -75,7 +75,7 @@ class MnemonicPhraseConfirm extends BasePage {
   }
 
   onClickLater() {
-    this._next()
+    this._success()
   }
 
   _createRows(row) {
@@ -188,7 +188,9 @@ class MnemonicPhraseConfirm extends BasePage {
     })
     this._next()
   }
-  _next = () => goTo(this.route.NOMINATED_PASSWORD)
+
+  _next = () =>
+    goTo(this.props.successLocation || this.route.NOMINATED_PASSWORD)
 
   componentDidMount() {
     setTimeout(() => this.setState({ isLoaded: true }), 0.3)

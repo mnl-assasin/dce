@@ -6,7 +6,13 @@ import { Wallet } from 'dapper'
 import { withStyles } from '@material-ui/styles'
 
 import BasePage from '../../common/BasePage'
-import { Navbar, PrimaryButton, SmallButton, Text, Loading } from '../../components'
+import {
+  Navbar,
+  PrimaryButton,
+  SmallButton,
+  Text,
+  Loading,
+} from '../../components'
 import { Center } from '../../layout'
 import { Page, Col, Row } from '../../common'
 import { goTo } from '../../services/navigation'
@@ -26,15 +32,7 @@ class MnemonicPhrase extends BasePage {
     isLoaded: false,
     error: '',
     mnemonic: '',
-    wallet: {}
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      ...props,
-    }
+    wallet: {},
   }
 
   componentDidMount() {
@@ -57,7 +55,7 @@ class MnemonicPhrase extends BasePage {
       this.setState({
         mnemonic: wallet.data.mnemonic,
         isLoaded: true,
-        wallet: wallet.data
+        wallet: wallet.data,
       })
     } catch (e) {
       console.log('error creating mnemonic', e)
@@ -112,14 +110,15 @@ class MnemonicPhrase extends BasePage {
   _onClickAgree = () => {
     goTo(this.route.MNEMONIC_CONFIRM, {
       mnemonic: this.state.mnemonic,
-      wallet: this.state.wallet
+      wallet: this.state.wallet,
+      successLocation: this.props.successLocation,
     })
   }
 
   render() {
     const { classes } = this.props
     const { isLoaded, error, mnemonic } = this.state
-
+    console.log(this.props, this.state)
     if (!isLoaded) {
       return (
         <Page className="MnemonicPhrase">
