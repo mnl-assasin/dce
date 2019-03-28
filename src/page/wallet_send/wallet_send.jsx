@@ -69,7 +69,7 @@ const WalletSend = props => {
         },
         result => console.log('sent: ', result)
       ),
-    [sendTo.value, amount.value]
+    [sendTo.value, amount.value, gasLimit.value]
   )
   const navigationProps = {
     // title: props.wallet ? props.wallet[storage.WALLET_USERNAME] : '',
@@ -83,36 +83,36 @@ const WalletSend = props => {
         <InputTextBox
           {...sendTo}
           placeholder="Send To"
-          hasIcon
-          renderIcon={<Icon src={Add} size={25} />}
+          // hasIcon
+          // renderIcon={<Icon src={Add} size={25} />}
         />
         <Divider />
         <Row>
           <InputTextBox
             {...amount}
             placeholder="Amount"
-            renderIcon={<Icon src={Add} size={25} hasIcon />}
+            // renderIcon={<Icon src={Add} size={25} />}
           />
           <Divider />
           <InputTextBox
             {...usd}
             placeholder="USD"
-            renderIcon={<Icon src={Add} size={25} hasIcon />}
+            // renderIcon={<Icon src={Add} size={25} />}
           />
         </Row>
         <Divider />
         <InputTextBox
           {...gasLimit}
           placeholder="Gas Limit (recomended)"
-          hasIcon
-          renderIcon={
-            <Icon
-              onClick={onClickEstimate}
-              iconName="local_gas_station"
-              style={{ backgroundColorcolor: '#ee5791' }}
-              size={25}
-            />
-          }
+          // hasIcon
+          // renderIcon={
+          //   <Icon
+          //     onClick={onClickEstimate}
+          //     iconName="local_gas_station"
+          //     style={{ backgroundColorcolor: '#ee5791' }}
+          //     size={25}
+          //   />
+          // }
         />
         <Divider />
         <InputTextBox
@@ -121,9 +121,7 @@ const WalletSend = props => {
           renderIcon={<Icon src={Add} size={25} hasIcon />}
         />
         <Divider size={10} />
-        <Typography variant="caption" gutterBottom>
-          estimate fee: {fee}
-        </Typography>
+        <Typography variant="caption" gutterBottom />
         <Divider size={10} />
         <PrimaryButton type="primary" onClick={onClickSubmit}>
           SEND
