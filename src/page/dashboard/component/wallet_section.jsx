@@ -4,19 +4,25 @@ import { WALLET } from '../../../constants/storage'
 import { FabButton, CardWallet, Icon } from '../../../components'
 import { Add, CoinMenu, WalletViolet, icon } from '../../../asset'
 
-export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
+export default ({
+  wallets = [],
+  onPress,
+  totalCoins,
+  coinPrice,
+  onCreateWallet,
+}) => (
   <Tab
     title="coins"
     subTitle={totalCoins}
     renderButton={
       <React.Fragment>
-        <Padding horizontal={4}>
+        <Padding horizontal={4} onClick={onCreateWallet} button>
           <Icon src={Add} size={50} />
         </Padding>
-        <Padding horizontal={4}>
+        <Padding horizontal={4} button>
           <Icon src={CoinMenu} size={50} />
         </Padding>
-        <Padding horizontal={4}>
+        <Padding horizontal={4} button>
           <Icon src={WalletViolet} size={50} />
         </Padding>
       </React.Fragment>
@@ -30,9 +36,7 @@ export default ({ wallets = [], onPress, totalCoins, coinPrice }) => (
           userName=""
           // userName={wallets[_id][WALLET.WALLET_USERNAME]}
           basePrice={coinPrice}
-          componentIcon={
-            <Icon src={icon.ETHER} size={28} />
-          }
+          componentIcon={<Icon src={icon.ETHER} size={28} />}
           onPress={onPress}
           param={wallets[_id]}
         />
