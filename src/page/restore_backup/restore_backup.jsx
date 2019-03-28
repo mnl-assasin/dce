@@ -1,14 +1,21 @@
 import React, { useCallback, useContext } from 'react'
 import TextField from '@material-ui/core/TextField'
 
-import { Page } from '../../layout'
+import { Page, Padding } from '../../layout'
 import { restoreBackup } from '../../hof'
 import { useTextbox } from '../../hook'
 import { Col } from '../../common'
 import { goTo as navigate } from '../../services/navigation'
-import { alertDialog, PrimaryButton, Text } from '../../components'
+import {
+  alertDialog,
+  PrimaryButton,
+  Text,
+  InputTextBox,
+  Icon,
+} from '../../components'
 import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
+import { Dapper } from '../../asset'
 import useStyles from './styles'
 
 // page setup
@@ -31,13 +38,13 @@ const RestoreBackup = props => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Text variant="h5">Welcome back and logo</Text>
+        <Padding top={30} bottom={150}>
+          <Icon src={Dapper} size={120} />
+        </Padding>
       </div>
       <Col flex="1">
-        <TextField
-          label="Enter backup phrase"
-          margin="normal"
-          variant="outlined"
+        <InputTextBox
+          placeholder="Enter backup phrase"
           className={classes.textField}
           type={inputTypes.text}
           {...phraseState}
@@ -49,7 +56,7 @@ const RestoreBackup = props => {
             fullWidth
             onClick={onClickSubmit}
           >
-            Submit
+            RESTORE
           </PrimaryButton>
         </div>
       </Col>
