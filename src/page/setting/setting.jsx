@@ -33,6 +33,11 @@ const settingItems = appContext => [
         : ''),
     onClick: () => navigate(route.NETWORK),
   },
+  {
+    title: 'Display',
+    getValue: () => 'Show Quantity',
+    onClick: () => navigate(route.SETTING_WALLET),
+  },
 ]
 
 // template
