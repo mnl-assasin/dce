@@ -14,6 +14,7 @@ import {
   RESTORE_BACKUP,
   NOMINATED_PASSWORD,
   SETTING,
+  SETTING_WALLET,
   WALLET_HISTORY,
 } from '../../constants/route'
 import {
@@ -180,6 +181,13 @@ class Sidemenu extends PureComponent {
       onClick: () => {
         SidemenuEvent.toggle()
         goTo(SETTING)
+      },
+    },
+    {
+      title: 'Setting Wallet ',
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(SETTING_WALLET)
       },
     },
   ]
