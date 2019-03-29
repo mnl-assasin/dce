@@ -25,14 +25,14 @@ const component = ({ classes, onSend, onWalletReceive, onHistory }) => (
         History
       </PrimaryButton>
     </Padding>
-    <Padding vertical={4}>
-      <PrimaryButton type="secondary" fullWidth>
-        Get Handle
-      </PrimaryButton>
-    </Padding>
+
   </Padding>
 )
-
+// <Padding vertical={4}>
+//   <PrimaryButton type="secondary" fullWidth>
+//     Get Handle
+//   </PrimaryButton>
+// </Padding>
 component.defaultProps = {}
 
 component.propTypes = {
