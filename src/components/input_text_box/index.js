@@ -1,10 +1,5 @@
 import React from 'react'
 
-import { Text, Icon } from '../../components'
-import { boxShadow } from '../../constants/style'
-import { ContentCopy } from '../../asset'
-import { Page, Padding, Tab, TabContent } from '../../layout'
-
 export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) => (
   <div style={{ flexDirection: 'row', position: 'relative' }}>
     <input

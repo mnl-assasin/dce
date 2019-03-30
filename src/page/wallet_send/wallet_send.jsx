@@ -1,19 +1,10 @@
 import React, { useCallback, useContext, useState } from 'react'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import LocalGasStation from '@material-ui/icons/LocalGasStation'
-import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
-import FileCopy from '@material-ui/icons/FileCopy'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import InputBase from '@material-ui/core/InputBase'
 
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { estimateFee, sendWallet } from '../../hof'
 import * as storage from '../../constants/storage'
-import { inputTypes } from '../../constants/types'
-import { ContentCopy, Add } from '../../asset'
+import {  Add } from '../../asset'
 import { useTextbox } from '../../hook'
 import { Page } from '../../layout'
 import {
@@ -28,12 +19,11 @@ import Header from './component/header'
 import useStyles from './styles'
 
 const title = '@blocksmith'
-const subTitle = 'send'
 
 const WalletSend = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
-  const [fee, setFee] = useState('')
+  const [ , setFee] = useState('')
   const sendTo = useTextbox('')
   const amount = useTextbox('')
   const usd = useTextbox('')

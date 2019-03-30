@@ -1,8 +1,6 @@
 import { Wallet } from 'dapper'
 import { emptyMethod } from '../helper/function'
-import { ETHER_PRICE } from '../constants/storage'
 import * as storage from '../constants/storage'
-import * as route from '../constants/route'
 
 export default appContext => async (
   mnemonic = '',

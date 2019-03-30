@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from 'react'
-import TextField from '@material-ui/core/TextField'
 
 import { Page, Padding } from '../../layout'
 import { restoreBackup } from '../../hof'
@@ -9,7 +8,6 @@ import { goTo as navigate } from '../../services/navigation'
 import {
   alertDialog,
   PrimaryButton,
-  Text,
   InputTextBox,
   Icon,
 } from '../../components'

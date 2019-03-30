@@ -1,16 +1,7 @@
 import React, { useCallback } from 'react'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import Radio from '@material-ui/core/Radio'
-import { useTextbox, useToggle } from '../../hook'
-import { PrimaryButton, Text } from '../../components'
-import { navigate } from '../../services/navigation'
-import { inputTypes } from '../../constants/types'
+import { PrimaryButton } from '../../components'
 import { Padding, Page } from '../../layout'
-import * as route from '../../constants/route'
 import useStyles from './styles'
 
 const navigationProps = {
@@ -18,7 +9,7 @@ const navigationProps = {
   backButton: true,
 }
 
-const Login = props => {
+const component = props => {
   const classes = useStyles()
   const onSubmit = useCallback(() => console.log('submitted'), [])
 
@@ -57,4 +48,4 @@ const Login = props => {
   )
 }
 
-export default Login
+export default component

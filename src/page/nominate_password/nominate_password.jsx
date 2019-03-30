@@ -1,11 +1,5 @@
 import React, { useCallback, useContext } from 'react'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 import { Page } from '../../layout'
 import { useTextbox, useToggle } from '../../hook'
@@ -13,7 +7,7 @@ import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import submit from './method/submit'
 import useStyles from './styles'
-import { Divider, Text, InputTextBox, PrimaryButton } from '../../components'
+import { Divider,  InputTextBox, PrimaryButton } from '../../components'
 
 // page setup
 const title = 'Nominate Password'
@@ -29,8 +23,6 @@ const NominatePassword = props => {
   const classes = useStyles()
   const passwordState = useTextbox('')
   const passwordConfirmState = useTextbox('')
-  const passwordVisivility = useToggle(false)
-  const passwordConfirmVisivility = useToggle(false)
   const onClickSubmit = useCallback(
     () => submit(appContext)(passwordState.value, passwordConfirmState.value),
     [passwordState.value, passwordConfirmState.value]
