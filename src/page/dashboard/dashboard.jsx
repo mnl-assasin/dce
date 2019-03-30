@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import React, {
+  useState,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react'
 import { PrimaryButton } from '../../components'
 import { Page, Padding } from '../../layout'
 import { setWalletBalances } from '../../hof'
@@ -7,21 +13,34 @@ import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { navigate } from '../../services/navigation'
 import * as storage from '../../constants/storage'
 import * as route from '../../constants/route'
-import WalletSection from './component/wallet_section'
 import DappSection from './component/dapp_section'
 // import useStyles from './styles'
+import WalletSection from './component/wallet_section'
 import { wallets } from './data'
+import createHDWallet from '../../hof/create_hd_wallet'
+import { propertyCount } from '../../helper/function'
 import './Dashboard.scss'
 
 // here must be loaded to appcontext all wallets on first loaded,
 
 const component = props => {
   const appContext = useContext(AppContextObject)
+  const [isLoading, isLoadingSet] = useState(true)
   // const classes = useStyles()
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
   const onCreateWallet = useCallback(
-    () => navigate(route.MNEMONIC_PHRASE, { successLocation: route.DASHBOARD }),
-    []
+    () => {
+      createHDWallet(appContext)(
+        // wallet mnemonic
+        appContext[storage.USER_MNEMONIC],
+        // path
+        propertyCount(appContext[storage.USER_WALLETS])
+      )
+    },
+    [
+      appContext[storage.USER_MNEMONIC],
+      propertyCount(appContext[storage.USER_WALLETS]),
+    ]
   )
   const totalCoins = useMemo(
     () =>
@@ -39,10 +58,14 @@ const component = props => {
       setWalletBalances(appContext, appContext[storage.ACTIVE_PROVIDER_ID])(
         appContext[storage.USER_WALLETS]
       )
+      isLoadingSet(false)
     },
     [appContext[storage.ACTIVE_PROVIDER_ID]]
   )
   console.log(appContext)
+  if (isLoading) {
+    return <span>loading...</span>
+  }
   return (
     <Page>
       <WalletSection

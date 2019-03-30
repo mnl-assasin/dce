@@ -28,9 +28,11 @@ export default (
             [storage.WALLET_ADDRESS]: wallet.data.address,
             [storage.WALLET_PRIVATE_KEY]: wallet.data.privateKey,
             [storage.WALLET_PUBLIC_KEY]: wallet.data.publicKey,
-            [storage.WALLET_MNEMONIC]:  wallet.data.mnemonic,
+            [storage.WALLET_MNEMONIC]: wallet.data.mnemonic,
+            [storage.WALLET_PATH]: 0,
           },
         },
+        [storage.USER_MNEMONIC]: wallet.data.mnemonic,
         [storage.IS_SET_MNEMONIC]: true,
         // [storage.WALLET_MNEMONIC]: wallet.data.mnemonic,
         // [storage.WALLET_ADDRESS]: wallet.data.address,
@@ -47,7 +49,7 @@ export default (
     alertDialog({
       title: 'Oopss',
       message:
-        'It seems like you have entered a wrong mnemonic phrase. please try again'
+        'It seems like you have entered a wrong mnemonic phrase. please try again',
     })
   }
 }

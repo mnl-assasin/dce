@@ -182,8 +182,10 @@ class MnemonicPhraseConfirm extends BasePage {
           [this.storage.WALLET_PRIVATE_KEY]: this.props.wallet.privateKey,
           [this.storage.WALLET_PUBLIC_KEY]: this.props.wallet.publicKey,
           [this.storage.WALLET_MNEMONIC]: this.props.wallet.mnemonic,
+          [this.storage.WALLET_PATH]: 0,
         },
       },
+      [this.storage.USER_MNEMONIC]: this.props.wallet.mnemonic,
       [this.storage.IS_SET_MNEMONIC]: true,
     })
     this._next()

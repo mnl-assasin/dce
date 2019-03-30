@@ -10,6 +10,7 @@ export const ACTIVE_PROVIDER_NAME = 'activeProviderName'
 export const ACTIVE_PROVIDER_BlOCKNUMBER = 'activeProviderBlockNumber'
 
 // wallets config
+export const USER_MNEMONIC = 'user_mnemonic'
 export const USER_WALLETS = 'Wallets' // this is structure
 //
 // note: USER_WALLETS.USER_WALLETS or USER_WALLETS[USER_WALLETS]
@@ -24,6 +25,7 @@ export const USER_WALLETS = 'Wallets' // this is structure
 //     WALLET_ADDRESS,
 //     WALLET_PRIVATE_KEY,
 //     WALLET_PUBLIC_KEY,
+//     WALLET_PATH
 //   }
 // }
 
@@ -34,6 +36,7 @@ export const WALLET_MNEMONIC = 'mnemonic'
 export const WALLET_ADDRESS = 'address'
 export const WALLET_PRIVATE_KEY = 'privateKey'
 export const WALLET_PUBLIC_KEY = 'publicKey'
+export const WALLET_PATH = 'path' // use in hd walelt
 
 export const WALLET = {
   WALLET_USERNAME,
@@ -43,6 +46,7 @@ export const WALLET = {
   WALLET_ADDRESS,
   WALLET_PRIVATE_KEY,
   WALLET_PUBLIC_KEY,
+  WALLET_PATH,
 }
 //
 //

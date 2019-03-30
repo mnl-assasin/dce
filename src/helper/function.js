@@ -15,3 +15,7 @@ export const orderObjectByKey = obj => {
       {}
     )
 }
+
+export const propertyCount = object => {
+  return Object.keys(object).length
+}

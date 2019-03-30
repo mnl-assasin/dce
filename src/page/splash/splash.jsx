@@ -34,8 +34,8 @@ class Splash extends BasePage {
     if (isLogged) {
       return goTo('Dashboard')
     }
-
-    return goTo(this.route.GET_STARTED)
+    return Navigation.init(this.defaults.defaultRouteName)
+    // return goTo(this.route.GET_STARTED)
     // return Navigation.init(this.defaults.defaultRouteName)
     //
     // if (isMnemonicSet) {
@@ -86,6 +86,7 @@ class Splash extends BasePage {
     //
     this.storage.ETHER_PRICE,
     this.storage.USER_WALLETS,
+    this.storage.USER_MNEMONIC,
   ]
 
   _init = async () => {
