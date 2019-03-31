@@ -170,6 +170,8 @@ class MnemonicPhraseConfirm extends BasePage {
       ) >= 0
     )
   }
+
+  // TODO: need to refactor this to hof
   _success = () => {
     // success in mnemonic
     // console.log('saving to state', this.props.wallet)
