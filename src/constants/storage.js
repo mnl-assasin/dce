@@ -41,6 +41,7 @@ export const WALLET_ADDRESS = 'address'
 export const WALLET_PRIVATE_KEY = 'privateKey'
 export const WALLET_PUBLIC_KEY = 'publicKey'
 export const WALLET_PATH = 'path' // use in hd walelt
+export const WALLET_DISPLAY_BY = 'displayBy' // by quantity, value
 
 export const WALLET = {
   WALLET_USERNAME,
@@ -51,6 +52,7 @@ export const WALLET = {
   WALLET_PRIVATE_KEY,
   WALLET_PUBLIC_KEY,
   WALLET_PATH,
+  WALLET_DISPLAY_BY
 }
 //
 //

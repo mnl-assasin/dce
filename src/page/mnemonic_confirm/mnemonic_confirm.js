@@ -5,6 +5,7 @@ import chunk from 'lodash/chunk'
 import { withStyles } from '@material-ui/styles'
 
 import BasePage from '../../common/BasePage'
+import { displayTypes } from '../../constants/types'
 import { Center } from '../../layout'
 import { Page } from '../../layout'
 import { goTo } from '../../services/navigation'
@@ -183,6 +184,7 @@ class MnemonicPhraseConfirm extends BasePage {
           [this.storage.WALLET_PUBLIC_KEY]: this.props.wallet.publicKey,
           [this.storage.WALLET_MNEMONIC]: this.props.wallet.mnemonic,
           [this.storage.WALLET_PATH]: 0,
+          [this.storage.WALLET_DISPLAY_BY]: displayTypes.default,
         },
       },
       [this.storage.USER_MNEMONIC]: this.props.wallet.mnemonic,

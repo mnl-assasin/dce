@@ -1,10 +1,12 @@
 import { Wallet } from 'dapper'
 import { emptyMethod } from '../helper/function'
+import { displayTypes } from '../constants/types'
 import * as storage from '../constants/storage'
 
 export default appContext => async (
   mnemonic = '',
   path = 0,
+  displayBy = displayTypes.default,
   onSuccess = emptyMethod,
   onError = emptyMethod
 ) => {
@@ -27,6 +29,7 @@ export default appContext => async (
               [storage.WALLET_PUBLIC_KEY]: wallet.publicKey,
               [storage.WALLET_MNEMONIC]: wallet.mnemonic,
               [storage.WALLET_PATH]: wallet.path,
+              [storage.WALLET_DISPLAY_BY]: displayBy,
             },
           },
         },

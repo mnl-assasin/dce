@@ -1,5 +1,6 @@
 import { Wallet } from 'dapper'
 import { emptyMethod } from '../helper/function'
+import { displayTypes } from '../constants/types'
 import * as storage from '../constants/storage'
 import * as route from '../constants/route'
 
@@ -30,6 +31,7 @@ export default (
             [storage.WALLET_PUBLIC_KEY]: wallet.data.publicKey,
             [storage.WALLET_MNEMONIC]: wallet.data.mnemonic,
             [storage.WALLET_PATH]: 0,
+            [storage.WALLET_DISPLAY_BY]: displayTypes.default,
           },
         },
         [storage.USER_MNEMONIC]: wallet.data.mnemonic,
