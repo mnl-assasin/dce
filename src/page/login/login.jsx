@@ -21,7 +21,10 @@ const Login = props => {
   const classes = useStyles()
   const passwordState = useTextbox('')
   const isPasswordVisibleState = useToggle(false)
-  const onSubmit = useCallback(() => console.log('submitted'), [])
+  const onSubmit = useCallback(() => {
+    // TODO: dont know implemntation on this cause when use logout it clear all the db
+    console.log('submitted')
+  }, [])
   const onUseBackup = useCallback(() => navigate(route.RESTORE_BACKUP), [])
 
   return (
