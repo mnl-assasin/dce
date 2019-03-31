@@ -34,6 +34,7 @@ export default ({
           key={_id}
           amount={wallets[_id][WALLET.WALLET_AMOUNT]}
           userName=""
+          displayBy={wallets[_id][WALLET.WALLET_DISPLAY_BY]}
           // userName={wallets[_id][WALLET.WALLET_USERNAME]}
           basePrice={coinPrice}
           componentIcon={<Icon src={icon.ETHER} size={28} />}

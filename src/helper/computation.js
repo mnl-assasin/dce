@@ -4,7 +4,7 @@ export const convertedPricePerValue = (base, amount, isString = true) => {
     if (isNaN(result)) {
       return isString ? '' : 0
     }
-    return isString ? String(result.toFixed(4)) : result.toFixed(4)
+    return isString ? String(result.toFixed(2)) : result.toFixed(2)
   } catch (e) {
     console.log(e)
     return isString ? '' : 0

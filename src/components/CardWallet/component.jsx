@@ -2,6 +2,7 @@ import React from 'react'
 
 import Text from '../Text'
 import { convertedPricePerValue } from '../../helper/computation'
+import { displayTypes } from '../../constants/types'
 import { Padding } from '../../layout'
 import * as styles from './styles'
 
@@ -13,6 +14,7 @@ class CardWallet extends React.PureComponent {
       componentIcon,
       basePrice = 0,
       onPress,
+      displayBy = displayTypes.default,
       param,
     } = this.props
     return (
@@ -27,7 +29,9 @@ class CardWallet extends React.PureComponent {
             {componentIcon}
             <Padding horizontal={4}>
               <Text style={styles.titleStyle}>
-                ${convertedPricePerValue(basePrice, amount)}
+                {displayBy === displayTypes.value
+                  ? '$' + convertedPricePerValue(basePrice, amount)
+                  : amount}
               </Text>
             </Padding>
           </div>
