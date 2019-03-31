@@ -15,20 +15,24 @@ export default appContext => async (
     })
     if (request.code === 200) {
       const wallet = request.data
-      appContext.persist({
-        // add walllet to wallet db
-        [storage.USER_WALLETS]: {
-          ...appContext[storage.USER_WALLETS],
-          [wallet.address]: {
-            [storage.WALLET_COINBASE]: 'ETH',
-            [storage.WALLET_ADDRESS]: wallet.address,
-            [storage.WALLET_PRIVATE_KEY]: wallet.privateKey,
-            [storage.WALLET_PUBLIC_KEY]: wallet.publicKey,
-            [storage.WALLET_MNEMONIC]: wallet.mnemonic,
-            [storage.WALLET_PATH]: wallet.path,
+      appContext.persist(
+        {
+          // add walllet to wallet db
+          [storage.USER_WALLETS]: {
+            ...appContext[storage.USER_WALLETS],
+            [wallet.address]: {
+              [storage.WALLET_COINBASE]: 'ETH',
+              [storage.WALLET_ADDRESS]: wallet.address,
+              [storage.WALLET_PRIVATE_KEY]: wallet.privateKey,
+              [storage.WALLET_PUBLIC_KEY]: wallet.publicKey,
+              [storage.WALLET_MNEMONIC]: wallet.mnemonic,
+              [storage.WALLET_PATH]: wallet.path,
+            },
           },
         },
-      })
+        () => onSuccess(request.data)
+      )
+
       return request.data
     } else {
       throw new Error('code not 200')

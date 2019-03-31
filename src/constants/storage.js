@@ -12,6 +12,10 @@ export const ACTIVE_PROVIDER_BlOCKNUMBER = 'activeProviderBlockNumber'
 // wallets config
 export const USER_MNEMONIC = 'user_mnemonic'
 export const USER_WALLETS = 'Wallets' // this is structure
+
+// mutating wallets is not good in useEffect
+export const USER_WALLETS_BALANCE = 'WalletsBalance' // this is structure
+
 //
 // note: USER_WALLETS.USER_WALLETS or USER_WALLETS[USER_WALLETS]
 //       USER_WALLETS is not an array for fastest rendering

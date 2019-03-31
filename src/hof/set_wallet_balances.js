@@ -4,6 +4,7 @@ import {
   WALLET_ADDRESS,
   USER_WALLETS,
   WALLET_AMOUNT,
+  USER_WALLETS_BALANCE,
 } from '../constants/storage'
 
 //store.WALLET FORMAT
@@ -24,7 +25,7 @@ export default (appContext, ACTIVE_PROVIDER_ID) => async (wallets = []) => {
     })
   )
 
-  appContext.set({ [USER_WALLETS]: orderObjectByKey(newWallet) })
+  appContext.set({ [USER_WALLETS_BALANCE]: orderObjectByKey(newWallet) })
   // return not the result because what will return is a promise. and a promise is not good in lifecycle hooks
   return true
 }

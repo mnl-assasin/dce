@@ -12,10 +12,10 @@ import { computeTotalCoinValue } from '../../helper/computation'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import { navigate } from '../../services/navigation'
 import * as storage from '../../constants/storage'
+import * as route from '../../constants/route'
 import DappSection from './component/dapp_section'
 // import useStyles from './styles'
 import WalletSection from './component/wallet_section'
-import createHDWallet from '../../hof/create_hd_wallet'
 import { propertyCount } from '../../helper/function'
 import './Dashboard.scss'
 
@@ -28,12 +28,13 @@ const component = props => {
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
   const onCreateWallet = useCallback(
     () => {
-      createHDWallet(appContext)(
-        // wallet mnemonic
-        appContext[storage.USER_MNEMONIC],
-        // path
-        propertyCount(appContext[storage.USER_WALLETS])
-      )
+      // createHDWallet(appContext)(
+      //   // wallet mnemonic
+      //   appContext[storage.USER_MNEMONIC],
+      //   // path
+      //   propertyCount(appContext[storage.USER_WALLETS])
+      // )
+      navigate(route.ADD_WALLET)
     },
     [
       appContext[storage.USER_MNEMONIC],
@@ -58,7 +59,7 @@ const component = props => {
       )
       isLoadingSet(false)
     },
-    [appContext[storage.ACTIVE_PROVIDER_ID]]
+    [appContext[storage.ACTIVE_PROVIDER_ID], appContext[storage.USER_WALLETS]]
   )
   console.log(appContext)
   if (isLoading) {
@@ -67,7 +68,7 @@ const component = props => {
   return (
     <Page>
       <WalletSection
-        wallets={appContext[storage.USER_WALLETS]}
+        wallets={appContext[storage.USER_WALLETS_BALANCE]}
         totalCoins={totalCoins}
         onPress={onSelectWallet}
         coinPrice={appContext[storage.ETHER_PRICE]}

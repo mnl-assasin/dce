@@ -27,6 +27,7 @@ import NominatePassword from './page/nominate_password'
 import RestoreBackup from './page/restore_backup'
 import Settings from './page/setting'
 import SettingsWallet from './page/setting_wallet'
+import AddWallet from './page/add_wallet'
 import Provider from './page/setting/Provider/Provider'
 import Network from './page/network'
 // import Network from './pages/Settings/Network/Network'
@@ -39,6 +40,7 @@ import WalletHistory from './page/wallet_history'
 import TestPage from './page/test_page'
 
 export default {
+  AddWallet: AddWallet,
   CreateDashboard: CreateDashboard,
   Dashboard: Dashboard,
   GetStarted: GetStarted,

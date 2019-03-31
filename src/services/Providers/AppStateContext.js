@@ -8,17 +8,14 @@ import {
   ACTIVE_PROVIDER_ID,
   ACTIVE_PROVIDER_NAME,
   IS_SET_MNEMONIC,
-  ETHER_PRICE
+  ETHER_PRICE,
 } from '../../constants/storage'
-
-
-
 
 export const AppContextConstant = {
   IS_LOGGED,
   ACTIVE_PROVIDER_ID,
   ACTIVE_PROVIDER_NAME,
-  IS_SET_MNEMONIC
+  IS_SET_MNEMONIC,
 }
 
 export const defaultAppContext = {}
@@ -48,25 +45,26 @@ class AppContextProvider extends Component {
   onAppContextChange = item => {
     this.setState({
       ...this.state,
-      ...item
+      ...item,
     })
   }
 
   set = item => {
     this.setState({
       // ...this.state,
-      ...item
+      ...item,
     })
   }
 
-  persist = item => {
+  persist = (item, cb = () => {}) => {
     // save to storage
-    Object.keys(item).forEach((key) => {
+    Object.keys(item).forEach(key => {
       this._saveToStorage(key, item[key])
     })
 
     //
     this.setState(item)
+    setTimeout(cb, 0.1)
   }
 
   _saveToStorage = (key, value) => {
@@ -79,7 +77,7 @@ class AppContextProvider extends Component {
   clear = () => {
     // will decide if we clear storage here
 
-    this.setState({...activeProvider, ...appDefault})
+    this.setState({ ...activeProvider, ...appDefault })
   }
 
   render() {
@@ -92,16 +90,22 @@ class AppContextProvider extends Component {
 }
 
 AppContextProvider.defaultProps = {
-  value: {}
+  value: {},
 }
 
 AppContextProvider.propTypes = {
-  value: Proptypes.object
+  value: Proptypes.object,
 }
 
 export default AppContextProvider
 
 export const withAppContext = WrappedComponent => props => {
   const AppContext = useContext(AppContextObject)
-  return <WrappedComponent {...props} AppContext={AppContext} AppContextConstant={AppContextConstant} />
+  return (
+    <WrappedComponent
+      {...props}
+      AppContext={AppContext}
+      AppContextConstant={AppContextConstant}
+    />
+  )
 }
