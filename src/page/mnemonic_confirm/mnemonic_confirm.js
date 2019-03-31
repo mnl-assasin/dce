@@ -18,6 +18,7 @@ import {
   Loading,
 } from '../../components'
 import { withAppContext } from '../../services/Providers/AppStateContext'
+import saveWallet from '../../hof/save_wallet'
 
 import styles from './styles'
 import './MnemonicPhraseConfirm.css'
@@ -175,24 +176,19 @@ class MnemonicPhraseConfirm extends BasePage {
   _success = () => {
     // success in mnemonic
     // console.log('saving to state', this.props.wallet)
-    this.props.AppContext.persist({
-      // add walllet to wallet db
-      [this.storage.USER_WALLETS]: {
-        ...this.props.AppContext[this.storage.USER_WALLETS],
-        [this.props.wallet.address]: {
-          [this.storage.WALLET_COINBASE]: 'ETH',
-          [this.storage.WALLET_ADDRESS]: this.props.wallet.address,
-          [this.storage.WALLET_PRIVATE_KEY]: this.props.wallet.privateKey,
-          [this.storage.WALLET_PUBLIC_KEY]: this.props.wallet.publicKey,
-          [this.storage.WALLET_MNEMONIC]: this.props.wallet.mnemonic,
-          [this.storage.WALLET_PATH]: 0,
-          [this.storage.WALLET_DISPLAY_BY]: displayTypes.default,
-        },
-      },
-      [this.storage.USER_MNEMONIC]: this.props.wallet.mnemonic,
-      [this.storage.IS_SET_MNEMONIC]: true,
-    })
-    this._next()
+
+    // saving
+    saveWallet(this.props.AppContext)(
+      this.props.wallet,
+      displayTypes.default,
+      () => {
+        this.props.AppContext.persist({
+          [this.storage.USER_MNEMONIC]: this.props.wallet.mnemonic,
+          [this.storage.IS_SET_MNEMONIC]: true,
+        })
+        this._next()
+      }
+    )
   }
 
   _next = () =>
@@ -204,7 +200,7 @@ class MnemonicPhraseConfirm extends BasePage {
   render() {
     const { classes } = this.props
     // need to fix those circles some time
-    console.log(this.props.wallet)
+    console.log(this.props)
     if (!this.state.isLoaded) {
       return (
         <Page navigationProps={this.navigationProps}>
