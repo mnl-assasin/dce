@@ -11,8 +11,13 @@ import WalletContent from './component/WalletContent'
 import init from './method/init'
 import useStyles from './styles'
 
+import { Ether } from '../../asset'
+import { AppBarTitle, Icon } from '../../components'
+
 const navigationProps = {
-  title: 'Wallet',
+  titleComponent: (
+    <AppBarTitle title="" icon={<Icon src={Ether} size={26} />} />
+  ),
   backButton: true,
 }
 

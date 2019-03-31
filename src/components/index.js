@@ -17,8 +17,10 @@ import FabButton from './FabButton'
 import InputTextBox from './input_text_box'
 import Text from './Text'
 import Icon from './icon'
+import AppBarTitle from './app_bar_title'
 
 export {
+  AppBarTitle,
   AlertDialog,
   CardDapp,
   CardWallet,
