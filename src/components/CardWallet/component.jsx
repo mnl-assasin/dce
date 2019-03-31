@@ -31,7 +31,7 @@ class CardWallet extends React.PureComponent {
               <Text style={styles.titleStyle}>
                 {displayBy === displayTypes.value
                   ? '$' + convertedPricePerValue(basePrice, amount)
-                  : amount}
+                  : amount + ' ETH'}
               </Text>
             </Padding>
           </div>
