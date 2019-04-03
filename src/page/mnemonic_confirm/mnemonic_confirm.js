@@ -24,7 +24,7 @@ import styles from './styles'
 import './MnemonicPhraseConfirm.css'
 
 class MnemonicPhraseConfirm extends BasePage {
-  title = 'Confirm Mnemonic'
+  title = ''
   storage = BasePage.constants.storage
   route = BasePage.constants.route
 
