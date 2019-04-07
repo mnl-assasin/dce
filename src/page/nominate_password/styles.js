@@ -17,11 +17,17 @@ export const styles = theme => {
     logo: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       flex: 2,
-      height: 200,
+      height: 240,
+        paddingTop: 16,
     },
-    textField: {
+      logoText: {
+          fontSize: 20,
+          fontWeight: 'bold',
+
+      },
+      textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
     },

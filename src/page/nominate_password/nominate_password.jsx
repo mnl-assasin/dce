@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react'
 import Typography from '@material-ui/core/Typography'
 
-import { Page } from '../../layout'
+import { Page, Padding } from '../../layout'
 import { useTextbox, useToggle } from '../../hook'
 import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
@@ -30,7 +30,7 @@ const NominatePassword = props => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Typography variant="h5">{title}</Typography>
+        <span className={classes.logoText}>NOMINATE PASSWORD</span>
       </div>
       <form className={classes.container} noValidate autoComplete="off">
         <div className={classes.description} />
@@ -47,10 +47,11 @@ const NominatePassword = props => {
           onChange={passwordConfirmState.onChange}
           type={inputTypes.password}
         />
-        <Divider size={1} />
-        <PrimaryButton type="primary" onClick={onClickSubmit}>
-          CONFIRM
-        </PrimaryButton>
+      <Padding top={16}>
+        <PrimaryButton type="primary" onClick={onClickSubmit} fullWidth>
+        SAVE
+      </PrimaryButton>
+      </Padding>
       </form>
     </Page>
   )
