@@ -2,8 +2,10 @@ import color from '../../constants/style'
 
 const style = {
   borderRadius: 99,
-  paddingBottom: '0.8rem',
-  paddingTop: '0.8rem',
+  paddingBottom: '1rem',
+  paddingTop: '1rem',
+  fontSize: 10,
+  fontWeight: 'bold',
 }
 
 export const outlined = {
