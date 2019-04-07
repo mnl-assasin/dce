@@ -1,4 +1,5 @@
 import color from '../../constants/style'
+import { boxShadowWeak } from '../../constants/style'
 
 const style = {
   borderRadius: 99,
@@ -6,6 +7,7 @@ const style = {
   paddingTop: '1rem',
   fontSize: 10,
   fontWeight: 'bold',
+  boxShadow: 'gray 0px 1px 3px 0px',
 }
 
 export const outlined = {
