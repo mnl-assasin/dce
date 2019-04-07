@@ -5,13 +5,12 @@ export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) =>
     <input
       type="text"
       style={{
-        fontSize: 11,
+        fontSize: 16,
         color: 'gray',
-        fontWeight: 'bold',
         backgroundColor: 'white',
-        padding: '1rem',
+        padding: '0.75rem 0.5rem',
         borderRadius: 2,
-        borderColor: '#c1c1c1',
+        borderColor: '#dedede',
         borderStyle: 'solid',
         borderWidth: 1,
         width: '100%',
