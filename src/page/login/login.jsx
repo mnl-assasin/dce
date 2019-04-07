@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { useTextbox, useToggle } from '../../hook'
-import { PrimaryButton, Text } from '../../components'
+import { PrimaryButton, Text, InputTextBox } from '../../components'
 import { navigate } from '../../services/navigation'
 import { inputTypes } from '../../constants/types'
 import { Padding, Page } from '../../layout'
@@ -13,8 +13,8 @@ import * as route from '../../constants/route'
 import useStyles from './styles'
 
 const navigationProps = {
-  title: 'Dapper Wallet',
-  backButton: true,
+  title: '',
+  backButton: false,
 }
 
 const Login = props => {
@@ -30,44 +30,18 @@ const Login = props => {
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
-        <Text variant="h3">login</Text>
+        <span className={classes.logoText}>LOGIN</span>
       </div>
 
       <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          label="Enter Password"
-          variant="outlined"
-          className={classes.textField}
+        <InputTextBox
           value={passwordState.value}
           onChange={passwordState.onChange}
-          type={
-            isPasswordVisibleState.value ? inputTypes.text : inputTypes.password
-          }
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={isPasswordVisibleState.onChange}
-                >
-                  {isPasswordVisibleState.value ? (
-                    <VisibilityOff />
-                  ) : (
-                    <Visibility />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          placeholder="Enter Password"
         />
-        <Padding bottom={4} top={32}>
+        <Padding bottom={4} top={16}>
           <PrimaryButton type="primary" onClick={onSubmit} fullWidth>
-            Confirm
-          </PrimaryButton>
-        </Padding>
-        <Padding vertical={4}>
-          <PrimaryButton type="secondary" onClick={onUseBackup} fullWidth>
-            use backup phrase to login
+           LOG IN
           </PrimaryButton>
         </Padding>
       </form>

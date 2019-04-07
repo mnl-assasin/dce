@@ -18,15 +18,21 @@ export const styles = theme => ({
   logo: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     flex: 2,
-    height: 200,
+    paddingTop: 20,
+
+    height: 240,
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
-  buttonHolder: {
+    logoText:{
+      fontWeight: 'bolder',
+      fontSize:20,
+      },
+    buttonHolder: {
     marginTop: theme.spacing.unit * 3,
     display: 'flex',
     flexDirection: 'column',
