@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useContext } from 'react'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import Radio from '@material-ui/core/Radio'
-import { PrimaryButton } from '../../components'
+import { PrimaryButton, Text } from '../../components'
 import { Padding, Page } from '../../layout'
 import { displayTypes } from '../../constants/types'
 import { propertyCount } from '../../helper/function'
@@ -37,7 +37,7 @@ const component = props => {
 
   return (
     <Page navigationProps={navigationProps}>
-      <Padding vertical={60} />
+      <span className={classes.title}>ADD ETH</span>
       <div className={classes.container}>
         <div className={classes.content} onClick={() => valueSet('quantity')}>
           <span>Show Quantity</span>
@@ -62,10 +62,8 @@ const component = props => {
           </span>
         </div>
       </div>
-      <Padding vertical={110} />
-
-      <Padding vertical={4}>
-        <PrimaryButton type="secondary" onClick={onCreateEthWallet} fullWidth>
+      <Padding vertical={16}>
+        <PrimaryButton type="primary" onClick={onCreateEthWallet} fullWidth>
           save
         </PrimaryButton>
       </Padding>

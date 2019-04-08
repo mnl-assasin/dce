@@ -6,7 +6,14 @@ export const styles = theme => ({
     ...center,
     flex: 2,
   },
-  container: { border: '1px solid #dadada' },
+    title:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        paddingTop: 22,
+        paddingBottom: 32,
+        textAlign: 'center'
+    },
+    container: { border: '1px solid #dadada' },
   content: {
     display: 'flex',
     flexDirection: 'row',
