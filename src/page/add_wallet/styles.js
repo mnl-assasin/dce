@@ -13,7 +13,10 @@ export const styles = theme => ({
         paddingBottom: 32,
         textAlign: 'center'
     },
-    container: { border: '1px solid #dadada' },
+    container: { border: '1px solid #dadada',
+      fontSize: 13,
+
+    },
   content: {
     display: 'flex',
     flexDirection: 'row',
