@@ -71,11 +71,7 @@ class Navbar extends Component {
       <div className="Navbar">
         <AppBar
           position="static"
-          style={{
-            backgroundColor: 'white',
-            color: 'black',
-            boxShadow: 'none',
-          }}
+          style={{ backgroundColor: 'white', color: 'black', boxShadow }}
         >
           <Toolbar>
             {backButton ? this._renderBackButton() : null}
