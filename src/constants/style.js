@@ -56,7 +56,7 @@ export const column = {
 const sizes = {
   size1: 12,  // 20,
   size2: 14,  // 24,
-  size3: 18,  // 30,
+  size3: 16,  // 30,
   size4: 20,  // 36,
 }
 
@@ -78,7 +78,7 @@ export const TextStyles = {
   style3: {
     color: '#000000',
     placeholderColor: '#999999',
-    size: sizes.size2
+    size: sizes.size3
   }
 }
 
