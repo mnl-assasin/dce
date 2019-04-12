@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/styles'
+import { TextStyles } from '../../constants/style'
 
 export const styles = theme => ({
   root: {
@@ -21,18 +22,18 @@ export const styles = theme => ({
     alignItems: 'flex-start',
     flex: 2,
     paddingTop: 20,
-
     height: 240,
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
-    logoText:{
-      fontWeight: 'bolder',
-      fontSize:20,
-      },
-    buttonHolder: {
+  logoText: {
+    ...TextStyles.style1,
+    fontSize: TextStyles.sizes.size4,
+   //  fontWeight: 'bolder',
+    },
+  buttonHolder: {
     marginTop: theme.spacing.unit * 3,
     display: 'flex',
     flexDirection: 'column',
