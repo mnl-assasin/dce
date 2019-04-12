@@ -55,8 +55,7 @@ export const column = {
 
 const sizes = {
   size1: 12,  // 20,
-  size1_2: 14, // 24 not on the list but need on wallet history
-  size2: 24,
+  size2: 14,  // 24,
   size3: 30,
   size4: 36,
 }
