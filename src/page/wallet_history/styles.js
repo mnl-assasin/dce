@@ -27,7 +27,7 @@ export const styles = theme => ({
     },
     coinTitleHeader: {
       ...TextStyles.style1,
-      fontSize: TextStyles.sizes.size1_2,
+      fontSize: TextStyles.sizes.size2,
     },
     coinTileValue: {
       ...TextStyles.style1,
@@ -42,7 +42,7 @@ export const styles = theme => ({
     },
     address: {
       ...TextStyles.style2,
-      fontSize: TextStyles.sizes.size1_2,
+      fontSize: TextStyles.sizes.size2,
     },
     date: {
       ...TextStyles.style2,
