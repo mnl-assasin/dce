@@ -33,7 +33,7 @@ const WalletHistory = props => {
         address: props.wallet[storage.WALLET_ADDRESS],
       })
       .then(data => {
-        console.log(data)
+       //  console.log(data)
         setHistories(data.data)
       })
       .catch(error => {
@@ -46,7 +46,7 @@ const WalletHistory = props => {
     <Page navigationProps={navigationProps}>
       <div className={classes.pageHeader}>
         <div className={classes.pageHeaderTitle}>HISTORY FOR</div>
-      <div className={classes.pageHeaderSubTitle}>{props.wallet[storage.WALLET_ADDRESS]}</div>
+        <div className={classes.pageHeaderSubTitle}>{props.wallet[storage.WALLET_ADDRESS]}</div>
       </div>
       <List>
         {histories.length > 0

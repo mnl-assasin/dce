@@ -6,17 +6,25 @@ const formatTime = (time) => {
 }
 
 const getTitle = (walletAdress, transactionAdress) => {
-    console.log(walletAdress, transactionAdress)
     return walletAdress == transactionAdress ? 'SENT' :'RECEIVE'
 }
 
-const reduceAddress = (address)=> {
-  const addressAr = address.split('')
+const reduceAddress = (walletAdress, addressFrom, addressTo)=> {
+  if (walletAdress === addressFrom) {
+    // sent coin
+    if(!addressTo) {
+      return null
+    }
+    const addressAr = addressTo.split('')
+    return addressAr.slice(0, 6).join('') + '...' + addressAr.slice(-7).join('')
+  }
+
+  // receive
+  const addressAr = addressFrom.split('')
   return addressAr.slice(0, 6).join('') + '...' + addressAr.slice(-7).join('')
 }
 
 export default  ({classes, item, address}) => {
-    console.log(item)
   return (
     <div className={classes.coinCard}>
         <div className={classes.coinTitleContainer}>
@@ -24,7 +32,7 @@ export default  ({classes, item, address}) => {
           <span className={classes.coinTileValue}>{item.value} ETH</span>
         </div>
         <div className={classes.cardContentHolder}>
-          <span className={classes.address}>{reduceAddress(item.from)}</span>
+          <span className={classes.address}>{reduceAddress(address, item.from, item.to)}</span>
           <span className={classes.date}>{formatTime(item.timestamp)}</span>
         </div>
       </div>
