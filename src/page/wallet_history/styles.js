@@ -1,19 +1,16 @@
 import { makeStyles } from '@material-ui/styles'
+import { TextStyles  } from '../../constants/style'
 
 export const styles = theme => ({
   root: {},
     pageHeader:{
       paddingTop: 16,
     },
-    pageHeaderTitle:{
-        fontSize: 12,
-        fontWeight: 'bold',
+    pageHeaderTitle: {
+      ...TextStyles.style1
     },
-    pageHeaderSubTitle:{
-        fontSize: 13,
-        fontWeight: 'bold',
-        color: 'gray',
-
+    pageHeaderSubTitle: {
+      ...TextStyles.style2,
     },
     coinCard: {
       marginTop: '.5rem',
@@ -29,14 +26,11 @@ export const styles = theme => ({
       justifyContent:'space-between',
     },
     coinTitleHeader: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      color: 'black',
+      ...TextStyles.style1,
+      fontSize: TextStyles.sizes.size1_2,
     },
     coinTileValue: {
-     fontSize: 12,
-     fontWeight: 'bold',
-     color: 'black',
+      ...TextStyles.style1,
      display: 'flex',
      justifyContent: 'flex-end',
      flexDirection: 'column'
@@ -46,15 +40,12 @@ export const styles = theme => ({
       flexDirection: 'row',
       justifyContent:'space-between',
     },
-    address:{
-      color: 'gray',
-      fontSize: 14,
-      fontWeight: 'bold'
+    address: {
+      ...TextStyles.style2,
+      fontSize: TextStyles.sizes.size1_2,
     },
-    date:{
-        color:'gray',
-        fontSize: 12,
-        fontWeight: 'bold',
+    date: {
+      ...TextStyles.style2,
       textTransform:"uppercase"
     },
   logo: {

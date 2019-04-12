@@ -2,14 +2,14 @@ import React, { useState, useEffect, useContext } from 'react'
 import moment from 'moment'
 
 const formatTime = (time) => {
-    return moment(time).format('LLL')
+  return moment(time).format('LLL')
 }
 
 const getTitle = (walletAdress, transactionAdress) => {
-    return walletAdress == transactionAdress ? 'SENT' :'RECEIVE'
+  return walletAdress == transactionAdress ? 'SENT' : 'RECEIVE'
 }
 
-const reduceAddress = (walletAdress, addressFrom, addressTo)=> {
+const reduceAddress = (walletAdress, addressFrom, addressTo) => {
   if (walletAdress === addressFrom) {
     // sent coin
     if(!addressTo) {
@@ -39,16 +39,4 @@ export default  ({classes, item, address}) => {
  )
 }
 
-// >THU FEB 28. 2019 5:56 AM<
-//                  <ListItemText
- //                   primary={
-  //                    '' +
-    //                  moment(item.timestamp).format('LLL') +
-      //                ' - ' +
-        //              item.confirmations +
-          //            ' - ' +
-            //          item.value
-              //      }
-                //    secondary={item.hash}
-                 // />
 
