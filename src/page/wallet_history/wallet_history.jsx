@@ -11,7 +11,7 @@ import useStyles from './styles'
 import { Wallet } from 'dapper'
 
 // page setup
-const title = 'Wallet History'
+const title = ''
 const navigationProps = {
   title,
   backButton: true,
@@ -44,8 +44,19 @@ const WalletHistory = props => {
   // will be clear later
   return (
     <Page navigationProps={navigationProps}>
-      <div className={classes.logo}>
-        <Typography variant="h5">ETH</Typography>
+      <div className={classes.pageHeader}>
+        <div className={classes.pageHeaderTitle}>HISTORY FOR</div>
+      <div className={classes.pageHeaderSubTitle}>{props.wallet[storage.WALLET_ADDRESS]}</div>
+      </div>
+      <div className={classes.coinCard}>
+        <div className={classes.coinTitleContainer}>
+          <span className={classes.coinTitleHeader}>SENT</span>
+          <span className={classes.coinTileValue}>0.0534234234 ETH</span>
+        </div>
+        <div className={classes.cardContentHolder}>
+          <span className={classes.address}>0X34234...54ERER</span>
+          <span className={classes.date}>THU FEB 28. 2019 5:56 AM</span>
+        </div>
       </div>
       <List>
         {histories.length > 0
