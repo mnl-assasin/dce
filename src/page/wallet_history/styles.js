@@ -2,6 +2,9 @@ import { makeStyles } from '@material-ui/styles'
 
 export const styles = theme => ({
   root: {},
+    pageHeader:{
+      paddingTop: 16,
+    },
     pageHeaderTitle:{
         fontSize: 12,
         fontWeight: 'bold',
@@ -13,6 +16,8 @@ export const styles = theme => ({
 
     },
     coinCard: {
+      marginTop: '.5rem',
+      marginBottom:'.5rem',
       padding: '1rem .75rem 1rem .75rem',
       backgroundColor: 'white',
       borderRadius: 10,
@@ -49,7 +54,8 @@ export const styles = theme => ({
     date:{
         color:'gray',
         fontSize: 12,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+      textTransform:"uppercase"
     },
   logo: {
   	display: 'flex',
