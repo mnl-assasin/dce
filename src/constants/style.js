@@ -52,3 +52,35 @@ export const column = {
   display: 'flex',
   flexDirection: 'column',
 }
+
+const sizes = {
+  size1: 12,  // 20,
+  size1_2: 14, // 24 not on the list but need on wallet history
+  size2: 24,
+  size3: 30,
+  size4: 36,
+}
+
+export const TextStyles = {
+  sizes: {
+    ...sizes,
+ },
+  style1: {
+    color: '#000000',
+    fontWeight: 'bold',
+    fontSize: sizes.size1,
+  },
+  style2: {
+    color: '#999999',
+    fontWeight: 'bold',
+    fontSize: sizes.size1,
+  },
+  // text input
+  style3: {
+    color: '#000000',
+    placeholderColor: '#999999',
+    size: 24
+  }
+}
+
+
