@@ -30,3 +30,4 @@ export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) =>
     ) : null}
   </div>
 )
+
