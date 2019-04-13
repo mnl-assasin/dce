@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 import moment from 'moment'
 
+TimeAgo.addLocale(en)
+const timeAgo =new TimeAgo('en-US')
+
 const formatTime = (time) => {
-  return moment(time).format('LLL')
+  return timeAgo.format(time * 1000)
 }
 
 const getTitle = (walletAdress, transactionAdress) => {
@@ -25,6 +30,7 @@ const reduceAddress = (walletAdress, addressFrom, addressTo) => {
 }
 
 export default  ({classes, item, address}) => {
+  console.log(item)
   return (
     <div className={classes.coinCard}>
         <div className={classes.coinTitleContainer}>
