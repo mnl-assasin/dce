@@ -2,18 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from '../../../common'
 import { Text } from '../../../components'
+import { TextStyles } from '../../../constants/style'
 
 const component = ({ classes, amount, value }) => (
   <div className={classes.contentHolder}>
     <Row className={classes.amountHolder}>
       <Col justifyContent="center">
-        <Text style={{ fontWeight: 'bold', fontSize: 10, color: 'gray' }}>
+        <Text style={TextStyles.style2}>
           WALLET AMOUNT
         </Text>
       </Col>
       <Col justifyContent="center">
         <Text
-          style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}
+          style={{...TextStyles.style1, fontSize: TextStyles.sizes.size4}}
           align="right"
         >
           {amount}
@@ -22,13 +23,13 @@ const component = ({ classes, amount, value }) => (
     </Row>
     <Row className={classes.valueHolder}>
       <Col justifyContent="center">
-        <Text style={{ fontWeight: 'bold', fontSize: 10, color: 'gray' }}>
+        <Text style={TextStyles.style2}>
           WALLET VALUE
         </Text>
       </Col>
       <Col justifyContent="center">
         <Text
-          style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}
+          style={{...TextStyles.style1, fontSize: TextStyles.sizes.size4}} 
           align="right"
         >
           ${value}
