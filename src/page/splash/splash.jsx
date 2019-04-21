@@ -26,7 +26,7 @@ class Splash extends BasePage {
     let isMnemonicSet = await this.store.get('is_mnemonic_set')
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
-
+    console.log(isLogged,'asdfsfa');
     if (this.defaults.forceDefaultRouteName) {
       return goTo(this.defaults.forceDefaultRouteName)
     }
