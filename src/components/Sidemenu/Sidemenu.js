@@ -222,7 +222,7 @@ class Sidemenu extends PureComponent {
     this.onToggleMenu()
     Storage.clear()
     this.props.AppContext.clear()
-    goTo('GetStarted')
+    goTo(LOGIN)
   }
 
   onSetMnemonic = () => {
