@@ -15,6 +15,7 @@ export const appDefault = {
   [Storage.IS_SET_MNEMONIC]: false,
   [Storage.ACTIVE_PROVIDER_ID]: activeProvider.ACTIVE_PROVIDER_ID,
   [Storage.ACTIVE_PROVIDER_NAME]: activeProvider.ACTIVE_PROVIDER_NAME,
+  [Storage.USER_WALLETS]: {},
 }
 
 export const getDefault = key => {
@@ -30,4 +31,5 @@ export const defaultRouteName = Routes.GET_STARTED
 
 // will be use intead of default route
 export const forceDefaultRouteName = false
-// export const forceDefaultRouteName = Routes.NETWORK
+// export const forceDefaultRouteName = Routes.TEST_PAGE
+// export const forceDefaultRouteName = Routes.GET_STARTED
