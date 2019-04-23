@@ -39,6 +39,7 @@ class AppContextProvider extends Component {
       persist: this.persist,
       set: this.set,
       clear: this.clear,
+      clearStorage: this.clearStorage,
     }
   }
 
@@ -78,6 +79,11 @@ class AppContextProvider extends Component {
     // will decide if we clear storage here
 
     this.setState({ ...activeProvider, ...appDefault })
+  }
+
+  clearStorage = () => {
+    this.clear()
+    Storage.clear()
   }
 
   render() {

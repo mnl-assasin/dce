@@ -23,6 +23,7 @@ export default appContext => (password, confirmPassword) => {
   appContext.persist({
     [storage.IS_LOGGED]: true,
     [storage.IS_SET_PASSWORD]: true,
+    // will be encrypted later
     [storage.PASSWORD]: password
   })
 

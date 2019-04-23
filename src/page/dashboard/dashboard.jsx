@@ -26,21 +26,24 @@ const component = props => {
   const [isLoading, isLoadingSet] = useState(true)
   // const classes = useStyles()
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
-  const onCreateWallet = useCallback(
-    () => {
-      // createHDWallet(appContext)(
-      //   // wallet mnemonic
-      //   appContext[storage.USER_MNEMONIC],
-      //   // path
-      //   propertyCount(appContext[storage.USER_WALLETS])
-      // )
-      navigate(route.ADD_WALLET)
-    },
-    [
-      appContext[storage.USER_MNEMONIC],
-      propertyCount(appContext[storage.USER_WALLETS]),
-    ]
-  )
+  const onCreateWallet = useCallback(() => {
+    // createHDWallet(appContext)(
+    //   // wallet mnemonic
+    //   appContext[storage.USER_MNEMONIC],
+    //   // path
+    //   propertyCount(appContext[storage.USER_WALLETS])
+    // )
+    navigate(route.ADD_WALLET)
+  }, [
+    appContext[storage.USER_MNEMONIC],
+    propertyCount(appContext[storage.USER_WALLETS]),
+  ])
+
+  const onChangeWallet = useCallback(() => {
+    appContext.clear()
+    navigate(route.GET_STARTED)
+  }, [appContext.clear])
+
   const totalCoins = useMemo(
     () =>
       '$' +
@@ -52,15 +55,12 @@ const component = props => {
     [appContext[storage.ETHER_PRICE], appContext[storage.USER_WALLETS]] // test data
   )
 
-  useEffect(
-    () => {
-      setWalletBalances(appContext, appContext[storage.ACTIVE_PROVIDER_ID])(
-        appContext[storage.USER_WALLETS]
-      )
-      isLoadingSet(false)
-    },
-    [appContext[storage.ACTIVE_PROVIDER_ID], appContext[storage.USER_WALLETS]]
-  )
+  useEffect(() => {
+    setWalletBalances(appContext, appContext[storage.ACTIVE_PROVIDER_ID])(
+      appContext[storage.USER_WALLETS]
+    )
+    isLoadingSet(false)
+  }, [appContext[storage.ACTIVE_PROVIDER_ID], appContext[storage.USER_WALLETS]])
   console.log(appContext)
   if (isLoading) {
     return <span>loading...</span>
@@ -73,6 +73,7 @@ const component = props => {
         onPress={onSelectWallet}
         coinPrice={appContext[storage.ETHER_PRICE]}
         onCreateWallet={onCreateWallet}
+        onChangeWallet={onChangeWallet}
       />
       <DappSection />
 

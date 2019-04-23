@@ -220,8 +220,12 @@ class Sidemenu extends PureComponent {
 
   onClickLogout = () => {
     this.onToggleMenu()
-    Storage.clear()
-    this.props.AppContext.clear()
+    // Storage.clear()
+    // this.props.AppContext.clear()
+    this.props.AppContext.persist({
+      [IS_LOGGED]: false,
+      // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
+    })
     goTo(LOGIN)
   }
 

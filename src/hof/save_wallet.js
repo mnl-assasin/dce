@@ -13,7 +13,7 @@ export default appContext => async (
     return appContext.persist(
       {
         [storage.USER_WALLETS]: {
-          ...appContext[storage.USER_WALLETS],
+          // ...appContext[storage.USER_WALLETS],
           [wallet.address]: {
             [storage.WALLET_COINBASE]: 'ETH',
             [storage.WALLET_ADDRESS]: wallet.address,

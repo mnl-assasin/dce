@@ -23,7 +23,7 @@ export default (
     if (wallet.code === 200) {
       appContext.persist({
         [storage.USER_WALLETS]: {
-          ...appContext[storage.USER_WALLETS],
+          // ...appContext[storage.USER_WALLETS], 
           [wallet.data.address]: {
             [storage.WALLET_COINBASE]: 'ETH',
             [storage.WALLET_ADDRESS]: wallet.data.address,

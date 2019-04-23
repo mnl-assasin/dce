@@ -10,6 +10,7 @@ export default ({
   totalCoins,
   coinPrice,
   onCreateWallet,
+  onChangeWallet
 }) => (
   <Tab
     title="coins"
@@ -22,7 +23,7 @@ export default ({
         <Padding horizontal={4} button>
           <Icon src={CoinMenu} size={50} />
         </Padding>
-        <Padding horizontal={4} button>
+        <Padding horizontal={4} button  onClick={onChangeWallet}>
           <Icon src={WalletViolet} size={50} />
         </Padding>
       </React.Fragment>
