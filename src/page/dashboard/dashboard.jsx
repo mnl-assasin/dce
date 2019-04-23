@@ -40,9 +40,9 @@ const component = props => {
   ])
 
   const onChangeWallet = useCallback(() => {
-    appContext.clear()
+    appContext.clearStorage()
     navigate(route.GET_STARTED)
-  }, [appContext.clear])
+  }, [appContext.clearStorage])
 
   const totalCoins = useMemo(
     () =>
