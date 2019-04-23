@@ -31,7 +31,7 @@ class Splash extends BasePage {
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
     // note: 300000 is 5mins
-    const timeRate = 20000
+    const timeRate = 300000
 
     // after route validated
     this.runLastUpater()
