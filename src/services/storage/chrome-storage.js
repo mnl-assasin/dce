@@ -17,7 +17,7 @@ class ChromeStorage {
           return resolve(result || null)
         } catch (e) {
           console.log('error in getting stroge: key:', key, ' error: ', e)
-          return resolve('error in' + e.message)
+          return resolve(null)
         }
       })
     })
