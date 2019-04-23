@@ -36,7 +36,13 @@ class MnemonicPhrase extends BasePage {
   }
 
   componentDidMount() {
-    setTimeout(this.init, 0.5)
+    // setTimeout(this.init, 0.5)
+
+    this.setState({
+      mnemonic: this.props.wallet.data.mnemonic,
+      isLoaded: true,
+      wallet: this.props.wallet.data,
+    })
   }
   init = async () => {
     this.store.set([this.storage.WALLET_MNEMONIC], false)
@@ -64,6 +70,7 @@ class MnemonicPhrase extends BasePage {
         isLoaded: true,
       })
     }
+
   }
 
   _createRows(items) {
