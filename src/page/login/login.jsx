@@ -26,16 +26,19 @@ const Login = props => {
   const isPasswordVisibleState = useToggle(false)
   const onSubmit = useCallback(() => {
     // TODO: dont know implemntation on this cause when use logout it clear all the db
-    console.log('submitted', passwordState.value)
+    // console.log('submitted', passwordState.value)
+    // console.log('password', appContext[storage.PASSWORD])
     if (!appContext[storage.PASSWORD]) {
-      // throw new Error('no password set')
+      throw new Error('no password set')
     }
-    appContext.persist({
-      [storage.IS_LOGGED]: true,
-      // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
-    })
-    navigate(route.DASHBOARD)
-    console.log('password', appContext[storage.PASSWORD])
+    if (passwordState.value === appContext[storage.PASSWORD]) {
+      appContext.persist({
+        [storage.IS_LOGGED]: true,
+        // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
+      })
+      navigate(route.DASHBOARD)
+      console.log('password', appContext[storage.PASSWORD])
+    }
     // storage.PASSWORD
   }, [passwordState, appContext])
   const onUseBackup = useCallback(() => navigate(route.RESTORE_BACKUP), [])
@@ -50,6 +53,7 @@ const Login = props => {
         <InputTextBox
           value={passwordState.value}
           onChange={passwordState.onChange}
+          type={inputTypes.password}
           placeholder="Enter Password"
         />
         <Padding bottom={4} top={16}>

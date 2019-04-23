@@ -110,6 +110,7 @@ class Splash extends BasePage {
     this.storage.USER_MNEMONIC,
 
     this.storage.LAST_OPEN,
+    this.storage.PASSWORD
   ]
 
   _init = async () => {
