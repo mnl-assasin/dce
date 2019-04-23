@@ -44,7 +44,8 @@ class Splash extends BasePage {
     if (isLogged) {
       console.log('has logged')
       if (new Date().getTime() < parseInt(lastUpdate) + timeRate) {
-        return goTo(DASHBOARD)
+        return Navigation.init(DASHBOARD)
+        // return goTo(DASHBOARD)
       }
       return goTo(LOGIN)
     }
