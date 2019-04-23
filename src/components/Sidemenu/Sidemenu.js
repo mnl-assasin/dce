@@ -16,6 +16,7 @@ import {
   SETTING,
   SETTING_WALLET,
   WALLET_HISTORY,
+  GET_STARTED,
 } from '../../constants/route'
 import {
   IS_LOGGED,
@@ -129,6 +130,13 @@ class Sidemenu extends PureComponent {
       onClick: () => {
         SidemenuEvent.toggle()
         goTo(RESTORE_BACKUP)
+      },
+    },
+    {
+      title: 'Getting Started',
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(GET_STARTED)
       },
     },
     {

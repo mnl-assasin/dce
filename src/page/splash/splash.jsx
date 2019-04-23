@@ -3,10 +3,12 @@ import React from 'react'
 import BasePage from '../../common/BasePage'
 import Navigation, { goTo } from '../../services/navigation'
 import { withAppContext } from '../../services/Providers/AppStateContext'
-import { setBlockNumber, setEtherPrice } from '../../hof'
+import { setBlockNumber, setEtherPrice, runLastUpater } from '../../hof'
 import { Loading } from '../../components'
 
 import './Splash.css'
+import { LAST_OPEN } from '../../constants/storage'
+import { LOGIN, DASHBOARD, GET_STARTED } from '../../constants/route'
 
 class Splash extends BasePage {
   title = 'Splash'
@@ -17,24 +19,43 @@ class Splash extends BasePage {
 
   setBlockNumber = setBlockNumber(this.props.AppContext)
   setEtherPrice = setEtherPrice(this.props.AppContext)
+  runLastUpater = runLastUpater(this.props.AppContext)
 
   async componentDidMount() {
     // load session into react memory
     await this._init()
 
     let isLogged = await this.store.get('isLogged')
+    let lastUpdate = await this.store.get(LAST_OPEN)
     let isMnemonicSet = await this.store.get('is_mnemonic_set')
     let isPasswordSet = await this.store.get('is_password_set')
     let isConfirmedMnemonic = await this.store.get('is_mnemonic_confirmed')
+    // note: 300000 is 5mins
+    const timeRate = 20000
 
-    if (this.defaults.forceDefaultRouteName) {
-      return goTo(this.defaults.forceDefaultRouteName)
-    }
+    // after route validated
+    this.runLastUpater()
+
+    // if (this.defaults.forceDefaultRouteName) {
+    //   return goTo(this.defaults.forceDefaultRouteName)
+    // }
     // here must be filter if user goto dashboard or getting started
+    // not above lastupdate 5mins
     if (isLogged) {
-      return goTo('Dashboard')
+      console.log('has logged')
+      if (new Date().getTime() < parseInt(lastUpdate) + timeRate) {
+        return goTo(DASHBOARD)
+      }
+      return goTo(LOGIN)
     }
-    return Navigation.init(this.defaults.defaultRouteName)
+
+    if (new Date().getTime() < parseInt(lastUpdate) + timeRate) {
+      console.log('bellow 5mins')
+      return Navigation.init(this.defaults.defaultRouteName)
+    }
+
+    return goTo(GET_STARTED)
+
     // return goTo(this.route.GET_STARTED)
     // return Navigation.init(this.defaults.defaultRouteName)
     //
@@ -87,6 +108,8 @@ class Splash extends BasePage {
     this.storage.ETHER_PRICE,
     this.storage.USER_WALLETS,
     this.storage.USER_MNEMONIC,
+
+    this.storage.LAST_OPEN,
   ]
 
   _init = async () => {

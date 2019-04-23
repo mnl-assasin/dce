@@ -1,5 +1,6 @@
 // usera auth
 export const IS_LOGGED = 'isLogged'
+export const LAST_OPEN = 'LAST_OPEN'
 export const IS_SET_MNEMONIC = 'is_mnemonic_set'
 export const IS_SET_PASSWORD = 'is_password_set'
 export const PASSWORD = 'password'
