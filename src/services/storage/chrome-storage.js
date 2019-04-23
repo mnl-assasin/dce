@@ -10,13 +10,17 @@ class ChromeStorage {
   }
 
   get(key) {
-    try {
-      const result = JSON.parse(chrome.storage.local.get(key))
-      return Promise.resolve(result || null)
-    } catch (e) {
-      console.log('error in getting stroge: key:', key, ' error: ', e)
-      return Promise.resolve(null)
-    }
+    return new Promise(resolve => {
+      chrome.storage.local.get([key], data => {
+        try {
+          const result = JSON.parse(data[key])
+          return resolve(result || null)
+        } catch (e) {
+          console.log('error in getting stroge: key:', key, ' error: ', e)
+          return resolve('error in' + e.message)
+        }
+      })
+    })
   }
 
   setObject(key, value) {
