@@ -7,7 +7,7 @@ import { inputTypes } from '../../constants/types'
 import { AppContextObject } from '../../services/Providers/AppStateContext'
 import submit from './method/submit'
 import useStyles from './styles'
-import { Divider,  InputTextBox, PrimaryButton } from '../../components'
+import { Divider, InputTextBox, PrimaryButton } from '../../components'
 
 // page setup
 const title = 'Nominate Password'
@@ -27,6 +27,15 @@ const NominatePassword = props => {
     () => submit(appContext)(passwordState.value, passwordConfirmState.value),
     [passwordState.value, passwordConfirmState.value]
   )
+  const onEnter = useCallback(
+    e => {
+      if (e.key === 'Enter') {
+        onClickSubmit()
+      }
+    },
+    [onClickSubmit]
+  )
+
   return (
     <Page navigationProps={navigationProps}>
       <div className={classes.logo}>
@@ -46,12 +55,13 @@ const NominatePassword = props => {
           value={passwordConfirmState.value}
           onChange={passwordConfirmState.onChange}
           type={inputTypes.password}
+          onKeyPress={onEnter}
         />
-      <Padding top={16}>
-        <PrimaryButton type="primary" onClick={onClickSubmit} fullWidth>
-        SAVE
-      </PrimaryButton>
-      </Padding>
+        <Padding top={16}>
+          <PrimaryButton type="primary" onClick={onClickSubmit} fullWidth>
+            SAVE
+          </PrimaryButton>
+        </Padding>
       </form>
     </Page>
   )
