@@ -22,10 +22,19 @@ export const styles = theme => {
       height: 240,
       paddingTop: 16,
     },
+    header: {
+      display: 'flex',
+      flex: 2,
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      paddingTop: 16,
+      paddingBottom: 32,
+    },
+
     logoText: {
       ...TextStyles.style1,
     },
-     textField: {
+    textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
     },
@@ -36,6 +45,10 @@ export const styles = theme => {
     },
     description: {
       paddingBottom: theme.spacing.unit,
+    },
+    desc: {
+      justifyContent: 'justify',
+      height: 140,
     },
   }
 }
