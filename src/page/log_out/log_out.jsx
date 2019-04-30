@@ -7,6 +7,7 @@ import { AppContextObject } from '../../services/Providers/AppStateContext'
 import * as route from '../../constants/route'
 import * as storage from '../../constants/storage'
 import { goTo } from '../../services/navigation'
+import Storage from '../../services/storage/storage'
 import { Dapper } from '../../asset'
 import useStyles from './styles'
 
@@ -23,17 +24,24 @@ const LogOut = () => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
 
-  const onLogOutClick = () => {
+  const onLogOutClick = useCallback(() => {
     console.log('onLogOutClick')
     appContext.persist({
       [storage.IS_LOGGED]: false,
     })
     goTo(route.LOGIN)
-  }
+  }, [])
 
-  const onLogOutClearDataClick = () => {
-    console.log('onLogOutClearDataClick')
-  }
+  const onLogOutClearDataClick = useCallback(() => {
+    // console.log('onLogOutClearDataClick')
+    Storage.clear()
+    appContext.clear()
+    appContext.persist({
+      [storage.IS_LOGGED]: false,
+      // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
+    })
+    goTo(route.GET_STARTED)
+  }, [])
 
   return (
     <Page navigationProps={navigationProps}>
