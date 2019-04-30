@@ -38,6 +38,7 @@ import WalletSend from './page/wallet_send'
 import WalletReceive from './page/wallet/WalletReceive/WalletReceive'
 import WalletHistory from './page/wallet_history'
 import TestPage from './page/test_page'
+import LogOut from './page/log_out'
 
 export default {
   AddWallet: AddWallet,
@@ -59,6 +60,6 @@ export default {
   WalletSend: WalletSend,
   WalletReceive: WalletReceive,
   WalletHistory: WalletHistory,
-
+  LogOut: LogOut,
   TestPage: TestPage,
 }
