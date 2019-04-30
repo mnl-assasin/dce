@@ -17,6 +17,7 @@ import {
   SETTING_WALLET,
   WALLET_HISTORY,
   GET_STARTED,
+  LOGOUT,
 } from '../../constants/route'
 import {
   IS_LOGGED,
@@ -33,7 +34,7 @@ import styles from './styles'
 
 const walletData = {
   [WALLET_STORAGE.WALLET_COINBASE]: 'ETH',
-  [WALLET_STORAGE.WALLET_USERNAME]: '@jaylordTorres',
+  [WALLET_STORAGE.WALLET_USERNAME]: '',
   [WALLET_STORAGE.WALLET_AMOUNT]: '2.2',
   [WALLET_STORAGE.WALLET_MNEMONIC]:
     'scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch',
@@ -230,11 +231,11 @@ class Sidemenu extends PureComponent {
     this.onToggleMenu()
     // Storage.clear()
     // this.props.AppContext.clear()
-    this.props.AppContext.persist({
-      [IS_LOGGED]: false,
-      // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
-    })
-    goTo(LOGIN)
+    // this.props.AppContext.persist({
+    //   [IS_LOGGED]: false,
+    //   // [WALLET_ADDRESS]: '0x0598aC83C088f126B3043059FCfd2E7A5F0886FF',
+    // })
+    goTo(LOGOUT)
   }
 
   onSetMnemonic = () => {

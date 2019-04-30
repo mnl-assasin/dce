@@ -18,7 +18,7 @@ const navigationProps = {
 
 // methods
 // const onClickGetStarted = () => goTo(route.MNEMONIC_PHRASE)
-const onClickRestoreBackup = () => goTo(route.RESTORE_BACKUP)
+const onClickRestoreBackup = () => goTo(route.LOGOUT)
 
 // template
 const GetStarted = () => {
