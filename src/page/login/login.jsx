@@ -29,7 +29,9 @@ const Login = props => {
     // console.log('submitted', passwordState.value)
     // console.log('password', appContext[storage.PASSWORD])
     if (!appContext[storage.PASSWORD]) {
-      throw new Error('no password set')
+      // throw new Error('no password set')
+      console.log('no password set')
+      return null
     }
     if (passwordState.value === appContext[storage.PASSWORD]) {
       appContext.persist({
