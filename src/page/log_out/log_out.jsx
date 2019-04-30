@@ -17,32 +17,29 @@ const navigationProps = {
   backButton: true,
 }
 
-// methods
-// const onClickGetStarted = () => goTo(route.MNEMONIC_PHRASE)
-// const onClickRestoreBackup = () => goTo(route.RESTORE_BACKUP)
-
 // template
-const onLogOutClick = () => {
-  console.log('onLogOutClick')
-}
-
-const onLogOutClearDataClick = () => {
-  console.log('onLogOutClearDataClick')
-}
 
 const LogOut = () => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
 
+  const onLogOutClick = () => {
+    console.log('onLogOutClick')
+    appContext.persist({
+      [storage.IS_LOGGED]: false,
+    })
+    goTo(route.LOGIN)
+  }
+
+  const onLogOutClearDataClick = () => {
+    console.log('onLogOutClearDataClick')
+  }
+
   return (
     <Page navigationProps={navigationProps}>
-      <div className={classes.logo}>
-        <Padding top={30} bottom={150}>
-          <Icon src={Dapper} size={120} />
-        </Padding>
-      </div>
+      <div className={classes.logo} />
       <div className={classes.buttonGroup}>
-        <Padding vertical={5}>
+        <Padding vertical={8}>
           <PrimaryButton
             type="primary"
             size="medium"
@@ -52,7 +49,7 @@ const LogOut = () => {
             Log out
           </PrimaryButton>
         </Padding>
-        <Padding vertical={5}>
+        <Padding vertical={8}>
           <PrimaryButton
             type="secondary"
             size="medium"

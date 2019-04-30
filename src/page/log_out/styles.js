@@ -6,6 +6,7 @@ export const styles = theme => ({
   logo: {
     ...center,
     flex: 2,
+    height: 180,
   },
   buttonGroup: {
     ...column,
