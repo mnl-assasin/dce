@@ -17,6 +17,7 @@
 // import WalletReceive from './pages/Wallet/WalletReceive/WalletReceive'
 // import WalletHistory from './pages/WalletHistory/WalletHistory'
 // import TestPage from './pages/TestPage/TestPage'
+import AddDapp from './page/add_dapp'
 import CreateDashboard from './page/create_dashboard'
 import Dashboard from './page/dashboard'
 import GetStarted from './page/get_started'
@@ -42,6 +43,7 @@ import LogOut from './page/log_out'
 
 export default {
   AddWallet: AddWallet,
+  AddDapp: AddDapp,
   CreateDashboard: CreateDashboard,
   Dashboard: Dashboard,
   GetStarted: GetStarted,

@@ -18,6 +18,7 @@ import {
   WALLET_HISTORY,
   GET_STARTED,
   LOGOUT,
+  ADD_DAPP,
 } from '../../constants/route'
 import {
   IS_LOGGED,
@@ -138,6 +139,13 @@ class Sidemenu extends PureComponent {
       onClick: () => {
         SidemenuEvent.toggle()
         goTo(GET_STARTED)
+      },
+    },
+    {
+      title: 'Add ETC Dapp',
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(ADD_DAPP)
       },
     },
     {
