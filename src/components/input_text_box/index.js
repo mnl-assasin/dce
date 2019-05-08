@@ -1,8 +1,8 @@
 import React from 'react'
-import { TextStyles  } from '../../constants/style'
+import { TextStyles } from '../../constants/style'
 
 const styles = {
-  input: (hasIcon = false) => ({
+  input: (hasIcon = false, style) => ({
     ...TextStyles.style3,
     backgroundColor: 'white',
     padding: '0.75rem 0.5rem',
@@ -12,14 +12,20 @@ const styles = {
     borderWidth: 1,
     width: '100%',
     paddingRight: hasIcon ? 40 : '1rem',
-  })
+    ...style,
+  }),
 }
 
-export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) => (
+export default ({
+  hasIcon = false,
+  renderIcon = null,
+  style = {},
+  ...props
+}) => (
   <div style={{ flexDirection: 'row', position: 'relative' }}>
     <input
       type="text"
-      style={styles.input(hasIcon)}
+      style={styles.input(hasIcon, style)}
       placeholder=""
       {...props}
     />
@@ -30,4 +36,3 @@ export default ({ hasIcon = false, renderIcon = null, style = {}, ...props }) =>
     ) : null}
   </div>
 )
-
