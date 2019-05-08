@@ -20,19 +20,40 @@ export default ({
   hasIcon = false,
   renderIcon = null,
   style = {},
+  type = 'text',
   ...props
-}) => (
-  <div style={{ flexDirection: 'row', position: 'relative' }}>
-    <input
-      type="text"
-      style={styles.input(hasIcon, style)}
-      placeholder=""
-      {...props}
-    />
-    {hasIcon ? (
-      <span style={{ position: 'absolute', right: 12, top: 11 }}>
-        {renderIcon}
-      </span>
-    ) : null}
-  </div>
-)
+}) => {
+  if (type === 'textarea') {
+    return (
+      <div style={{ flexDirection: 'row', position: 'relative' }}>
+        <textarea
+          style={styles.input(hasIcon, style)}
+          placeholder=""
+          {...props}
+        />
+        {hasIcon ? (
+          <span style={{ position: 'absolute', right: 12, top: 11 }}>
+            {renderIcon}
+          </span>
+        ) : null}
+      </div>
+    )
+  }
+  if (type === 'text') {
+    return (
+      <div style={{ flexDirection: 'row', position: 'relative' }}>
+        <input
+          type="text"
+          style={styles.input(hasIcon, style)}
+          placeholder=""
+          {...props}
+        />
+        {hasIcon ? (
+          <span style={{ position: 'absolute', right: 12, top: 11 }}>
+            {renderIcon}
+          </span>
+        ) : null}
+      </div>
+    )
+  }
+}
