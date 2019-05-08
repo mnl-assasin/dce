@@ -12,7 +12,7 @@ import FormControl from '@material-ui/core/FormControl'
 
 import { PrimaryButton, Text, InputTextBox } from '../../components'
 import { Padding, Page } from '../../layout'
-import { displayTypes } from '../../constants/types'
+import { displayTypes, inputTypes } from '../../constants/types'
 import { propertyCount } from '../../helper/function'
 import * as route from '../../constants/route'
 import * as storage from '../../constants/storage'
@@ -98,11 +98,14 @@ const component = props => {
         style={{
           marginTop: 4,
         }}
+        type={inputTypes.textarea}
+        rows="4"
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}
         // onKeyPress={onEnter}
       />
+     
       <Padding vertical={16}>
         <PrimaryButton type="primary" onClick={onCreateEthWallet} fullWidth>
           Add Dapp
