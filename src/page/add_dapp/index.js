@@ -1,2 +1,3 @@
+import component from './add_dapp'
 
-export {AddDapp} from './AddDapp'
+export default component
