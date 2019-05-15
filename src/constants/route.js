@@ -1,4 +1,5 @@
 export const ADD_WALLET = 'AddWallet'
+export const ADD_DAPP = 'AddDapp'
 export const DASHBOARD = 'Dashboard'
 export const MNEMONIC_PHRASE = 'MnemonicPhrase'
 export const MNEMONIC_CONFIRM = 'MnemonicConfirm'

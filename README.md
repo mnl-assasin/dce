@@ -20,3 +20,7 @@ open chrome extension
 go to chrome://extensions
 enabled developer mode
 drop the generated build folder from our dce project
+
+set INLINE_RUNTIME_CHUNK=false in .env file
+
+scrub slam warrior bamboo jacket swing cattle antique toy brand dynamic lunch
