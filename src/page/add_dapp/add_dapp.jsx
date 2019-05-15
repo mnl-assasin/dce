@@ -19,6 +19,8 @@ import * as storage from '../../constants/storage'
 import createHDWallet from '../../hof/create_hd_wallet'
 import { navigate } from '../../services/navigation'
 import useStyles from './styles'
+import { ProvidersOptions } from '../../constants/provider'
+
 const navigationProps = {
   title: '',
   backButton: true,
@@ -61,7 +63,7 @@ const component = props => {
         }}
       >
         <Select
-          value={10}
+          value={ProvidersOptions.mainnet._id}
           style={
             {
               // paddingLeft: 8,
@@ -75,12 +77,17 @@ const component = props => {
           //   id: 'age-simple',
           // }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
+          {/* <MenuItem value={ProvidersOptions.mainnet}>
+            <em>{ProvidersOptions.mainnet}</em>
+          </MenuItem> */}
+          {Object.keys(ProvidersOptions).map(k => (
+            <MenuItem key={k} value={k}>
+              {k}
+            </MenuItem>
+          ))}
+          {/* <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem> */}
         </Select>
       </FormControl>
       <InputTextBox
@@ -105,7 +112,7 @@ const component = props => {
         // type={inputTypes.password}
         // onKeyPress={onEnter}
       />
-     
+
       <Padding vertical={16}>
         <PrimaryButton type="primary" onClick={onCreateEthWallet} fullWidth>
           Add Dapp

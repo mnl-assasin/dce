@@ -1,4 +1,4 @@
-export const Providers = {
+export const ProvidersOptions = {
   mainnet: {
     _id: 'mainnet',
     title: 'mainnet',
