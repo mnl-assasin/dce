@@ -23,6 +23,8 @@ import './Dashboard.scss'
 
 const component = props => {
   const appContext = useContext(AppContextObject)
+  console.log(appContext)
+  console.log(storage.USER_MNEMONIC)
   const [isLoading, isLoadingSet] = useState(true)
   // const classes = useStyles()
   const onSelectWallet = useCallback(data => navigate('Wallet', data), [])
@@ -34,6 +36,20 @@ const component = props => {
     //   propertyCount(appContext[storage.USER_WALLETS])
     // )
     navigate(route.ADD_WALLET)
+  }, [
+    appContext[storage.USER_MNEMONIC],
+    propertyCount(appContext[storage.USER_WALLETS]),
+  ])
+
+  const onAddDapp = useCallback(() => {
+    debugger
+    // createHDWallet(appContext)(
+    //   // wallet mnemonic
+    //   appContext[storage.USER_MNEMONIC],
+    //   // path
+    //   propertyCount(appContext[storage.USER_WALLETS])
+    // )
+    navigate(route.ADD_DAPP)
   }, [
     appContext[storage.USER_MNEMONIC],
     propertyCount(appContext[storage.USER_WALLETS]),
@@ -74,8 +90,9 @@ const component = props => {
         coinPrice={appContext[storage.ETHER_PRICE]}
         onCreateWallet={onCreateWallet}
         onChangeWallet={onChangeWallet}
+        
       />
-      <DappSection />
+      <DappSection onAddDapp={onAddDapp}/>
 
       <Padding vertical={12} />
       <Padding vertical={8} name="button-group">

@@ -43,6 +43,14 @@ const Login = props => {
     }
     // storage.PASSWORD
   }, [passwordState, appContext])
+  const onEnter = useCallback(
+    e => {
+      if (e.key === 'Enter') {
+        onSubmit()
+      }
+    },
+    [onSubmit]
+  )
   const onUseBackup = useCallback(() => navigate(route.RESTORE_BACKUP), [])
 
   return (
@@ -56,6 +64,7 @@ const Login = props => {
           value={passwordState.value}
           onChange={passwordState.onChange}
           type={inputTypes.password}
+          onKeyPress={onEnter}
           placeholder="Enter Password"
         />
         <Padding bottom={4} top={16}>

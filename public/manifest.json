@@ -6,8 +6,12 @@
   "browser_action": {
     "default_title": "A Dapper Chrome Extension",
     "default_popup": "index.html",
-    "default_icon": "favicon.ico"
+    "default_icon": {
+      "19": "dapper19.png",
+      "38": "dapper38.png",
+      "48": "dapper48.png",
+      "128": "dapper128.png"
+    }
   },
-  "permissions": ["storage"],
-  "content_security_policy": "script-src 'self' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'"
+  "permissions": ["storage"]
 }

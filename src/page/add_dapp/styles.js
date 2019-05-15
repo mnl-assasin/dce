@@ -2,6 +2,11 @@ import { makeStyles } from '@material-ui/styles'
 import { center } from '../../constants/style'
 
 export const styles = theme => ({
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
   logo: {
     ...center,
     flex: 2,
@@ -13,13 +18,7 @@ export const styles = theme => ({
     paddingBottom: 32,
     textAlign: 'center',
   },
-  container: {
-    border: '1px solid #dadada',
-    fontSize: 13, 
-    display: 'flex',
-    // justifyContent: 'stretch',
-    flexDirection: 'column'
-  },
+  container: { border: '1px solid #dadada', fontSize: 13 },
   content: {
     display: 'flex',
     flexDirection: 'row',
