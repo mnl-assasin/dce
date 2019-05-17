@@ -20,6 +20,7 @@ import createHDWallet from '../../hof/create_hd_wallet'
 import { navigate } from '../../services/navigation'
 import useStyles from './styles'
 import { ProvidersOptions } from '../../constants/provider'
+import createDapp from '../../hof/create_dapp'
 
 const navigationProps = {
   title: '',
@@ -29,10 +30,19 @@ const navigationProps = {
 const component = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
-  const [value, valueSet] = useState('')
+  const [_name, nameSet] = useState('')
+  const [_address, addressSet] = useState('')
+  const [_network, networkSet] = useState('')
+  const [_abi, abiSet] = useState('')
   const onSubmit = useCallback(() => console.log('submitted'), [])
-  const onCreateEthWallet = useCallback(() => {
-    // createHDWallet(appContext)(
+  const onCreateEthDapp = useCallback(() => {
+    createDapp(appContext)(
+      _name,
+      _address,
+      _network,
+      _abi,
+      navigate(route.DASHBOARD)
+    )
     //   // wallet mnemonic
     //   appContext[storage.USER_MNEMONIC],
     //   // path
@@ -52,8 +62,8 @@ const component = props => {
         style={{
           marginTop: 4,
         }}
-        // value={passwordConfirmState.value}
-        // onChange={passwordConfirmState.onChange}
+        value={_name}
+        onChange={e => nameSet(e.target.value)}
         // type={inputTypes.password}
         // onKeyPress={onEnter}
       />
@@ -63,15 +73,16 @@ const component = props => {
         }}
       >
         <Select
-          value={ProvidersOptions.mainnet._id}
           style={
             {
               // paddingLeft: 8,
               // paddingRight: 8,
             }
           }
-
-          // onChange={this.handleChange}
+          defaultValue={ProvidersOptions.mainnet._id}
+          value={_network}
+          onChange={e => networkSet(e.target.value)}
+          onChange={this.handleChange}
           // inputProps={{
           //   name: 'age',
           //   id: 'age-simple',
@@ -95,6 +106,8 @@ const component = props => {
         style={{
           marginTop: 4,
         }}
+        value={_address}
+        onChange={e => addressSet(e.target.value)}
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}
@@ -107,6 +120,8 @@ const component = props => {
         }}
         type={inputTypes.textarea}
         rows="4"
+        value={_abi}
+        onChange={e => abiSet(e.target.value)}
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}
@@ -114,7 +129,7 @@ const component = props => {
       />
 
       <Padding vertical={16}>
-        <PrimaryButton type="primary" onClick={onCreateEthWallet} fullWidth>
+        <PrimaryButton type="primary" onClick={onCreateEthDapp} fullWidth>
           Add Dapp
         </PrimaryButton>
       </Padding>
