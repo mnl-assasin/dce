@@ -42,7 +42,6 @@ const component = props => {
   ])
 
   const onAddDapp = useCallback(() => {
-    debugger
     // createHDWallet(appContext)(
     //   // wallet mnemonic
     //   appContext[storage.USER_MNEMONIC],
@@ -50,10 +49,7 @@ const component = props => {
     //   propertyCount(appContext[storage.USER_WALLETS])
     // )
     navigate(route.ADD_DAPP)
-  }, [
-    appContext[storage.USER_MNEMONIC],
-    propertyCount(appContext[storage.USER_WALLETS]),
-  ])
+  }, [])
 
   const onChangeWallet = useCallback(() => {
     appContext.clearStorage()
@@ -90,9 +86,8 @@ const component = props => {
         coinPrice={appContext[storage.ETHER_PRICE]}
         onCreateWallet={onCreateWallet}
         onChangeWallet={onChangeWallet}
-        
       />
-      <DappSection onAddDapp={onAddDapp}/>
+      <DappSection onAddDapp={onAddDapp} />
 
       <Padding vertical={12} />
       <Padding vertical={8} name="button-group">
