@@ -32,7 +32,7 @@ const component = props => {
   const classes = useStyles()
   const [_name, nameSet] = useState('')
   const [_address, addressSet] = useState('')
-  const [_network, networkSet] = useState('')
+  const [_network, networkSet] = useState(ProvidersOptions.mainnet._id)
   const [_abi, abiSet] = useState('')
   const onSubmit = useCallback(() => console.log('submitted'), [])
   const onCreateEthDapp = useCallback(() => {
@@ -51,7 +51,7 @@ const component = props => {
     //   value || displayTypes.default,
     //   navigate(route.DASHBOARD)
     // )
-  }, [value])
+  }, [_name, _address, _network, _abi])
 
   return (
     <Page navigationProps={navigationProps}>
@@ -64,6 +64,7 @@ const component = props => {
         }}
         value={_name}
         onChange={e => nameSet(e.target.value)}
+        type={inputTypes.text}
         // type={inputTypes.password}
         // onKeyPress={onEnter}
       />
@@ -79,10 +80,8 @@ const component = props => {
               // paddingRight: 8,
             }
           }
-          defaultValue={ProvidersOptions.mainnet._id}
           value={_network}
           onChange={e => networkSet(e.target.value)}
-          onChange={this.handleChange}
           // inputProps={{
           //   name: 'age',
           //   id: 'age-simple',
@@ -108,6 +107,7 @@ const component = props => {
         }}
         value={_address}
         onChange={e => addressSet(e.target.value)}
+        type={inputTypes.text}
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}
@@ -122,6 +122,7 @@ const component = props => {
         rows="4"
         value={_abi}
         onChange={e => abiSet(e.target.value)}
+        type={inputTypes.text}
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}
