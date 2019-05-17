@@ -39,7 +39,7 @@ export default ({
       </div>
     )
   }
-  if (type === 'text') {
+  // if (type === 'text') {
     return (
       <div style={{ flexDirection: 'row', position: 'relative' }}>
         <input
@@ -55,5 +55,6 @@ export default ({
         ) : null}
       </div>
     )
-  }
+  // }
+  // // return null
 }
