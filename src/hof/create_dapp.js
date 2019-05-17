@@ -1,4 +1,4 @@
-import { Wallet } from 'dapper'
+// import { Wallet } from 'dapper'
 import { emptyMethod } from '../helper/function'
 import { ProvidersOptionsDefault } from '../constants/provider'
 import * as storage from '../constants/storage'
@@ -22,15 +22,13 @@ export default appContext => async (
       {
         // add walllet to wallet db
         [storage.USER_DAPP]: {
-          ...appContext[storage.USER_WALLETS],
+          ...appContext[storage.USER_DAPP],
           [wallet.address]: {
             [storage.WALLET_COINBASE]: 'ETH',
-            [storage.WALLET_ADDRESS]: wallet.address,
-            [storage.WALLET_PRIVATE_KEY]: wallet.privateKey,
-            [storage.WALLET_PUBLIC_KEY]: wallet.publicKey,
-            [storage.WALLET_MNEMONIC]: wallet.mnemonic,
-            [storage.WALLET_PATH]: wallet.path,
-            [storage.WALLET_DISPLAY_BY]: displayBy,
+            [storage.DAPP_NAME]: name,
+            [storage.DAPP_ADDRESS]: address,
+            [storage.DAPP_ABI]: abi,
+            [storage.DAPP_NETWORK]: network,
           },
         },
       },
