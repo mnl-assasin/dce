@@ -24,3 +24,5 @@ export const ProvidersOptions = {
     title: 'goerli',
   },
 }
+
+export const ProvidersOptionsDefault = ProvidersOptions.mainnet

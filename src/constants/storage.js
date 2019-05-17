@@ -53,9 +53,19 @@ export const WALLET = {
   WALLET_PRIVATE_KEY,
   WALLET_PUBLIC_KEY,
   WALLET_PATH,
-  WALLET_DISPLAY_BY
+  WALLET_DISPLAY_BY,
 }
+
 //
+// dapp
 //
+export const USER_DAPP = 'dapps' // dapp is not eth wallet
+
+export const DAPP_NAME = 'name'
+export const DAPP_ADDRESS = 'address'
+export const DAPP_ABI = 'abi'
+export const DAPP_NETWORK = 'network'
+
+export const DAPP = { DAPP_NAME, DAPP_ADDRESS, DAPP_ABI, DAPP_NETWORK }
 
 export const ETHER_PRICE = 'ether_price'
