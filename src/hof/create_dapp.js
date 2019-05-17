@@ -23,7 +23,7 @@ export default appContext => async (
         // add walllet to wallet db
         [storage.USER_DAPP]: {
           ...appContext[storage.USER_DAPP],
-          [wallet.address]: {
+          [address]: {
             [storage.WALLET_COINBASE]: 'ETH',
             [storage.DAPP_NAME]: name,
             [storage.DAPP_ADDRESS]: address,
