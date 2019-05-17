@@ -16,6 +16,7 @@ export const appDefault = {
   [Storage.ACTIVE_PROVIDER_ID]: activeProvider.ACTIVE_PROVIDER_ID,
   [Storage.ACTIVE_PROVIDER_NAME]: activeProvider.ACTIVE_PROVIDER_NAME,
   [Storage.USER_WALLETS]: {},
+  [Storage.USER_DAPP]: {},
 }
 
 export const getDefault = key => {
