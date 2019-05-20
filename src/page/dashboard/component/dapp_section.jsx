@@ -8,14 +8,14 @@ export default ({ onAddDapp }) => {
     <Tab
       title="dapps"
       renderButton={
-        <React.Fragment>
+        <React.Fragment >
           <Padding horizontal={4}>
             <Icon src={WalletGreen} size={50} />
           </Padding>
         </React.Fragment>
       }
     >
-      <TabContent direction="row">
+      <TabContent direction="row" style={{overflowX: 'auto'}}>
         <CardDapp
           onAddDapp={onAddDapp}
           isActive
