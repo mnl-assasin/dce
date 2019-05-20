@@ -41,6 +41,10 @@ const component = props => {
     propertyCount(appContext[storage.USER_WALLETS]),
   ])
 
+  const onDappItem = useCallback(param => {
+    console.log('dapp click: ', param)
+  }, [])
+
   const onAddDapp = useCallback(() => {
     // createHDWallet(appContext)(
     //   // wallet mnemonic
@@ -87,7 +91,11 @@ const component = props => {
         onCreateWallet={onCreateWallet}
         onChangeWallet={onChangeWallet}
       />
-      <DappSection onAddDapp={onAddDapp} />
+      <DappSection
+        onAddDapp={onAddDapp}
+        dapps={appContext[storage.USER_DAPP]}
+        onDappItem={onDappItem}
+      />
 
       <Padding vertical={12} />
       <Padding vertical={8} name="button-group">
