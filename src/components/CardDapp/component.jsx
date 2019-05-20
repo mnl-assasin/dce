@@ -15,7 +15,7 @@ class CardDapp extends React.PureComponent {
     } = this.props
 
     return (
-      <Padding horizontal={8} style={{ display: 'flex', flexDirection: 'row' }} onClick={onAddDapp}>
+      <Padding horizontal={4} style={{ display: 'flex', flexDirection: 'row' }} onClick={onAddDapp}>
         <Padding style={styles.container(isActive)} vertical={16}>
           {componentIcon}
           <Padding horizontal={4}>
