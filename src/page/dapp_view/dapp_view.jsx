@@ -61,11 +61,11 @@ const component = props => {
       >
         <Select value={_function} onChange={e => functionSet(e.target.value)}>
           <MenuItem value={'default'}>function</MenuItem>
-          {/* {Object.keys(ProvidersOptions).map(k => (
+          {Object.keys(ProvidersOptions).map(k => (
             <MenuItem key={k} value={k}>
               {k}
             </MenuItem>
-          ))}  */}
+          ))} 
         </Select>
       </FormControl>
 
@@ -74,11 +74,10 @@ const component = props => {
         style={{
           marginTop: 4,
         }}
-        type={inputTypes.textarea}
         // rows="4"
         value={_input}
         onChange={e => inputSet(e.target.value)}
-        type={inputTypes.textarea}
+        type={inputTypes.text}
       />
       <Padding vertical={8}>
         <PrimaryButton type="primary" onClick={onCreateEthDapp} fullWidth>
