@@ -43,6 +43,7 @@ const component = props => {
 
   const onDappItem = useCallback(param => {
     console.log('dapp click: ', param)
+    navigate(route.DAPP_VIEW, { _id: param })
   }, [])
 
   const onAddDapp = useCallback(() => {
