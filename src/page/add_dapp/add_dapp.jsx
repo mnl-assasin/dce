@@ -41,7 +41,8 @@ const component = props => {
       _address,
       _network,
       _abi,
-      navigate(route.DASHBOARD)
+      () => navigate(route.DASHBOARD),
+      r => alert(r)
     )
     //   // wallet mnemonic
     //   appContext[storage.USER_MNEMONIC],
@@ -122,7 +123,7 @@ const component = props => {
         rows="4"
         value={_abi}
         onChange={e => abiSet(e.target.value)}
-        type={inputTypes.text}
+        type={inputTypes.textarea}
         // value={passwordConfirmState.value}
         // onChange={passwordConfirmState.onChange}
         // type={inputTypes.password}

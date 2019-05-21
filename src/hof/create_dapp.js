@@ -11,11 +11,21 @@ export default appContext => async (
   onSuccess = emptyMethod,
   onError = emptyMethod
 ) => {
+
+  // transform abit string to json object
+  let jsonAbi = null
+  try {
+    jsonAbi = JSON.parse(abi)
+  } catch (e) {
+    onError('abi must be json format')
+    return null
+  }
+
   try {
     // const request = await Wallet.ethers.createHDWallet({
     //   mnemonic: mnemonic,
     //   path: path,
-    // }) 
+    // })
     // if (request.code === 200) {
     //   const wallet = request.data
     appContext.persist(
@@ -27,7 +37,7 @@ export default appContext => async (
             [storage.WALLET_COINBASE]: 'ETH',
             [storage.DAPP_NAME]: name,
             [storage.DAPP_ADDRESS]: address,
-            [storage.DAPP_ABI]: abi,
+            [storage.DAPP_ABI]: jsonAbi, // abi,
             [storage.DAPP_NETWORK]: network,
           },
         },
