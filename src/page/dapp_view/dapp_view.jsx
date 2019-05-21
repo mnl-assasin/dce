@@ -44,9 +44,12 @@ const component = props => {
     // dlete
   }, [])
 
+  const item = appContext[storage.USER_DAPP][props._id] || {}
+  // console.log('item', item)
+
   return (
     <Page navigationProps={navigationProps}>
-      <Header classes={classes} provider={'test provider'} name={'dapp name'} />
+      <Header classes={classes} provider={item.network} name={item.name} />
       {/* <div className={classes.container}  > */}
       <FormControl
         style={{
