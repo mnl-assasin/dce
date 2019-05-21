@@ -19,6 +19,7 @@ import {
   GET_STARTED,
   LOGOUT,
   ADD_DAPP,
+  DAPP_VIEW,
 } from '../../constants/route'
 import {
   IS_LOGGED,
@@ -146,6 +147,13 @@ class Sidemenu extends PureComponent {
       onClick: () => {
         SidemenuEvent.toggle()
         goTo(ADD_DAPP)
+      },
+    },
+    {
+      title: 'Dapp View',
+      onClick: () => {
+        SidemenuEvent.toggle()
+        goTo(DAPP_VIEW)
       },
     },
     {
