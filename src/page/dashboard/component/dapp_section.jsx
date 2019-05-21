@@ -16,7 +16,7 @@ export default ({ onAddDapp, dapps = [], onDappItem }) => {
         </React.Fragment>
       }
     >
-      <TabContent direction="row" style={{ overflowX: 'auto' }}>
+      <TabContent direction="row" style={{ overflowX: 'auto', justifyContent: 'start' }}>
         <CardDapp
           // onAddDapp={onAddDapp}
           onPress={onAddDapp}
