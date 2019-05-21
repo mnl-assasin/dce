@@ -22,6 +22,8 @@ import useStyles from './styles'
 import { ProvidersOptions } from '../../constants/provider'
 import createDapp from '../../hof/create_dapp'
 import Header from './component/header'
+import Result from './component/result'
+import Session from './component/session'
 
 const navigationProps = {
   title: '',
@@ -35,7 +37,7 @@ const component = props => {
   const [_input, inputSet] = useState('')
   const onSubmit = useCallback(() => console.log('submitted'), [])
   const onCreateEthDapp = useCallback(() => {
-    createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
+    // createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
   }, [_function, _input])
 
   const onDeleteDapp = useCallback(() => {
@@ -45,7 +47,7 @@ const component = props => {
   return (
     <Page navigationProps={navigationProps}>
       <Header classes={classes} provider={'test provider'} name={'dapp name'} />
-      {/* <div className={classes.container} /> */}
+      {/* <div className={classes.container}  > */}
       <FormControl
         style={{
           marginTop: 4,
@@ -60,6 +62,7 @@ const component = props => {
           ))}  */}
         </Select>
       </FormControl>
+
       <InputTextBox
         placeholder="Input"
         style={{
@@ -71,8 +74,7 @@ const component = props => {
         onChange={e => inputSet(e.target.value)}
         type={inputTypes.textarea}
       />
-
-      <Padding vertical={16}>
+      <Padding vertical={8}>
         <PrimaryButton type="primary" onClick={onCreateEthDapp} fullWidth>
           Add Dapp
         </PrimaryButton>
@@ -83,6 +85,11 @@ const component = props => {
           </PrimaryButton>
         </Padding>
       </Padding>
+      <Result classes={classes} name="GetAmount" result={0.0123} time="1 min" />
+      <Session
+        classes={classes}
+        sessions={[{ name: 'GetAmount', result: 0.0123, time: '1 min' }]}
+      />
     </Page>
   )
 }

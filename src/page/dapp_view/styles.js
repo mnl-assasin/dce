@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/styles'
-import { center } from '../../constants/style'
+import { center, boxShadowWeak } from '../../constants/style'
 
 export const styles = theme => ({
   textField: {
@@ -10,6 +10,13 @@ export const styles = theme => ({
   logo: {
     ...center,
     flex: 2,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  col: {
+    flexDirection: 'column',
+    display: 'flex',
   },
   headerContainer: {
     paddingTop: 22,
@@ -35,6 +42,48 @@ export const styles = theme => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 12,
+  },
+
+  blocWrapper: {
+    paddingTop: 16,
+  },
+  resultTitle: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    paddingBottom: 8,
+    paddingTop: 8,
+    // textAlign: 'start',
+  },
+
+  itemContainer: {
+    boxShadow: boxShadowWeak,
+    padding: 8,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+
+  itemTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingBottom: 8,
+  },
+  itemSubtitle: {
+    fontSize: 10,
+    color: '#999',
+    fontWeight: 'bold',
+  },
+  itemTime: {
+    verticalAlign: 'middle',
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    fontSize: 10,
+    color: '#999',
+    fontWeight: 'bold',
   },
 })
 
