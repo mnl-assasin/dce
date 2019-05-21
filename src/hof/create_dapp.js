@@ -6,8 +6,8 @@ import * as storage from '../constants/storage'
 export default appContext => async (
   name = '',
   address = '',
-  abi = '',
   network = ProvidersOptionsDefault._id,
+  abi = '',
   onSuccess = emptyMethod,
   onError = emptyMethod
 ) => {
@@ -15,7 +15,7 @@ export default appContext => async (
     // const request = await Wallet.ethers.createHDWallet({
     //   mnemonic: mnemonic,
     //   path: path,
-    // })
+    // }) 
     // if (request.code === 200) {
     //   const wallet = request.data
     appContext.persist(
