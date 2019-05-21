@@ -18,6 +18,7 @@
 // import WalletHistory from './pages/WalletHistory/WalletHistory'
 // import TestPage from './pages/TestPage/TestPage'
 import AddDapp from './page/add_dapp'
+import DappView from './page/dapp_view'
 import CreateDashboard from './page/create_dashboard'
 import Dashboard from './page/dashboard'
 import GetStarted from './page/get_started'
@@ -47,6 +48,7 @@ export default {
   AddDapp: AddDapp,
   CreateDashboard: CreateDashboard,
   Dashboard: Dashboard,
+  DappView: DappView,
   GetStarted: GetStarted,
   Login: Login,
   MnemonicPhrase: MnemonicPhrase,
