@@ -36,16 +36,19 @@ const component = props => {
   const [_function, functionSet] = useState('default')
   const [_input, inputSet] = useState('')
   const onSubmit = useCallback(() => console.log('submitted'), [])
-  const onCreateEthDapp = useCallback(() => {
-    // createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
-  }, [_function, _input])
-
-  const onDeleteDapp = useCallback(() => {
-    // dlete
-  }, [])
 
   const item = appContext[storage.USER_DAPP][props._id] || {}
   // console.log('item', item)
+
+  const onCreateEthDapp = useCallback(() => {
+    // createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
+    console.log('_function, _input', _function, _input)
+  }, [_function, _input])
+
+  const onDeleteDapp = useCallback(() => {
+    console.log('deleting', props._id)
+    
+  }, [])
 
   return (
     <Page navigationProps={navigationProps}>
