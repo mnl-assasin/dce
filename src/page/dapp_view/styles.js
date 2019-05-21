@@ -11,11 +11,21 @@ export const styles = theme => ({
     ...center,
     flex: 2,
   },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+  headerContainer: {
     paddingTop: 22,
+    textAlign: 'center',
+  },
+  title: {
+    fontSize: 20,
+    paddingTop: 4,
+    fontWeight: 'bold',
     paddingBottom: 32,
+    textAlign: 'center',
+  },
+  subTitle: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#999',
     textAlign: 'center',
   },
   container: { border: '1px solid #dadada', fontSize: 13 },

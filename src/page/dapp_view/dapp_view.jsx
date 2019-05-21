@@ -21,6 +21,7 @@ import { navigate } from '../../services/navigation'
 import useStyles from './styles'
 import { ProvidersOptions } from '../../constants/provider'
 import createDapp from '../../hof/create_dapp'
+import Header from './component/header'
 
 const navigationProps = {
   title: '',
@@ -43,7 +44,7 @@ const component = props => {
 
   return (
     <Page navigationProps={navigationProps}>
-      <span className={classes.title}>Add ETH Dapp</span>
+      <Header classes={classes} provider={'test provider'} name={'dapp name'} />
       {/* <div className={classes.container} /> */}
       <FormControl
         style={{
@@ -76,7 +77,7 @@ const component = props => {
           Add Dapp
         </PrimaryButton>
 
-        <Padding vertical={4}>
+        <Padding vertical={8}>
           <PrimaryButton type="secondary" onClick={onDeleteDapp} fullWidth>
             Delete
           </PrimaryButton>
