@@ -35,7 +35,7 @@ export const styles = theme => ({
     color: '#999',
     textAlign: 'center',
   },
-  container: { border: '1px solid #dadada', fontSize: 13 },
+  container: { border: '1px solid #dadada', fontSize: 13, paddingLeft: 8, marginTop: 8 },
   content: {
     display: 'flex',
     flexDirection: 'row',

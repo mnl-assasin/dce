@@ -24,6 +24,7 @@ import createDapp from '../../hof/create_dapp'
 import Header from './component/header'
 import Result from './component/result'
 import Session from './component/session'
+import { trimAddress, getWalletBalance } from '../../helper/wallet';
 
 const navigationProps = {
   title: '',
@@ -47,28 +48,47 @@ const component = props => {
 
   const onDeleteDapp = useCallback(() => {
     console.log('deleting', props._id)
-    
   }, [])
+
+  const wallets = appContext[storage.USER_WALLETS] || {}
 
   return (
     <Page navigationProps={navigationProps}>
       <Header classes={classes} provider={item.network} name={item.name} />
-      {/* <div className={classes.container}  > */}
-      <FormControl
-        style={{
-          marginTop: 4,
-        }}
-      >
-        <Select value={_function} onChange={e => functionSet(e.target.value)}>
-          <MenuItem value={'default'}>function</MenuItem>
-          {Object.keys(ProvidersOptions).map(k => (
-            <MenuItem key={k} value={k}>
-              {k}
-            </MenuItem>
-          ))} 
-        </Select>
-      </FormControl>
-
+      <div className={classes.container}>
+        <FormControl
+          style={{
+            marginTop: 4,
+          }}
+          fullWidth
+        >
+          <Select value={_function} onChange={e => functionSet(e.target.value)}>
+            <MenuItem value={'default'}>Account</MenuItem>
+            {Object.keys(wallets).map(k => (
+              <MenuItem key={k} value={k}>
+                {trimAddress(k)}({getWalletBalance(appContext, k)})
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <div className={classes.container}>
+        <FormControl
+          style={{
+            marginTop: 4,
+          }}
+          fullWidth
+        >
+          <Select value={_function} onChange={e => functionSet(e.target.value)}>
+            <MenuItem value={'default'}>function</MenuItem>
+            {/* {Object.keys(ProvidersOptions).map(k => (
+              <MenuItem key={k} value={k}>
+                {k}
+              </MenuItem>
+            ))} */}
+          </Select>
+        </FormControl>
+      </div>
       <InputTextBox
         placeholder="Input"
         style={{
