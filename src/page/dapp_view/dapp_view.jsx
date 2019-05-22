@@ -92,10 +92,7 @@ const component = props => {
         appContext.persist({
           [storage.DAPP_SESSION_HISTORY]: {
             ...appContext[storage.DAPP_SESSION_HISTORY],
-            [_id]: {
-              resultData,
-              ...appContext[storage.DAPP_SESSION_HISTORY][_id],
-            },
+            [_id]: [resultData, ...currentHistory],
           },
         })
       },
