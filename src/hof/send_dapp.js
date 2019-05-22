@@ -35,6 +35,6 @@ export default context => async (
     }
   } catch (e) {
     console.log('error in sending dapp: ', e)
-    return onError(e)
+    return onError(e.message)
   }
 }
