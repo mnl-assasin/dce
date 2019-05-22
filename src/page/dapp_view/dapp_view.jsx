@@ -33,6 +33,7 @@ const navigationProps = {
 }
 
 const component = props => {
+  const _id = props._id
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
   const [_account, accountSet] = useState('default')
@@ -41,7 +42,7 @@ const component = props => {
   const [_result, resultSet] = useState(null)
   const item = appContext[storage.USER_DAPP][props._id] || {}
   // console.log('item', item)
-  
+
   // [{ name: 'GetAmount', result: 0.0123, time: '1 min' }]
   const dapp_history =
     appContext[storage.DAPP_SESSION_HISTORY][props._id] || null
@@ -57,17 +58,51 @@ const component = props => {
 
   const wallets = appContext[storage.USER_WALLETS] || {}
 
+  const currentHistory = appContext[storage.DAPP_SESSION_HISTORY][_id] || []
   const onSubmit = useCallback(() => {
     console.log(_account, _function, _input)
-    send_dapp(appContext)({
-      privateKey: _account,
-      network: item[storage.DAPP_NETWORK],
-      address: item[storage.DAPP_ADDRESS],
-      abi: item[storage.DAPP_ABI],
-      method: _function,
-      params: _input,
-    })
-  }, [_account, _function, _input])
+    send_dapp(appContext)(
+      {
+        privateKey: _account,
+        network: item[storage.DAPP_NETWORK],
+        address: item[storage.DAPP_ADDRESS],
+        abi: item[storage.DAPP_ABI],
+        method: _function,
+        params: _input,
+      },
+      data => {
+        const resultData = {
+          data: data,
+          name: _function,
+          time: new Date().getTime(),
+        }
+        resultSet(resultData)
+        appContext.persist({
+          [storage.DAPP_SESSION_HISTORY]: {
+            ...appContext[storage.DAPP_SESSION_HISTORY],
+            [_id]: {
+              resultData,
+              ...appContext[storage.DAPP_SESSION_HISTORY][_id],
+            },
+          },
+        })
+      },
+      data => {
+        const resultData = {
+          data: data,
+          name: _function,
+          time: new Date().getTime(),
+        }
+        resultSet(resultData)
+        appContext.persist({
+          [storage.DAPP_SESSION_HISTORY]: {
+            ...appContext[storage.DAPP_SESSION_HISTORY],
+            [_id]: [resultData, ...currentHistory],
+          },
+        })
+      }
+    )
+  }, [_account, _function, _input, resultSet, currentHistory])
 
   return (
     <Page navigationProps={navigationProps}>
