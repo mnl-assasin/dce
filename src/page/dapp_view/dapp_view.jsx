@@ -24,7 +24,8 @@ import createDapp from '../../hof/create_dapp'
 import Header from './component/header'
 import Result from './component/result'
 import Session from './component/session'
-import { trimAddress, getWalletBalance } from '../../helper/wallet';
+import { trimAddress, getWalletBalance } from '../../helper/wallet'
+import send_dapp from '../../hof/send_dapp'
 
 const navigationProps = {
   title: '',
@@ -34,10 +35,9 @@ const navigationProps = {
 const component = props => {
   const appContext = useContext(AppContextObject)
   const classes = useStyles()
+  const [_account, accountSet] = useState('default')
   const [_function, functionSet] = useState('default')
   const [_input, inputSet] = useState('')
-  const onSubmit = useCallback(() => console.log('submitted'), [])
-
   const item = appContext[storage.USER_DAPP][props._id] || {}
   // console.log('item', item)
 
@@ -52,9 +52,25 @@ const component = props => {
 
   const wallets = appContext[storage.USER_WALLETS] || {}
 
+  const onSubmit = useCallback(() => {
+    console.log(_account, _function, _input)
+    send_dapp(appContext)({
+      privateKey: _account,
+      network: item[storage.DAPP_NETWORK],
+      address: item[storage.DAPP_ADDRESS],
+      abi: item[storage.DAPP_ABI],
+      method: _function,
+      params: _input,
+    })
+  }, [_account, _function, _input])
+
   return (
     <Page navigationProps={navigationProps}>
-      <Header classes={classes} provider={item.network} name={item.name} />
+      <Header
+        classes={classes}
+        provider={item[storage.DAPP_NETWORK]}
+        name={item.name}
+      />
       <div className={classes.container}>
         <FormControl
           style={{
@@ -62,10 +78,10 @@ const component = props => {
           }}
           fullWidth
         >
-          <Select value={_function} onChange={e => functionSet(e.target.value)}>
+          <Select value={_account} onChange={e => accountSet(e.target.value)}>
             <MenuItem value={'default'}>Account</MenuItem>
             {Object.keys(wallets).map(k => (
-              <MenuItem key={k} value={k}>
+              <MenuItem key={k} value={wallets[k][storage.WALLET_PRIVATE_KEY]}>
                 {trimAddress(k)}({getWalletBalance(appContext, k)})
               </MenuItem>
             ))}
@@ -81,11 +97,12 @@ const component = props => {
         >
           <Select value={_function} onChange={e => functionSet(e.target.value)}>
             <MenuItem value={'default'}>function</MenuItem>
-            {/* {Object.keys(ProvidersOptions).map(k => (
-              <MenuItem key={k} value={k}>
-                {k}
-              </MenuItem>
-            ))} */}
+            {item[storage.DAPP_ABI].map &&
+              item[storage.DAPP_ABI].map(k => (
+                <MenuItem key={k.name} value={k.name}>
+                  {k.name}
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
       </div>
@@ -100,8 +117,8 @@ const component = props => {
         type={inputTypes.text}
       />
       <Padding vertical={8}>
-        <PrimaryButton type="primary" onClick={onCreateEthDapp} fullWidth>
-          Add Dapp
+        <PrimaryButton type="primary" onClick={onSubmit} fullWidth>
+          Send
         </PrimaryButton>
 
         <Padding vertical={8}>
