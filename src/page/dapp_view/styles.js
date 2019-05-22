@@ -63,6 +63,7 @@ export const styles = theme => ({
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'space-between',
+    marginTop: 8
   },
 
   itemTitle: {
