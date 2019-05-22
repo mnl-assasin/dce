@@ -1,0 +1,1 @@
+export const DappViewMaximumSessionCount = 6
