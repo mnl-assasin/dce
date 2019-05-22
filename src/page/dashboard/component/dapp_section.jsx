@@ -31,7 +31,7 @@ export default ({ onAddDapp, dapps = [], onDappItem }) => {
             textTransform="uppercase"
             param={_id}
             onPress={onDappItem}
-            title={dapps[_id][DAPP.DAPP_NAME]}
+            title={dapps[_id] && dapps[_id][DAPP.DAPP_NAME]}
             componentIcon={<Icon src={DappInactive} size={56} />}
           />
         ))}
