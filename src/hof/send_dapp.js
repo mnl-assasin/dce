@@ -22,13 +22,21 @@ export default context => async (
     }
     params.params = inputs
     console.log(params)
+    let request = {}
 
-    const request = await Contract.ethers.executeWithParams(params)
+    if (inputs.length === 0) {
+      request = await Contract.ethers.executeNoParams(params)
+    } else {
+      request = await Contract.ethers.executeWithParams(params)
+    }
 
     if (request.code === 200) {
       // converted amount price is a component value.
       // so success must handle by the caller
       console.log('send dapp: ', request)
+      if (inputs.length === 0) {
+        return onSuccess('Success')
+      }
       return onSuccess(request.data.result)
     } else {
       throw new Error('code not 200')
