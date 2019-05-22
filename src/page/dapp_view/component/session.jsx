@@ -5,13 +5,13 @@ export default ({ classes, sessions = [] }) => {
   return (
     <div className={classes.blocWrapper}>
       <div className={classes.resultTitle}>SESSION HISTORY</div>
-      {Object.keys(sessions).map(k => {
+      {Object.keys(sessions.slice(0, 10)).map(k => {
         return (
           <Item
             key={k}
             classes={classes}
             title={sessions[k].name}
-            subTitle={sessions[k].result}
+            subTitle={sessions[k].data}
             time={sessions[k].time}
           />
         )
