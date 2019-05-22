@@ -110,7 +110,7 @@ class Splash extends BasePage {
     this.storage.USER_WALLETS,
     this.storage.USER_DAPP,
     this.storage.USER_MNEMONIC,
-
+    this.storage.DAPP_SESSION_HISTORY,
     this.storage.LAST_OPEN,
     this.storage.PASSWORD,
   ]

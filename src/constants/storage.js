@@ -65,7 +65,14 @@ export const DAPP_NAME = 'name'
 export const DAPP_ADDRESS = 'address'
 export const DAPP_ABI = 'abi'
 export const DAPP_NETWORK = 'network'
+export const DAPP_SESSION_HISTORY = 'DAPP_SESSION_HISTORY'
 
-export const DAPP = { DAPP_NAME, DAPP_ADDRESS, DAPP_ABI, DAPP_NETWORK }
+export const DAPP = {
+  DAPP_SESSION_HISTORY,
+  DAPP_NAME,
+  DAPP_ADDRESS,
+  DAPP_ABI,
+  DAPP_NETWORK,
+}
 
 export const ETHER_PRICE = 'ether_price'

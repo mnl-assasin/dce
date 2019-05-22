@@ -38,8 +38,13 @@ const component = props => {
   const [_account, accountSet] = useState('default')
   const [_function, functionSet] = useState('default')
   const [_input, inputSet] = useState('')
+  const [_result, resultSet] = useState(null)
   const item = appContext[storage.USER_DAPP][props._id] || {}
   // console.log('item', item)
+  
+  // [{ name: 'GetAmount', result: 0.0123, time: '1 min' }]
+  const dapp_history =
+    appContext[storage.DAPP_SESSION_HISTORY][props._id] || null
 
   const onCreateEthDapp = useCallback(() => {
     // createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
@@ -127,11 +132,16 @@ const component = props => {
           </PrimaryButton>
         </Padding>
       </Padding>
-      <Result classes={classes} name="GetAmount" result={0.0123} time="1 min" />
-      <Session
-        classes={classes}
-        sessions={[{ name: 'GetAmount', result: 0.0123, time: '1 min' }]}
-      />
+      {_result && (
+        <Result
+          classes={classes}
+          name={_result.name}
+          result={_result.data}
+          time={_result.time}
+        />
+      )}
+
+      {dapp_history && <Session classes={classes} sessions={dapp_history} />}
     </Page>
   )
 }
