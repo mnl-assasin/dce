@@ -35,9 +35,9 @@ export default context => async (
       // so success must handle by the caller
       console.log('send dapp: ', request)
       if (inputs.length === 0) {
-        return onSuccess('Success')
+        return onSuccess(request.data.result)
       }
-      return onSuccess(request.data.result)
+      return onSuccess('Success')
     } else {
       throw new Error('code not 200')
     }
