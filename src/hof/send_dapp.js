@@ -29,7 +29,7 @@ export default context => async (
       // converted amount price is a component value.
       // so success must handle by the caller
       console.log('send dapp: ', request)
-      return onSuccess(request.data)
+      return onSuccess(request.data.result)
     } else {
       throw new Error('code not 200')
     }
