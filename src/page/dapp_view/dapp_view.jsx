@@ -47,14 +47,26 @@ const component = props => {
   const dapp_history =
     appContext[storage.DAPP_SESSION_HISTORY][props._id] || null
 
+  let userDapp = appContext[storage.USER_DAPP]
+
+  if (!_id) {
+    navigate(route.DASHBOARD)
+  }
+
   const onCreateEthDapp = useCallback(() => {
     // createDapp(appContext)(_function, _input, navigate(route.DASHBOARD))
     console.log('_function, _input', _function, _input)
   }, [_function, _input])
 
   const onDeleteDapp = useCallback(() => {
-    console.log('deleting', props._id)
-  }, [])
+    delete userDapp[_id]
+    appContext.persist(
+      {
+        [storage.USER_DAPP]: { ...userDapp },
+      },
+      () => navigate(route.DASHBOARD)
+    )
+  }, [userDapp])
 
   const wallets = appContext[storage.USER_WALLETS] || {}
 
@@ -137,9 +149,10 @@ const component = props => {
         >
           <Select value={_function} onChange={e => functionSet(e.target.value)}>
             <MenuItem value={'default'}>function</MenuItem>
-            {item[storage.DAPP_ABI].map &&
-              item[storage.DAPP_ABI].map(k => (
-                <MenuItem key={k.name} value={k.name}>
+            {item[storage.DAPP_ABI] &&
+              item[storage.DAPP_ABI].map &&
+              item[storage.DAPP_ABI].map((k, i) => (
+                <MenuItem key={i} value={k.name}>
                   {k.name}
                 </MenuItem>
               ))}
